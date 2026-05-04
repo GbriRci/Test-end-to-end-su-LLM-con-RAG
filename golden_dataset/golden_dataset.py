@@ -15,7 +15,7 @@ def benchmark_answer_and_evaluation():
     with open("./golden_dataset/question.json", "r", encoding="utf-8") as f:
         file = json.load(f)
     results = []
-    for row in file:
+    for row in file[:4]:
         print(f"Valutando: {row['question']}")
         response_stream, sources, texts, retrieval_scores = query_rag(row["question"])
         response_text = "".join(
@@ -39,12 +39,10 @@ def benchmark_answer_and_evaluation():
 
 
 def benchmark_evaluation_only():
-    with open("./golden_dataset/risultati_con_testi.csv", "r", encoding="utf-8") as f:
+    with open("./golden_dataset/risultati/risultati_eval_Ollama.csv", "r", encoding="utf-8") as f:
         file = pd.read_csv(f).to_dict(orient="records")
     results = []
-    db = create_chroma_db()
-
-    for row in file:
+    for row in file[3:4]:
         print(f"Valutando: {row['question']}")
         try:
             retrieved_chunks = ast.literal_eval(row["retrieved_chunks_text"])
@@ -74,8 +72,19 @@ if __name__ == "__main__":
     # raw_results = benchmark_answer_and_evaluation()
     raw_results = benchmark_evaluation_only()
     df = pd.DataFrame(raw_results)
-    filename = "./golden_dataset/risultati_Gemini_Ai.csv"
+    filename = "./golden_dataset/risultati/nuovo.csv"
     df.to_csv(filename, index=False, encoding="utf-8-sig")
-    print(f"\nBenchmark completato! Dati salvati in: {filename}")
+    print(f"\nDati salvati in: {filename}")
     print("\n--- MEDIE TOTALI ---")
-    print(df.drop(columns=["question", "groundtruth", "difficulty", "response"]).mean())
+    print(
+        df.drop(
+            columns=[
+                "question",
+                "groundtruth",
+                "difficulty",
+                "response",
+                "scores",
+                "sources",
+            ]
+        ).mean()
+    )
