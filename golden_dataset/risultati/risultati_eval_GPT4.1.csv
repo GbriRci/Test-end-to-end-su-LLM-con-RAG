@@ -1,0 +1,83 @@
+﻿question,groundtruth,difficulty,response,faithfulness,answer_relevancy,context_precision,context_recall,noise_sensitivity(mode=relevant),semantic_similarity,answer_correctness
+Qual è il tempo massimo di esposizione consentito nella zona 'Nucleo di Irradiazione Fragola'?,Il tempo massimo di esposizione per la zona Z-3 (Nucleo di Irradiazione Fragola) è di 12 minuti per turno.,facile,"Il tempo massimo di esposizione consentito nella zona ""Nucleo di Irradiazione Fragola"" è 30 metri.",0.0,0.9969610627523305,0.0,0.0,0.0,0.8474822031004188,0.2118705507751047
+Quali sono i requisiti di protezione obbligatori per accedere alla zona Z-2?,"Oltre ai DPI base (Guanti in Neoprene Quantico e Visore a Filtro Viola), sono obbligatori: Tuta Isolante Modello Ψ-12, Respiratore a Carboni di Nostalgia e Calzature Antilevitazione (SKU: ALV-3340).",medio,"Tuta Isolante Modello Ψ-12, resistenza termica certificata fino a -890 Gradi Fluttuanti.",1.0,0.4749657594177081,0.9999999999,1.0,1.0,0.7140024932508507,0.39278633759842696
+Un Operatore Standard ha già accumulato 20 UD di esposizione oggi. Può entrare nel Nucleo di Irradiazione Fragola per un turno completo di 12 minuti?,"No. La zona Z-3 (Nucleo di Irradiazione Fragola) ha una soglia di allarme di 120 UD/ora, che equivale a 2 UD al minuto. In 12 minuti l'operatore assorbirebbe 24 UD. 20 (precedenti) + 24 = 44 UD. Sebbene sia sotto il limite di 50 UD, il documento specifica che la soglia di allarme immediato è 120 UD/ora, rendendo l'operazione rischiosa, ma tecnicamente il limite giornaliero dell'operatore standard è 50 UD.",difficile,"No, l'Operatore Standard non può entrare nel Nucleo di Irradiazione Fragola per un turno completo di 12 minuti. L'indirizzo è stato fornito come ""Perdita contenimento Etere (> 5 L)3 - ARANCIONE4 - ROSSO 3 minuti"".",0.0,0.9134799569869599,0.0,0.0,0.0,0.7689963398857574,0.31724908497143933
+Qual è la frequenza sonora in Hertz della sirena codice ROSA-7?,"Il documento menziona l'attivazione della sirena codice ROSA-7 in caso di superamento della soglia di 120 UD/ora, ma non ne specifica la frequenza sonora.",impossible,The frequency of the code ROSA-7 siren is 447.825 MHz.,0.0,0.7297887759457106,0.49999999995,1.0,0.0,0.6482727559394765,0.16206818898486913
+A quale temperatura si manifesta l'Effetto Amnesia Spaziale?,Si manifesta a temperature superiori a +200 Gradi Fluttuanti.,facile,L'Effetto Amnesia Spaziale si manifesta a temperature superiori a +200 Gradi Fluttuanti.,1.0,1.0000000000000007,0.9999999999,1.0,1.0,0.9798446193654089,0.9949611548413522
+Cosa accade se l'Etere Liquido viene accidentalmente miscelato con olio di oliva?,Si verifica un'inversione temporale locale (Codice Pericolo P-YEL-15).,medio,"Se l'Etere Liquido viene accidentalmente miscelato con olio di oliva, potrebbe causare un aumento della concentrazione di gassogene nell'aria. Questo può portare a una diminuzione del livello di ossigeno in ambiente aperto, aumentando la possibilità di problemi respiratori se l'acqua si accumula in piccole quantità. Inoltre, potrebbe causare un aumento della temperatura dell'aria, che potrebbe essere pericoloso se non è previsto o gestito adeguatamente.",0.0,0.9689329915141321,0.0,0.0,0.0,0.6251714238673193,0.15629285596682982
+"Se devo preparare 250 litri di miscela, quanti grammi di catalizzatore VortexCat™ 3000 devo utilizzare?",Il dosaggio è di 2.8 g per ogni 100 L. Per 250 L servono 7 grammi (2.8 * 2.5).,difficile,"Se vuoi preparare 250 litri di miscela, dovrai usare:
+
+2.8 g per ogni 100 L
+
+Quindi, per 250 L:
+(2.8 g / 100 L) × 250 L = 7 g",1.0,0.8550839439426627,0.9999999999,0.5,0.0,0.8499329653880441,0.8553403842041538
+Qual è la formula molecolare specifica del componente 'Legante Nostalgico'?,"Il documento indica che il Legante Nostalgico compone il 5.5% della melassa, ma non fornisce la sua formula molecolare.",impossible,"The formula molecular specific for the component 'Legante Nostalgico' is not provided in the given text. The context only mentions that it is a component of a mixture, but does not give its chemical structure or formula.",0.75,0.0,0.0,0.0,0.0,0.6053542586448936,0.7138385646612234
+Qual è il tempo di risposta previsto per un'allerta di Livello 3 (Arancione)?,Il tempo di risposta per il livello Arancione è di 5 minuti.,facile,Il tempo di risposta previsto per una livello 3 (arancione) è 4 minuti.,0.0,0.9049657101640003,0.3333333333,0.0,0.0,0.8994498384006012,0.2248624596001503
+Quali sono le azioni immediate da compiere nei primi 120 secondi in caso di rilascio incontrollato di Etere Liquido (EMR-101)?,1. Premere il pulsante di arresto generale PST-RED-01; 2. Indossare il Respiratore a Carboni di Nostalgia; 3. Evacuare il personale entro un raggio di 30 metri; 4. NON tentare di contenere manualmente.,medio,"In caso di rilascio incontrollato di Etere Liquido (EMR-101), le azioni immediate da compiere nei primi 120 secondi sono:
+
+1. NON EVACUARE: L'esterno potrebbe non esistere temporaneamente.
+2. Attivare il Generatore di Coerenza Temporale (GCT-01, sala macchine piano -1): Chiave di attivazione: cassaforte ufficio Direttore, combinazione 7-23-42-88
+3. Tutto il personale deve sedersi a terra e rimanere immobile
+
+Queste azioni sono descritte nel documento ""Emergenza Impianto Sincro-Cristalli.md"" come parte di un protocollo VIOLA, che include anche:
+1. Attendere il ripristino del flusso temporale (durata media: 7.4 minuti)
+2. Compilare il Questionario di Realtà QR-VIOLA-01
+3. Contatto di emergenza specializzato: Ufficio Paradossi - Tel. interno: 9999
+4. Sistemi di Allarme e Comunicazione:
+   - Segnali Acustici:
+     - Sirena continua 440 Hz Evacuazione generaleDirigersi all'uscita più vicina
+     - Sirena intermittente 880 Hz (2s on/1s off)Allarme chimico Indossare DPI, attendere istruzioni
+     - Gong ripetuto (3 colpi ogni 5s) Fine emergenza Attendere autorizzazione rientro
+
+Questi passaggi sono descritti come parte di un protocollo che richiede attenzione immediata e complessità per risolvere eventuali problemi temporanei.",0.9565217391304348,0.9999999999999997,0.0,0.0,,0.7966018550534415,0.19915046376336037
+"In caso di un Evento Paradossale (Livello VIOLA), quali sono i passaggi precisi per attivare il Generatore di Coerenza Temporale?",Bisogna recarsi nella sala macchine al piano -1 e utilizzare la chiave di attivazione custodita nella cassaforte dell'ufficio del Direttore (combinazione 7-23-42-88).,difficile,"In caso di un Evento Paradossale (Livello VIOLA), i passaggi precisi per attivare il Generatore di Coerenza Temporale sono:
+
+1. NON EVACUARE (l'esterno potrebbe non esistere temporaneamente)
+2. Attivare il Generatore di Coerenza Temporale (GCT-01, sala macchine piano -1)
+3. Chiave di attivazione: cassaforte ufficio Direttore, combinazione 7-23-42-88",1.0,0.9877571199787948,0.9999999999,1.0,0.8333333333333334,0.8896197810460098,0.6314958543524115
+Qual è la procedura di decontaminazione specifica per gli indumenti civili esposti alla brina color lavanda?,"Il documento menziona la formazione di brina lavanda come segnale di attivazione, ma non descrive procedure di decontaminazione per indumenti civili.",impossible,"La procedura di decontaminazione specifica per gli indumenti civili esposti alla brina color lavanda è:
+
+1. Rimuovere completamente l'indumento dalla superficie.
+2. Svuotare il contenitore di raccolta criogenico 1 (50 L).
+3. Infilare i vestiti in un contenitore di raffreddamento criogenico per una durata minima di 48 ore a temperatura ambiente.
+
+Questo procedimento è necessario perché la brina color lavanda contiene sostanze chimiche che possono essere dannose se non decontaminate adeguatamente.",0.0,1.0000000000000004,0.99999999995,1.0,0.0,0.8472539709098078,0.21181349272745195
+Qual è la durata di conservazione (shelf life) dell'Etere Liquido Grezzo?,La shelf life è di 90 giorni dalla produzione.,facile,The shelf life of the Greazy Ether Liquid is 14 days terrestrial.,0.0,0.7168481803634131,0.0,0.0,0.0,0.691216349327398,0.1728040873318495
+Quale fornitore è autorizzato per il Tè Freddo e qual è il suo rating?,Il fornitore è Oolong Cosmico GmbH con un rating di B+.,medio,Il fornitore autorizzato per il Tè Freddo è la Marzotto. Il suo rating è 4.,0.0,0.9946728017501002,0.0,0.0,0.0,0.8576778980119868,0.2144194745029967
+"Analizzando il codice lotto 'SC-214732-A-0847', cosa indicano i segmenti '32' e 'A'?","Il segmento '32' indica la settimana ISO di produzione, mentre 'A' indica la linea produttiva utilizzata.",difficile,"Il codice lotto 'SC-214732-A-0847' indica:
+
+- 32: Il numero di lotto è composto da tre parti:
+  - La prima parte numerica (3) rappresenta il giorno del mese.
+  - La seconda parte numerica (21) rappresenta la sequenza delle ore.
+  - La terza parte numerica (47) rappresenta l'ordine di lotto.
+
+- A: Il secondo carattere è 'A', che indica un'altra parte del codice lotto. In questo caso, non ha una significato specifico nella descrizione fornita e potrebbe essere un errore o un elemento aggiuntivo nel codice.
+
+In sintesi, il segmento '32' indica la sequenza delle ore di quel giorno, mentre l'elemento 'A' è un carattere che non ha un significato specifico in questa descrizione.",0.0,0.0,0.0,0.0,0.0,0.7494349935569629,0.18735874838924071
+Quali sono le dimensioni fisiche esterne del 'Cofanetto antilevitazione AL-P1' usato per i cristalli Premium?,"Il documento specifica che contiene 12 cristalli, ma non fornisce le dimensioni fisiche del cofanetto.",impossible,"The document does not provide specific dimensions for the ""Cofanetto antilevitazione AL-P1"" used for the Premium (P) crystals. The context only mentions that it is a ""Premium (P)"" product, but does not give any information about its physical size or dimensions.",1.0,0.0,0.0,1.0,0.25,0.603646107998467,0.7134115269996167
+Qual è la frequenza di calibrazione dei Sensori di Distanza Calamita Inversa?,La calibrazione deve essere effettuata ogni 72 ore operative.,facile,180 secondi,0.0,0.6438725075523766,0.0,0.0,0.0,0.4561630345533435,0.11404075863833588
+Quali sono i parametri della soglia critica per i 'Cuscinetti centrifuga'?,La soglia critica per i cuscinetti della centrifuga è di 2.350 ore.,medio,"The document does not provide specific information about the critical threshold for ""Centrifuge Cups"" (likely referring to a type of container or vessel). The provided text discusses parameters related to the composition of antimatter melassas and their tolerance levels, but does not mention any critical thresholds for centrifuge cups.",0.8,0.0,0.0,0.0,0.0,0.6003127815473923,0.5250781953868481
+"Descrivi la procedura di calibrazione dei sensori Calamita Inversa, includendo lo strumento necessario e la tolleranza della deriva.","Si usa il Calibratore Universale DIST-CAL-14.15. Procedura: spegnere il campo (pannello C-7), attendere 180s, inserire il campione Gap Master™ (14.500 mm), avviare calibrazione (tasto F7). La deriva deve essere < 0.08 mm.",difficile,"La procedura di calibrazione dei sensori Calamita Inversa include:
+
+1. **Spegnere il campo di Calamita Inversa (interruttore pannello C-7)**: Questo interrompe la corrente e lo stabilisce in stato di arresto.
+
+2. **Attendere 180 secondi per la dissipazione del campo residuo**: Il campo residuo dovrebbe svanire completamente prima di procedere con l'azione successiva.
+
+3. **Inserire il campione di riferimento (Gap Master™ 14.500 mm, tolleranza ±0.002 mm)**: Questo è un strumento specifico che viene inserito per la calibrazione.
+
+4. **Avviare sequenza di calibrazione (tasto F7 su HMI)**: Questa operazione avvia il processo di calibrazione del sensori Calamita Inversa.
+
+5. **Verificare che la deriva sia < 0.08 mm**: La deriva è un termine che misura l'errore o la differenza tra i dati previsti e quelli reali. Un valore inferiore a 0.08 mm è considerato normale.
+
+6. **Registrare su modulo CAL-FORM-14 i valori: data, ora, deriva pre/post, firma operatore**: Questo include il registro di tutte le informazioni relative alla calibrazione, come la data e l'ora, la differenza precedente e successiva della derivata, e la firma dell'operatore.
+
+7. **Verifica Temperatura Gradi Fluttuanti**: Per questo punto specifico, è richiesto un termometro a Incertezza Controllata (TIC-400F) per misurare la temperatura in modo preciso.
+
+8. **Strumenti richiesti: Termometro a Incertezza Controllata (TIC-400F)**: Questo strumento è necessario per la verifica della temperatura, che dovrebbe essere di -450.00 ± 0.05 GF.
+
+9. **Oggetti presenti in due ubicazioni simultaneamente**: Questa procedura richiede l'identificazione e la registrazione di oggetti presenti in due località diverse, ma contemporanee.
+
+10. **Personale che riferisce memorie di eventi non ancora accaduti**: Il personale deve essere attento a non riferire eventi che potrebbero non aver avuto luogo, poiché questo può influenzare la calibrazione del sistema.
+
+Questo processo è necessario per garantire l'accuratezza e la sicurezza dei sensori Calamita Inversa.",0.45454545454545453,0.9183730271650742,0.49999999995,0.6666666666666666,,0.7817428716277022,0.4632928607640684
+Quante calorie vengono bruciate mediamente da un tecnico durante la 'Pulizia profonda Vasca Immersione'?,"Il documento indica che l'operazione dura 3 ore e richiede 2 operatori, ma non fornisce dati sul dispendio energetico.",impossible,"The given text does not provide any information about the amount of calories burned during a ""Pulizia profonda Vasca Immersione"" (Deep Cleaning Underwater). The context is entirely unrelated to energy expenditure or calorie burning. Therefore, based on the provided context, I cannot answer this question.",1.0,0.0,0.0,0.0,0.5,0.5210858381424994,0.5052714595356249

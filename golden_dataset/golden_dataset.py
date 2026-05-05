@@ -39,10 +39,12 @@ def benchmark_answer_and_evaluation():
 
 
 def benchmark_evaluation_only():
-    with open("./golden_dataset/risultati/risultati_eval_Ollama.csv", "r", encoding="utf-8") as f:
+    with open(
+        "./golden_dataset/risultati/risultati_eval_Ollama.csv", "r", encoding="utf-8"
+    ) as f:
         file = pd.read_csv(f).to_dict(orient="records")
     results = []
-    for row in file[3:4]:
+    for row in file[1:2]:
         print(f"Valutando: {row['question']}")
         try:
             retrieved_chunks = ast.literal_eval(row["retrieved_chunks_text"])
@@ -56,8 +58,8 @@ def benchmark_evaluation_only():
         )
         metrics = ragas_evaluation(dataset, get_ragas_metrics())
         row = {
-            "question": [row["question"]],
-            "groundtruth": [row["groundtruth"]],
+            "question": row["question"],
+            "groundtruth": row["groundtruth"],
             "difficulty": [row["difficulty"]],
             "response": row["response"],
             "scores": row["scores"],

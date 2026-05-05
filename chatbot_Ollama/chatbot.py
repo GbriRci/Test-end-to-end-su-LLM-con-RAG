@@ -269,11 +269,6 @@ def ragas_evaluation(dataset, all_metrics):
             score_dict = result.scores[0]
             print(f"--- RISULTATO {metric.name}: {score_dict} ---")
             final_scores.update(score_dict)
-            val = score_dict.get(metric.name)
-            # if val is None or (isinstance(val, float) and np.isnan(val)):
-            # print(
-            #     f"Attenzione: {metric.name} ha restituito NaN. Probabile errore nell'estrazione dei dati dal modello."
-            # )
             time.sleep(30)
         except Exception as e:
             print(f"ERRORE CRITICO su {metric.name}:")
