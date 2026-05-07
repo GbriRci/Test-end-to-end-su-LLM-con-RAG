@@ -132,6 +132,14 @@ def get_evaluation_model():
     #     max_retries=3,
     #     timeout=180,
     # )
+    # return ChatOpenAI(
+    #     model="gpt-4.1",
+    #     api_key="any",
+    #     openai_api_base="http://100.120.12.105:14141/v1",
+    #     temperature=0,
+    #     max_retries=5,
+    #     timeout=300,
+    # )
 
 
 # ID UNIVOCO CHUNK => per la modifica del DB
@@ -243,13 +251,13 @@ def get_ragas_metrics():
     ollama_emb = get_embeddings_function()
     ragas_embeddings = LangchainEmbeddingsWrapper(ollama_emb)
     all_metrics = [
-        Faithfulness(llm=ragas_llm),
-        AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
-        ContextPrecision(llm=ragas_llm),
+        # Faithfulness(llm=ragas_llm),
+        # AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
+        # ContextPrecision(llm=ragas_llm),
         ContextRecall(llm=ragas_llm),
-        NoiseSensitivity(llm=ragas_llm),
-        SemanticSimilarity(embeddings=ragas_embeddings),
-        AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
+        # NoiseSensitivity(llm=ragas_llm),
+        # SemanticSimilarity(embeddings=ragas_embeddings),
+        # AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
     ]
     return all_metrics
 

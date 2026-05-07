@@ -3,7 +3,6 @@ import ast
 import json
 import pandas as pd
 from chatbot_Ollama.chatbot import (
-    create_chroma_db,
     query_rag,
     get_ragas_database,
     get_ragas_metrics,
@@ -15,7 +14,7 @@ def benchmark_answer_and_evaluation():
     with open("./golden_dataset/question.json", "r", encoding="utf-8") as f:
         file = json.load(f)
     results = []
-    for row in file[:4]:
+    for row in file:
         print(f"Valutando: {row['question']}")
         response_stream, sources, texts, retrieval_scores = query_rag(row["question"])
         response_text = "".join(
@@ -44,7 +43,7 @@ def benchmark_evaluation_only():
     ) as f:
         file = pd.read_csv(f).to_dict(orient="records")
     results = []
-    for row in file[1:2]:
+    for row in file[1:8]:
         print(f"Valutando: {row['question']}")
         try:
             retrieved_chunks = ast.literal_eval(row["retrieved_chunks_text"])
