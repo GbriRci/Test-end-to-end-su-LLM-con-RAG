@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Piani di Test Hardware e Software
-# Capitolo: Piani di Test Hardware e Software
+
 
 ## Introduzione Teorica
 
@@ -125,7 +125,7 @@ In sintesi, la strategia di test adottata in AETERNA non solo costituisce una be
 
 
 # Capitolo 2: Validazione in Ambienti Pilota
-# Capitolo: Validazione in Ambienti Pilota
+
 
 ## Introduzione Teorica
 
@@ -237,7 +237,7 @@ La tracciabilità garantita dalla registrazione su blockchain Bit-Energy, unita 
 
 
 # Capitolo 3: Certificazione di Sicurezza e Qualità
-# Capitolo: Certificazione di Sicurezza e Qualità
+
 
 ## Introduzione Teorica
 
@@ -336,7 +336,6 @@ In sintesi, la certificazione di sicurezza e qualità non è stata concepita com
 
 
 # Capitolo 4: Gestione delle Non Conformità
-# Gestione delle Non Conformità  
 ## Progetto AETERNA – Documentazione Tecnica
 
 ---
@@ -459,7 +458,7 @@ L’implementazione di un sistema strutturato e automatizzato di gestione delle 
 
 
 # Capitolo 5: Automazione dei Test End-to-End
-# Capitolo: Automazione dei Test End-to-End
+
 
 ## Introduzione Teorica
 
@@ -575,7 +574,7 @@ In sintesi, l’automazione dei test end-to-end costituisce un pilastro fondamen
 
 
 # Capitolo 6: Test di Performance e Scalabilità
-# Capitolo 7 — Test di Performance e Scalabilità
+
 
 ## Introduzione Teorica
 
@@ -668,7 +667,7 @@ In sintesi, la strategia di test di performance e scalabilità adottata da AETER
 
 
 # Capitolo 7: Testing della Sicurezza Applicativa
-# Testing della Sicurezza Applicativa
+
 
 ## Introduzione Teorica
 
@@ -775,7 +774,7 @@ In sintesi, il framework di security testing di AETERNA costituisce una best pra
 
 
 # Capitolo 8: Gestione della Tracciabilità dei Requisiti
-# Gestione della Tracciabilità dei Requisiti
+
 
 ## Introduzione Teorica
 
@@ -883,7 +882,7 @@ In sintesi, la gestione avanzata della tracciabilità dei requisiti in AETERNA c
 
 
 # Capitolo 9: Testing di Integrazione tra Microservizi
-# Capitolo: Testing di Integrazione tra Microservizi
+
 
 ## Introduzione Teorica
 
@@ -997,7 +996,7 @@ In sintesi, il testing di integrazione si configura come un pilastro imprescindi
 
 
 # Capitolo 10: Validazione e Certificazione dei Dati
-# Validazione e Certificazione dei Dati
+
 
 ## Introduzione Teorica
 

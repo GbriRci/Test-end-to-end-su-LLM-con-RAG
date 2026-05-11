@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Fotovoltaico e Micro-Eolico
-# Capitolo: Fotovoltaico e Micro-Eolico
+
 
 ## Introduzione Teorica
 
@@ -123,7 +123,7 @@ In sintesi, l’approccio architetturale adottato per l’integrazione di fotovo
 
 
 # Capitolo 2: Gestione dell’Intermittenza
-# Gestione dell’Intermittenza
+
 
 ## Introduzione Teorica
 
@@ -224,7 +224,7 @@ L’adozione di una strategia multilivello per la gestione dell’intermittenza 
 
 
 # Capitolo 3: Accumulo Energetico Distribuito
-# Capitolo 5: Accumulo Energetico Distribuito
+
 
 ## Introduzione Teorica
 
@@ -357,7 +357,7 @@ In sintesi, la soluzione di accumulo energetico distribuito descritta in questo 
 
 
 # Capitolo 4: Certificazione della Purezza Verde
-# Certificazione della Purezza Verde
+
 
 ## Introduzione Teorica
 
@@ -473,7 +473,7 @@ In conclusione, la certificazione della purezza verde costituisce non solo un re
 
 
 # Capitolo 5: Ottimizzazione della Domanda Energetica
-# Ottimizzazione della Domanda Energetica nel Progetto AETERNA
+
 
 ## Introduzione Teorica
 
@@ -602,7 +602,7 @@ L’implementazione delle strategie di ottimizzazione della domanda energetica n
 
 
 # Capitolo 6: Sicurezza Informatica nelle Infrastrutture Energetiche
-# Capitolo 6 – Sicurezza Informatica nelle Infrastrutture Energetiche
+
 
 ## Introduzione Teorica
 
@@ -723,7 +723,7 @@ L’adozione di un framework di cybersecurity multilivello, come delineato sopra
 
 
 # Capitolo 7: Interoperabilità tra Dispositivi Eterogenei
-# Capitolo: Interoperabilità tra Dispositivi Eterogenei
+
 
 ## Introduzione Teorica
 
@@ -843,7 +843,7 @@ In sintesi, l’interoperabilità rappresenta il fondamento su cui si basa la vi
 
 
 # Capitolo 8: Monitoraggio e Analisi Predittiva
-# Capitolo X: Monitoraggio e Analisi Predittiva
+
 
 ---
 
@@ -971,7 +971,6 @@ Nel caso di una turbina eolica, il sistema ha rilevato una variazione anomala ne
 
 
 # Capitolo 9: Gestione delle Comunità Energetiche
-# Gestione delle Comunità Energetiche  
 *Progetto AETERNA – Documentazione Tecnica*
 
 ---
@@ -1086,7 +1085,7 @@ In sintesi, la gestione digitale delle comunità energetiche in AETERNA rapprese
 
 
 # Capitolo 10: Integrazione con la Mobilità Elettrica
-# Capitolo: Integrazione con la Mobilità Elettrica
+
 
 ## Introduzione Teorica
 

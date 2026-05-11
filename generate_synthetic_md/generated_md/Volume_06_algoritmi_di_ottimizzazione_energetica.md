@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Forecasting e Machine Learning
-# Capitolo: Forecasting e Machine Learning
+
 
 ## Introduzione Teorica
 
@@ -104,7 +104,7 @@ In sintesi, la componente di forecasting e machine learning costituisce il motor
 
 
 # Capitolo 2: Algoritmi di Bilanciamento Dinamico
-# Capitolo: Algoritmi di Bilanciamento Dinamico
+
 
 ---
 
@@ -227,7 +227,7 @@ In sintesi, il modulo di bilanciamento dinamico rappresenta un elemento chiave p
 
 
 # Capitolo 3: Ottimizzazione Multi-Obiettivo
-# Capitolo 5: Ottimizzazione Multi-Obiettivo
+
 
 ## Introduzione Teorica
 
@@ -345,7 +345,7 @@ L’integrazione di audit logging e tracciabilità tramite Bit-Energy Ledger raf
 
 
 # Capitolo 4: Gestione della Domanda Flessibile
-# Capitolo 6: Gestione della Domanda Flessibile
+
 
 ## Introduzione Teorica
 
@@ -463,7 +463,7 @@ In sintesi, la gestione della domanda flessibile rappresenta un pilastro archite
 
 
 # Capitolo 5: Integrazione di Sistemi di Accumulo Energetico
-# Capitolo 7: Integrazione di Sistemi di Accumulo Energetico
+
 
 ---
 
@@ -604,7 +604,7 @@ L’adozione di sistemi di accumulo energetico integrati secondo le specifiche s
 
 
 # Capitolo 6: Ottimizzazione della Trasmissione e Distribuzione
-# Capitolo 8 – Ottimizzazione della Trasmissione e Distribuzione
+
 
 ## 1. Introduzione Teorica
 
@@ -720,7 +720,7 @@ In sintesi, la strategia di ottimizzazione della trasmissione e distribuzione ad
 
 
 # Capitolo 7: Monitoraggio e Analisi dei Dati Energetici
-# Capitolo 9: Monitoraggio e Analisi dei Dati Energetici
+
 
 ---
 
@@ -860,7 +860,7 @@ Il sistema di monitoraggio e analisi dei dati energetici di AETERNA, fondato su 
 
 
 # Capitolo 8: Sicurezza Informatica nei Sistemi Energetici
-# Capitolo 10: Sicurezza Informatica nei Sistemi Energetici AETERNA
+
 
 ## 1. Introduzione Teorica
 
@@ -952,7 +952,7 @@ Le esercitazioni red team e la formazione continua creano una cultura della sicu
 
 
 # Capitolo 9: Ottimizzazione dei Costi Operativi
-# Capitolo: Ottimizzazione dei Costi Operativi
+
 
 ## Introduzione Teorica
 
@@ -1078,7 +1078,7 @@ In sintesi, l’ottimizzazione dei costi operativi in AETERNA non è solo un obi
 
 
 # Capitolo 10: Simulazione e Testing degli Algoritmi
-# Capitolo: Simulazione e Testing degli Algoritmi
+
 
 ## Introduzione Teorica
 

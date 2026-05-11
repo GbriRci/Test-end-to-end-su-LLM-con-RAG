@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Piani di Disaster Recovery
-# Capitolo: Piani di Disaster Recovery
+
 
 ## Introduzione Teorica
 
@@ -100,7 +100,7 @@ L’adozione di un piano di disaster recovery multilivello e fortemente automati
 
 
 # Capitolo 2: Simulazione di Scenari Catastrofici
-# Capitolo: Simulazione di Scenari Catastrofici
+
 
 ---
 
@@ -198,7 +198,7 @@ L’adozione di un framework di simulazione catastrofica così strutturato ha pr
 
 
 # Capitolo 3: Comunicazione d’Emergenza
-# Capitolo 7: Comunicazione d’Emergenza
+
 
 ## Introduzione Teorica
 
@@ -293,7 +293,7 @@ In sintesi, il protocollo di comunicazione d’emergenza di AETERNA rappresenta 
 
 
 # Capitolo 4: Gestione delle Risorse Critiche
-# Gestione delle Risorse Critiche
+
 
 ## Introduzione Teorica
 
@@ -403,7 +403,7 @@ In sintesi, la gestione delle risorse critiche in AETERNA non solo eleva il live
 
 
 # Capitolo 5: Monitoraggio Proattivo e Incident Response
-# Capitolo: Monitoraggio Proattivo e Incident Response
+
 
 ## Introduzione Teorica
 
@@ -520,7 +520,7 @@ In sintesi, il monitoraggio proattivo e l’incident response automatizzata rapp
 
 
 # Capitolo 6: Gestione delle Dipendenze Esterne in Emergenza
-# Gestione delle Dipendenze Esterne in Emergenza
+
 
 ## Introduzione Teorica
 
@@ -658,7 +658,7 @@ In sintesi, la gestione delle dipendenze esterne in emergenza rappresenta un pil
 
 
 # Capitolo 7: Test di Continuità Operativa e Audit Periodici
-# Capitolo: Test di Continuità Operativa e Audit Periodici
+
 
 ## Introduzione Teorica
 
@@ -760,7 +760,7 @@ In sintesi, la disciplina dei test e audit periodici rappresenta la garanzia ult
 
 
 # Capitolo 8: Gestione della Sicurezza durante le Emergenze
-# Gestione della Sicurezza durante le Emergenze
+
 
 ## Introduzione Teorica
 
@@ -892,7 +892,7 @@ Infine, la formazione periodica e i drill di sicurezza in emergenza contribuisco
 
 
 # Capitolo 9: Comunicazione verso Stakeholder e Autorità
-# Capitolo: Comunicazione verso Stakeholder e Autorità
+
 
 ## Introduzione Teorica
 
@@ -999,7 +999,7 @@ In sintesi, il protocollo di comunicazione di AETERNA rappresenta un pilastro fo
 
 
 # Capitolo 10: Gestione della Ripresa e Analisi Post-Emergenza
-# Gestione della Ripresa e Analisi Post-Emergenza
+
 
 ## Introduzione Teorica
 

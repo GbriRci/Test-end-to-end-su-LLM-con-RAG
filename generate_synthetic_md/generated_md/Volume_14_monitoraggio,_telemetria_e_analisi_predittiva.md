@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Architettura dei Sistemi di Monitoraggio
-# Capitolo 10: Architettura dei Sistemi di Monitoraggio
+
 
 ## Introduzione Teorica
 
@@ -115,7 +115,7 @@ L’architettura dei sistemi di monitoraggio implementata in AETERNA garantisce 
 
 
 # Capitolo 2: Telemetria Avanzata
-# Capitolo: Telemetria Avanzata
+
 
 ## Introduzione Teorica
 
@@ -221,7 +221,7 @@ In sintesi, la telemetria avanzata costituisce il fondamento operativo per l’a
 
 
 # Capitolo 3: Analisi Predittiva dei Guasti
-# Capitolo: Analisi Predittiva dei Guasti
+
 
 ## Introduzione Teorica
 
@@ -354,7 +354,7 @@ In sintesi, la strategia di analisi predittiva dei guasti adottata da AETERNA ra
 
 
 # Capitolo 4: Visualizzazione e Dashboard
-# Capitolo 7: Visualizzazione e Dashboard
+
 
 ## Introduzione Teorica
 
@@ -449,7 +449,7 @@ Per i cittadini, la trasparenza informativa e la semplicità d’uso delle dashb
 
 
 # Capitolo 5: Gestione degli Alert e Automazione delle Risposte
-# Capitolo 8: Gestione degli Alert e Automazione delle Risposte
+
 
 ## Introduzione Teorica
 
@@ -577,7 +577,7 @@ In sintesi, la gestione strutturata degli alert e l’automazione delle risposte
 
 
 # Capitolo 6: Data Lake e Storage per la Telemetria
-# Capitolo 9: Data Lake e Storage per la Telemetria
+
 
 ## Introduzione Teorica
 
@@ -718,7 +718,7 @@ In sintesi, il data lake di AETERNA rappresenta il fondamento su cui poggiano le
 
 
 # Capitolo 7: Monitoraggio delle Performance Applicative
-# Capitolo 10: Monitoraggio delle Performance Applicative
+
 
 ## Introduzione Teorica
 
@@ -840,7 +840,7 @@ L’implementazione di un sistema APM avanzato e distribuito come quello descrit
 
 
 # Capitolo 8: Integrazione con Sistemi di Ticketing e Incident Management
-# Capitolo 11: Integrazione con Sistemi di Ticketing e Incident Management
+
 
 ## Introduzione Teorica
 
@@ -965,7 +965,7 @@ In sintesi, questa integrazione rappresenta un fattore abilitante per la maturit
 
 
 # Capitolo 9: Sicurezza e Compliance nel Monitoraggio
-# Capitolo 12: Sicurezza e Compliance nel Monitoraggio
+
 
 ## Introduzione Teorica
 
@@ -1081,7 +1081,7 @@ L’adozione di un framework di sicurezza e compliance così articolato e multil
 
 
 # Capitolo 10: Monitoraggio delle Risorse Cloud e Ibride
-# Capitolo 13 – Monitoraggio delle Risorse Cloud e Ibride
+
 
 ## Introduzione Teorica
 

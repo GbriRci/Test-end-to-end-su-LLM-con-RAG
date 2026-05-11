@@ -1,7 +1,6 @@
 
 
 # Capitolo 1: Modello di Minaccia AETERNA
-# Capitolo: Modello di Minaccia AETERNA
 
 ## Introduzione Teorica
 
@@ -110,7 +109,6 @@ L’adozione del modello di minaccia AETERNA, fondato su principi Zero-Trust e s
 
 
 # Capitolo 2: Crittografia End-to-End e Data Integrity
-# Capitolo: Crittografia End-to-End e Data Integrity
 
 ## Introduzione Teorica
 
@@ -207,7 +205,6 @@ L’adozione di protocolli crittografici avanzati e della crittografia post-quan
 
 
 # Capitolo 3: Gestione delle Identità Digitali (IAM)
-# Gestione delle Identità Digitali (IAM) in AETERNA
 
 ## Introduzione Teorica
 
@@ -325,7 +322,6 @@ L'adozione di un sistema IAM avanzato, basato su credenziali biometriche, token 
 
 
 # Capitolo 4: Protocollo 'Secure-Pulse' per la Sincronizzazione
-# Capitolo: Protocollo 'Secure-Pulse' per la Sincronizzazione
 
 ## Introduzione Teorica
 
@@ -465,7 +461,6 @@ La catena di Pulse notarizzata costituisce una fonte di verità immutabile per a
 
 
 # Capitolo 5: Incident Response e Recovery Orchestration
-# Incident Response e Recovery Orchestration
 
 ## Introduzione Teorica
 
@@ -555,7 +550,6 @@ L’implementazione di un framework di Incident Response e Recovery Orchestratio
 
 
 # Capitolo 6: Penetration Testing e Vulnerability Management
-# Capitolo: Penetration Testing e Vulnerability Management
 
 ## Introduzione Teorica
 
@@ -683,7 +677,7 @@ In sintesi, il framework AETERNA eleva il paradigma di sicurezza delle micro-ret
 
 
 # Capitolo 7: Sandbox di Esecuzione per Smart Contract
-# Sandbox di Esecuzione per Smart Contract
+
 
 ## Introduzione Teorica
 
@@ -775,7 +769,7 @@ L’adozione di sandbox di esecuzione per smart contract negli H-Node di AETERNA
 
 
 # Capitolo 8: Sistemi di Intrusion Detection (IDS) Distribuiti
-# Sistemi di Intrusion Detection (IDS) Distribuiti in AETERNA
+
 
 ---
 
@@ -892,7 +886,7 @@ L’adozione di un IDS distribuito e cooperativo nei nodi Fog di AETERNA rappres
 
 
 # Capitolo 9: Anonimizzazione tramite Differential Privacy
-# Anonimizzazione tramite Differential Privacy
+
 
 ## Introduzione Teorica
 
@@ -1013,7 +1007,7 @@ L’integrazione della Differential Privacy in AETERNA rappresenta, dunque, un e
 
 
 # Capitolo 10: Audit e Tracciabilità Post-Incidente
-# Capitolo: Audit e Tracciabilità Post-Incidente
+
 
 ## Introduzione Teorica
 

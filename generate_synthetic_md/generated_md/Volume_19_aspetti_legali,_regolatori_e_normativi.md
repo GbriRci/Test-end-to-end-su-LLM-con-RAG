@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Quadro Normativo Europeo
-# Quadro Normativo Europeo
+
 
 ## Introduzione Teorica
 
@@ -158,7 +158,7 @@ In sintesi, il rispetto del quadro normativo europeo non rappresenta un mero vin
 
 
 # Capitolo 2: Compliance e Privacy
-# Capitolo 7: Compliance e Privacy
+
 
 ## 1. Introduzione Teorica
 
@@ -271,7 +271,7 @@ L’adozione rigorosa delle specifiche sopra descritte comporta una serie di imp
 
 
 # Capitolo 3: Responsabilità e Assicurazioni
-# Capitolo 8: Responsabilità e Assicurazioni
+
 
 ## Introduzione Teorica
 
@@ -380,7 +380,7 @@ In sintesi, il framework di responsabilità e assicurazioni di AETERNA rappresen
 
 
 # Capitolo 4: Gestione delle Licenze Open Source
-# Gestione delle Licenze Open Source nel Progetto AETERNA
+
 
 ---
 
@@ -505,7 +505,7 @@ La gestione rigorosa delle licenze open source in AETERNA produce impatti tangib
 
 
 # Capitolo 5: Contrattualistica e Accordi di Servizio
-# Capitolo: Contrattualistica e Accordi di Servizio nel Progetto AETERNA
+
 
 ---
 
@@ -635,7 +635,7 @@ L’implementazione rigorosa delle specifiche contrattuali e degli SLA descritti
 
 
 # Capitolo 6: Gestione dei Requisiti Regolatori Nazionali
-# Gestione dei Requisiti Regolatori Nazionali
+
 
 ## Introduzione Teorica
 
@@ -767,7 +767,7 @@ L’adozione del framework di gestione dei requisiti regolatori nazionali in AET
 
 
 # Capitolo 7: Gestione della Proprietà Intellettuale
-# Gestione della Proprietà Intellettuale nel Progetto AETERNA
+
 
 ## Introduzione Teorica
 
@@ -882,7 +882,7 @@ In sintesi, la gestione avanzata della proprietà intellettuale rappresenta un p
 
 
 # Capitolo 8: Audit e Controlli Interni
-# Capitolo: Audit e Controlli Interni
+
 
 ## 1. Introduzione Teorica
 
@@ -1010,7 +1010,7 @@ L’adozione di un framework di audit e controllo interno strutturato secondo i 
 
 
 # Capitolo 9: Gestione dei Rischi Legali e Regolatori
-# Gestione dei Rischi Legali e Regolatori
+
 
 ## Introduzione Teorica
 
@@ -1122,7 +1122,7 @@ In sintesi, la gestione avanzata dei rischi legali e regolatori costituisce un e
 
 
 # Capitolo 10: Gestione delle Relazioni con le Autorità di Vigilanza
-# Gestione delle Relazioni con le Autorità di Vigilanza
+
 
 ## Introduzione Teorica
 

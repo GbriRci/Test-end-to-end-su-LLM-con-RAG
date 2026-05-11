@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Standard di Comunicazione IoT
-# Capitolo 4: Standard di Comunicazione IoT
+
 
 ## Introduzione Teorica
 
@@ -106,7 +106,7 @@ Infine, la scelta di protocolli aperti e ampiamente adottati facilita l’integr
 
 
 # Capitolo 2: Interfacce REST e GraphQL
-# Capitolo 5: Interfacce REST e GraphQL
+
 
 ## Introduzione Teorica
 
@@ -229,7 +229,7 @@ In sintesi, la progettazione delle interfacce REST e GraphQL in AETERNA non solo
 
 
 # Capitolo 3: Sicurezza delle Interfacce
-# Capitolo: Sicurezza delle Interfacce
+
 
 ---
 
@@ -367,7 +367,6 @@ In sintesi, la sicurezza delle interfacce in AETERNA non è un mero requisito te
 
 
 # Capitolo 4: Gestione degli Errori e Resilienza
-# Gestione degli Errori e Resilienza  
 ## Progetto AETERNA – Documentazione Tecnica
 
 ---
@@ -510,7 +509,7 @@ L’adozione delle strategie multilivello di gestione degli errori e resilienza 
 
 
 # Capitolo 5: Message Broker e Pattern di Messaging
-# Capitolo: Message Broker e Pattern di Messaging
+
 
 ---
 
@@ -636,7 +635,7 @@ In sintesi, la stratificazione di message broker e pattern di messaging avanzati
 
 
 # Capitolo 6: Protocolli di Sicurezza e Cifratura
-# Capitolo 7: Protocolli di Sicurezza e Cifratura
+
 
 ## 1. Introduzione Teorica
 
@@ -768,7 +767,7 @@ In sintesi, il framework di sicurezza adottato in AETERNA non solo risponde ai r
 
 
 # Capitolo 7: Monitoraggio delle Interfacce e Telemetria
-# Capitolo 8: Monitoraggio delle Interfacce e Telemetria
+
 
 ## Introduzione Teorica
 
@@ -880,7 +879,7 @@ In sintesi, il monitoraggio delle interfacce e la telemetria costituiscono il te
 
 
 # Capitolo 8: Versionamento delle API e Gestione della Compatibilità
-# Capitolo 9: Versionamento delle API e Gestione della Compatibilità
+
 
 ---
 
@@ -1008,7 +1007,7 @@ In sintesi, il sistema di versionamento e compatibilità delle API di AETERNA ra
 
 
 # Capitolo 9: Gateway API e Ingress Controller
-# Capitolo: Gateway API e Ingress Controller
+
 
 ---
 
@@ -1171,7 +1170,7 @@ In sintesi, la progettazione avanzata dei gateway API e degli ingress controller
 
 
 # Capitolo 10: Testing delle Interfacce e Automazione
-# Capitolo: Testing delle Interfacce e Automazione
+
 
 ## Introduzione Teorica
 

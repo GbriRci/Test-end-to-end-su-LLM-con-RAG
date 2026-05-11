@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Programmi di Formazione Tecnica
-# Capitolo 14: Programmi di Formazione Tecnica
+
 
 ## Introduzione Teorica
 
@@ -136,7 +136,7 @@ In sintesi, la formazione tecnica nel Progetto AETERNA non rappresenta un elemen
 
 
 # Capitolo 2: Supporto Tecnico e Helpdesk
-# Capitolo 15: Supporto Tecnico e Helpdesk
+
 
 ## Introduzione Teorica
 
@@ -283,7 +283,7 @@ In sintesi, il sistema di supporto tecnico e helpdesk di AETERNA non solo rispon
 
 
 # Capitolo 3: Coinvolgimento della Community
-# Capitolo 16: Coinvolgimento della Community
+
 
 ## Introduzione Teorica
 
@@ -419,7 +419,7 @@ In sintesi, il coinvolgimento strutturato e tecnologicamente abilitato della com
 
 
 # Capitolo 4: Documentazione Open Source
-# Capitolo: Documentazione Open Source
+
 
 ## Introduzione Teorica
 
@@ -684,7 +684,7 @@ In sintesi, la gestione delle sessioni di webinar secondo le specifiche AETERNA 
 
 
 # Capitolo 6: Community di Pratica e Mentoring
-# Capitolo: Community di Pratica e Mentoring
+
 
 ## Introduzione Teorica
 
@@ -811,7 +811,7 @@ L’adozione sistematica di community di pratica e programmi di mentoring in AET
 
 
 # Capitolo 7: Gestione delle FAQ e Knowledge Base
-# Gestione delle FAQ e Knowledge Base
+
 
 ## Introduzione Teorica
 
@@ -956,7 +956,7 @@ In sintesi, la gestione avanzata delle FAQ e della knowledge base costituisce un
 
 
 # Capitolo 8: Analisi dei Feedback e Miglioramento Continuo
-# Analisi dei Feedback e Miglioramento Continuo
+
 
 ## Introduzione Teorica
 
@@ -1083,7 +1083,7 @@ In sintesi, il ciclo di feedback e miglioramento continuo rappresenta un element
 
 
 # Capitolo 9: Iniziative di Gamification per la Community
-# Iniziative di Gamification per la Community
+
 
 ## Introduzione Teorica
 
@@ -1188,7 +1188,7 @@ A livello di community, la gamification incentiva la partecipazione proattiva, l
 
 
 # Capitolo 10: Supporto Multilingua e Accessibilità
-# Capitolo: Supporto Multilingua e Accessibilità
+
 
 ---
 

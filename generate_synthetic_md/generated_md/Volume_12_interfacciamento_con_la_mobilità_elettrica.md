@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Smart Charging e Vehicle-to-Grid
-# Capitolo: Smart Charging e Vehicle-to-Grid (V2G) in AETERNA
+
 
 ---
 
@@ -161,7 +161,7 @@ La modularità dell’architettura e la scelta di protocolli interoperabili perm
 
 
 # Capitolo 2: Ottimizzazione della Ricarica Pubblica
-# Ottimizzazione della Ricarica Pubblica
+
 
 ## Introduzione Teorica
 
@@ -283,7 +283,6 @@ In conclusione, l’ottimizzazione della ricarica pubblica nel Progetto AETERNA 
 
 
 # Capitolo 3: Sicurezza delle Transazioni Energetiche
-# Sicurezza delle Transazioni Energetiche  
 ## Progetto AETERNA – Documentazione Tecnica
 
 ---
@@ -411,7 +410,7 @@ In sintesi, la sicurezza delle transazioni energetiche in AETERNA non è un elem
 
 
 # Capitolo 4: Monitoraggio e Analisi dei Flussi
-# Capitolo: Monitoraggio e Analisi dei Flussi
+
 
 ## Introduzione Teorica
 
@@ -540,7 +539,7 @@ In sintesi, il monitoraggio e l’analisi dei flussi di mobilità elettrica in A
 
 
 # Capitolo 5: Integrazione con Sistemi di Trasporto Pubblico
-# Capitolo: Integrazione con Sistemi di Trasporto Pubblico
+
 
 ## Introduzione Teorica
 
@@ -661,7 +660,7 @@ L’approccio architetturale adottato da AETERNA, incentrato su interoperabilit�
 
 
 # Capitolo 6: Gestione Dinamica delle Tariffe di Ricarica
-# Gestione Dinamica delle Tariffe di Ricarica
+
 
 ## 1. Introduzione Teorica
 
@@ -806,7 +805,7 @@ In sintesi, la gestione dinamica delle tariffe di ricarica si configura come un 
 
 
 # Capitolo 7: Interoperabilità tra Operatori di Ricarica
-# Capitolo: Interoperabilità tra Operatori di Ricarica
+
 
 ## Introduzione Teorica
 
@@ -916,7 +915,7 @@ In sintesi, l’interoperabilità tra operatori di ricarica, così come declinat
 
 
 # Capitolo 8: Integrazione con Sistemi di Produzione Energetica Distribuita
-# Capitolo: Integrazione con Sistemi di Produzione Energetica Distribuita
+
 
 ## Introduzione Teorica
 
@@ -1008,7 +1007,7 @@ In sintesi, la soluzione AETERNA per l’integrazione con sistemi di produzione 
 
 
 # Capitolo 9: User Experience e Accessibilità dei Servizi di Ricarica
-# Capitolo: User Experience e Accessibilità dei Servizi di Ricarica
+
 
 ## Introduzione Teorica
 
@@ -1140,7 +1139,7 @@ L’implementazione rigorosa di criteri di accessibilità e design universale ne
 
 
 # Capitolo 10: Gestione delle Emergenze e Continuità Operativa
-# Gestione delle Emergenze e Continuità Operativa
+
 
 ## Introduzione Teorica
 

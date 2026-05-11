@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Architettura dei Contratti Intelligenti
-# Architettura dei Contratti Intelligenti
+
 
 ## Introduzione Teorica
 
@@ -112,7 +112,7 @@ L’architettura dei contratti intelligenti in AETERNA rappresenta un elemento a
 
 
 # Capitolo 2: Tokenizzazione dei Flussi Energetici
-# Capitolo: Tokenizzazione dei Flussi Energetici
+
 
 ## 1. Introduzione Teorica
 
@@ -253,7 +253,7 @@ In prospettiva, la tokenizzazione energetica costituisce il fondamento tecnico p
 
 
 # Capitolo 3: Marketplace Decentralizzato
-# Capitolo: Marketplace Decentralizzato
+
 
 ## Introduzione Teorica
 
@@ -394,7 +394,7 @@ Nel complesso, il Marketplace Decentralizzato di AETERNA si configura come un’
 
 
 # Capitolo 4: Audit e Compliance
-# CAPITOLO: Audit e Compliance
+
 
 ## Introduzione Teorica
 
@@ -519,7 +519,7 @@ In sintesi, il framework di audit e compliance di AETERNA rappresenta un benchma
 
 
 # Capitolo 5: Gestione delle Identità Digitali
-# Gestione delle Identità Digitali nel Progetto AETERNA
+
 
 ## 1. Introduzione Teorica
 
@@ -644,7 +644,7 @@ La possibilità di revoca e rinnovo dinamico dei certificati, unita a procedure 
 
 
 # Capitolo 6: Integrazione con Sistemi IoT
-# Integrazione con Sistemi IoT
+
 
 ## Introduzione Teorica
 
@@ -764,7 +764,7 @@ In sintesi, la sinergia tra IoT, blockchain e AI, orchestrata secondo le specifi
 
 
 # Capitolo 7: Gestione Dinamica delle Tariffe Energetiche
-# Gestione Dinamica delle Tariffe Energetiche
+
 
 ## 1. Introduzione Teorica
 
@@ -912,7 +912,7 @@ L’implementazione della gestione dinamica delle tariffe energetiche in AETERNA
 
 
 # Capitolo 8: Sicurezza e Resilienza della Blockchain
-# Capitolo: Sicurezza e Resilienza della Blockchain
+
 
 ## 1. Introduzione Teorica
 
@@ -1041,7 +1041,7 @@ Infine, la capacità di isolare e ripristinare rapidamente componenti compromess
 
 
 # Capitolo 9: Interoperabilità e Standard di Settore
-# Capitolo 5: Interoperabilità e Standard di Settore
+
 
 ## Introduzione Teorica
 
@@ -1147,7 +1147,7 @@ In sintesi, la strategia di interoperabilità adottata da AETERNA rappresenta un
 
 
 # Capitolo 10: Gestione dei Crediti Energetici e Pagamenti
-# Gestione dei Crediti Energetici e Pagamenti
+
 
 ## Introduzione Teorica
 

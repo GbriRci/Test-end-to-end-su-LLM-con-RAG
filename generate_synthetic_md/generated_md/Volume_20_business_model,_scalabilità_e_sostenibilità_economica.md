@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Modelli di Business Peer-to-Peer
-# Capitolo: Modelli di Business Peer-to-Peer
+
 
 ## Introduzione Teorica
 
@@ -137,7 +137,7 @@ Tuttavia, la complessità tecnica e la necessità di garantire interoperabilità
 
 
 # Capitolo 2: Scalabilità e Crescita della Rete
-# Capitolo: Scalabilità e Crescita della Rete
+
 
 ---
 
@@ -245,7 +245,7 @@ In sintesi, la scalabilità in AETERNA non è solo una proprietà tecnica, ma un
 
 
 # Capitolo 3: Sostenibilità Economica a Lungo Termine
-# Capitolo 7 – Sostenibilità Economica a Lungo Termine
+
 
 ## Introduzione Teorica
 
@@ -363,7 +363,7 @@ In sintesi, la sostenibilità economica a lungo termine di AETERNA non è solo u
 
 
 # Capitolo 4: Incentivi e Meccanismi di Monetizzazione
-# Capitolo 8: Incentivi e Meccanismi di Monetizzazione
+
 
 ## Introduzione Teorica
 
@@ -473,7 +473,7 @@ Infine, la monetizzazione multi-stream (crediti, servizi premium, token interope
 
 
 # Capitolo 5: Gestione dei Rischi e Resilienza Operativa
-# Capitolo 9: Gestione dei Rischi e Resilienza Operativa
+
 
 ## Introduzione Teorica
 
@@ -638,7 +638,7 @@ L’adozione di un framework avanzato di gestione dei rischi e resilienza operat
 
 
 # Capitolo 6: Ottimizzazione dei Costi Operativi
-# Capitolo 10: Ottimizzazione dei Costi Operativi
+
 
 ## Introduzione Teorica
 
@@ -719,7 +719,7 @@ Infine, l’ottimizzazione dei costi operativi si è tradotta in un abbattimento
 
 
 # Capitolo 7: Espansione Internazionale e Adattamento Normativo
-# Capitolo 11: Espansione Internazionale e Adattamento Normativo
+
 
 ---
 
@@ -817,7 +817,7 @@ In sintesi, l’espansione internazionale di AETERNA, sostenuta da una solida go
 
 
 # Capitolo 8: Analisi dei Flussi di Ricavo e Diversificazione
-# Capitolo: Analisi dei Flussi di Ricavo e Diversificazione
+
 
 ---
 
@@ -972,7 +972,7 @@ In sintesi, la diversificazione dei flussi di ricavo rappresenta un pilastro fon
 
 
 # Capitolo 9: Partnership Strategiche e Ecosistema
-# Capitolo: Partnership Strategiche e Ecosistema
+
 
 ## Introduzione Teorica
 
@@ -1100,7 +1100,7 @@ In sintesi, la strategia di partnership e la costruzione di un ecosistema digita
 
 
 # Capitolo 10: Valutazione dell’Impatto Sociale e Ambientale
-# Capitolo: Valutazione dell’Impatto Sociale e Ambientale
+
 
 ## Introduzione Teorica
 

@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Modello di Governance Distribuita
-# Capitolo: Modello di Governance Distribuita
+
 
 ## Introduzione Teorica
 
@@ -119,7 +119,7 @@ In sintesi, il modello di governance distribuita di AETERNA si configura come un
 
 
 # Capitolo 2: Meccanismi di Voto e Deleghe
-# Capitolo X — Meccanismi di Voto e Deleghe
+
 
 ## Introduzione Teorica
 
@@ -264,7 +264,7 @@ In prospettiva, tali meccanismi rappresentano un modello replicabile per altre p
 
 
 # Capitolo 3: Gestione dei Conflitti
-# Gestione dei Conflitti
+
 
 ## Introduzione Teorica
 
@@ -385,7 +385,7 @@ In sintesi, la gestione avanzata dei conflitti rappresenta un pilastro architett
 
 
 # Capitolo 4: Audit Pubblico e Accountability
-# Audit Pubblico e Accountability nel Progetto AETERNA
+
 
 ## Introduzione Teorica
 
@@ -499,7 +499,7 @@ In sintesi, il framework di audit pubblico e accountability di AETERNA costituis
 
 
 # Capitolo 5: Processi di Onboarding e Offboarding dei Partecipanti
-# Capitolo 6 – Processi di Onboarding e Offboarding dei Partecipanti
+
 
 ## Introduzione Teorica
 
@@ -698,7 +698,7 @@ In sintesi, i processi descritti costituiscono un pilastro fondamentale per la g
 
 
 # Capitolo 6: Gestione delle Policy di Sicurezza
-# Capitolo: Gestione delle Policy di Sicurezza
+
 
 ## Introduzione Teorica
 
@@ -816,7 +816,6 @@ In sintesi, la gestione avanzata delle policy di sicurezza rappresenta un elemen
 
 
 # Capitolo 7: Modelli di Incentivazione e Reward
-# Capitolo: Modelli di Incentivazione e Reward
 
 ## Introduzione Teorica
 
@@ -984,7 +983,7 @@ In sintesi, il modello di incentivazione e reward di AETERNA costituisce un fram
 
 
 # Capitolo 8: Partecipazione degli Stakeholder Esterni
-# Partecipazione degli Stakeholder Esterni
+
 
 ## Introduzione Teorica
 
@@ -1111,7 +1110,7 @@ In sintesi, la partecipazione degli stakeholder esterni, orchestrata tramite str
 
 
 # Capitolo 9: Gestione delle Emergenze e Continuità Operativa
-# Gestione delle Emergenze e Continuità Operativa
+
 
 ## Introduzione Teorica
 
@@ -1248,7 +1247,7 @@ In sintesi, la gestione delle emergenze e la continuità operativa in AETERNA no
 
 
 # Capitolo 10: Formazione e Sviluppo delle Competenze
-# Capitolo: Formazione e Sviluppo delle Competenze
+
 
 ## Introduzione Teorica
 

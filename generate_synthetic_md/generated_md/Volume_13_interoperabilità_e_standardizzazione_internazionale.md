@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Adozione di Standard IEC/ISO
-# Capitolo: Adozione di Standard IEC/ISO nel Progetto AETERNA
+
 
 ## 1. Introduzione Teorica
 
@@ -103,7 +103,7 @@ In sintesi, la scelta di uniformare i processi e le tecnologie di AETERNA agli s
 
 
 # Capitolo 2: Compatibilità con Sistemi Legacy
-# Compatibilità con Sistemi Legacy
+
 
 ## Introduzione Teorica
 
@@ -179,7 +179,7 @@ L’adozione di una strategia di integrazione a layer, fondata su microservizi a
 
 
 # Capitolo 3: Collaborazione con Enti Regolatori
-# Capitolo: Collaborazione con Enti Regolatori
+
 
 ## Introduzione Teorica
 
@@ -282,7 +282,7 @@ In sintesi, la collaborazione con enti regolatori non rappresenta un mero adempi
 
 
 # Capitolo 4: Test di Conformità e Certificazione
-# Capitolo: Test di Conformità e Certificazione
+
 
 ## 1. Introduzione Teorica
 
@@ -366,7 +366,7 @@ In sintesi, il sistema di testing e certificazione di AETERNA non solo soddisfa 
 
 
 # Capitolo 5: Gestione delle Identità e Federazione
-# Gestione delle Identità e Federazione
+
 
 ## Introduzione Teorica
 
@@ -478,7 +478,7 @@ L’adozione di un’infrastruttura IAM federata e conforme agli standard intern
 
 
 # Capitolo 6: Standardizzazione delle API e Documentazione
-# Capitolo: Standardizzazione delle API e Documentazione
+
 
 ## Introduzione Teorica
 
@@ -609,7 +609,7 @@ In sintesi, la standardizzazione delle API e la documentazione automatizzata cos
 
 
 # Capitolo 7: Integrazione Multilingua e Localizzazione
-# Capitolo: Integrazione Multilingua e Localizzazione
+
 
 ## Introduzione Teorica
 
@@ -762,7 +762,7 @@ In sintesi, l’approccio sistemico e rigoroso alla gestione multilingua e alla 
 
 
 # Capitolo 8: Monitoraggio, Logging e Tracciabilità Internazionale
-# Capitolo 7: Monitoraggio, Logging e Tracciabilità Internazionale
+
 
 ## 1. Introduzione Teorica
 
@@ -897,7 +897,7 @@ In sintesi, il sistema di monitoraggio e logging descritto costituisce un pilast
 
 
 # Capitolo 9: Gestione dei Contratti di Servizio (SLA) Internazionali
-# Capitolo 8: Gestione dei Contratti di Servizio (SLA) Internazionali
+
 
 ## Introduzione Teorica
 
@@ -1041,7 +1041,7 @@ In sintesi, la gestione avanzata degli SLA rappresenta un elemento abilitante pe
 
 
 # Capitolo 10: Gestione della Privacy e Conformità GDPR
-# Capitolo 9: Gestione della Privacy e Conformità GDPR
+
 
 ## 1. Introduzione Teorica
 

@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Analisi del Ciclo di Vita
-# Analisi del Ciclo di Vita dei Componenti nel Progetto AETERNA
+
 
 ## Introduzione Teorica
 
@@ -127,7 +127,7 @@ In sintesi, l’analisi del ciclo di vita rappresenta un pilastro metodologico e
 
 
 # Capitolo 2: Strategie di Riduzione delle Emissioni
-# Capitolo 6 – Strategie di Riduzione delle Emissioni
+
 
 ## Introduzione Teorica
 
@@ -265,7 +265,7 @@ La tracciabilità digitale tramite UUID, la granularità dei dati raccolti e la 
 
 
 # Capitolo 3: Inclusione Sociale e Accessibilità
-# Capitolo: Inclusione Sociale e Accessibilità
+
 
 ## Introduzione Teorica
 
@@ -369,7 +369,7 @@ L’adozione delle soluzioni descritte determina un impatto sostanziale in termi
 
 
 # Capitolo 4: Misurazione dell’Impatto Sociale
-# Capitolo: Misurazione dell’Impatto Sociale
+
 
 ## Introduzione Teorica
 
@@ -493,7 +493,7 @@ L’implementazione rigorosa di un sistema di misurazione dell’impatto sociale
 
 
 # Capitolo 5: Gestione dei Rifiuti e Riciclo
-# Gestione dei Rifiuti e Riciclo nel Progetto AETERNA
+
 
 ## Introduzione Teorica
 
@@ -619,7 +619,7 @@ In sintesi, la gestione integrata dei rifiuti e il riciclo nel framework AETERNA
 
 
 # Capitolo 6: Efficienza Energetica nei Processi Operativi
-# Capitolo: Efficienza Energetica nei Processi Operativi
+
 
 ---
 
@@ -715,7 +715,7 @@ L’implementazione delle strategie di efficienza energetica descritte ha prodot
 
 
 # Capitolo 7: Coinvolgimento degli Stakeholder
-# Coinvolgimento degli Stakeholder
+
 
 ## Introduzione Teorica
 
@@ -842,7 +842,7 @@ In sintesi, il framework di engagement adottato da AETERNA costituisce un modell
 
 
 # Capitolo 8: Innovazione Tecnologica per la Sostenibilità
-# Capitolo 4: Innovazione Tecnologica per la Sostenibilità
+
 
 ## Introduzione Teorica
 
@@ -979,7 +979,7 @@ In conclusione, l’adozione sistemica di tecnologie innovative nel Progetto AET
 
 
 # Capitolo 9: Formazione e Sensibilizzazione
-# Capitolo 5: Formazione e Sensibilizzazione
+
 
 ## Introduzione Teorica
 
@@ -1084,7 +1084,7 @@ L’implementazione di un ecosistema formativo integrato e adattivo ha prodotto 
 
 
 # Capitolo 10: Governance e Compliance Normativa
-# Capitolo: Governance e Compliance Normativa
+
 
 ## Introduzione Teorica
 

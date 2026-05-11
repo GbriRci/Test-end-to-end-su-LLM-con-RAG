@@ -1,7 +1,7 @@
 
 
 # Capitolo 1: Data Lake e Data Warehouse
-# Capitolo: Data Lake e Data Warehouse nell’Architettura AETERNA
+
 
 ---
 
@@ -114,7 +114,7 @@ In sintesi, la progettazione del Data Lake e del Data Warehouse in AETERNA non r
 
 
 # Capitolo 2: Privacy by Design
-# Capitolo: Privacy by Design
+
 
 ## Introduzione Teorica
 
@@ -235,7 +235,7 @@ In sintesi, la privacy by design non rappresenta un vincolo, bensì un moltiplic
 
 
 # Capitolo 3: Anonimizzazione e Pseudonimizzazione
-# Capitolo: Anonimizzazione e Pseudonimizzazione
+
 
 ## 1. Introduzione Teorica
 
@@ -370,7 +370,7 @@ L’implementazione rigorosa di anonimizzazione e pseudonimizzazione nel Progett
 
 
 # Capitolo 4: Accesso e Controllo Granulare
-# Capitolo: Accesso e Controllo Granulare
+
 
 ## 1. Introduzione Teorica
 
@@ -495,7 +495,7 @@ In sintesi, il sistema di accesso e controllo granulare di AETERNA costituisce u
 
 
 # Capitolo 5: Gestione dei Consensi e Preferenze Utente
-# Capitolo: Gestione dei Consensi e Preferenze Utente
+
 
 ## Introduzione Teorica
 
@@ -611,7 +611,7 @@ In sintesi, la gestione avanzata dei consensi e delle preferenze utente in AETER
 
 
 # Capitolo 6: Data Retention e Data Lifecycle Management
-# Capitolo: Data Retention e Data Lifecycle Management
+
 
 ## Introduzione Teorica
 
@@ -722,7 +722,7 @@ In sintesi, il modello di Data Retention e Data Lifecycle Management adottato da
 
 
 # Capitolo 7: Audit e Monitoraggio della Sicurezza dei Dati
-# Audit e Monitoraggio della Sicurezza dei Dati
+
 
 ## Introduzione Teorica
 
@@ -855,7 +855,7 @@ L’implementazione di un sistema di audit e monitoraggio della sicurezza dei da
 
 
 # Capitolo 8: Data Governance e Ruoli Organizzativi
-# Capitolo: Data Governance e Ruoli Organizzativi
+
 
 ## Introduzione Teorica
 
@@ -989,7 +989,7 @@ In sintesi, la data governance in AETERNA non rappresenta solo un adempimento no
 
 
 # Capitolo 9: Gestione della Portabilità dei Dati
-# Gestione della Portabilità dei Dati
+
 
 ## Introduzione Teorica
 
@@ -1133,7 +1133,7 @@ In sintesi, la gestione della portabilità dei dati in AETERNA non solo risponde
 
 
 # Capitolo 10: Crittografia e Protezione dei Dati Sensibili
-# Capitolo: Crittografia e Protezione dei Dati Sensibili
+
 
 ---
 
