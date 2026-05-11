@@ -1,0 +1,43 @@
+**Riassunto Denso – Gestione Dinamica delle Tariffe Energetiche (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Stratificazione Edge-Fog-Cloud:**  
+  - *Edge Layer (H-Node):* Raccolta/pre-elaborazione dati energetici, firma digitale (Kyoto 2.0).
+  - *Fog Layer:* Aggregazione/normalizzazione dati di quartiere, orchestrazione politiche di pricing locali, buffering eventi, enforcement soglie oscillazione.
+  - *Cloud Layer:* Analisi predittiva (AI/ML), calcolo centralizzato tariffe, deployment/aggiornamento smart contract di pricing, storage storico, simulazione scenari.
+- **Smart Contract su Blockchain Permissioned:**  
+  - Algoritmi di dynamic pricing implementati come smart contract auditabili, versionati e pubblici.
+  - Regolazione automatica crediti/debiti tra attori, integrazione wallet energetici (token Bit-Energy), supporto pagamenti digitali (stablecoin, API bancarie).
+- **Notifiche e Integrazione:**  
+  - Notifiche tariffarie via app/API RESTful (JWT/ECDSA), webhook, MQTT per domotica/H-Node.
+  - API pubbliche per query tariffarie e simulazione scenari.
+- **Audit e Compliance:**  
+  - Logging su ELK Stack e blockchain, trasparenza algoritmica, accesso audit esterni.
+- **Governance On-Chain:**  
+  - Aggiornamento logiche e policy tramite comitato tecnico e governance on-chain.
+
+**Variabili Introdotte:**
+- `BaseTariffa`: valore di riferimento configurabile (0.05–0.50 €/kWh).
+- `F_domanda_offerta`: coefficiente domanda/offerta locale/globale (0.7–1.5).
+- `F_ambiente`: fattore condizioni meteo/produzione rinnovabile (0.8–1.2).
+- `F_incentivi`: incentivi/penalità Kyoto 2.0, Bit-Energy (0.9–1.3).
+- `F_statoRete`: bonus/penalità per stato rete (0.8–1.2).
+- `SogliaOscillazione`: limite variazione tariffa (±15% default).
+- `Timestamp`: data/ora aggiornamento tariffa (ISO8601, signed).
+- `User/ClusterID`: identificativo utente/gruppo (UUID).
+
+**Dipendenze Tecniche:**
+- **Dati e Fonti:**  
+  - Payload IoT (Kyoto 2.0), API meteo (REST/JSON), parametri mercato, condizioni rete.
+- **Parsing/Validazione:**  
+  - Parser/adaptor edge/fog, validazione ECDSA, timestamping.
+- **AI/ML:**  
+  - Profilazione automatica utenti, analisi predittiva consumi e tariffe.
+- **Blockchain:**  
+  - Smart contract auditabili, RBAC on-chain, storage storico, regolazione wallet.
+- **API/Protocolli:**  
+  - REST/JSON, MQTT, webhook, JWT/ECDSA per autenticazione.
+- **ELK Stack:**  
+  - Logging dettagliato per audit e compliance.
+
+**Nota:** Tutte le logiche sono soggette a revisione e aggiornamento tramite governance on-chain, garantendo evoluzione continua e compliance.

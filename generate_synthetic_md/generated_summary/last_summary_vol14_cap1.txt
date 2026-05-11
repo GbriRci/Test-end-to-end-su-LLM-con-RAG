@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Pipeline multilivello** per la raccolta dati, suddivisa in moduli: Acquisizione, Normalizzazione, Validazione, Buffering, Inoltro/Storage.
+- **Architettura distribuita** su livelli Edge, Fog e Cloud, con resilienza e scalabilità garantite da orchestrazione Kubernetes e code distribuite.
+- **Microservizi containerizzati** per i connettori di acquisizione e i processi di normalizzazione/validazione.
+- **Gestione centralizzata delle policy di validazione** tramite motore di regole (Drools).
+- **Persistenza e tracciabilità** dei dati tramite Data Lake (Hadoop HDFS), database relazionali (PostgreSQL), NoSQL (MongoDB) e blockchain privata per audit trail.
+- **Replica geografica e failover automatico** tra Fog e Cloud per buffering e resilienza.
+- **Gestione data lineage** e metadati persistenti (origine, timestamp, pseudonimizzazione, consenso).
+
+**Variabili Introdotte:**
+- **Tipologia fonte dati:** IoT (sensori, inverter, batterie, H-Node), API RESTful, stream Kafka, database legacy.
+- **Formato dati:** JSON Schema v7, con mapping automatico e conversione unità secondo Kyoto 2.0.
+- **Stato dati:** “storici” (da legacy) vs. “nuovi flussi” (real-time), marcati tramite metadati.
+- **Consenso associato:** ogni dato è legato a uno specifico consenso utente, gestito da CMP e registrato su blockchain.
+- **Livello di pseudonimizzazione** e compliance privacy per ogni record.
+
+**Dipendenze Tecniche:**
+- **Protocolli:** MQTT (telemetria IoT), AMQP (messaggistica affidabile), HTTP/2 (API RESTful), JDBC/ODBC (database legacy), TLS 1.3+ (cifratura).
+- **Tecnologie principali:** Kubernetes (orchestrazione microservizi), Apache Kafka/RabbitMQ (buffering e code distribuite), Hadoop HDFS (data lake), PostgreSQL (relazionale), MongoDB (NoSQL), Drools (motore regole), SHA-3-512/ETSI (firma digitale), NTP (timestamp), blockchain privata AETERNA (audit).
+- **Strumenti di monitoraggio:** Grafana (alert saturazione/latency).
+- **Standard di riferimento:** Kyoto 2.0 (unità di misura, compliance), Bit-Energy (regole scambio P2P).
+
+**Sintesi:**  
+L’architettura di monitoraggio AETERNA si basa su pipeline modulari, microservizi containerizzati e orchestrazione Kubernetes, con raccolta dati da fonti eterogenee tramite protocolli standard e sicurezza end-to-end. La validazione centralizzata, la gestione avanzata di buffering e storage, e l’integrazione con blockchain e sistemi di audit garantiscono tracciabilità, compliance e resilienza, abilitando analisi predittiva, bilanciamento AI e trading energetico sicuro.

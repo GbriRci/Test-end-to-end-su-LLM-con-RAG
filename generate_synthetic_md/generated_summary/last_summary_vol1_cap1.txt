@@ -1,0 +1,28 @@
+**Riassunto Denso – Capitolo 1: Progetto AETERNA**
+
+**Decisioni Architetturali:**
+- **Superamento delle reti centralizzate**: AETERNA adotta un’architettura distribuita basata su micro-grid autonome, superando i limiti delle infrastrutture monolitiche (SPOF, bassa scalabilità, scarsa trasparenza).
+- **Tre livelli funzionali**:
+  - **Edge (H-Node domestici)**: generazione e accumulo locale, interfaccia utente, scambio P2P tramite protocollo Bit-Energy, autenticazione hardware sicura.
+  - **Fog (quartiere)**: coordinamento cluster H-Node, gestione emergenze, consenso distribuito (Fog Consensus), gestione dinamica della topologia.
+  - **Cloud (macro-analisi)**: analisi predittiva, ottimizzazione globale, sincronizzazione ledger, compliance centralizzata.
+- **Topologia dinamica**: la rete si riconfigura automaticamente in risposta a guasti/attacchi (resilienza dinamica).
+- **Compliance Kyoto 2.0**: ogni livello integra requisiti di autonomia locale (min. 72h in isola), trasparenza (ledger distribuiti), auditabilità, e reporting automatico.
+
+**Variabili Introdotte:**
+- **Bit-Energy**: token digitale per la contabilizzazione e lo scambio di energia, tracciato su blockchain privata.
+- **Smart Contract**: regole automatiche per priorità, scambio e compensazione energetica.
+- **Ledger distribuiti**: registrazione di tutte le transazioni energetiche, auditabili e non ripudiabili.
+- **Algoritmi AI**: bilanciamento predittivo domanda/offerta, ottimizzazione in tempo reale (Macro Forecasting AI).
+- **Credenziali crittografiche**: per autenticazione sicura dei dispositivi.
+- **Dynamic Topology Management**: variabile di configurazione per la riconfigurazione automatica della rete.
+
+**Dipendenze Tecniche:**
+- **Blockchain privata**: per la tracciabilità e la trasparenza delle transazioni energetiche.
+- **Protocolli P2P (Bit-Energy Exchange)**: per lo scambio diretto tra H-Node.
+- **API sicure**: per l’integrazione con dispositivi IoT e sistemi legacy.
+- **Algoritmi di consenso distribuito (Fog Consensus)**: per la validazione delle transazioni a livello di quartiere.
+- **Machine Learning**: per la previsione e l’ottimizzazione aggregata della domanda energetica.
+- **Audit e reporting automatici**: per la conformità agli standard Kyoto 2.0.
+
+**In sintesi**, AETERNA introduce una piattaforma energetica urbana resiliente, trasparente e adattiva, fondata su micro-grid decentralizzate, ledger distribuiti, AI predittiva e protocolli sicuri, in piena conformità con Kyoto 2.0.

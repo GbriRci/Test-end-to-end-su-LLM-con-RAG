@@ -1,0 +1,35 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Inclusività come requisito strutturale**: Multilingua e accessibilità sono integrati in tutte le componenti (Edge, Cloud, servizi).
+- **Localizzazione scalabile**: Supporto multilingua configurabile tramite file YAML/JSON e pipeline CI/CD; estendibile a nuove lingue.
+- **Architettura localizzazione**:
+  - *Frontend*: React.js con react-intl, caricamento asincrono bundle linguistici, fallback automatico.
+  - *Backend*: Node.js/Python con i18next/gettext per messaggi/log multilingua.
+  - *Microservizi*: Endpoint RESTful accettano header `Accept-Language` per risposte localizzate.
+  - *Documentazione*: Pipeline automatica Crowdin, revisione umana obbligatoria per contenuti critici.
+- **Processo di traduzione**: Traduzione automatica (DeepL API, fallback Google), revisione umana, glossario centralizzato, versionamento bundle su Git (audit trail, rollback).
+- **Continuous Localization**: Pipeline CI/CD rileva nuove stringhe, attiva traduzione, notifica revisori, pubblica bundle aggiornati; hot reload frontend/backend senza riavvio.
+- **Accessibilità by design**: Adozione WCAG 2.1, ARIA, compatibilità con assistive technology (JAWS, NVDA, VoiceOver), test automatizzati (axe-core, pa11y), audit annuali con enti terzi.
+- **Persistenza preferenze utente**: Lingua e profilo accessibilità salvati su DB relazionale (campo `accessibility_profile`).
+- **Materiali e notifiche**: FAQ, tutorial, chatbot, notifiche push/email multilingua e accessibili; fallback/escalation a operatore umano.
+
+**Variabili Introdotte:**
+- `supported_languages`: elenco lingue attive, configurabile.
+- `accessibility_profile`: preferenze utente (contrasto, font, modalità dislessia, ecc.).
+- `Accept-Language`: header HTTP per localizzazione API.
+- Bundle linguistici versionati (Git).
+- Glossario terminologico centralizzato.
+
+**Dipendenze Tecniche:**
+- *Frontend*: React.js, react-intl.
+- *Backend*: Node.js/Python, i18next, gettext.
+- *Traduzione*: DeepL API, Google Cloud Translation.
+- *Collaborazione*: Crowdin.
+- *Versionamento*: Git.
+- *Testing accessibilità*: axe-core, pa11y.
+- *Standard*: WCAG 2.1, ARIA, PDF/UA.
+- *Audit*: Fondazione ASPHI o enti equivalenti.
+- *Formati accessibili*: PDF/UA, sottotitoli, trascrizioni.
+
+**Nota**: Tutte le specifiche sono soggette a revisione continua tramite feedback e audit, con roadmap pubblica delle migliorie.

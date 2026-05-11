@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Framework Modulare di Compliance (FMC):** Layer di astrazione tra piattaforma AETERNA e normative locali, strutturato in moduli plug-in (privacy, sicurezza, trading energetico, fiscalità, interoperabilità dati, audit & reporting).  
+- **Policy Adapter Layer:** Adapter per paese, sviluppati in Aeterna Policy Language (APL), traducono regole locali in policy machine-readable integrate nei workflow.
+- **Compliance Orchestrator:** Motore centrale che attiva dinamicamente i moduli FMC in base a geolocalizzazione, servizio e profilo utente.
+- **Audit Trail Engine:** Logging/versionamento policy, tracciabilità end-to-end, conforme ISO 27001/GDPR.
+- **Integrazione CI/CD:** FMC integrato nativamente nei pipeline CI/CD e provisioning automatizzato; ogni rilascio software validato rispetto ai moduli di compliance attivi.
+- **Monitoraggio Normativo Continuo:** Legal Intelligence Team multidisciplinare, strumenti di legal tech (CLM, document automation, Jira Service Management), microservizio AI/ML “Normative Watchdog” per scraping e classificazione automatica delle normative.
+- **Localizzazione Tecnica:** Parametrizzazione policy per micro-rete (Fog Cluster) tramite file YAML/JSON; UI/API multilingua e multistandard (OpenADR, IEC 61850, Kyoto 2.0); Data Residency Control (geo-fencing, data sharding).
+- **Regulatory Sandbox:** Ambiente isolato per test con autorità locali.
+- **Stakeholder Engagement Platform:** Portale digitale per comunicazioni e audit con enti regolatori e stakeholder.
+- **Gestione Documentale:** Document Repository centralizzato e versionato, workflow digitalizzato per change management, notifiche automatiche.
+- **Blockchain Notarization:** Notarizzazione su blockchain AETERNA di policy critiche e log di audit.
+
+**Variabili Introdotte:**
+- Parametri locali per ogni micro-rete (limiti trading P2P, storage dati, soglie sicurezza) configurabili via YAML/JSON.
+- Policy e workflow adattabili per lingua, standard tecnico e requisiti di data residency.
+- Moduli FMC attivabili/disattivabili dinamicamente in base al contesto operativo.
+
+**Dipendenze Tecniche:**
+- Aeterna Policy Language (APL) per la definizione delle policy.
+- Integrazione con strumenti di legal tech (DocuSign, Ironclad, Jira Service Management).
+- Standard tecnici e normativi: GDPR, CCPA, ISO 27001, NIST CSF, Kyoto 2.0, IEC 61850, OpenADR, SOX, local tax regimes.
+- Microservizi AI/ML per monitoraggio normativo.
+- Pipeline CI/CD e processi di provisioning automatizzato.
+- Blockchain AETERNA per notarizzazione e audit trail.
+- File di configurazione YAML/JSON per parametrizzazione locale.
+
+**Questi elementi costituiscono la base tecnica e organizzativa per l’espansione internazionale scalabile e conforme di AETERNA.**

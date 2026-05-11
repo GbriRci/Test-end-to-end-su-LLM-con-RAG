@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Governance multilivello**: Strutturata su tre layer (Cloud, Fog, Edge), ciascuno con ruoli e responsabilità specifiche.
+    - **Cloud Layer**: Comitato Direttivo (policy strategiche, roadmap, audit), Unità Compliance & Risk Management (rischio normativo, aggiornamento procedure), Comitato Etico e Sostenibilità (supervisione ESG, standard SA8000/ISO 14001).
+    - **Fog Layer**: Comitati di Quartiere (monitoraggio compliance locale, feedback), Responsabili Nodo Fog (gestione policy, formazione).
+    - **Edge Layer**: Amministratori H-Node (policy sicurezza/privacy, autoconsumo, trading P2P, audit automatico).
+- **Processi di audit multilivello**: Audit periodici su tutti i layer, con check-list derivate da ISO 14001, SA8000, Kyoto 2.0.
+- **Reporting trasparente**: Dashboard centralizzate, accesso federato (SSO/Wallet BET-ID), pubblicazione KPI, notifiche automatiche.
+- **Gestione dinamica del rischio normativo**: Monitoraggio legislativo continuo, aggiornamento procedure su repository GitLab, audit trail su blockchain.
+- **Integrazione AI e blockchain**: AI per adaptive learning e profilazione competenze; blockchain Bit-Energy per tracciabilità audit, transazioni, badge, versionamento.
+
+**Variabili Introdotte:**
+- **KPI ambientali**: Riduzione emissioni, % autoconsumo, efficienza trading P2P.
+- **KPI sociali**: Tasso formazione obbligatoria, adozione comportamenti virtuosi, engagement stakeholder.
+- **KPI sicurezza**: Incidenti segnalati, tempo risposta, audit superati.
+- **Versionamento procedure**: Tracciato su GitLab e blockchain.
+- **Badge e credenziali formative**: Gestite tramite smart contract e wallet BET-ID.
+
+**Dipendenze Tecniche:**
+- **Standard internazionali**: ISO 14001 (ambientale), SA8000 (sociale).
+- **Standard interni**: Kyoto 2.0 (performance ambientali), Bit-Energy Compliance Suite (tracciabilità digitale, smart contract).
+- **Strumenti digitali**: Blockchain Bit-Energy (audit, transazioni, badge), dashboard centralizzate, repository GitLab (versionamento), AI (adaptive learning).
+- **Autenticazione federata**: SSO/Wallet BET-ID per accesso stakeholder.
+- **Canali di comunicazione**: App AETERNA, newsletter, forum moderati per notifiche e aggiornamenti normativi.
+
+**Sintesi:**  
+La governance e la compliance di AETERNA si fondano su una struttura multilivello (Cloud/Fog/Edge) con ruoli formalizzati, processi di audit e reporting trasparenti, e l’adozione di standard internazionali e interni. L’infrastruttura tecnica integra blockchain, AI, dashboard e repository versionati per garantire tracciabilità, accountability e adattività normativa, con variabili di compliance misurate tramite KPI ambientali, sociali e di sicurezza. Queste scelte architetturali e tecniche sono fondamentali per la scalabilità, la legittimità e la resilienza del progetto.

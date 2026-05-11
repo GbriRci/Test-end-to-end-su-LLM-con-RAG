@@ -1,0 +1,28 @@
+**Riassunto Denso – Capitolo 7: Sostenibilità Economica a Lungo Termine (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- Adozione di un’architettura distribuita su tre livelli: Edge (H-Node), Fog (gateway, cluster), Cloud.
+- Scelta tra opzioni architetturali (monolitico vs containerizzato, scaling verticale vs orizzontale, single vs multi-cluster) valutata tramite KPI e TCO.
+- Integrazione di orchestratori Kubernetes, moduli AI per automazione/ottimizzazione, middleware di compliance Kyoto 2.0.
+- Pipeline CI/CD multi-cluster per deployment e aggiornamenti.
+- Esposizione di API pubbliche certificate per servizi digitali (energy trading, compliance, analytics).
+- Utilizzo di smart contract su blockchain Bit-Energy per tracciabilità finanziaria e gestione marketplace P2P.
+- Revenue sharing tramite API federate e smart contract inter-chain con terze parti.
+
+**Variabili Introdotte:**
+- **CAPEX:** Hardware (H-Node, Fog, Cloud), licenze software (AI, Kubernetes, compliance), formazione, configurazione pipeline.
+- **OPEX:** Manutenzione hardware/software, aggiornamenti compliance, supporto tecnico, consumi energetici (ottimizzati via AI), costi scaling automatico, fee gestione ledger Bit-Energy.
+- **KPI Quantitativi:** Costo medio per nodo, costo aggiornamento per release, costo per transazione, costo compliance per segmento.
+- **Ricavi:** Monetizzazione API (pay-per-use, subscription), commissioni marketplace P2P (Bit-Energy), servizi premium (profilazione, reportistica, simulazioni AI), revenue sharing con terzi.
+- **Metriche di Performance:** Costo per nodo attivo, costo compliance per segmento, costo scaling per 1000 transazioni, ricavo medio per API call, tasso crescita ricavi digitali, payback period, margine operativo netto.
+
+**Dipendenze Tecniche:**
+- Orchestratori Kubernetes per gestione cluster.
+- Moduli AI per automazione, ottimizzazione consumi, simulazioni what-if.
+- Middleware compliance Kyoto 2.0 per aggiornamenti normativi.
+- Blockchain Bit-Energy per ledger transazionali e smart contract.
+- Dashboard cloud per monitoraggio KPI in tempo reale, alimentate da pipeline di data ingestion multi-livello.
+- Integrazione con utility/assicurazioni tramite API federate e smart contract inter-chain.
+
+**Sintesi:**  
+La sostenibilità economica di AETERNA si basa su una rigorosa separazione e monitoraggio di CAPEX/OPEX, su modelli di ricavo multi-stream e su metriche oggettive di performance. L’architettura modulare, l’automazione AI e la trasparenza blockchain abilitano scalabilità, resilienza e adattamento normativo, garantendo ROI positivo (>100% a 10 anni) e payback <5 anni. Queste scelte architetturali e variabili saranno fondamentali per le analisi tecniche e operative dei capitoli successivi.

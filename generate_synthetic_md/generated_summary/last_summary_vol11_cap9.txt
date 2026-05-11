@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: suddivisa in Edge (H-Node domestici per raccolta/pre-elaborazione dati), Fog (gateway di quartiere per aggregazione, data fusion, coordinamento flussi energetici, validazione blockchain, orchestrazione governance locale) e Cloud (analisi avanzate, storage, dashboard, voto elettronico).
+- **Governance digitale**: orchestrata tramite smart contract, sistemi di voto elettronico e dashboard interattive.
+- **Blockchain permissioned (Hyperledger Fabric)**: per tracciabilità, immutabilità, auditabilità e protezione dati.
+- **Smart contract**: automatizzano registrazione membri, monitoraggio quote produzione/consumo, distribuzione benefici (Bit-Energy), audit e policy di voto.
+- **Sistemi di voto elettronico**: integrati su blockchain, con autenticazione forte (DID, 2FA), anonimato (ZKP), auditabilità, policy di quorum/delega configurabili via smart contract.
+- **Dashboard web-based**: accesso tramite SSO, policy granulari, visualizzazione dati individuali e aggregati, gestione wallet, partecipazione a votazioni.
+- **Policy di accesso e sicurezza**: crittografia end-to-end (TLS 1.3, AES-256), gestione identità via DID, audit trail completo, ruoli configurabili (membro, amministratore, osservatore).
+
+**Variabili Introdotte:**
+- **H-Node**: nodo domestico per raccolta/pre-elaborazione dati energetici.
+- **Gateway Fog**: nodo di quartiere per aggregazione dati, validazione e coordinamento.
+- **Bit-Energy**: credito energetico digitale per la ripartizione dei benefici.
+- **DID (Decentralized Identifier)**: identificatore univoco per autenticazione e gestione identità.
+- **Wallet energetico**: portafoglio digitale associato a ciascun membro.
+- **Kyoto 2.0 tagging**: sistema di tagging energetico per audit delle transazioni.
+- **Ruoli utente**: membro, amministratore, osservatore.
+
+**Dipendenze Tecniche:**
+- **Protocolli di comunicazione**: MQTT, OPC UA (Edge); API RESTful sicure (TLS 1.3) tra Fog e Cloud.
+- **Tecnologie blockchain**: Hyperledger Fabric, smart contract, ZKP per voto elettronico.
+- **Sistemi di autenticazione**: DID, 2FA, SSO.
+- **Crittografia**: TLS 1.3 per dati in transito, AES-256 per dati a riposo.
+- **Dashboard**: web-based, accessibili via browser, integrate con policy di autorizzazione.
+- **Audit e compliance**: audit trail per ogni operazione, consultabile tramite dashboard.
+
+Queste scelte abilitano una gestione distribuita, trasparente e sicura delle comunità energetiche, ponendo le basi tecniche per i capitoli successivi su implementazione, scalabilità e governance.

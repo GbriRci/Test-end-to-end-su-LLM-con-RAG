@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (AETERNA Audit & Accountability)**
+
+**Decisioni Architetturali:**
+- **Logging multilivello distribuito:** Ogni microservizio (Edge, Fog, Cloud) genera log strutturati (JSON) raccolti tramite stack ELK (Elasticsearch, Logstash, Kibana), con livelli DEBUG, INFO, WARN, ERROR, AUDIT.
+- **Blockchain notarization:** Eventi critici (modifiche policy, dispute, transazioni Bit-Energy) sono notarizzati su blockchain Kyoto 2.0 tramite hash SHA-3 per garantire immutabilità e auditabilità pubblica.
+- **Versionamento GitOps:** Configurazioni infrastrutturali/applicative gestite via repository Git privati, con pipeline CI/CD e tagging semantico (autore, timestamp, motivazione, issue).
+- **RBAC centralizzato:** Gestione ruoli/permessi tramite policy engine distribuiti (Open Policy Agent - OPA), propagati su tutti i livelli; ogni operazione privilegiata è tracciata e associata a identificativo utente/servizio, timestamp, motivazione.
+- **Workflow di modifica policy:** Richieste di modifica policy accesso seguono workflow automatizzato con validazione multi-attore (almeno due revisori), storicizzazione e consultabilità tramite dashboard audit (accesso ruolo “Auditor”).
+- **Audit automatizzato:** OPA integrato per validazione automatica policy di sicurezza/compliance, con versionamento e test di regressione.
+- **Monitoraggio e alerting:** Prometheus raccoglie metriche di sistema/KPI, esposte su dashboard Grafana; alert automatici su soglie critiche attivano workflow di audit straordinario.
+- **Reportistica periodica:** Modulo dedicato genera report digitalmente firmati e archiviati, accessibili agli auditor.
+- **Correlazione audit-dispute:** Eventi rilevanti per dispute (Dispute_Event, Evidence_Hash) sono correlati nei sistemi di logging/audit per ricostruzione forense.
+- **Dashboard avanzate:** Dashboard Kibana/Grafana per consultazione granulare di eventi, workflow, log, con filtri per Dispute_ID, Audit_Reference, ruolo, periodo.
+
+**Variabili Introdotte:**
+- User_ID, Service_ID, Policy_ID, Approver_ID, Tx_ID, Amount, Hash, Role, Error_Code, Dispute_ID, Evidence_Hash, Report_ID, Period, Signer_ID, Timestamp, Motivazione, Issue correlata.
+
+**Dipendenze Tecniche:**
+- **Stack ELK (Elasticsearch, Logstash, Kibana)**
+- **Blockchain Kyoto 2.0 (SHA-3 notarization)**
+- **GitOps (Git privato, CI/CD)**
+- **Open Policy Agent (OPA)**
+- **Prometheus & Grafana**
+- **Dashboard Audit dedicate**
+- **Modulo Report Generator**
+- **Repository report accessibili**
+- **Policy engine distribuiti**
+- **Interfacce di workflow policy**
+- **Sistema di alerting automatico**
+
+Queste scelte garantiscono tracciabilità, accountability, compliance, supporto forense e scalabilità, costituendo la base tecnica per i capitoli successivi.

@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il bilanciamento dinamico in AETERNA è implementato come microservizio containerizzato, deployato in modalità sidecar accanto agli ingress controller (es. NGINX su Kubernetes).
+- L’architettura multilivello (Edge, Fog, Cloud) adotta policy di bilanciamento differenziate per ciascun livello: locale e prioritario su Edge, aggregativo e buffering su Fog, auto-scaling e batch su Cloud.
+- La pipeline di bilanciamento prevede raccolta, normalizzazione (Z-score su rolling window 30/60s), decisione e riallocazione dinamica dei carichi.
+- Tutte le decisioni di bilanciamento e i cambiamenti di stato sono tracciati e firmati digitalmente sul Bit-Energy Ledger per auditabilità e compliance Kyoto 2.0.
+
+**Algoritmi e Policy:**
+- **Round-Robin Ponderato:** Distribuzione iniziale delle richieste in base alla capacità hardware.
+- **Weighted Least Connection (WLC):** Assegnazione dinamica in base al rapporto tra connessioni attive e risorse disponibili.
+- **Threshold-Based Dynamic Rebalancing:** Soglie configurabili (es. CPU > 75%, RAM < 20%) attivano ribilanciamento e migrazione workload.
+- **Health Check & Failover:** Heartbeat e probe HTTP/gRPC per esclusione automatica di nodi non disponibili.
+
+**Variabili Introdotte (Parametri Principali):**
+- `cpu_threshold`, `ram_threshold`, `conn_weight`, `health_check_interval`, `failover_timeout`, `aggregation_window`, `rebalance_cooldown`, `audit_logging_enabled`.
+- Tutti i parametri sono configurabili via ConfigMap Kubernetes e supportano tuning dinamico.
+
+**Dipendenze Tecniche:**
+- **Prometheus Node Exporter** e custom exporter per raccolta metriche (CPU, RAM, GPU/TPU, latenze).
+- **Kubernetes API** per gestione dinamica di servizi, routing, pod eviction e re-scheduling.
+- **MQTT/Kafka** per notifiche di ribilanciamento e stato nodi in tempo reale.
+- **Webhook** per integrazione alerting esterno (Slack, email, incident management).
+- **Bit-Energy Ledger** per logging, audit e compliance.
+
+**Implicazioni per i Prossimi Capitoli:**
+- L’infrastruttura richiede orchestrazione containerizzata, metriche in tempo reale, e supporto a policy multi-livello.
+- Le decisioni di bilanciamento sono tracciate e auditabili, influenzando la progettazione di logging, compliance e monitoring.
+- L’integrazione con sistemi di messaggistica e API Kubernetes è fondamentale per la reattività e la resilienza della piattaforma.

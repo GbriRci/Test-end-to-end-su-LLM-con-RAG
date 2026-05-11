@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (max 300 parole)**
+
+**Decisioni Architetturali:**
+- **Sicurezza multilivello (defense-in-depth):** L’architettura AETERNA adotta una difesa stratificata, con segmentazione rigorosa tra reti OT (Operational Technology) e IT, micro-segmentazione interna OT tramite VLAN/ACL, e firewall di nuova generazione (NGFW) con DPI specifico per protocolli industriali (IEC 61850, Modbus TCP/IP).
+- **Gateway dedicati:** Comunicazione tra OT e IT solo tramite gateway protetti da NGFW.
+- **Firewall Layer 7:** Filtraggio e validazione del traffico RESTful e MQTT tramite firewall applicativi con regole adattive e whitelist dinamiche.
+- **Autenticazione e autorizzazione centralizzate:** MFA per operatori e dispositivi, gestione identità tramite AETERNA IAM, certificati X.509 per edge device, RBAC/ABAC per policy di accesso, audit trail immutabile su Bit-Energy Ledger.
+- **Crittografia end-to-end:** TLS 1.3 per traffico Edge–Fog–Cloud, AES-256 per dati a riposo, data masking per payload sensibili secondo policy Kyoto 2.0.
+- **Monitoraggio e risposta agli incidenti:** IDS/IPS industriali (Nozomi, Cisco Cyber Vision) per OT, SIEM centralizzato (Splunk ES con moduli custom) per correlazione eventi, threat intelligence, anomaly detection (ML: Isolation Forest, LSTM), automazione SOAR (ServiceNow).
+- **Gestione incidenti:** Incident Response Plan (IRP) formalizzato, esercitazioni red team/blue team periodiche, formazione continua del personale.
+- **Patch management orchestrato:** Piattaforma centralizzata per aggiornamenti e rollback, vulnerability assessment continuo (Nessus, OpenVAS), penetration test regolari.
+
+**Variabili Introdotte:**
+- **Zone di sicurezza:** Edge, Fog, Cloud, ciascuna con controlli specifici.
+- **Policy di accesso:** RBAC/ABAC, enforcement centralizzato.
+- **Certificati X.509:** Provisioning e rotazione automatica.
+- **Audit trail:** Immutabile su Bit-Energy Ledger.
+- **Data masking:** Applicato a dati sensibili secondo Kyoto 2.0.
+
+**Dipendenze Tecniche:**
+- **Tecnologie chiave:** NGFW, IDS/IPS industriali (Nozomi, Cisco), SIEM (Splunk ES), IAM AETERNA, Bit-Energy Ledger, ServiceNow (SOAR), TLS 1.3, AES-256, Kyoto 2.0.
+- **Protocolli:** IEC 61850, Modbus TCP/IP, REST API, MQTT.
+- **Strumenti di vulnerability assessment:** Nessus, OpenVAS.
+- **Machine Learning:** Isolation Forest, LSTM per anomaly detection.
+
+Queste scelte e variabili costituiscono la base tecnica e organizzativa per i capitoli successivi su resilienza, gestione incidenti e compliance.

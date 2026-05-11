@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il ciclo di vita dell’H-Node è progettato per estendersi oltre la fase operativa, includendo procedure EoL (End-of-Life) integrate nell’architettura Edge e nel Cloud AETERNA.
+- Tutte le fasi critiche (trigger EoL, cancellazione dati, riciclo) sono notarizzate sulla blockchain interna (Bit-Energy Ledger) per garantire tracciabilità, trasparenza e auditabilità.
+- L’identificazione e la tracciabilità dei componenti sono assicurate tramite UUID hardware e BOM digitalizzata, archiviata localmente e nel Cloud.
+- Le procedure EoL sono attivate da policy definite (Kyoto 2.0), guasti hardware, disconnessione prolungata o decisioni amministrative.
+- La cancellazione sicura dei dati è obbligatoria e certificata, secondo standard ISO/IEC 27001 e ISO 50625-2-3.
+- Il disassemblaggio e la separazione dei componenti seguono linee guida ISO 50625-2-1 e ISO 14001, con tracciamento tramite barcode/NFC.
+- Il recupero e riciclo dei metalli rari e dei componenti elettronici avviene solo presso centri certificati ISO 9001/14001, privilegiando il riuso (refurbishing) e la reintegrazione nella filiera AETERNA.
+- Tutte le operazioni sono registrate e auditabili, con reporting periodico e certificati digitali.
+
+**Variabili Introdotte:**
+- UUID hardware per ogni H-Node.
+- BOM digitalizzata con dettaglio di materiali (metalli rari, PCB, moduli sensibili, batterie, ecc.).
+- Policy Kyoto 2.0: definisce soglie di recupero (≥95% metalli rari), obblighi di riciclo, blacklist fornitori non conformi.
+- Trigger EoL: ciclo firmware, guasto, disconnessione >180gg, decommissioning.
+- Log e certificati digitali su Bit-Energy Ledger.
+
+**Dipendenze Tecniche:**
+- Standard ISO: 14001, 45001, 9001, 50625 (varie parti), 15270, ISO/IEC 27001.
+- Moduli hardware: HSM (firma digitale), RTC Kyoto 2.0 (timestamp), barcode/NFC per tracciamento.
+- Integrazione Cloud AETERNA per archiviazione BOM e gestione notifiche EoL.
+- Blockchain Bit-Energy Ledger per notarizzazione e audit.
+- Centri di trattamento e riciclo certificati ISO.
+- Metodi di data sanitization (DoD 5220.22-M), reporting e audit periodici.
+
+**Utilità per i Prossimi Capitoli:**
+Queste scelte architetturali e variabili sono fondamentali per la progettazione dei flussi di gestione hardware, la sicurezza dei dati, la compliance normativa e la sostenibilità, e costituiscono la base tecnica per l’integrazione di processi di riciclo, reporting e audit nei moduli successivi del framework AETERNA.

@@ -1,0 +1,36 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Tokenizzazione Energetica:** Ogni unità di energia (default: 1 kWh, parametrizzabile) è rappresentata da un token digitale non fungibile (NFT-like), implementato come smart contract ERC-721-like su blockchain permissioned.
+- **Smart Contract Principali:**  
+  - *TokenMinting* per emissione e validazione token.
+  - *EnergyTrade* per scambio P2P, matching domanda/offerta, atomic swap e settlement.
+- **Bit-Energy Ledger:** Registro immutabile per audit trail di tutte le operazioni (emissione, scambio, annullamento, settlement).
+- **Marketplace P2P:** Listing e scambio token energetici tra attori decentralizzati.
+- **API RESTful/gRPC:** Esposizione di tutte le funzioni (emissione, scambio, audit, query), integrate con digital twin H-Node e moduli Fog/Cloud.
+- **RBAC e Multi-Signature:** Controllo accessi e validazione operazioni critiche tramite mapping ruoli e firme multiple.
+- **Routine di Lock-Down:** Gestione automatica di anomalie (es. doppia emissione) con sospensione operazioni e notifica operatori.
+- **Logging Operativo:** Replica eventi su ELK Stack per analisi e compliance.
+
+**Variabili Introdotte:**
+- **TokenID:** Identificativo univoco del token.
+- **Quantità:** Energia rappresentata (default 1 kWh, float, parametrizzabile).
+- **Fonte:** Origine energia (enum: solare, eolica, fossile, mix).
+- **Timestamp:** Data/ora produzione (ISO 8601, UTC).
+- **ProduttoreID:** ID univoco dal Registry.
+- **CertificatoHash:** Hash SHA-3 del certificato digitale di misura.
+- **FirmaECDSA:** Firma digitale del certificato.
+- **ComplianceKyoto2:** Flag booleano per conformità incentivi Kyoto 2.0.
+- **TagIncentivo:** Incentivo/penalità associata.
+- **Stato:** Stato token (emesso, scambiato, annullato, audit).
+
+**Dipendenze Tecniche:**
+- **Blockchain Permissioned:** Base per smart contract e Bit-Energy Ledger.
+- **Smart Meter Certificati:** Fonte dati per emissione token.
+- **Identity Registry:** Mapping identity-ruolo per validazione e compliance.
+- **ELK Stack:** Logging e analisi operativa.
+- **Digital Twin H-Node, Fog/Cloud:** Integrazione operativa e interfacce.
+- **Protocollo Atomic Swap:** Commit-reveal, time-lock per settlement sicuro.
+- **Audit e Compliance:** Enforcement automatico policy tramite smart contract, auditabilità tramite hash e timestamp.
+
+Queste scelte abilitano mercati P2P decentralizzati, tracciabilità, compliance automatica e resilienza operativa, costituendo la base tecnica per i capitoli successivi.

@@ -1,0 +1,34 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Crittografia end-to-end** su tutti i livelli (Edge, Fog, Cloud) tramite protocolli post-quantistici (PQ) per resilienza futura.
+- **Hybrid handshake TLS 1.3**: combinazione di ECDHE (classico) e Kyber (PQ) per key exchange; firme digitali con Dilithium.
+- **Cifratura dati**: enforcement di `TLS_AES_256_GCM_SHA384` (AES-GCM 256 bit) per tutti i tunnel TLS, con autenticazione e integrità a livello di pacchetto.
+- **Firma digitale obbligatoria** su ogni blocco dati energetici, con chiave privata custodita in HSM/TEE.
+- **Timestamping certificato** (Kyoto 2.0) e notarizzazione su blockchain (Bit-Energy Ledger) per eventi critici.
+- **Rotazione chiavi automatizzata** tramite PKI AETERNA, con policy di rotazione periodica (max 30 giorni o 10.000 sessioni) e reattiva (compromissione/anomalie).
+- **Distribuzione chiavi**: nuove chiavi propagate via TLS autenticato, firmate dalla CA AETERNA, revoca pubblicata su Ledger.
+- **Prevenzione replay/manipolazione**: nonce hardware-side univoci, challenge-response per ogni sessione, identificatori e timestamp per ogni pacchetto.
+- **Auditabilità e logging immutabile**: tutti gli eventi critici (rotazione chiavi, autenticazioni, anomalie) sono notarizzati in tempo reale su Bit-Energy Ledger.
+
+**Variabili Introdotte:**
+- **Nonce**: generato hardware-side, unico per ogni transazione/sessione.
+- **UUID hardware**: identificatore univoco del sensore.
+- **Timestamp Kyoto 2.0**: precisione millisecondi, notarizzato.
+- **Chiavi PQ (Kyber, Dilithium)**: per handshake, firma e cifratura.
+- **Certificati X.509 PQ**: aggiornati e revocati tramite PKI.
+- **CRL notarizzata**: lista di revoca chiavi pubblicata su Ledger.
+- **Tag GCM (128 bit)**: autenticazione pacchetti.
+- **Identificatore pacchetto**: per replay detection.
+
+**Dipendenze Tecniche:**
+- **Algoritmi PQ NIST**: Kyber (key exchange), Dilithium (firma).
+- **TLS 1.3**: handshake ibrido, cipher suite AES-GCM.
+- **HSM/TEE**: custodia sicura chiavi private.
+- **PKI AETERNA**: orchestrazione chiavi, CA, CRL.
+- **Kyoto 2.0**: timestamping certificato.
+- **Bit-Energy Ledger**: notarizzazione, logging, CRL.
+- **Hardware RNG**: generazione nonce sicuri.
+- **SHA-3**: hashing per logging e notarizzazione.
+
+Queste scelte abilitano sicurezza, tracciabilità e compliance per micro-reti energetiche urbane, garantendo resilienza anche in scenari post-quantum.

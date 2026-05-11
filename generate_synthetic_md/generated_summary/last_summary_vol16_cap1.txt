@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Adozione LCA**: L’analisi del ciclo di vita (LCA) è integrata come strumento metodologico obbligatorio per tutte le scelte progettuali, dalla produzione allo smaltimento.
+- **Scomposizione in Fasi**: Ogni componente è analizzato secondo quattro fasi: Produzione, Trasporto, Utilizzo, Fine vita.
+- **Modularità**: I componenti sono progettati come aggregati di sub-componenti sostituibili, con tracciamento separato degli impatti ambientali.
+- **Materiali a Basso Impatto**: Preferenza per biopolimeri, alluminio riciclato, PCB RoHS-compliant; penalità per materiali non riciclabili (>10% peso).
+- **Packaging Riciclabile**: Obbligo di packaging FSC/bioplastica compostabile, con tracciabilità tramite QR code.
+- **Localizzazione Fornitori**: Priorità a fornitori locali per ridurre emissioni da trasporto.
+- **Tracciabilità**: Ogni componente ha UUID e profilo LCA accessibile via dashboard centralizzata.
+- **Audit e Remediation**: Audit LCA trimestrali e remediation obbligatoria per componenti fuori soglia.
+
+**Variabili Introdotte:**
+- **Parametri LCA per ogni fase**: Consumo energetico (kWh/component), emissioni CO₂eq, uso idrico (litri/component), produzione rifiuti (kg/component, per frazione), impatto biodiversità (indice LCA).
+- **Soglie di conformità**: Emissioni CO₂eq (<50 kg/anno), rifiuti elettronici (<0.5 kg/anno), materiali non riciclabili (<10%), consumo idrico (<200 litri/anno).
+- **Identificativo univoco (UUID)**: Associato a ogni componente per tracciabilità e audit.
+- **Flussi di materia/energia**: Modellati a livello di sub-modulo elettronico.
+
+**Dipendenze Tecniche:**
+- **Software LCA**: SimaPro, GaBi integrati in pipeline CI per sostenibilità.
+- **Raccolta dati**: Automatizzata via API da fornitori/ERP, validazione manuale per dati critici.
+- **Reporting**: Output in PDF/UA, XML/JSON per audit esterni.
+- **Dashboard centralizzata**: Per accesso ai profili LCA e monitoraggio conformità.
+- **Firmware AI**: Ottimizzazione consumi in fase di utilizzo.
+- **Protocolli di audit**: Audit trimestrali, revisione parametri, remediation.
+
+**Sintesi:**  
+Il Progetto AETERNA struttura la sostenibilità tramite LCA integrata nei processi architetturali, con modularità, materiali eco-compatibili, packaging riciclabile e tracciabilità digitale. Le variabili ambientali sono monitorate e vincolate da soglie normative, con workflow automatizzati e audit periodici, garantendo conformità e innovazione sostenibile.

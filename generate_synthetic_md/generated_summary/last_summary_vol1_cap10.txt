@@ -1,0 +1,33 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Evoluzione incrementale** da micro-rete automatizzata a rete energetica senziente e auto-riparante (“Coscienza di Rete”).
+- **Architettura multilivello**: H-Node (edge) → Fog Cluster → Cloud, con orchestrazione tramite blockchain permissioned per trasparenza e resilienza.
+- **Percezione distribuita**: Sensor fusion multi-layer su H-Node, aggregazione e analisi su Fog, correlazione macro su Cloud.
+- **Apprendimento distribuito**: Federated Learning (FL-AETERNA) per modelli predittivi energetici, con aggregazione su Fog Leader e supervisione Cloud.
+- **Swarm Intelligence**: Algoritmi swarm-inspired (Particle Swarm Optimization, Ant Colony) per auto-organizzazione e gestione priorità, con segnali digitali (“pheromone trails”) su DLT.
+- **Manutenzione predittiva e auto-riparazione**: Diagnosi AI embedded su H-Node, alert digitali, coordinamento Fog, mappa resilienza su Cloud.
+- **Meta-Governance**: Meta-layer distribuito per policy adattive, tracciate su smart contract (MetaGov-SC), revisione tramite Proof-of-Participation.
+- **Integrazione etica/sociale**: Ethical Impact Score (XAI), preferenze utente che influenzano le decisioni automatiche.
+- **Interfacce di introspezione**: Dashboard e API per visualizzazione e accesso programmato allo stato di coscienza della rete.
+
+**Variabili Introdotte:**
+- **Stato sensoriale locale e aggregato** (dati ambientali, energetici, sociali).
+- **Pesi e gradienti dei modelli federati** (non dati grezzi).
+- **Token digitali temporanei** (“pheromone trails”) per priorità/rischio.
+- **Indice di vulnerabilità locale e aggregato** per early warning.
+- **Ethical Impact Score** per ogni decisione automatica.
+- **Preferenze etiche/sociali utente**.
+- **Metriche di equità, sostenibilità, resilienza** per meta-governance.
+- **KPI di maturità**: copertura sensoriale, accuratezza previsioni, tasso guasti evitati, equità distributiva, indice di consapevolezza.
+
+**Dipendenze Tecniche:**
+- **ALRM** (preprocessing locale), modelli AI embedded, Secure Enclave.
+- **FL-AETERNA** (protocollo federated learning), Swarm Protocols.
+- **Blockchain permissioned** (DLT) per auditabilità, smart contract MetaGov-SC.
+- **XAI** (modelli AI explainable) per trasparenza decisionale.
+- **Network Introspection Interface** (dashboard/API).
+- **Mobile app/interfacce vocali** per feedback sociale.
+- **Proof-of-Participation** per governance distribuita.
+
+Queste scelte e variabili costituiscono la base tecnica e concettuale per i successivi capitoli di dettaglio.

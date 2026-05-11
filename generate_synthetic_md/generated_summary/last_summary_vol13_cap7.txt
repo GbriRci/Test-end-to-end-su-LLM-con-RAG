@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Separazione tra logica applicativa e risorse linguistiche**: tutte le stringhe e i contenuti testuali sono estratti dal codice e gestiti tramite file di risorse centralizzati.
+- **Struttura file risorse**: convenzione `{namespace}.{lingua}.{formato}` (es. `dashboard.it.json`), formato default JSON, opzionale YAML per orchestrazione avanzata.
+- **Naming convention gerarchica** per le chiavi (`section.subsection.element`) per modularità e tracciabilità.
+- **Centralizzazione e versionamento**: repository dedicati, versionamento semantico, integrazione nelle pipeline CI/CD, distribuzione tramite CDN.
+- **Codifica**: tutti i file in UTF-8 senza BOM per supporto multilingua e simboli speciali.
+- **Strategie di fallback multilivello**: implementate sia lato client che server, con priorità: lingua utente → regionale → default sistema → placeholder tecnico.
+- **Selezione dinamica della lingua**: priorità a preferenze utente, header HTTP, configurazione dominio, impostazioni sistema; cambio lingua reattivo senza reload.
+- **Pipeline di traduzione automatizzata**: estrazione chiavi, integrazione con piattaforme di traduzione (Transifex, Lokalise), validazione automatica, revisione madrelingua, merge e deploy CI/CD.
+- **Testing e QA**: revisione semantica, testing automatizzato (snapshot, overflow, regressioni), audit di conformità normativa.
+- **Localizzazione formati**: uso di librerie standard (Intl.DateTimeFormat, Intl.NumberFormat), gestione timezone, conversione valute e unità di misura, adattamento policy e contenuti regolatori.
+
+**Variabili Introdotte:**
+- `{namespace}`, `{lingua}`, `{formato}` per la generazione dei file di risorse.
+- Chiavi gerarchiche per ogni stringa localizzata (es. `dashboard.energyBalance.title`).
+- Preferenze utente, header `Accept-Language`, configurazione dominio, impostazioni sistema per la selezione della lingua.
+- Placeholder tecnici per fallback.
+
+**Dipendenze Tecniche:**
+- **Framework e strumenti**: i18next-scanner per estrazione chiavi, Transifex/Lokalise per traduzione, linter specifici per validazione, librerie Intl per formattazione.
+- **Pipeline CI/CD**: integrazione e deploy automatico delle risorse linguistiche.
+- **CDN**: distribuzione globale delle risorse.
+- **API RESTful**: gestione fallback e selezione lingua anche lato server.
+- **Testing tools**: snapshot rendering, validazione overflow, audit normativo.
+
+Queste scelte abilitano scalabilità, manutenibilità, resilienza e compliance normativa per la localizzazione multilingua di AETERNA.

@@ -1,0 +1,24 @@
+**Riassunto Denso – Capitolo 6: Integrazione con la Smart City 2030**
+
+**Decisioni Architetturali:**
+- **Stratificazione multilivello**: L’integrazione di AETERNA avviene su tre layer (Edge, Fog, Cloud), ciascuno con API e interfacce standardizzate per l’interoperabilità con i sottosistemi urbani.
+- **Edge Layer**: Espone H-Node API (RESTful/MQTT) per dispositivi IoT urbani; include Energy Request Handler (normalizzazione richieste in Bit-Energy, gestione priorità) ed Event Listener (trigger su eventi critici).
+- **Fog Layer**: Fog Leader Orchestrator aggrega domanda energetica a livello di quartiere; Smart Contract Dispatcher gestisce contestazioni e audit; Mobility-Energy Bridge integra sistemi di mobilità elettrica (EVMS).
+- **Cloud Layer**: Urban Analytics Engine (analisi AI e previsioni), Interoperability Gateway (API OpenAPI 3.0 per terze parti), Audit Quantistico Distribuito (verifica compliance Kyoto 2.0).
+- **Logging e Audit**: Tutte le transazioni sono storicizzate su ledger distribuito, con dashboard pubbliche e audit quantistico.
+
+**Variabili Introdotte:**
+- **Profilo socio-energetico** e **ruolo del nodo**: Determinano le policy di priorità nelle allocazioni energetiche.
+- **Priorità Energetica**: Dinamica, alta, assoluta, adattiva o temporanea, in base al tipo di nodo e servizio (es. emergenza, trasporto pubblico, illuminazione, rifiuti).
+- **Eventi urbani critici**: Blackout, picchi di traffico EV, overflow rifiuti, che attivano allocazioni dinamiche.
+
+**Dipendenze Tecniche:**
+- **Protocolli**: AETERNA-Interop (serializzazione JSON/CBOR, firma digitale, timestamp), Secure Energy Channel (TLS 1.3+), Role-Based Access Control (certificati digitali), Event-Driven Notification (WebSocket/AMQP).
+- **Standard**: Kyoto 2.0 e Bit-Energy per policy di sostenibilità e gestione priorità.
+- **API**: REST, MQTT, OpenAPI 3.0 per l’integrazione con EVMS, sistemi di illuminazione, gestione rifiuti, piattaforme ambientali.
+- **Smart Contract**: Per contestazioni e audit delle allocazioni energetiche critiche.
+- **Ledger distribuito**: Per logging trasparente e auditabilità delle transazioni energetiche.
+
+**Sinergie chiave**: Integrazione con mobilità elettrica (Dynamic EV Allocation, Fleet Priority Management), illuminazione intelligente (Smart Lighting Integration, Demand Response), gestione rifiuti smart (Waste-Energy Feedback, Priority Routing).
+
+**Impatto**: L’architettura garantisce resilienza, trasparenza, governance distribuita e sostenibilità, abilitando un ecosistema urbano adattivo e auditabile.

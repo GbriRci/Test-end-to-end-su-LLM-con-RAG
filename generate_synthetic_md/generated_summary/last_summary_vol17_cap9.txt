@@ -1,0 +1,24 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il framework AETERNA adotta un’architettura a microservizi distribuiti su livelli Edge, Fog e Cloud, con interazioni sia sincrone (API RESTful) che asincrone (eventi su message broker).
+- Il testing di integrazione è integrato come fase obbligatoria nelle pipeline CI/CD (Azure DevOps), con automazione completa su ogni commit/tag.
+- Sono previsti test di interoperabilità (API/eventi), gestione errori (HTTP 4xx/5xx, timeout, payload malformati), resilienza (iniezione di failure, circuit breaker), e contract testing (CDC) per garantire compatibilità tra versioni e servizi.
+- L’ambiente di test è orchestrato tramite Docker Compose per isolare microservizi e mock/stub, consentendo esecuzioni parallele e riproducibili.
+- I risultati dei test sono integrati con sistemi di tracciabilità (Jira, Azure DevOps) e visualizzati tramite dashboard (Grafana/Power BI); la compliance è rafforzata tramite ancoraggio su blockchain Bit-Energy.
+
+**Variabili Introdotte:**
+- Variabili d’ambiente specifiche per livelli Edge, Fog, Cloud, utilizzate nella parametrizzazione dei test (Postman).
+- Metriche di successo: copertura flussi critici, % API/eventi testati, % errori gestiti, tempo di recovery, % compatibilità contratti, tempo ciclo CI/CD (<10 min), regressioni bloccate.
+- Criteri di successo: copertura automatizzata di tutti i flussi critici, gestione e propagazione corretta degli errori, resilienza e recovery automatico, non regressione garantita.
+
+**Dipendenze Tecniche:**
+- **Postman**: definizione/esecuzione collezioni di test API, scripting avanzato, parametrizzazione.
+- **Newman**: esecuzione CLI delle collezioni Postman, reporting (JSON, JUnit, HTML), integrazione pipeline CI/CD.
+- **WireMock**: mocking/stubbing di dipendenze esterne, simulazione di risposte custom (successo, errore, latenze).
+- **Docker Compose**: orchestrazione ambienti di test isolati.
+- **Azure DevOps Pipeline**: automazione build, deploy, test, reporting centralizzato.
+- **Grafana/Power BI**: dashboard per visualizzazione risultati e correlazione con requisiti/milestone.
+- **Protocolli testati**: RESTful API (HTTP/HTTPS, OAuth2/SAML, CORS, rate limiting), eventi asincroni (MQTT, AMQP), callback/webhook (gestione retry, failure temporanei).
+
+**In sintesi**, il testing di integrazione in AETERNA è strutturato, automatizzato e tracciato, con strumenti e metriche che garantiscono affidabilità, resilienza e compliance, ponendo solide basi per i capitoli successivi su automazione, monitoraggio e gestione delle dipendenze.

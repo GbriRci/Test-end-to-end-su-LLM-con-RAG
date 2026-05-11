@@ -1,0 +1,32 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Modello di controllo accessi ibrido:** AETERNA adotta una convergenza tra RBAC (Role-Based Access Control) e ABAC (Attribute-Based Access Control), consentendo policy sia statiche (ruoli) sia dinamiche (attributi contestuali).
+- **Infrastruttura multilivello:** Il sistema è progettato per operare su Edge, Fog e Cloud, con policy adattive in base al contesto operativo.
+- **Identity Provider federato:** Utilizzo di un Identity Provider compatibile OAuth 2.0/OpenID Connect, con supporto a federazione (LDAP, SAML) per integrazione con sistemi esterni.
+- **Autenticazione forte:** MFA obbligatoria per risorse critiche, combinando password e challenge TPM hardware.
+- **Tokenizzazione granulare:** Accesso tramite token OAuth2.0 JWT con scope e validità temporale specifici, soggetti a rotazione e revoca in tempo reale.
+- **Audit logging su blockchain:** Tutte le operazioni sensibili sono tracciate su blockchain tramite smart contract, con hashing (SHA-3-256 + salt TPM) e timestamping NTP.
+- **Interfaccia amministrativa sicura:** Permette gestione permessi, policy temporanee, revoca token e audit, accessibile solo con MFA da ruoli autorizzati.
+- **Policy contestuali e workflow di approvazione:** Policy di accesso condizionate da orari, subnet, attributi, con workflow di escalation per risorse sensibili e notifiche/alert in tempo reale.
+
+**Variabili Introdotte:**
+- **Ruoli:** Data Manager, Analyst, System Operator, Auditor, Energy Trader.
+- **Permessi:** read, write, delete, approve, audit, execute.
+- **Attributi:** reparto, seniority, localizzazione, orario, stato device (TPM), progetto, MFA.
+- **Token JWT:** scope (es. read:dataset:projectAETERNA), exp (es. 15min), revocabilità.
+- **Bit-Energy ID:** Identificatore associato alle operazioni su blockchain.
+- **Hashing/Masking:** SHA-3-256 + salt TPM per dati sensibili nei log.
+- **Timestamp NTP:** Sincronizzazione temporale per audit log.
+
+**Dipendenze Tecniche:**
+- **OAuth 2.0/OpenID Connect:** Per autenticazione e federazione.
+- **LDAP/SAML:** Per federazione identità con sistemi esterni.
+- **TPM (Trusted Platform Module):** Per challenge hardware e validazione endpoint.
+- **OAuth2.0 JWT:** Per tokenizzazione e gestione sessioni.
+- **Smart contract su blockchain:** Per audit logging immutabile.
+- **NTP:** Per timestamping affidabile.
+- **Interfaccia amministrativa:** Per gestione centralizzata di permessi, policy e audit.
+- **Sistemi di alerting/notifica:** Per gestione eventi anomali e mitigazione automatica.
+
+Queste scelte abilitano sicurezza adattiva, auditabilità, conformità normativa e scalabilità, costituendo la base per i capitoli successivi su gestione identità, auditing e governance.

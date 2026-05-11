@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Processo di misurazione strutturato in 4 fasi:** (1) Identificazione stakeholder e KPI sociali, (2) Raccolta dati multi-livello, (3) Analisi (SROI, SCBA, ToC), (4) Reporting, feedback e iterazione.
+- **Integrazione multilivello nell’architettura AETERNA:**  
+  - **Edge (H-Node):** Raccolta log, questionari digitali (anche offline), invio dati via MQTT/TLS 1.3.
+  - **Fog (Microgrid):** Aggregazione dati comunitari, dashboard sociali, analisi comparativa tra microgrid.
+  - **Cloud:** Analisi avanzata (SROI, SCBA, ToC), storage dati anonimizzati, API per auditor/policy maker.
+- **Data Lake centralizzato:** Archiviazione dati (JSON, XML, PDF/UA), accesso granulare via API RESTful, routine di data cleaning/normalizzazione.
+- **Canali di raccolta dati:** Dashboard web/mobile (MFA, AES-256/TLS 1.3), API RESTful (batch da H-Node/Fog Node), chatbot AI, supporto offline (sync differita).
+- **Gestione privacy e sicurezza:** Anonimizzazione (UUID, SHA-256), segmentazione accessi (utente, community manager, auditor), audit trail completo, conformità Kyoto 2.0/GHG Protocol.
+
+**Variabili Introdotte (KPI e Metriche):**
+- **Inclusione digitale:** % popolazione con accesso attivo a H-Node.
+- **Riduzione digital divide:** Δ% accesso tra quartieri.
+- **Soddisfazione utente:** Scala Likert 1-5.
+- **Accesso servizi pubblici digitali:** N° utenti tramite H-Node.
+- **Partecipazione governance:** N° iniziative partecipative.
+- **Adozione kit vulnerabili:** % famiglie vulnerabili con kit installato.
+- **Altri indicatori:** Log di utilizzo, feedback qualitativi, baseline pre-implementazione.
+
+**Dipendenze Tecniche:**
+- **Compatibilità accessibilità:** Dashboard/questionari conformi WCAG 2.1.
+- **Tecnologie raccolta dati:** WebRTC (interviste), API RESTful (JSON/XML), chatbot AI, sincronizzazione offline.
+- **Sicurezza:** MFA, cifratura AES-256/TLS 1.3, hashing SHA-256.
+- **Analisi e reporting:** Routine BI/ML predittivo, generazione report PDF/UA, dashboard interattive.
+- **Integrazione dati esterni:** Import API da enti pubblici, report audit (Kyoto 2.0, GHG Protocol).
+- **Gestione accessi:** Segmentazione ruoli, audit trail, API per auditor esterni/policy maker.
+
+**Sintesi:**  
+La misurazione dell’impatto sociale in AETERNA si basa su un framework architetturale distribuito (Edge-Fog-Cloud), con raccolta e analisi dati strutturata, indicatori sociali definiti, sicurezza e privacy avanzate, e reporting iterativo, garantendo trasparenza, replicabilità e partecipazione attiva degli stakeholder.

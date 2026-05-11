@@ -1,0 +1,34 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **R&D come vettore strategico**: i progetti sono selezionati tramite una matrice che bilancia impatto, fattibilità tecnica e allineamento con la roadmap AETERNA, con focus su AI distribuita, blockchain e sicurezza avanzata.
+- **Orchestrazione Intelligente**: modulo containerizzato, deploy su Kubernetes in namespace dedicato con isolamento L7; policy engine per decisioni di scaling; workflow integrato con Prometheus (metriche), TensorFlow Serving (ML), API Kubernetes (allocazione risorse), audit centralizzato (Vault).
+- **Autenticazione Multi-Fattore**: architettura con moduli biometrici (fingerprint, facial recognition) in enclave SGX, matching biometrico tramite crittografia omomorfica (Paillier), gestione segreti e audit log su HashiCorp Vault, logging on-chain (Bit-Energy).
+- **Interoperabilità Semantica**: framework basato su ontologie RDF/OWL, semantic mapping engine per normalizzazione dati legacy, federated query processor (SPARQL) tra moduli User Management e Monitoring, API RESTful per servizi di traduzione semantica.
+
+**Variabili Introdotte:**
+- **Metriche custom**: CPU, memoria, I/O, latenze raccolte via Prometheus per autoscaling.
+- **Modelli ML**: regressione lineare multipla, Random Forest per previsione carichi.
+- **Template biometrici**: fingerprint/facial, cifrati e gestiti in enclave SGX.
+- **Ontologie condivise**: entità energetiche, utenti, eventi.
+- **Policy di priorità e override**: gestite via API RESTful (OpenAPI 3.0).
+- **Audit e explainability**: SHAP per tracciabilità decisionale, audit log centralizzato.
+
+**Dipendenze Tecniche:**
+- **Kubernetes**: orchestrazione, HPA custom, API per scaling.
+- **Prometheus & Grafana**: raccolta/monitoraggio metriche, logging accessi/query.
+- **TensorFlow Serving**: inferenza ML in produzione.
+- **HashiCorp Vault**: gestione segreti, audit log.
+- **SGX**: enclave per pre-elaborazione biometrica.
+- **Crittografia Paillier**: matching biometrico omomorfico.
+- **Bit-Energy Blockchain**: audit trail on-chain.
+- **RDF/OWL, SPARQL**: interoperabilità semantica, query federate.
+- **RESTful API (OpenAPI 3.0)**: interfacce di integrazione e controllo.
+- **SSO, RBAC**: controllo accessi ai servizi semantici.
+
+**Compliance e Validazione:**
+- **Kyoto 2.0**: privacy e segregazione dati.
+- **Testing robustezza**: replay/spoofing per autenticazione.
+- **Metriche di accettazione**: latenze, tassi di errore, tempi di query (vedi Tabella 2).
+
+Queste scelte abilitano scalabilità, sicurezza e interoperabilità, ponendo le basi tecniche per i capitoli successivi.

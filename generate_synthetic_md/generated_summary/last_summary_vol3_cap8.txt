@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Protocollo Proprietario:** Adozione di *Auto-Aeterna Connect* come standard interno per l’integrazione sicura, automatica e granulare tra H-Node (nodo edge domestico) e Smart-Plug certificati AETERNA, superando limiti di Zigbee/WiFi.
+- **Canale di Comunicazione:** Utilizzo di MRRE-LoRaWAN come canale wireless prioritario, con fallback su Zigbee; autenticazione a livello fisico e logico.
+- **Sicurezza by Design:** Integrazione nativa con modulo HSM AETERNA e policy Kyoto 2.0 per tutte le operazioni critiche (pairing, controllo, logging).
+- **Zero-Touch & Recovery:** Pairing e recovery automatizzati, minimizzando l’intervento utente e garantendo resilienza anche in caso di fault/reset.
+- **Provisioning Temporaneo:** Emissione di certificati X.509v3 custom, validi 24h, per accesso ai servizi edge e trading energetico.
+- **Compatibilità Retroattiva:** Supporto a Smart-Plug legacy tramite moduli bridge certificati AETERNA.
+- **Aggiornabilità:** Supporto OTA sicuro con verifica firma firmware e rollback automatico.
+
+**Variabili Introdotte:**
+- **UUID v4:** Identificatore univoco per ogni Smart-Plug, trasmesso nei beacon di discovery.
+- **Nonce TRNG:** Nonce generato da True Random Number Generator onboard per ogni sessione di discovery.
+- **Session Key ECDH:** Chiave di sessione temporanea generata tramite handshake ECDH (secp256k1).
+- **Certificato Temporaneo:** X.509v3 custom, firmato HSM, associato a contesto fisico e policy utente.
+- **Profilo Carico:** Parametri trasmessi post-pairing (potenza nominale, range operativo, priorità DSM).
+- **Log Firmati:** Tutte le operazioni critiche sono loggate, firmate e timestampate secondo Kyoto 2.0.
+
+**Dipendenze Tecniche:**
+- **HSM AETERNA:** Gestione chiavi, firma digitale, segregazione chiavi private, tamper detection.
+- **Policy Kyoto 2.0:** Enforcement di policy di sicurezza, rate-limiting, blacklist dispositivi compromessi.
+- **MRRE (LoRaWAN/Zigbee):** Stack di comunicazione wireless locale, propagazione eventi e log.
+- **RTC Kyoto 2.0:** Timestamping sicuro per challenge-response e logging.
+- **Fog/Cloud Layer:** Propagazione eventi di pairing, audit, orchestrazione AI predittiva.
+- **Firmware OTA:** Meccanismo di aggiornamento sicuro, verifica firma e rollback.
+
+**In sintesi:** L’architettura Auto-Aeterna Connect introduce un’integrazione sicura, automatica e predittiva dei carichi domestici, abilitando controllo granulare, auditabilità, resilienza e scalabilità, con forti dipendenze da HSM, policy Kyoto 2.0, stack MRRE e orchestrazione AI su Fog/Cloud.

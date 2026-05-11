@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Cap. 9)**
+
+**Decisioni Architetturali:**
+- **Privacy by Design & Default:** La privacy è integrata come principio trasversale nell’architettura Edge-Fog-Cloud di AETERNA, con impostazioni predefinite di massima protezione (opt-in/opt-out facilitato).
+- **Isolamento e Pseudonimizzazione:** I dati raccolti a livello Edge (H-Node) sono segregati e pseudonimizzati prima dell’aggregazione su Fog/Cloud, riducendo il rischio di re-identificazione.
+- **Classificazione e Data Lineage:** Ogni dato è etichettato (personale, sensibile, aggregato, anonimo) e tracciato tramite metadati persistenti; il ciclo di vita è auditato su blockchain privata.
+- **Gestione Granulare dei Consensi:** CMP modulare integrato su Edge e Fog, con registro consensi su blockchain e possibilità di consenso contestuale per finalità specifiche.
+- **Automazione DSR:** Portale web/mobile per Data Subject Requests, orchestrazione tramite BPMN 2.0, workflow automatizzato su tutti i livelli (Edge, Fog, Cloud), audit trail e notifiche automatiche al DPO.
+- **Audit e Monitoraggio:** Audit trimestrali automatizzati, report digitalmente firmati, dashboard Kibana/Grafana, workflow di collaborazione con DPO certificati.
+
+**Variabili Introdotte:**
+- **Token Vault:** Servizio per la gestione dei token di pseudonimizzazione a livello Fog, con salt dinamico periodico.
+- **Key Management Service (KMS):** Sistema distribuito per la gestione e rotazione automatica delle chiavi di cifratura.
+- **Orchestratore BPMN:** Motore di workflow per la gestione automatizzata delle DSR.
+- **CMP (Consent Management Platform):** Modulo per la raccolta, modifica e revoca dei consensi utente.
+- **Audit Trail Blockchain:** Registro immutabile di eventi e consensi, hashati e firmati digitalmente.
+- **Portale DSR:** Interfaccia per la gestione delle richieste degli interessati.
+
+**Dipendenze Tecniche:**
+- **Crittografia:** TLS 1.3+ per il trasporto, AES-256-GCM per dati a riposo, SHA-3-512 e chiavi asimmetriche ETSI per blockchain.
+- **Standard e Protocolli:** GDPR (Art. 4, 7, 13-22, 24, 30), ISO/IEC 27001, 27701, NIST SP800-188, ETSI, Kyoto 2.0, Bit-Energy.
+- **Timestamp e Firma Digitale:** Sincronizzazione NTP, firma digitale per audit e report.
+- **Dashboard e Reportistica:** Integrazione con Kibana/Grafana, esportazione PDF/CSV/JSON.
+- **Notifiche e Collaborazione DPO:** Alert automatici, workflow di validazione e firma digitale dei report.
+
+Queste scelte abilitano una gestione avanzata e verificabile della privacy, assicurando compliance normativa e trasparenza per utenti e stakeholder.

@@ -1,0 +1,28 @@
+**Riassunto Denso – Capitolo 7: Standard di Trasparenza Energetica (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Ledger Distribuito (DLT permissioned):** Tutti i flussi energetici sono registrati in tempo reale su un ledger distribuito, basato su consenso PBFT e supporto a smart contract per auditing automatizzato.
+- **Struttura dati:** Ogni transazione è serializzata in formato CBOR, firmata digitalmente e hashata secondo specifiche AETERNA-Interop.
+- **Auditing pubblico:** Accesso tramite dashboard e API RESTful, con autenticazione RBAC (certificato digitale). Le query sono processate dal modulo Public Audit Gateway, che interroga il ledger e restituisce risultati firmati/timestampati.
+- **Notifiche real-time:** Eventi critici notificati via WebSocket/AMQP a cittadini e Fog Leader; supporto a feed personalizzati.
+- **Sicurezza:** Crittografia end-to-end (TLS 1.3+), forward secrecy, pseudonimizzazione degli ID nodo, non-repudiation tramite audit log separato e firmato.
+- **API pubbliche:** Documentate OpenAPI 3.0, con rate limiting e RBAC; operazioni principali: interrogazione flussi, dettaglio transazione, certificati di sostenibilità, sottoscrizione eventi, accesso audit log.
+
+**Variabili Introdotte (Metadati di Tracciamento):**
+- **TransactionID:** UUID univoco per ogni transazione.
+- **SourceNodeID/DestinationNodeID:** ID pseudonimizzati dei nodi sorgente/destinatario.
+- **SourceType/DestinationType:** Tipologia fonte/destinazione (es. solare, EV, residenziale).
+- **EnergyAmount:** Quantità trasferita (Bit-Energy).
+- **SustainabilityLevel:** Percentuale energia rinnovabile (compliance Kyoto 2.0).
+- **PriorityLevel:** Livello di priorità (dinamica, assoluta, adattiva, temporanea).
+- **Timestamp:** Sincronizzato NTP distribuito, sub-secondo.
+- **DigitalSignature:** Firma digitale nodo sorgente.
+- **AuditCertificate:** Hash certificato di audit (opzionale).
+
+**Dipendenze Tecniche:**
+- **DLT permissioned (PBFT), smart contract, CBOR/JSON serialization, NTP distribuito, TLS 1.3+, WebSocket/AMQP, OpenAPI 3.0, RBAC, audit log separato, Public Audit Gateway.**
+- **Interfacce:** Dashboard web, API RESTful, canali di notifica real-time.
+- **Certificati digitali per autenticazione e firma.**
+
+**Implicazioni per i prossimi capitoli:**  
+Queste scelte abilitano auditing trasparente, contestazione automatizzata, compliance normativa e partecipazione civica, ponendo le basi per moduli di governance distribuita, resilienza e sostenibilità energetica.

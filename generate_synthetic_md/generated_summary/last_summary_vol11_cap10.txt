@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: L’integrazione della mobilità elettrica in AETERNA si basa su tre layer:
+  - **Edge Layer**: H-Node domestici, interfaccia tra EV, punti di ricarica e HEMS.
+  - **Fog Layer**: Gateway di quartiere per aggregazione dati, smart charging, validazione V2G su blockchain.
+  - **Cloud Layer**: Analisi predittiva, ottimizzazione macro, dashboard.
+- **Gestione distribuita**: HEMS locali orchestrano la ricarica e V2G in base a forecast energetici e preferenze utente, dialogando con Fog tramite MQTT e OCPP.
+- **Blockchain permissioned (Hyperledger Fabric)**: Tutte le transazioni energetiche (ricarica, V2G) sono tracciate e validate tramite smart contract, con remunerazione in Bit-Energy.
+- **Audit e compliance**: Audit trail completo, dashboard web-based, policy di accesso granulari.
+
+**Variabili Introdotte:**
+- **DID (Decentralized Identifier)**: Identità digitale per autenticazione utenti e dispositivi, con 2FA per amministratori.
+- **Kyoto 2.0 tagging**: Sistema di tracciabilità per sessioni di ricarica e V2G.
+- **Bit-Energy**: Token energetico per remunerazione e scambio.
+- **Forecast energetico**: Variabile predittiva (AI: LSTM, Random Forest) per ottimizzazione ricarica.
+- **Policy di smart charging/V2G**: Parametri configurabili (orari, costi, preferenze utente, stato di carica EV).
+- **Tariffe dinamiche**: Input per algoritmi di ottimizzazione (Bit-Energy).
+
+**Dipendenze Tecniche:**
+- **Protocolli**: OCPP 2.0.1 (interoperabilità punti di ricarica), MQTT/RESTful API (comunicazione H-Node, HEMS, Fog), V2G (per EV compatibili).
+- **Sicurezza**: TLS 1.3 (in transito), AES-256 (a riposo), DID, 2FA, policy granulari.
+- **Blockchain**: Hyperledger Fabric per smart contract, audit trail, remunerazione Bit-Energy, ZKP per privacy.
+- **HEMS**: Moduli integrati negli H-Node, interfaccia OCPP verso punti di ricarica, MQTT verso Fog.
+- **Wallet energetico**: Gestione autorizzazioni e accrediti Bit-Energy per utenti/prosumer.
+- **Dashboard**: Monitoraggio, audit, configurazione policy.
+
+**Sintesi:**  
+L’architettura AETERNA integra la mobilità elettrica tramite una struttura multilivello (Edge/Fog/Cloud), interoperabilità OCPP, gestione distribuita HEMS, sicurezza avanzata (DID, 2FA, cifratura), e tracciabilità blockchain (Hyperledger Fabric). Le variabili chiave includono forecast energetici AI, policy di smart charging/V2G, Kyoto 2.0 tagging e Bit-Energy. Le dipendenze tecniche principali sono OCPP 2.0.1, MQTT/RESTful API, moduli HEMS, wallet energetico e dashboard di audit. Queste scelte abilitano micro-reti urbane resilienti, trasparenti e orientate al prosumerismo.

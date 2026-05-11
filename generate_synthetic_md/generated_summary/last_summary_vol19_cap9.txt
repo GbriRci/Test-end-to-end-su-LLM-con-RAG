@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Gestione rischi integrata by design**: La gestione dei rischi legali e regolatori è nativamente integrata nei processi aziendali tramite workflow digitali, policy by design e automazione delle verifiche di compliance.
+- **Tassonomia dei rischi**: I rischi sono suddivisi in tre macro-categorie (compliance, contrattuale, reputazionale), ognuna con processi e strumenti dedicati.
+- **Automazione tramite smart contract**: Smart contract gestiscono monitoraggio, enforcement, notifiche e blocco automatico di processi critici in caso di violazioni.
+- **SIEM centralizzato**: Un Security Information and Event Management aggrega eventi da Edge, Fog e Cloud, alimentato da collector agent e integrato con dashboard di monitoraggio.
+- **Audit trail su blockchain**: Tutte le azioni rilevanti (remediation, accettazione clausole, incidenti) sono tracciate su Bit-Energy per garantire immutabilità e trasparenza.
+- **Segregazione dei ruoli**: Accesso regolato tramite OpenID Connect, con audit trail delle attività di auditor e responsabili legali.
+- **Ciclo di feedback**: I risultati di audit e remediation alimentano la revisione periodica di policy e checklist.
+
+**Variabili Introdotte:**
+- **KRI (Key Risk Indicator)**: Indicatori quantitativi/qualitativi per monitoraggio continuo (es. non conformità aperte, tempo di remediation, incidenti di accesso, dispute contrattuali).
+- **Matrice di rischio dinamica**: Valuta probabilità e impatto, aggiornata da feed normativi e incidenti.
+- **Livelli di severità**: Classificazione automatica degli incidenti (critica, alta, media, bassa).
+- **Checklist digitalizzate**: Kyoto 2.0, ISO/IEC 27001, ISAE 3402, versionate e integrate nei workflow.
+- **Motore AI**: Pattern recognition per identificazione precoce di rischi e simulazione scenari what-if.
+
+**Dipendenze Tecniche:**
+- **Blockchain Bit-Energy**: Per audit trail, tracciamento remediation, log di accettazione clausole e non conformità.
+- **Smart contract**: Per monitoraggio compliance, enforcement, notifiche, blocco processi e gestione dispute.
+- **SIEM**: Per raccolta eventi, correlazione anomalie, alert automatici.
+- **OpenID Connect**: Per gestione accessi e segregazione ruoli.
+- **Data Lake cifrato**: Per archiviazione report e log.
+- **Collector agent**: Per alimentare SIEM con eventi di compliance e anomalie.
+- **Dashboard centralizzata**: Per visualizzazione KRI, stato non conformità, scadenze regolatorie.
+- **Motore AI**: Per analisi predittiva e simulazione rischi.
+
+Queste scelte abilitano resilienza operativa, accountability, adattabilità normativa e cultura della compliance, costituendo la base tecnica e organizzativa per la gestione avanzata dei rischi nei capitoli successivi.

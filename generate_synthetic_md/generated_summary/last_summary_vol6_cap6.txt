@@ -1,0 +1,25 @@
+**Riassunto Denso – Capitolo 8: Ottimizzazione della Trasmissione e Distribuzione (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Rete multilivello**: architettura distribuita con sensori IoT industriali (IEC 61850) su nodi chiave (cabine, H-Node, Fog Node, SAE).
+- **Monitoraggio e controllo**: dati raccolti da sensori IoT inviati via MQTT (TLS 1.3, QoS 2) ai Fog Node, che aggregano e pre-elaborano; comunicazione Fog–Cloud tramite RESTful API (JSON), intra-Fog via Modbus TCP/IP e IEC 61850 MMS.
+- **Controllo distribuito e centralizzato**: SCADA esteso per supervisione multilivello, con workflow di autorizzazione, override manuale e logging immutabile (Bit-Energy Ledger).
+- **Sicurezza**: tutte le comunicazioni cifrate (TLS 1.3), autenticazione forte (AETERNA IAM), segregazione privilegi, compliance Kyoto 2.0.
+
+**Variabili Introdotte:**
+- **Parametri monitorati**: tensione, corrente (1s/100ms), fattore di potenza, armoniche (FFT, 5s), QoS (sag, swell, flicker, transitori), stato breaker/switch (500ms).
+- **Input algoritmi**: matrice di adiacenza, dati IoT, telemetria congestione, priorità utenza, calendario lavori, serie storiche carico, previsioni meteo, segnalazione fault, stato breaker, topologia aggiornata.
+- **Output algoritmi**: sequenze di switching, mappe di flusso ottimizzate, configurazioni di rete pre-validate, log di audit.
+
+**Dipendenze Tecniche:**
+- **Protocolli**: MQTT (Edge), Modbus TCP/IP e IEC 61850 MMS (Fog), RESTful API (Fog-Cloud), IEC 61850 MMS (SCADA).
+- **Algoritmi di routing energetico**:
+  - **SLP (Shortest Loss Path)**: Dijkstra pesato su perdite istantanee.
+  - **CAER (Congestion-Aware Energy Routing)**: algoritmo genetico per decongestionamento e priorità.
+  - **PLB (Predictive Load Balancing)**: AI LSTM per pre-allocazione percorsi.
+  - **FTR (Fault-Tolerant Reconfiguration)**: MILP per riconfigurazione rapida in caso di guasto.
+- **Interazione SCADA**: validazione multilivello, override manuale, logging su Bit-Energy Ledger, audit trail.
+- **Sistemi di audit e compliance**: Bit-Energy Ledger per logging immutabile, correlazione Kyoto 2.0.
+
+**Sintesi**:  
+L’architettura AETERNA adotta una rete di sensori IoT industriali e una suite di algoritmi di routing energetico dinamico (SLP, CAER, PLB, FTR) integrati con sistemi SCADA evoluti, garantendo ottimizzazione in tempo reale, resilienza, sicurezza e auditabilità. Le scelte architetturali e le variabili introdotte abilitano micro-reti scalabili, autarchiche e conformi agli standard di sicurezza e compliance, ponendo le basi tecniche per i capitoli successivi.

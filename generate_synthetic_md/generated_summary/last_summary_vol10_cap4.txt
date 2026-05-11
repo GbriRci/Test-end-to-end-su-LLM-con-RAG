@@ -1,0 +1,29 @@
+**Riassunto Denso – Gestione delle Risorse Critiche in AETERNA**
+
+**Decisioni Architetturali:**
+- **Classificazione Servizi:** I servizi sono suddivisi in Critici, Semi-Critici e Non Critici tramite una tassonomia gerarchica, gestita da un registro centralizzato sincronizzato tra Fog e Cloud, propagato agli Edge via gRPC.
+- **Policy Engine:** Motore centrale che gestisce l’allocazione dinamica delle risorse secondo policy dichiarative (YAML/JSON), versionate e distribuite via pipeline CI/CD integrate con disaster recovery.
+- **Orchestrazione Dinamica:** Integrazione nativa con Kubernetes tramite API, sfruttando QoS, ResourceQuota e PriorityClass per modificare limiti/requests, applicare label/taint, sospendere pod non critici e attivare replica sincrona dei dati.
+- **Preemption e Riallocazione:** Sequenza rigorosa di identificazione emergenza, valutazione policy, sospensione/riduzione risorse ai servizi non critici, riallocazione immediata ai servizi critici, con notifiche e notarizzazione su blockchain.
+- **Persistenza Stato:** Modifiche persistite localmente (SQLite, RocksDB, file system transazionale) e replicate sincronicamente tra Fog e Cloud; gestione conflitti tramite timestamp (NTP/PTP) e rollback automatico.
+- **Sicurezza e Audit:** Tutte le operazioni sono cifrate (TLS 1.3), autenticate (HMAC-SHA256, X.509), notarizzate su Bit-Energy Blockchain e auditabili tramite dashboard Grafana.
+
+**Variabili Introdotte:**
+- **Priorità Servizio:** Critica, Semi-Critica, Non Critica.
+- **Soglie Risorse:** Min/Max CPU, RAM, banda, storage per ogni servizio.
+- **Trigger Policy:** Eventi come picchi di carico, guasti, emergenze di sicurezza.
+- **Azioni Policy:** Preemption, fallback, sospensione, migrazione workload, replica dati.
+- **Stato Risorse:** Persistenza locale e sincronizzazione cloud.
+- **Timestamp e Priorità:** Per risoluzione conflitti e audit.
+
+**Dipendenze Tecniche:**
+- **Kubernetes:** Orchestrazione workload e gestione risorse.
+- **Prometheus:** Telemetria in tempo reale.
+- **Bit-Energy Blockchain:** Notarizzazione e tracciabilità azioni critiche.
+- **gRPC:** Comunicazione tra Edge, Fog e Cloud.
+- **Database Embedded (SQLite, RocksDB):** Persistenza locale stato.
+- **TLS 1.3, HMAC-SHA256, X.509:** Sicurezza e autenticazione.
+- **Grafana:** Dashboard audit e monitoraggio.
+- **CI/CD Pipeline:** Deploy e versionamento policy.
+
+Queste scelte abilitano resilienza, efficienza, sicurezza, auditabilità e scalabilità nella gestione delle risorse critiche della micro-rete AETERNA.

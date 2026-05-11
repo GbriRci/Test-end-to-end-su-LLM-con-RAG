@@ -1,0 +1,41 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Adozione di Message Broker Enterprise:** Apache Kafka e RabbitMQ sono scelti come backbone per la comunicazione asincrona tra microservizi, garantendo scalabilità, disaccoppiamento e resilienza.
+- **Architettura Distribuita:** Kafka in cluster multi-broker con partizionamento per dominio funzionale e replica ≥3; RabbitMQ in cluster con mirrored queues per code critiche.
+- **Pattern di Messaging Implementati:** 
+  - *Publish/Subscribe* per eventi di sistema (es. variazioni produzione, notifiche AI).
+  - *Queue-Based* per task asincroni e batch (es. settlement transazioni).
+  - *Event-Driven Orchestration* per coordinazione processi complessi (es. saghe distribuite, chaining eventi).
+- **Persistenza e Retention:** Log segmentati su SSD, retention parametrica per topic/code (default 7 giorni, ≥30 giorni per flussi critici/audit).
+- **Sicurezza:** Autenticazione forte (SASL/SCRAM per Kafka, mTLS per RabbitMQ), cifratura TLS end-to-end, ACL granulari, permessi per vhost.
+- **Monitoring Centralizzato:** Integrazione con Prometheus (JMX Exporter/plugin), alert su lag, error rate, depth code, DLQ occupancy.
+- **Configurabilità:** Policy e parametri gestiti centralmente (es. Consul, etcd).
+
+**Variabili Introdotte:**
+- `replication_factor` (≥3)
+- `energy_zone_id` (per partizionamento)
+- Retention per topic/coda (`retention_days`)
+- DLQ retention (`DLQ_retention`)
+- Retry policy: `max_attempts`, `initial_delay`, `jitter`
+- Idempotency key per consumer critici
+- `correlation_id` per correlazione eventi/saghe
+
+**Dipendenze Tecniche:**
+- **Broker:** Apache Kafka, RabbitMQ
+- **Storage:** SSD per log segmentati
+- **Sicurezza:** SASL/SCRAM, mTLS, TLS, ACL, vhost permissions
+- **Monitoring:** Prometheus, JMX Exporter, plugin RabbitMQ
+- **Orchestratori:** Temporal, Camunda (per saghe/event orchestration)
+- **Configuration Management:** Consul, etcd
+- **Ledger:** Bit-Energy Ledger per notarizzazione e auditabilità
+
+**Best Practice:**
+- Replica e partizionamento per fault tolerance e parallelismo
+- DLQ e retry policy su tutti i flussi critici
+- Persistenza abilitata e retention configurata per compliance/audit
+- Sicurezza obbligatoria su tutti i canali
+- Monitoring e alerting proattivo su metriche chiave
+- Idempotenza e deduplicazione su consumer critici
+
+**Impatto:** Queste scelte abilitano una micro-rete urbana intelligente, resiliente e adattiva, con governance efficace, auditabilità e supporto a evoluzione indipendente dei microservizi.

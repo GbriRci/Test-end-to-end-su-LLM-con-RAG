@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello (Edge, Fog, Cloud):** La pipeline ML è progettata per operare su tutti i livelli, con deployment centralizzato (Fog/Cloud) e locale (Edge) per inferenza in tempo reale.
+- **Pipeline ML integrata:** Composta da raccolta/pre-processing dati, selezione feature, addestramento/validazione modelli, deployment, monitoraggio/retraining, integrazione con pipeline AETERNA.
+- **Containerizzazione e orchestrazione:** Modelli ML containerizzati (Docker), orchestrati via Kubernetes; deployment differenziato (Edge: lightweight, Fog/Cloud: centralizzato).
+- **Aggiornamento modelli:** Rolling update e canary deployment per aggiornamenti sicuri e progressivi.
+- **Monitoraggio e retraining:** Logging predizioni, retraining batch/online, feedback loop, integrazione con alerting centralizzato e SIEM.
+- **Audit e tracciabilità:** Audit trail tramite blockchain privata (Bit-Energy), output in Protobuf (eventi critici) e JSON (reportistica), sicurezza tramite TLS 1.3 e autenticazione PKI.
+
+**Variabili Introdotte:**
+- **Dati di input:** Sensori IoT (H-Node, gateway, storage, inverter, smart meter), log di sistema, metriche di performance (latenza, throughput, stato batteria, potenza, tensione, errori trasmissione).
+- **Feature ingegnerizzate:** Rateo variazione tensione, rolling average (5 min), deviazione standard throughput, pattern sequenza errori.
+- **Metadati:** Timestamp NTP, origine, consenso, pseudonimizzazione.
+- **Output modelli:** Alert, classi errore, score anomalia, outlier score.
+
+**Dipendenze Tecniche:**
+- **Pre-processing:** Normalizzazione Kyoto 2.0, validazione Drools, gestione outlier/imputation (KNN, interpolazione), filtri robusti.
+- **Feature selection:** Wrapper (RFE con Random Forest), embedded (L1 su SVM), SHAP values, Gini importance, cross-validation multilivello.
+- **Modelli ML:** Random Forest (classificazione errori noti), SVM (pattern limite), Autoencoder (anomalie sconosciute), Isolation Forest (outlier).
+- **Validazione:** K-fold cross-validation stratificata, metriche (accuracy, precision, recall, F1, ROC-AUC), robustezza su dati Edge/Fog/Cloud.
+- **Sicurezza e interoperabilità:** Trasporto cifrato TLS 1.3, autenticazione PKI, segregazione dati sensibili, compatibilità con pipeline AETERNA (Kyoto 2.0, Drools), output standardizzati.
+- **Integrazione:** Alert automatici, dashboard dedicate, audit blockchain, compliance Bit-Energy.
+
+**Implicazioni per i prossimi capitoli:**  
+Le scelte architetturali e le variabili definite impongono la necessità di mantenere compatibilità con i protocolli e i formati dati AETERNA, garantire la scalabilità della pipeline ML, e assicurare la tracciabilità e la sicurezza delle predizioni e degli interventi. La modularità e l’integrazione multilivello saranno centrali per l’estensione futura delle funzionalità predittive.

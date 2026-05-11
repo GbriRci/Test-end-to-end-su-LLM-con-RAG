@@ -1,0 +1,29 @@
+**Riassunto Denso – Ottimizzazione della Ricarica Pubblica (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Gestione centralizzata a microservizi**: Supervisione granulare dei punti di ricarica tramite piattaforma AETERNA.
+- **Edge/Fog/Cloud computing**: Raccolta dati locale (HEMS su nodo Edge), aggregazione/validazione a livello Fog, analisi predittiva e policy dinamiche in Cloud.
+- **Comunicazione**: Protocollo MQTT su TLS 1.3 per trasmissione dati sensoriali; standard OCPP 2.0.1 per interoperabilità tra dispositivi e gestione multilivello.
+- **Sicurezza**: Cifratura AES-256 dei dati a riposo, autenticazione/autorizzazione tramite DID, 2FA per accesso amministrativo, ZKP per privacy su transazioni e geolocalizzazione.
+- **Blockchain**: Hyperledger Fabric con tagging Kyoto 2.0 per tracciabilità e compliance; remunerazione e incentivi tramite token Bit-Energy.
+- **App mobile**: Interfaccia utente principale per monitoraggio, gestione preferenze, notifiche e remunerazione.
+
+**Variabili Introdotte:**
+- **Parametri monitorati**: Corrente erogata (A), tensione (V), temperatura interna (°C), stato di connessione, codici guasto OCPP.
+- **Stato micro-rete**: Carico istantaneo, congestione, quota energia rinnovabile.
+- **Preferenze utente**: Priorità ricarica, limiti SoC, slot temporali.
+- **Valore Bit-Energy**: Incentivi/sconti in base a domanda, orario, uso rinnovabili.
+- **Previsioni AI**: Domanda locale, anomalie operative, probabilità guasto.
+- **Ticket manutenzione**: Generati automaticamente in caso di fault predetto.
+
+**Dipendenze Tecniche:**
+- **IoT**: Sensori integrati in ogni stazione, modulo HEMS.
+- **Protocolli**: MQTT (TLS 1.3), OCPP 2.0.1, RESTful API.
+- **AI/ML**: Modelli LSTM e Random Forest per forecast domanda, rilevamento anomalie, manutenzione predittiva.
+- **Sicurezza**: AES-256, DID, 2FA, ZKP.
+- **Blockchain**: Hyperledger Fabric, Kyoto 2.0, Bit-Energy.
+- **EMS**: Integrazione con Energy Management System di quartiere per demand response e bilanciamento carico.
+- **Mobile**: App AETERNA per interazione utente, notifiche, gestione sessioni e incentivi.
+
+**Sintesi:**  
+L’architettura AETERNA per la ricarica pubblica integra microservizi, IoT, AI, blockchain e sistemi di incentivazione, garantendo efficienza, scalabilità, sicurezza e compliance. Le variabili chiave (parametri operativi, stato rete, preferenze utente, incentivi) sono gestite tramite protocolli standard e algoritmi predittivi, con forte attenzione a interoperabilità, manutenzione predittiva e user experience.

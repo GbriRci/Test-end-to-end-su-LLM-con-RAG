@@ -1,0 +1,20 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Doppio livello di frontiera:** Utilizzo congiunto di API Gateway (es. Kong, Istio) e Ingress Controller Kubernetes-native (es. NGINX Ingress, Traefik) per la gestione del traffico in ingresso sia su Fog che Cloud.
+- **API Gateway** come punto di accesso centralizzato per tutte le richieste (Edge, Fog, Cloud), con funzioni di autenticazione/autorizzazione (OAuth2, JWT, mTLS, API Key), rate limiting, routing dinamico, trasformazione dati, monitoraggio/logging (Prometheus, Bit-Energy Ledger, SIEM), gestione errori (circuit breaker, retry, fallback).
+- **Ingress Controller** per gestione HTTP(S)/gRPC verso microservizi Kubernetes, con configurazione dinamica tramite risorse native (`Ingress`, `IngressRoute`, CRD), TLS termination (Let’s Encrypt, Vault), routing path/host-based, load balancing avanzato, policy di sicurezza (WAF, IP restriction, security headers), supporto a deployment resilienti (canary, blue/green).
+
+**Variabili Introdotte:**
+- **Policy di sicurezza:** Autenticazione (OAuth2/JWT, mTLS), rate limiting (per endpoint/client/IP), WAF (ModSecurity), restrizione IP/CIDR, enforcement header di sicurezza (HSTS, CSP, ecc.), audit/notarizzazione (Bit-Energy Ledger).
+- **Strategie di deployment:** Blue/green (switch tra ambienti paralleli), canary release (routing percentuale progressivo, rollback automatico su metriche di errore).
+- **Monitoraggio e scaling:** Metriche esportate (`http_requests_total`, `api_compatibility_failures_total`, ecc.), auto-scaling tramite HPA su CPU/memoria/latenza/errori, alerting SIEM.
+- **Configurazione dinamica:** Aggiornamento regole di routing e policy tramite annotazioni YAML e risorse Kubernetes, gestione automatica certificati TLS.
+
+**Dipendenze Tecniche:**
+- **Strumenti/tecnologie:** Kong/Istio (API Gateway), NGINX Ingress/Traefik (Ingress Controller), Cert-Manager/Vault (TLS), ModSecurity (WAF), Prometheus (monitoraggio), Bit-Energy Ledger (audit), SIEM (alerting), Health Probe (health check).
+- **Identity Provider centralizzato (IdP AETERNA)** per autenticazione federata.
+- **Integrazione con repository documentali e processi di governance** per validazione e tracciamento modifiche.
+
+**Sintesi:**  
+L’architettura AETERNA adotta una frontiera a doppio livello (API Gateway + Ingress Controller) per garantire sicurezza, resilienza, auditabilità e scalabilità nella gestione del traffico verso i microservizi, con policy e strategie di deployment avanzate, configurazione dinamica e integrazione con strumenti di monitoraggio, sicurezza e compliance.

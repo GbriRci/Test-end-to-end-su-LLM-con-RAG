@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Logging Immutabile:** AETERNA adotta un sistema di logging basato su Merkle Tree, che garantisce integrità, tracciabilità e non ripudiabilità degli eventi.
+- **Notarizzazione:** La Merkle Root di ogni batch temporale di log viene notarizzata e ancorata sul Bit-Energy Ledger, fornendo prova crittografica e valore legale.
+- **Batching Temporale:** I log sono aggregati in batch con intervalli diversi (Edge: 5 min, Fog: 1 min, Cloud: 30 sec), ottimizzando granularità e performance.
+- **Replica e Backup:** Log e Merkle Trees sono replicati su storage distribuito (IPFS/DFS) con accesso controllato.
+- **Accesso Audit:** L’accesso ai log per audit post-incidente è consentito solo tramite autenticazione forte e autorizzazione multilivello, con esposizione dei dati mediata da policy di Differential Privacy (DP) e privacy budget.
+- **Integrazione IDS:** Eventi di sicurezza generati dagli IDS sono loggati con priorità massima e notarizzati immediatamente.
+
+**Variabili Introdotte (Campi Evento di Log):**
+- `event_id` (UUIDv4): identificativo univoco dell’evento.
+- `timestamp` (ISO 8601 UTC): data/ora dell’evento.
+- `actor_id`: identificativo dell’entità (H-Node, Fog Node, Cloud Service).
+- `action_type`: tipologia di azione (es. DP_Query, Trading, IDS_Alert).
+- `parameters`: JSON con parametri rilevanti (es. epsilon, delta, privacy budget residuo).
+- `result`: esito dell’operazione (Success, Failure, Alert, ecc.).
+- `prev_hash`: hash SHA-256 dell’evento precedente (catena di integrità).
+- `audit_reference`: hash notarizzato su Bit-Energy Ledger.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Ledger:** Registro distribuito per notarizzazione delle Merkle Root.
+- **Merkle Tree:** Struttura dati per garantire integrità e verifica efficiente dei log.
+- **IPFS/DFS:** Storage distribuito per replica e backup dei log.
+- **IDS Distribuiti:** Generano eventi di sicurezza da loggare e notarizzare.
+- **API Privacy-aware:** Espongono solo i metadati necessari all’audit, rispettando privacy budget e policy DP.
+- **Kyoto 2.0 Compliance:** Tutte le operazioni sono tracciate e certificabili secondo standard interni e nazionali.
+
+**Utilità per i Prossimi Capitoli:**  
+Queste scelte architetturali e variabili sono fondamentali per la progettazione dei moduli di audit, compliance, gestione incidenti e privacy, e per l’integrazione con sistemi di sicurezza e storage distribuito.

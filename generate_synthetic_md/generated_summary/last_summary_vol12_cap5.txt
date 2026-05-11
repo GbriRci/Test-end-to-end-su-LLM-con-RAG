@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Layer di Integrazione:** AETERNA funge da layer abilitante tra micro-reti energetiche e sistemi di trasporto pubblico, garantendo interoperabilità tramite API RESTful standardizzate, gateway Fog e protocolli real-time.
+- **Sicurezza e Tracciabilità:** Tutte le comunicazioni sono cifrate (TLS 1.3/mTLS), con autenticazione tramite certificati X.509 (PKI interna). I gateway Fog sono dotati di HSM per firma/cifratura dei payload. Eventi critici sono notarizzati su blockchain Hyperledger Fabric.
+- **Ledgerizzazione:** Ogni evento di ricarica, scambio energetico e modifica di priorità è registrato su ledger blockchain, con correlazione nonce-timestamp-hash e compliance Kyoto 2.0/Bit-Energy.
+- **Ottimizzazione Predittiva:** Algoritmi Spark/TensorFlow pianificano le finestre di ricarica in base a turni, SoC, domanda prevista, disponibilità infrastrutture, priorità di servizio.
+- **Gestione Priorità:** Sistema parametrico e trasparente (smart contract su Hyperledger Fabric) per assegnazione priorità a mezzi pubblici, flotte di supporto e veicoli privati, con override manuale per operatori certificati.
+- **Coordinamento Multimodale:** API pubbliche per pianificazione viaggi multimodali, aggregando dati GTFS/SIRI e telemetria energetica.
+
+**Variabili Introdotte:**
+- **Dati Operativi:** posizione, SoC, priorità servizio, necessità ricarica, anomalie diagnostiche, turni pianificati, finestre di ricarica, domanda energetica prevista, stato infrastrutture.
+- **Parametri Energetici:** identificativi Bit-Energy, tag Kyoto 2.0, margine di sicurezza, slot riservati.
+- **Priorità Energetiche:** livelli (1: mezzi pubblici, 2: supporto, 3: privati/car-sharing), assegnabili dinamicamente.
+- **Nonce temporale, hash di sessione:** per integrità e auditabilità delle transazioni.
+
+**Dipendenze Tecniche:**
+- **Protocolli Standard:** GTFS (orari, linee, fermate), SIRI (posizione, eventi real-time), OCPP ≥1.6J (controllo stazioni ricarica), RESTful/WebSocket API (scambio dati), Custom AETERNA API (estensioni energetiche).
+- **Sicurezza:** TLS 1.3/mTLS, HSM Edge/Fog, Zero-Knowledge Proof per dati sensibili.
+- **Ledgerizzazione:** Hyperledger Fabric per notarizzazione eventi, smart contract per logica priorità e compliance.
+- **Sincronizzazione:** NTP/PTP per timestamp e identificazione sessioni.
+- **Backend Analitico:** Spark/TensorFlow per ottimizzazione predittiva.
+- **Interfacce:** API pubbliche per servizi multimodali e feedback utente.
+
+**Implicazioni per i Prossimi Capitoli:**  
+Le scelte architetturali e le variabili definite impongono la necessità di dettagliare: modelli dati, flussi di autenticazione, logica di smart contract, orchestrazione algoritmica, mapping tra standard e API custom, e strategie di scalabilità e resilienza.

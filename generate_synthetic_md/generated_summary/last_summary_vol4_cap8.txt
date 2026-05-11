@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche IDS Distribuito in AETERNA**
+
+**Decisioni Architetturali:**
+- **Topologia multilivello Edge–Fog–Cloud**: Gli IDS sono implementati sui nodi Fog, garantendo protezione locale e coordinata.
+- **IDS distribuito e cooperativo**: Ogni nodo Fog integra un modulo IDS autonomo ma interconnesso, con capacità di quarantena logica e comunicazione laterale (peer-to-peer).
+- **Machine Learning integrato**: L’Anomaly Detector utilizza modelli ML supervisionati e non supervisionati (Random Forest, Autoencoder, Isolation Forest) con apprendimento continuo (online learning).
+- **Quarantena logica granulare**: Isolamento temporaneo e selettivo di H-Node, gruppi, VLAN o subnet, attivato tramite consenso distribuito (>50% nodi adiacenti).
+- **Audit e notarizzazione**: Tutti gli eventi (detection, quarantena, recovery) sono registrati e notarizzati sul Bit-Energy Ledger per auditabilità e compliance Kyoto 2.0.
+
+**Variabili Introdotte:**
+- **Feature vector**: Insiemi di attributi estratti dal traffico (metriche temporali, volumetriche, semantiche, pattern API, Bit-Energy).
+- **Consensus Threshold**: Percentuale minima di nodi Fog che devono confermare un’anomalia per attivare la quarantena (tipicamente 50–80%).
+- **Scope quarantena**: Ambito di isolamento (H-Node, gruppo, VLAN, subnet).
+- **Durata quarantena**: Intervallo temporale di isolamento (5–60 min, auto-revocabile).
+- **Audit Level**: Grado di dettaglio della notarizzazione (Full, Summary, Minimal).
+- **Recovery Trigger**: Condizione per la reintegrazione (es. Clean-Slate Recovery completato).
+
+**Dipendenze Tecniche:**
+- **Peer Communication Layer**: Canale TLS con mutual authentication (certificati X.509 CA AETERNA), protocollo di gossip autenticato, alert digitalmente firmati.
+- **Network Policy Engine**: Enforcement di ACL temporanee, revoca IAM, blocco API, disconnessione H-Node.
+- **Bit-Energy Ledger**: Notarizzazione atomica di eventi per audit e compliance.
+- **Rate Limiting/Anti-Flood**: Meccanismi di throttling per prevenire DoS tra IDS.
+- **Dataset storici e incrementali**: Necessari per l’addestramento e l’aggiornamento dei modelli ML.
+- **Interfacce principali**: Network Stack, IAM Engine, SOC, TLS Stack.
+
+**Sintesi:**  
+L’architettura IDS distribuita di AETERNA si basa su moduli autonomi e cooperativi nei nodi Fog, con detection adattiva tramite ML, quarantena logica attivata da consenso distribuito, comunicazione sicura peer-to-peer, enforcement di policy granulari e notarizzazione su ledger. Queste scelte garantiscono resilienza, rapidità di risposta, auditabilità e compliance normativa, costituendo la base tecnica per la sicurezza delle micro-reti energetiche urbane.

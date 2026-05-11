@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: suddivisione in Edge (dispositivi, veicoli, stazioni di ricarica), Fog (gateway di quartiere) e Cloud (server centrale, blockchain).
+- **Edge**: ogni nodo integra un modulo hardware di sicurezza (HSM) per gestione chiavi; comunicazioni cifrate end-to-end.
+- **Fog**: gateway aggregano/validano transazioni, fungono da proxy sicuri, gestiscono sincronizzazione temporale (NTP) e nonce.
+- **Cloud**: gestione centralizzata PKI, auditing, certificati X.509, ledgerizzazione su blockchain permissioned (Hyperledger Fabric) con tagging Kyoto 2.0 per compliance.
+- **Ledgerizzazione**: tutte le transazioni energetiche sono registrate su Hyperledger Fabric, con hash crittografici e identificatori univoci.
+- **Tokenizzazione**: uso di smart contract per gestione Bit-Energy, remunerazione e incentivi.
+
+**Variabili Introdotte:**
+- **Nonce**: valore univoco per ogni transazione, associato a timestamp sincronizzato (NTP), per prevenire replay attack e garantire auditabilità.
+- **Certificati X.509**: ogni attore (veicolo, stazione, gateway, server) possiede un certificato digitale, gestito dalla PKI AETERNA.
+- **Bit-Energy**: token digitale per la contabilizzazione e incentivazione delle transazioni energetiche.
+- **Tag Kyoto 2.0**: metadato per la compliance e la tracciabilità delle transazioni su blockchain.
+
+**Dipendenze Tecniche:**
+- **Cifratura**: RSA-4096/ECC (P-384) per negoziazione chiavi e firma digitale; AES-256-GCM per cifratura simmetrica dati in transito e a riposo.
+- **Autenticazione**: handshake mutual TLS (mTLS) per tutte le sessioni; validazione certificati tramite OCSP; rinnovo automatico certificati via EST.
+- **Privacy**: uso di Zero-Knowledge Proof (ZKP) per transazioni sensibili (es. localizzazione, identità).
+- **Blockchain**: Hyperledger Fabric come ledger permissioned, smart contract per validazione automatica e gestione Bit-Energy.
+- **Standard e protocolli**: X.509, mTLS, AES-256, NTP, OCSP, EST, ZKP, Hyperledger Fabric, Kyoto 2.0.
+- **Hardware**: HSM obbligatorio su tutti i nodi Edge.
+
+**Sintesi**:  
+La sicurezza in AETERNA è strutturata su più livelli, con forti dipendenze da HSM, PKI centralizzata, blockchain permissioned, protocolli di cifratura/autenticazione avanzati e gestione granulare delle autorizzazioni, garantendo compliance, privacy, auditabilità e scalabilità.

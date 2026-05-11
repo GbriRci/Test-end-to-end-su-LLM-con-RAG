@@ -1,0 +1,27 @@
+**Riassunto Denso – Certificazione della Purezza Verde (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Processo Multi-livello:** La certificazione integra hardware (smart meter con TPM 2.0, sensori ambientali, HSM) e software (smart contract, DLT Bit-Energy, AI-driven validation), orchestrati tramite pipeline distribuite e notarizzazione blockchain.
+- **Edge-Fog-Cloud:** Architettura a livelli: raccolta e firma dati su Edge (smart meter), validazione multilivello su Fog (nodi di verifica, AI, auditing), notarizzazione e storage su Cloud/DLT.
+- **Sicurezza End-to-End:** Trasmissione dati via TLS 1.3 con MFA; firme digitali TPM/HSM; autenticazione e auditing continuo (Prometheus/Grafana).
+- **Smart Contract e DLT:** Certificazione e revoca automatica tramite smart contract su Bit-Energy; notarizzazione e storage certificati su blockchain.
+- **Tokenizzazione:** Associazione dei certificati a token Bit-Energy per abilitare trading P2P solo di energia certificata.
+- **Compliance e Audit:** Policy Kyoto 2.0 enforce tramite smart contract; auditing automatico/manuale; revoca certificati in caso di anomalie.
+
+**Variabili Introdotte:**
+- **Dati raccolti:** kWh prodotti (granularità 5min/1h), timestamp NTP, parametri ambientali (es. radiazione solare, vento), UUID produttore, firma digitale.
+- **Metadati di validazione:** hash SHA-256, timestamp, parametri di conformità, coordinate GPS.
+- **Certificato digitale:** JSON-LD firmato, associato a produttore, lotto energetico, fonte e parametri di produzione.
+- **Soglie di conformità:** emissioni CO2 (Kyoto 2.0), coerenza temporale (±30s), parametri ambientali compatibili, geofencing.
+
+**Dipendenze Tecniche:**
+- **Hardware:** Smart meter certificati (TPM 2.0), sensori ambientali, HSM.
+- **Protocolli:** TLS 1.3, MQTT/Modbus (Edge), RESTful API (Fog/Cloud), NTP protetto.
+- **Sicurezza:** PKI, RBAC, MFA, SHA-256 hashing.
+- **DLT/Blockchain:** Bit-Energy per notarizzazione, storage e smart contract.
+- **AI/ML:** Algoritmi di verifica coerenza e rilevamento anomalie.
+- **Auditing:** Prometheus/Grafana per monitoraggio, alerting e compliance.
+- **Storage:** Persistenza locale (Edge), replica Fog/Cloud, deduplicazione.
+- **Interoperabilità:** Standard aperti, API RESTful, supporto a fonti rinnovabili eterogenee.
+
+Queste scelte abilitano un sistema di certificazione energetica trasparente, sicuro, scalabile e conforme alle normative, fondamento per i successivi capitoli su trading, compliance e gestione delle micro-reti.

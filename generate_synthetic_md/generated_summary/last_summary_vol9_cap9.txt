@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Classificazione Incidenti:** Matrice di criticità automatizzata (impatto su disponibilità, integrità, confidenzialità), integrata tramite moduli AI-based a livello Fog e Cloud.
+- **Ruoli Operativi:** Suddivisione chiara (IRC, Fog Operator, Edge Maintainer, Data Steward, Comitato di Audit), con identificativi univoci (User_Stakeholder_ID) e tracciamento su smart contract Bit-Energy Blockchain.
+- **Gestione Incidenti:** Attivazione automatica runbook tramite smart contract; isolamento nodi compromessi via policy software-defined; snapshot e logging centralizzato (GitOps, Kibana).
+- **Backup e Recovery:** Backup incrementali/full, replica geodistribuita (Proof-of-Storage), erasure coding, versioning (Audit_Reference su GitOps), recovery prioritizzato per dati transazionali e log governance.
+- **Failover Multi-Livello:** Edge-Fog e Fog-Cloud failover automatico, con policy-as-code versionate su smart contract; bilanciamento predittivo AI.
+- **Disaster Recovery Testing:** Simulazioni trimestrali (DR Drill), Red Team annuali, blackout semestrali, test backup mensili; metriche RTO/RPO definite (<15min/<5min Fog, <1h/<10min Cloud).
+- **Comunicazione di Emergenza:** Protocolli standardizzati, canali multipli (Collaboration Portal, SMS crittografati, e-mail federata, forum, meeting), notarizzazione comunicazioni su blockchain.
+
+**Variabili Introdotte:**
+- **User_Stakeholder_ID:** Identificativo univoco per ruoli e tracciamento azioni.
+- **Audit_Reference, Feedback_ID, Meeting_ID, Forum_Thread_ID:** Variabili per versioning, audit trail, e tracciamento comunicazioni/test.
+- **RTO/RPO:** Recovery Time/Point Objective, metriche di successo recovery.
+- **Policy-as-Code:** Regole di failover e recovery versionate e auditabili.
+- **Proof-of-Storage:** Validazione integrità backup distribuiti.
+
+**Dipendenze Tecniche:**
+- **AI-based Anomaly Detection:** Moduli integrati su Fog/Cloud per rilevamento incidenti.
+- **Bit-Energy Blockchain:** Smart contract per tracciamento ruoli, notarizzazione eventi, auditabilità procedure e comunicazioni.
+- **GitOps/Kibana:** Logging centralizzato, versioning backup, audit trail.
+- **Storage Distribuito Multi-Sito:** Replica e sincronizzazione backup, erasure coding.
+- **Software-Defined Networking:** Segmentazione e isolamento automatico nodi compromessi.
+- **Collaboration Portal & Multi-Channel Alerting:** Gestione notifiche, escalation e comunicazioni di emergenza.
+
+Queste scelte abilitano resilienza, trasparenza, auditabilità e scalabilità per la continuità operativa delle micro-reti AETERNA, ponendo solide basi tecniche e organizzative per i capitoli successivi.

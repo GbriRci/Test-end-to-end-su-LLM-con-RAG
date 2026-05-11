@@ -1,0 +1,32 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Livello Cloud AETERNA)**
+
+**Decisioni Architetturali:**
+- Il livello Cloud è progettato come infrastruttura elastica, geo-ridondante e containerizzata, orchestrata tramite Kubernetes (K8s) su ambienti multi-cloud e private cloud federati.
+- I dati sono aggregati da cluster Fog tramite pipeline ETL resilienti (Apache NiFi, Kafka Streams), normalizzati secondo lo schema Kyoto 2.0, e archiviati in data lake distribuiti (S3 compatibile, HDFS).
+- Persistenza dati: utilizzo di data warehouse (ClickHouse, BigQuery) per query OLAP e database vettoriali (Milvus, Pinecone, Weaviate) per pattern di consumo.
+- Analisi batch e real-time tramite Spark e Flink; modelli AI centralizzati (PyTorch, TensorFlow) per previsioni, simulazioni e ottimizzazioni.
+- Output strategici inviati ai Fog cluster tramite API REST/gRPC e smart contract Kyoto 2.0 su blockchain Bit-Energy.
+- Policy e governance centralizzate tramite OPA (Open Policy Agent) e smart contract su DLT Bit-Energy.
+
+**Variabili Introdotte:**
+- Metadati energetici: consumo, produzione, transazioni Bit-Energy, anomalie AI.
+- Metadati contestuali: geolocalizzazione, timestamp, tag di quartiere, codici Kyoto 2.0.
+- Pattern di consumo rappresentati come vettori ad alta dimensionalità (es. 128D embedding tramite autoencoder/LSTM/transformer).
+- Parametri di sicurezza: TLS 1.3, AES-256, RBAC, audit logging.
+- Policy di segregazione: namespace Kubernetes, multi-tenant isolation.
+- Parametri di ottimizzazione: modelli AI (LSTM, Prophet, Transformer), algoritmi evolutivi (genetic, swarm), parametri di mercato (fee, incentivi, penalità).
+
+**Dipendenze Tecniche:**
+- Orchestrazione: Kubernetes (K8s).
+- ETL: Apache NiFi, Kafka Streams.
+- Storage: S3 compatibile, HDFS, ClickHouse, BigQuery.
+- Database vettoriali: Milvus, Pinecone, Weaviate.
+- AI/ML: PyTorch, TensorFlow, Spark, Flink.
+- Sicurezza: TLS 1.3, AES-256, RBAC, audit logging su DLT Bit-Energy.
+- Compliance e governance: Kyoto 2.0, OPA, smart contract su blockchain Bit-Energy.
+- Protocolli: gRPC/Protobuf, API REST.
+- Feature engineering: embedding AI-driven (autoencoder, LSTM encoder, transformer).
+- Query semantiche: approximate nearest neighbor, cosine similarity.
+
+**Sintesi:**  
+Il livello Cloud di AETERNA centralizza la raccolta, normalizzazione e analisi predittiva dei metadati energetici tramite un’architettura containerizzata e federata, abilitando strategie di ottimizzazione macroeconomica, compliance e governance avanzata, grazie a database vettoriali, AI centralizzata e policy engine integrati.

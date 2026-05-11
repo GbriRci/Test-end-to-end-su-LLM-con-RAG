@@ -1,0 +1,35 @@
+**Riassunto Denso – Protocollo di Sincronizzazione 'Pulse' (max 300 parole)**
+
+**Decisioni Architetturali:**
+- Pulse è un layer trasversale agli stack Edge, Fog e Cloud, operante sia in modalità push (broadcast periodico) che pull (on-demand).
+- Architettura a tre livelli:
+  - **Pulse Master** su ogni H-Node (con ricevitore GPS) per ricezione, validazione e propagazione timestamp.
+  - **Pulse Aggregator** (Fog): aggrega, valida e seleziona il timestamp di riferimento tramite majority voting.
+  - **Pulse Cloud Orchestrator**: mantiene la mappa globale dello skew, fornisce feedback di correzione ai cluster Fog.
+- Sincronizzazione primaria tramite GPS (NMEA GPRMC), fallback su peer sync/NTP/PTP in caso di perdita segnale.
+- Meccanismi di resilienza: anti-jamming, anti-spoofing (cross-check GPS/NTP/PTP, soglia 10ms), watchdog hardware/software, replica locale dello stato temporale (buffer circolare 1024 timestamp).
+- Interfacce/API: Pulse API (gRPC/Protobuf), Pulse Metrics (Prometheus/OpenTelemetry), Pulse Events (Kafka Streams/REST).
+
+**Variabili Introdotte:**
+- **Frequenza broadcast Pulse:** 100ms (configurabile via policy Kyoto 2.0).
+- **Skew massimo tollerato:** 5ms (Edge), 10ms (Fog).
+- **Timeout GPS:** 500ms.
+- **Fallback temporale:** Peer sync/NTP/PTP.
+- **Algoritmo aggregazione:** Majority Voting (Fog).
+- **Anti-spoofing threshold:** 10ms.
+- **Storage history temporale:** 1024 timestamp.
+- **Export metriche:** Prometheus/OTel, tagging Kyoto 2.0.
+
+**Dipendenze Tecniche:**
+- Ricevitori GPS a basso consumo su H-Node, parsing NMEA GPRMC.
+- Stack di comunicazione Edge-Fog-Cloud interoperabile.
+- Algoritmi di consensus (es. Fast Paxos customizzato) per correzione skew a livello Fog.
+- Integrazione con sistemi di audit e compliance (Kyoto 2.0, Bit-Energy).
+- Esportazione e tracciamento metriche via Prometheus/OpenTelemetry, eventi via Kafka/REST, tracciamento Jaeger/OpenTracing.
+
+**Impatto:**
+- Sincronizzazione sub-millisecondo, riduzione collisioni/race condition.
+- Resilienza tramite fallback e sicurezza anti-jamming/spoofing.
+- Ottimizzazione predittiva dei flussi energetici.
+- Auditabilità e compliance tramite replica locale e metriche esportate.
+- Scalabilità e interoperabilità grazie a modularità e API standardizzate.

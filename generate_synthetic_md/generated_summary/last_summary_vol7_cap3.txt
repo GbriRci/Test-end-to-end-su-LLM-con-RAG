@@ -1,0 +1,28 @@
+**Riassunto Denso – Marketplace Decentralizzato AETERNA**
+
+**Decisioni Architetturali:**
+- **Layer Applicativo Distribuito:** Il marketplace opera come layer distribuito su una permissioned blockchain (Hyperledger Fabric), con interazione tramite API RESTful/gRPC e interfacce utente.
+- **Tokenizzazione Energetica:** L’energia è rappresentata da token NFT-like, scambiati tramite smart contract.
+- **Order Book Decentralizzato:** Ordini visibili e replicati sincronicamente su tutti i nodi validatori, con consistenza strong eventual.
+- **Algoritmi di Matching:** Implementazione di Continuous Double Auction (CDA) e, opzionalmente, Batch Auction, come smart contract `EnergyTrade`.
+- **Atomic Swap:** Settlement atomico tramite commit-reveal e time-lock, garantendo simultaneità e non ripudiabilità.
+- **Payment Layer:** Utilizzo di token Bit-Energy per i pagamenti, con possibilità di conversione in fiat o altri asset.
+- **Auditabilità:** Replica di tutti gli eventi su ELK Stack per audit e compliance.
+- **Gestione Anomalie:** Routine di lock-down automatiche per doppia emissione, double spending, o incongruenze di certificazione.
+- **Accesso e Sicurezza:** Sistema RBAC con multi-signature (>50% validatori per operazioni critiche), identity registry per mappatura ruoli/chiavi pubbliche.
+
+**Variabili Introdotte:**
+- **Order:** Struttura dati principale con campi: `OrderID` (UUID v4), `PartecipanteID` (PubKey), `Tipo` (vendita/acquisto), `TokenID[]`, `QuantitàTotale` (kWh), `PrezzoUnitario` (Bit-Energy/kWh), `FinestraTemporale` ([start, end]), `TimestampCreazione`, `Stato` (attivo, parziale, completato, annullato), opzionali `ComplianceKyoto2`, `CertificatoHash`, `TagIncentivo`.
+- **Bit-Energy:** Token digitale per settlement, tracciato con hash, timestamp, firma digitale, e flag di compliance.
+- **Ruoli:** Prosumer, Consumatore, Operatore, Validatore, Auditor, gestiti tramite RBAC e identity registry.
+
+**Dipendenze Tecniche:**
+- **Blockchain:** Hyperledger Fabric (permissioned).
+- **Smart Contract:** `EnergyTrade` per matching, validazione, settlement.
+- **API:** RESTful/gRPC per interazione con il marketplace.
+- **ELK Stack:** Per logging, audit e compliance.
+- **Protocollo di Atomic Swap:** Commit-reveal, time-lock.
+- **Sicurezza:** ECDSA per firme digitali, SHA-3 per hash certificati.
+- **RBAC/Multi-signature:** Enforcement delle policy di accesso e consenso distribuito.
+
+Queste scelte abilitano automazione, trasparenza, compliance normativa (es. Kyoto 2.0), resilienza e scalabilità, ponendo le basi tecniche per i capitoli successivi.

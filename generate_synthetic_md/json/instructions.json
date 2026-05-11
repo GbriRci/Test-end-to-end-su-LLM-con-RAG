@@ -1,0 +1,200 @@
+[
+  {
+    "volume_id": 1,
+    "volume_title": "Visione Globale e Filosofia di AETERNA",
+    "chapters": [
+      {
+        "id": 1,
+        "title": "Origini del Progetto AETERNA",
+        "description": "Analisi del fallimento delle reti centralizzate nel 2024 e nascita del paradigma AETERNA.",
+        "specific_instructions": "Cita il protocollo di Kyoto 2.0 e la necessità di micro-grid autonome."
+      },
+      {
+        "id": 2,
+        "title": "Il Manifesto della Democrazia Energetica",
+        "description": "I 7 pilastri della sovranità energetica applicata ai contesti urbani.",
+        "specific_instructions": "Definisci il concetto di 'Bit-Energy' come unità di misura del valore."
+      },
+      {
+        "id": 3,
+        "title": "Sostenibilità Quantistica",
+        "description": "Come il framework riduce l'entropia del sistema di distribuzione energetica.",
+        "specific_instructions": "Includi una tabella comparativa tra reti tradizionali e AETERNA."
+      },
+      {
+        "id": 4,
+        "title": "Obiettivi Socio-Tecnici",
+        "description": "Impatto della rete sulla riduzione della povertà energetica nei distretti pilota.",
+        "specific_instructions": "Focus sulla ridistribuzione automatica dei carichi sociali."
+      },
+      {
+        "id": 5,
+        "title": "Etica Algoritmica nel Bilanciamento",
+        "description": "Linee guida morali per l'IA che decide chi deve ricevere energia in caso di scarsità.",
+        "specific_instructions": "Descrivi l'algoritmo 'Fair-Share' in pseudo-codice."
+      },
+      {
+        "id": 6,
+        "title": "Integrazione con la Smart City 2030",
+        "description": "Posizionamento di AETERNA come sistema operativo energetico della città futura.",
+        "specific_instructions": "Usa un diagramma Mermaid per mostrare i punti di contatto con i trasporti."
+      },
+      {
+        "id": 7,
+        "title": "Standard di Trasparenza Energetica",
+        "description": "Meccanismi di auditing pubblico dei flussi di elettroni tramite ledger distribuito.",
+        "specific_instructions": "Spiega come ogni cittadino può interrogare la rete."
+      },
+      {
+        "id": 8,
+        "title": "Analisi della Decentralizzazione Radicale",
+        "description": "Perché il controllo centrale è sostituito dall'autofagia dei nodi locali.",
+        "specific_instructions": "Usa termini come 'Swarm Intelligence' energetica."
+      },
+      {
+        "id": 9,
+        "title": "Politiche di Green-Whitelisting",
+        "description": "Selezione automatica delle fonti di approvvigionamento basata sulla purezza dell'origine.",
+        "specific_instructions": "Definisci i livelli di 'Purezza Verde' da 1 a 10."
+      },
+      {
+        "id": 10,
+        "title": "Roadmap Filosofica a Lungo Termine",
+        "description": "Transizione verso una rete energetica senziente e auto-riparante.",
+        "specific_instructions": "Introduci il concetto di 'Coscienza di Rete'."
+      }
+    ]
+  },
+  {
+    "volume_id": 2,
+    "volume_title": "Architettura di Sistema a Tre Livelli",
+    "chapters": [
+      {
+        "id": 1,
+        "title": "Analisi dello Stack Tecnologico",
+        "description": "Panoramica delle tecnologie utilizzate nei livelli Edge, Fog e Cloud.",
+        "specific_instructions": "Includi una matrice di compatibilità tra i sistemi operativi dei nodi."
+      },
+      {
+        "id": 2,
+        "title": "Livello Edge: Il Fronte dell'Azione",
+        "description": "Dettaglio dell'elaborazione dati al millisecondo sui dispositivi domestici.",
+        "specific_instructions": "Descrivi l'architettura ARM-based dei micro-controller Edge."
+      },
+      {
+        "id": 3,
+        "title": "Livello Fog: Coordinamento di Quartiere",
+        "description": "Come i cluster di edifici formano una mente collettiva per il bilanciamento rapido.",
+        "specific_instructions": "Includi un diagramma Mermaid del clustering dinamico dei nodi Fog."
+      },
+      {
+        "id": 4,
+        "title": "Livello Cloud: Big Data e Strategia",
+        "description": "Centralizzazione dei metadati per l'ottimizzazione macroeconomica a livello nazionale.",
+        "specific_instructions": "Spiega l'uso di database vettoriali per la memorizzazione dei pattern di consumo."
+      },
+      {
+        "id": 5,
+        "title": "Gestione delle Latenze Critiche",
+        "description": "Definizione degli SLA per la comunicazione tra i livelli in scenari di crisi.",
+        "specific_instructions": "Tabella delle latenze: Edge (<10ms), Fog (<100ms), Cloud (<2s)."
+      },
+      {
+        "id": 6,
+        "title": "Protocollo di Sincronizzazione 'Pulse'",
+        "description": "Sistema di clock universale per il coordinamento delle fasi di immissione in rete.",
+        "specific_instructions": "Descrivi l'uso di segnali GPS per la sincronizzazione dei tempi."
+      },
+      {
+        "id": 7,
+        "title": "Ridondanza e Failover Architetturale",
+        "description": "Cosa succede quando il Cloud cade: transizione automatica verso la Fog-Independence.",
+        "specific_instructions": "Schema di fallback in caso di interruzione dei cavi sottomarini."
+      },
+      {
+        "id": 8,
+        "title": "API Gateway e Interoperabilità",
+        "description": "Esposizione dei servizi di rete per sviluppatori terzi tramite GraphQL.",
+        "specific_instructions": "Fornisci un esempio di query per ottenere lo stato energetico di un distretto."
+      },
+      {
+        "id": 9,
+        "title": "Virtualizzazione delle Risorse (V-Energy)",
+        "description": "Creazione di istanze virtuali di energia per il test di carico.",
+        "specific_instructions": "Focus sulla containerizzazione dei processi energetici tramite Docker-Grid."
+      },
+      {
+        "id": 10,
+        "title": "Ottimizzazione dei Carichi Cross-Layer",
+        "description": "Bilanciamento intelligente tra potenza computazionale e potenza elettrica.",
+        "specific_instructions": "Introduci il termine 'Compute-to-Watt Efficiency'."
+      }
+    ]
+  },
+  {
+    "volume_id": 3,
+    "volume_title": "Specifiche Hardware dell'H-Node",
+    "chapters": [
+      {
+        "id": 1,
+        "title": "Design Industriale dell'H-Node v4",
+        "description": "Ergonomia e dissipazione termica del dispositivo core installato nelle abitazioni.",
+        "specific_instructions": "Descrivi l'uso di materiali riciclati e schermatura EMI."
+      },
+      {
+        "id": 2,
+        "title": "Il Chipset 'Aeterna-Core X1'",
+        "description": "Dettagli sulla CPU proprietaria ottimizzata per calcoli crittografici energetici.",
+        "specific_instructions": "Elenca le frequenze di clock e il numero di core dedicati all'IA."
+      },
+      {
+        "id": 3,
+        "title": "Sensori di Corrente ad Alta Fedeltà",
+        "description": "Usa sensori ad effetto Hall per il campionamento a 100kHz.",
+        "specific_instructions": "Tabella delle tolleranze di errore nelle letture di voltaggio."
+      },
+      {
+        "id": 4,
+        "title": "Modulo di Comunicazione Multi-Radio",
+        "description": "Supporto simultaneo per WiFi 7, Zigbee 4.0 e LoRaWAN.",
+        "specific_instructions": "Diagramma Mermaid del routing interno tra le radio."
+      },
+      {
+        "id": 5,
+        "title": "Interfaccia Utente Oled e Feedback Tattile",
+        "description": "Come l'utente interagisce fisicamente con il nodo per le emergenze.",
+        "specific_instructions": "Descrivi i codici colore dei LED di stato (Verde, Blu, Ambra, Rosso)."
+      },
+      {
+        "id": 6,
+        "title": "Alimentazione di Backup e Super-condensatori",
+        "description": "Gestione della continuità operativa dell'H-Node durante i blackout totali.",
+        "specific_instructions": "Spiega la scarica controllata dei condensatori per il 'Last Gasp' data upload."
+      },
+      {
+        "id": 7,
+        "title": "Modulo HSM (Hardware Security Module)",
+        "description": "Protezione fisica delle chiavi private per gli smart contract.",
+        "specific_instructions": "Descrivi i trigger di auto-distruzione dei dati in caso di apertura forzata."
+      },
+      {
+        "id": 8,
+        "title": "Integrazione con Carichi Domestici (Smart-Plug)",
+        "description": "Protocollo di pairing rapido per lavatrici e pompe di calore.",
+        "specific_instructions": "Usa lo standard 'Auto-Aeterna Connect'."
+      },
+      {
+        "id": 9,
+        "title": "Firmware e Aggiornamenti OTA",
+        "description": "Gestione del dual-boot per garantire aggiornamenti sicuri senza downtime.",
+        "specific_instructions": "Spiega la procedura di rollback automatico in caso di errore checksum."
+      },
+      {
+        "id": 10,
+        "title": "Ciclo di Vita e Riciclo dell'Hardware",
+        "description": "Piano di fine vita dell'H-Node e recupero dei metalli rari.",
+        "specific_instructions": "Inserisci le specifiche ISO per il riciclo elettronico."
+      }
+    ]
+  }
+]

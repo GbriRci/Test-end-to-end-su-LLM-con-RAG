@@ -1,0 +1,28 @@
+**Riassunto Denso – Gestione delle Identità e Federazione in AETERNA**
+
+**Decisioni Architetturali:**
+- **IAM Federato Multilivello:** AETERNA adotta un’infrastruttura IAM multilivello, centralizzata per policy e auditing, ma federata per interoperabilità tra domini (Edge, Fog, Cloud, partner esterni).
+- **Standard di Federazione:** Utilizzo combinato di SAML 2.0 (SSO tra domini organizzativi), OpenID Connect (autenticazione web/API), OAuth 2.0 (delega autorizzazioni), LDAP Bridge (integrazione directory legacy).
+- **Modello di Autorizzazione:** RBAC centralizzato con ruoli granulari segregati per dominio/livello; ABAC esteso per casi avanzati (es. accesso condizionato).
+- **Automazione Workflow IAM:** Provisioning/deprovisioning automatizzati tramite motore workflow (es. Apache Airflow), integrati in pipeline CI/CD.
+- **Audit e Compliance:** Logging cifrato e geo-ridondato (S3), hash degli eventi critici su blockchain Bit-Energy per immutabilità e non ripudio; compliance GDPR e ISO/IEC 27001.
+- **Propagazione Policy:** Policy RBAC propagate ai domini federati tramite API sicure e sincronizzazione periodica.
+- **Gestione Ruoli Cross-Dominio:** Mapping esplicito dei ruoli federati, segregazione privilegi tra domini, revoca tempestiva e tracciata.
+
+**Variabili Introdotte:**
+- **Ruoli Federati:** “HNodeOperator” (Edge), “FogAdmin” (Fog), “CloudAuditor” (Cloud), “PartnerService” (Esterno), con permessi locali e cross-dominio differenziati.
+- **Token e Assertion:** SAML assertion, OIDC ID/access token, OAuth access token con scope limitato.
+- **Attributi Contestuali:** Localizzazione, orario, stato dispositivo per ABAC.
+- **Eventi IAM:** Onboarding, cambio ruolo, offboarding, accesso federato.
+
+**Dipendenze Tecniche:**
+- **Protocolli:** SAML 2.0, OpenID Connect, OAuth 2.0, LDAP.
+- **Motore Workflow:** Apache Airflow (o equivalente).
+- **Storage:** S3 geo-ridondato per log, Bit-Energy Blockchain per hash eventi.
+- **CI/CD:** Integrazione dei workflow IAM nella pipeline di sviluppo.
+- **API Sicure:** Per sincronizzazione policy e ruoli tra domini federati.
+- **MFA/Certificati Digitali:** Per autenticazione forte su IdP.
+
+**Implicazioni per i Prossimi Capitoli:**
+- L’architettura IAM federata e automatizzata è prerequisito per la scalabilità, la compliance e la governance distribuita delle micro-reti AETERNA.
+- Le variabili (ruoli, token, attributi) e le dipendenze tecniche (protocolli, storage, blockchain, workflow engine) saranno fondamentali per la progettazione di moduli di sicurezza, auditing, orchestrazione e gestione dei servizi nei capitoli successivi.

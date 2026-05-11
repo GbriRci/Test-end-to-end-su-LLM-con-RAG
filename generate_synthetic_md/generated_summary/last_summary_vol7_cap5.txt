@@ -1,0 +1,31 @@
+**Riassunto Denso – Gestione delle Identità Digitali in AETERNA**
+
+**Decisioni Architetturali:**
+- **PKI Interna Integrata con Blockchain Permissioned:** Utilizzo di una Certification Authority (CA) interna, con governance multi-signature, integrata con Hyperledger Fabric per emissione, rinnovo e revoca certificati X.509.
+- **Smart Contract per Identity Registry e RBAC:** Gestione on-chain di identità, permessi e ruoli tramite smart contract dedicati (`IdentityRegistry`, `RBACPolicy`).
+- **Pseudonimizzazione e Privacy by Design:** Dati identificativi pseudonimizzati (hashing/salting) e archiviati in vault crittografici; identificativi blockchain associati a metadati minimali, in conformità GDPR.
+- **Autenticazione Multifattoriale (MFA):** Challenge-response ECDSA come primo fattore; OTP o biometria come secondo fattore per operazioni sensibili; session management con token firmati e timeout configurabile.
+- **Delegazione e Segregazione dei Poteri:** Delega di permessi gestita via smart contract, con condizioni (scope, durata, revocabilità) registrate on-chain; segregazione enforced anche tramite governance multi-signature.
+- **Onboarding/Offboarding Sicuri e Auditabili:** Procedure strutturate con verifica KYC/AML, generazione chiavi lato client (preferibilmente in HSM), logging dettagliato, validazione anti-phishing/replay, e audit trail digitale.
+- **Integrazione con Identità Federata:** Supporto a SAML/OpenID Connect tramite bridge di trust tra CA, mapping ruoli e sincronizzazione CRL per interoperabilità con sistemi esterni.
+- **Auditabilità e Compliance:** Logging di tutte le operazioni critiche sia on-chain che su ELK Stack, con firma digitale ECDSA e report di audit automatici.
+
+**Variabili Introdotte:**
+- **Ruoli:** Prosumer, Operatore Fog, Amministratore, Auditor, Sistema Esterno.
+- **Permessi Granulari:** Trading, gestione asset, bilanciamento, upgrade, revoca, consultazione log, federazione.
+- **Certificati Digitali:** X.509 associati a chiavi ECDSA generate lato client.
+- **Token di Sessione:** Firmati digitalmente, con timeout e revoca immediata.
+- **CRL (Certificate Revocation List):** Per propagazione revoche.
+- **Metadati Minimali:** Associati a identificativi blockchain per privacy.
+
+**Dipendenze Tecniche:**
+- **Hyperledger Fabric:** Blockchain permissioned per registrazione identità e permessi.
+- **CA Interna:** Servizio ad alta affidabilità, integrato con smart contract.
+- **Smart Contract (IdentityRegistry, RBACPolicy):** Per gestione identità, ruoli, permessi, deleghe.
+- **ELK Stack:** Per logging, auditabilità e compliance.
+- **Secure Enclave/HSM:** Per generazione e conservazione sicura delle chiavi.
+- **SAML/OpenID Connect:** Per federazione identità con sistemi esterni.
+- **KYC/AML Module:** Per verifica identità durante onboarding.
+- **Vault Crittografici:** Per conservazione sicura dati pseudonimizzati.
+
+Queste scelte abilitano sicurezza, tracciabilità, compliance normativa e interoperabilità, ponendo le basi per i successivi capitoli su governance, automazione e federazione.

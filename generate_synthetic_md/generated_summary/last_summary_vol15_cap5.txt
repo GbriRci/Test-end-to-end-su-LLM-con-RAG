@@ -1,0 +1,27 @@
+**Riassunto Denso – Gestione delle Sessioni di Webinar (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Pianificazione e Scheduling:** Modulo integrato nel portale documentale (Docusaurus/MkDocs), sincronizzato con calendari esterni (CalDAV, Google Calendar API). Supporto a eventi ricorrenti, notifiche (Web Push API, SMTP), pubblicazione pubblica/privata in base a RBAC.
+- **Workflow di Approvazione:** Proposta tramite form autenticato (OAuth2.0/SAML2.0), validazione automatica (linting, metadati, compliance tassonomia), revisione umana, merge e notarizzazione su blockchain Bit-Energy (hash SHA-256, timestamp, user_id).
+- **Erogazione Webinar:** Infrastruttura containerizzata (es. Jitsi Meet custom, BigBlueButton, Zoom API bridge) su stack DevOps AETERNA, basata su WebRTC/RTMP. Registrazione automatica (audio/video, chat), interattività (chat, sondaggi, Q&A), accessibilità (responsive UI, PWA, ASR engine, sottotitoli multilingua), sicurezza (accesso autenticato, RBAC, audit trail Bit-Energy).
+- **Monitoraggio e Metriche:** Telemetria su partecipazione, engagement, logging strutturato e notarizzato (bitenergy_hash), API REST per estrazione dati, integrazione con BI/dashboarding (Grafana, Kibana).
+- **Archiviazione e On-Demand:** Storage distribuito (S3-compatible, CDN), versionamento materiali, indicizzazione semantica, accesso regolato da RBAC, policy di retention configurabili, audit trail Bit-Energy.
+- **Reportistica:** Report post-evento (partecipazione, feedback, domande), esportazione (PDF/CSV/JSON), dashboard per Education/Admin, badge e gamification.
+- **Audit e Compliance:** Tracciamento completo su blockchain Bit-Energy (proposta, scheduling, delivery, archiviazione, accesso), compliance Kyoto 2.0, alert su violazioni, esportazione dati via endpoint REST protetti.
+
+**Variabili Introdotte:**
+- Metadati sessione: `webinar_id`, `topic`, `speaker_id`, `scheduled_at`, `duration`, `target_audience`, `rbac_level`, `bitenergy_hash`, `material_id`, `proposal_id`, `badge_id`.
+- Metriche: numero partecipanti, durata media, engagement chat/sondaggi, download materiali, feedback, badge assegnati.
+
+**Dipendenze Tecniche:**
+- **Frontend/Portale:** Docusaurus, MkDocs.
+- **Autenticazione:** OAuth2.0, SAML2.0.
+- **DevOps/CI:** Jenkins, GitHub Actions.
+- **Blockchain/Audit:** Bit-Energy.
+- **Streaming:** WebRTC, RTMP.
+- **API:** REST API, Web Push API.
+- **Storage/Distribuzione:** S3-compatible, CDN.
+- **BI/Monitoring:** Grafana, Kibana.
+- **Compliance:** Kyoto 2.0, Bit-Energy.
+
+Queste scelte garantiscono tracciabilità, sicurezza, scalabilità e compliance, ponendo le basi tecniche e procedurali per i capitoli successivi.

@@ -1,0 +1,36 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura a tre livelli (Edge-Fog-Cloud):**
+  - **Edge (H-Node):** Raccolta e calcolo metriche individuali tramite agenti OPA e Prometheus.
+  - **Fog (Quartiere):** Aggregazione, validazione, normalizzazione metriche, gestione dispute.
+  - **Cloud:** Analisi macro, calcolo reward/penalità, emissione token, audit/reportistica.
+- **Blockchain e notarizzazione:** Tutte le transazioni di reward e penalità sono notarizzate tramite Kyoto 2.0 e tracciate su blockchain Bit-Energy.
+- **Smart contract:** Implementati in Solidity (o equivalente Bit-Energy VM), con funzioni di audit, dispute resolution, tracciamento penalità, configurabili via governance DAO.
+- **Trasparenza:** Regole e policy versionate in repository GitOps, consultabili via dashboard Kibana.
+
+**Variabili Introdotte:**
+- **Metriche di reward (con ponderazione configurabile):**
+  - Uptime Nodo (%)
+  - Produzione Energetica Netta (kWh)
+  - Partecipazione a Votazioni (#)
+  - Segnalazione di Bug (#)
+  - Contributi a Sviluppo (#)
+  - Attività di Mentorship (#)
+  - Compliance Policy (Boolean/Flag)
+- **Ponderazioni default:** Uptime 0.30, Produzione 0.25, Votazioni 0.10, Bug 0.15, Dev 0.10, Mentor 0.05, Compliance 0.05 (modificabili da DAO).
+- **FattoreCorrezione:** Coefficiente per evitare gaming, applica penalità/bonus.
+- **Identificativi tracciamento:** Reward_ID, Penalty_ID, Tx_ID, Audit_Reference.
+- **Penalità automatiche:** Inattività (>14 giorni), comportamenti fraudolenti, non compliance policy.
+
+**Dipendenze Tecniche:**
+- **OPA e Prometheus:** Raccolta metriche lato Edge.
+- **Kyoto 2.0:** Notarizzazione transazioni e policy.
+- **Bit-Energy Blockchain:** Tracciamento reward/penalità, emissione token.
+- **Smart contract Solidity/Bit-Energy VM:** Logica di calcolo e distribuzione reward, gestione penalità.
+- **Governance DAO:** Configurazione ponderazioni, policy-as-code, revisione parametri.
+- **Kibana:** Audit e reportistica pubblica.
+- **GitOps:** Versionamento regole e policy.
+
+**Sintesi:**  
+Il sistema di incentivazione AETERNA si basa su un’architettura Edge-Fog-Cloud, metriche oggettive e configurabili, smart contract su blockchain Bit-Energy, notarizzazione Kyoto 2.0, raccolta dati tramite OPA/Prometheus, audit e trasparenza tramite Kibana e GitOps, con governance DAO per la gestione dinamica delle regole. Penalità e dispute sono automatizzate e tracciate, garantendo sicurezza, equità e scalabilità.

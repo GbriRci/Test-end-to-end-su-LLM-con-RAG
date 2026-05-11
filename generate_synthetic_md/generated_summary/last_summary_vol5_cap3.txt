@@ -1,0 +1,29 @@
+**Riassunto Denso – Sicurezza delle Interfacce (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Autenticazione federata** tramite JWT, emessi da un Identity Provider (IdP) conforme a OAuth 2.0/OpenID Connect, con validazione centralizzata su gateway API e service mesh (Istio).
+- **Autenticazione mutua TLS (mTLS)** obbligatoria per le API interne, gestita da Istio con rotazione automatica dei certificati X.509.
+- **Autorizzazione centralizzata** tramite RBAC (Role-Based Access Control) con repository versionato delle policy, accessibile via REST sia dal gateway API che dai microservizi.
+- **Enforcement delle policy** in tempo reale tramite middleware integrato su gateway API e service mesh, con mapping dinamico degli scope OAuth su permessi applicativi.
+- **Rate limiting** e **depth limiting** (per GraphQL) configurabili tramite policy centralizzate per prevenire brute-force e DoS.
+- **Logging distribuito** su stack ELK (Elasticsearch, Logstash, Kibana), integrato con notarizzazione su Bit-Energy Ledger per operazioni critiche.
+- **Retention e accesso ai log** stratificati per rischio/criticità, protetti da RBAC e audit trail.
+- **Notarizzazione** delle operazioni critiche tramite Bit-Energy Ledger per garantire immutabilità e tracciabilità.
+
+**Variabili Introdotte:**
+- **Claims JWT**: `sub`, `actor_id`, `scope`, `exp`, `aud`, `risk_level`, `energy_zone_id` (custom per contesto energetico).
+- **Policy RBAC**: ruoli (`admin`, `operator`, `reader`, `auditor`), risorse, azioni, condizioni (es. `energy_zone_id`).
+- **Metadati di logging**: `timestamp`, `user_id`/`service_id`, `actor_id`, `endpoint`, `HTTP_method`, `status_code`, `resource_id`, `correlation_id`, `risk_level`, `error_code`.
+- **Scope OAuth**: granularità su permessi applicativi (es. `energy:trade:write`).
+
+**Dipendenze Tecniche:**
+- **OAuth 2.0/OpenID Connect** per autenticazione federata.
+- **JWT** (RS256) per token di autenticazione.
+- **Istio** come service mesh per mTLS, enforcement policy e gestione certificati.
+- **Repository policy RBAC** versionato e accessibile via REST.
+- **ELK Stack** per logging distribuito.
+- **Bit-Energy Ledger** per notarizzazione e audit critico.
+- **REST/GraphQL** come interfacce di comunicazione.
+- **GDPR, Kyoto 2.0** come riferimenti normativi per compliance e data protection.
+
+Queste scelte garantiscono sicurezza multilivello, compliance normativa, auditabilità, scalabilità e resilienza, costituendo la base per la governance e la sostenibilità della piattaforma AETERNA.

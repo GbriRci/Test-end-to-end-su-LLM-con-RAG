@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Engagement strutturato e ricorsivo**: Coinvolgimento sistematico degli stakeholder tramite tavoli di lavoro tematici, workshop partecipativi, campagne di comunicazione e piattaforme digitali collaborative.
+- **Paradigmi di open innovation e governance distribuita**: Approccio orientato a trasparenza, inclusività e accountability, con gestione delle aspettative e impatto integrata nei workflow.
+- **Digitalizzazione e automazione dei processi**: Utilizzo di strumenti digitali per raccolta, tracciamento e analisi dei feedback, con workflow automatizzati per gestione richieste e notifiche.
+- **Tracciabilità e audit**: Log immutabile delle interazioni su blockchain Bit-Energy (hash SHA-256 dei ticket), garantendo auditabilità e trasparenza.
+- **Monitoraggio continuo**: Dashboard KPI in tempo reale (Power BI), alert automatici su soglie di soddisfazione, e canali di comunicazione bidirezionale (forum, AMA, webinar, helpdesk multilingua).
+
+**Variabili Introdotte:**
+- **Stakeholder_weight, Urgency, KPI_impact**: Variabili per scoring e prioritizzazione automatica delle richieste.
+- **Engagement_rate, NPS, Response_time**: KPI monitorati per valutare soddisfazione e performance del sistema di engagement.
+- **Tagging semantico**: Attributi per classificazione automatica dei feedback.
+- **Profilo_stakeholder**: Gestione personalizzata di accessi e dashboard sul portale.
+
+**Dipendenze Tecniche:**
+- **Piattaforme e strumenti**:
+  - **Jira** (issue tracking, workflow ticketing)
+  - **Miro/Mural** (co-design digitale)
+  - **GitLab** (repository versionato, documentazione)
+  - **Mailchimp + Salesforce CRM** (comunicazione automatizzata, gestione contatti)
+  - **Portale Stakeholder** (OAuth2.0, SAML per autenticazione; API RESTful per interoperabilità; PostgreSQL e S3 per persistenza dati)
+  - **Google Forms, chatbot AI** (raccolta feedback multicanale)
+  - **spaCy, NLTK, pipeline ETL** (analisi semantica, NLP, topic modeling)
+  - **Power BI** (dashboard KPI, visualizzazione dati)
+  - **Blockchain Bit-Energy** (audit log, tracciabilità)
+- **Integrazione**: API RESTful per interoperabilità con sistemi legacy istituzionali e repository dati centralizzato; webhook per automazione notifiche.
+- **Persistenza dati**: PostgreSQL, S3, Data Lake (Parquet), blockchain per log immutabili.
+- **Sicurezza e accesso**: Autenticazione federata (OAuth2.0, SAML), dashboard personalizzate, gestione profili.
+
+**In sintesi**, l’architettura di engagement di AETERNA si basa su workflow digitali integrati, automazione, tracciabilità blockchain, analisi avanzata dei feedback e monitoraggio KPI, con forti dipendenze da piattaforme collaborative, strumenti di analisi dati e sistemi di autenticazione/interscambio dati.

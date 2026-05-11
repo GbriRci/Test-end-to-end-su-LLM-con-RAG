@@ -1,0 +1,35 @@
+**Riassunto Denso – Gestione della Portabilità dei Dati in AETERNA**
+
+**Decisioni Architetturali:**
+- **API RESTful di Portabilità:** Servizi versionati e sicuri, disponibili su livelli Fog e Cloud, con delega selettiva su Edge.
+- **Autenticazione e Autorizzazione:** OAuth2/OpenID Connect con MFA; enforcement combinato RBAC+ABAC; validazione runtime tramite Compliance Engine.
+- **Logging Immutabile:** Ogni richiesta loggata su blockchain Kyoto 2.0, con audit trail consultabile da DPO/steward via dashboard.
+- **Formati di Esportazione:** Supporto JSON (RFC 8259) e CSV (RFC 4180); ogni esportazione include metadati strutturati in JSON.
+- **Workflow Automatizzato:** Richiesta, verifica consenso (Consent_ID), validazione policy, estrazione/anonimizzazione dati, logging su blockchain, notifica utente.
+- **Sicurezza Avanzata:** Rate limiting, alerting SIEM/AI, revoca/blacklisting portabilità, cifratura end-to-end con chiave one-time.
+- **Integrazione Consensi/Preferenze:** Solo dati con consenso attivo; rispetto preferenze utente; versionamento consensi nei metadati.
+- **Trasmissione a Terzi:** Invio diretto a nuovi titolari tramite autenticazione reciproca e smart contract Kyoto 2.0.
+- **Interoperabilità:** Schemi dati allineati al Data Catalog centralizzato, mapping semantico per importazione in sistemi esterni.
+
+**Variabili Introdotte:**
+- **Bit-Energy_ID:** Identificatore univoco asset esportato.
+- **Consent_ID:** Token consenso associato alla richiesta.
+- **Owner/Steward:** Responsabili e referenti asset.
+- **Policy_Version:** Versione policy applicata.
+- **Schema:** Riferimento schema dati esportati.
+- **Sensibilità:** Livello sensibilità dato.
+- **Hash_Payload:** Hash SHA-256 del file esportato.
+- **Audit_Reference:** Link audit trail su blockchain.
+- **Origine:** Livello architetturale dati (Fog/Edge/Cloud).
+- **Finalità:** Scopo trattamento (es. portabilità).
+- **Timestamp:** Data/ora esportazione.
+
+**Dipendenze Tecniche:**
+- **Blockchain Kyoto 2.0:** Logging, audit, smart contract per trasmissione a terzi.
+- **Compliance Engine:** Validazione consensi e policy.
+- **SIEM/AI:** Monitoraggio pattern anomali.
+- **Data Catalog Centralizzato:** Allineamento schemi e mapping semantico.
+- **Dashboard DPO/Steward:** Consultazione audit trail e gestione incident response.
+- **Cifratura e Canali Sicuri:** Protezione dati esportati e trasmissione chiavi.
+
+Queste scelte abilitano portabilità sicura, tracciabile e interoperabile, garantendo compliance, efficienza e resilienza per le micro-reti energetiche urbane.

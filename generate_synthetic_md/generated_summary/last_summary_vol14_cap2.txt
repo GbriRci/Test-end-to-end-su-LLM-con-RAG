@@ -1,0 +1,32 @@
+**Riassunto Denso – Telemetria Avanzata (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Agenti di Telemetria**: Implementati come microservizi containerizzati, orchestrati via Kubernetes e distribuiti su nodi Edge (H-Node), Fog e Cloud. Posizionamento strategico per copertura capillare.
+- **Pipeline Dati**: I dati attraversano moduli di pre-elaborazione (filtri, normalizzazione Kyoto 2.0, validazione Drools), buffering locale intelligente, trasporto sicuro, validazione multilivello, storage e audit su blockchain privata.
+- **Modalità di Trasmissione**: Push per eventi critici (fault, superamento soglie), Pull per raccolta periodica e trend analysis. Adaptive Polling dinamico tramite algoritmi AI.
+- **Integrazione**: Compatibilità con pipeline multilivello AETERNA, SIEM interni, e sistemi di audit trail.
+
+**Variabili Introdotte:**
+- **Metriche Monitorate**: Latenza, throughput, errori di trasmissione, potenza, tensione, stato batteria, log eventi, segnali di allarme.
+- **Soglie Critiche**: Latenza >10ms, perdita pacchetti >0.1%, congestione >80% banda.
+- **Metadati**: Origine, timestamp NTP, consenso, pseudonimizzazione.
+- **Buffering**: Code locali per resilienza a disconnessioni temporanee.
+
+**Dipendenze Tecniche:**
+- **Protocolli di Acquisizione**:
+  - *SNMPv3*: Per dispositivi di rete (switch, router, gateway H-Node), con autenticazione HMAC-SHA-2, cifratura AES-256, MIB personalizzate.
+  - *NetFlow v9/IPFIX*: Per esportazione flussi di traffico, analisi predittiva, compatibilità SIEM.
+  - *MQTT/HTTP2*: Per H-Node domestici.
+- **Formati Dati**:
+  - *JSON*: Per dati non time-critical, storage e audit.
+  - *Protobuf*: Per eventi real-time e critici, riduzione overhead.
+- **Trasporto Sicuro**:
+  - *TLS 1.3*: Cifratura end-to-end, gestione certificati PKI interna.
+  - *Autenticazione a doppio fattore*: Certificati PKI + token hardware/software.
+- **Motore di Validazione**: Drools per validazione sintattica/semantica.
+- **Blockchain Privata**: Per audit trail, tracciabilità e compliance.
+- **Cluster Analitici**: Per aggregazione e correlazione NetFlow/IPFIX.
+- **Orchestrazione**: Kubernetes per gestione e scalabilità agenti.
+
+**Impatto e Razionale**:
+- Supervisione granulare e tempestiva, resilienza tramite buffering e replica, sicurezza e compliance (Kyoto 2.0, Bit-Energy), interoperabilità con sistemi esistenti, abilitazione di automazione e governance intelligente delle micro-reti.

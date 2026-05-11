@@ -1,0 +1,37 @@
+**Riassunto Denso – Privacy by Design in AETERNA (max 300 parole)**
+
+**Decisioni architetturali:**
+- **Privacy by Design** integrata sin dall’analisi dei requisiti, con DPIA obbligatorio per ogni nuova funzionalità o modifica pipeline ETL.
+- **Architettura multilivello (Edge, Fog, Cloud):**  
+  - *Edge (H-Node):* Minimizzazione e pseudonimizzazione locale (hash SHA-3-256, TPM), raccolta solo dati essenziali.
+  - *Fog:* Aggregazione/anonimizzazione dati a livello di quartiere, eliminazione riferimenti diretti.
+  - *Cloud:* Conservazione dati aggregati/pseudonimizzati, audit trail immutabile (blockchain), masking.
+- **Crittografia end-to-end:**  
+  - *In-transit:* TLS 1.3 obbligatorio (MQTT, OPC-UA, REST/GraphQL).
+  - *At-rest:* AES-256 GCM, chiavi gestite via HSM, rotazione periodica.
+  - *End-to-end:* Dati sensibili cifrati dall’origine, mai decrittati nei nodi intermedi.
+- **Gestione accessi:**  
+  - DAO centralizzato per policy, logging, auditing.
+  - IAM multi-livello (RBAC/ABAC), autenticazione forte (X.509 + TPM), token OAuth2.0 JWT temporanei.
+- **API Design:**  
+  - Principio di minimizzazione by interface, rate limiting, tracciamento accessi, versioning rigoroso.
+- **Logging & Audit:**  
+  - Log sensibili hashati (SHA-3-256 + salt), masking pattern-based, audit trail immutabile (blockchain, timestamp NTP).
+- **Gestione preferenze utente:**  
+  - Preferenze cifrate (AES-256 GCM), accesso via 2FA (password + challenge TPM), workflow tracciato per revoca/portabilità consensi.
+
+**Variabili introdotte:**
+- *Identificativi pseudonimi* (hash utente, chiavi pubbliche blockchain)
+- *Token temporanei* (OAuth2.0 JWT)
+- *Policy di retention, minimizzazione, accesso* per ogni categoria dati
+- *Matrice di rischio* associata ai dati personali
+- *Scope e validità* dei token di accesso
+- *Workflow tracciato* per consensi e portabilità
+
+**Dipendenze tecniche:**
+- *Hardware:* ARM Cortex-M7, TPM, HSM
+- *Standard/Protocolli:* Kyoto 2.0, GDPR, TLS 1.3, AES-256 GCM, SHA-3-256, X.509, OAuth2.0 JWT, OPC-UA, REST/GraphQL, NTP
+- *Software:* DAO, IAM, RBAC/ABAC, moduli ML (Isolation Forest, AutoEncoder), blockchain per audit trail
+
+**Sintesi:**  
+L’architettura AETERNA adotta un approccio proattivo e multilivello alla privacy, integrando minimizzazione, pseudonimizzazione, crittografia, auditabilità e gestione granulare degli accessi, garantendo compliance normativa, resilienza e fiducia degli stakeholder.

@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Piattaforma formativa cloud-native** integrata con l’infrastruttura AETERNA, accessibile tramite autenticazione federata (SSO) e wallet utente (BET-ID).
+- **Contenuti formativi versionati** tramite repository GitLab (licenza AETERNA-OSL), con workflow CI/CD per aggiornamenti automatici e auditabilità.
+- **Profilazione utenti** tramite RBAC (Role-Based Access Control) e smart contract su blockchain Bit-Energy, garantendo trasparenza e immutabilità delle credenziali (badge digitali, attestati NFT-like).
+- **Adaptive learning**: modulo AI che personalizza i percorsi formativi in base ai dati raccolti (survey, log, performance, audit blockchain).
+- **Erogazione multicanale**: e-learning SCORM/xAPI, webinar (WebRTC, Zoom API), simulatori/lab virtuali, forum moderati, campagne gamificate su app mobile/social.
+- **Monitoraggio e valutazione**: raccolta dati tramite survey, analytics, tracking blockchain; indicatori di efficacia (completamento, incremento competenze, adozione comportamenti virtuosi, partecipazione attiva).
+
+**Variabili Introdotte:**
+- **Cluster utente**: domestici (H-Node/cittadini), operatori tecnici, stakeholder istituzionali, partner tecnologici.
+- **Credenziali formative**: badge digitali, attestati NFT-like.
+- **Moduli formativi**: obbligatori/facoltativi, aggiornati secondo roadmap tecnologica e normativa (es. Kyoto 2.0, nuove funzionalità Fog/Edge).
+- **Indicatori di efficacia**: tasso completamento, delta competenze, engagement campagne, partecipazione forum, adozione comportamenti (es. autoconsumo, trading P2P).
+
+**Dipendenze Tecniche:**
+- **Integrazione SSO** con wallet BET-ID.
+- **Compatibilità SCORM/xAPI** per tracciamento e-learning.
+- **Integrazione API**: WebRTC/Zoom per webinar, RESTful per esercitazioni su dashboard.
+- **Smart contract su Bit-Energy** per profilazione, emissione badge/certificazioni NFT-like, audit trail.
+- **Repository GitLab** per versionamento contenuti e workflow CI/CD.
+- **Modulo AI** per adaptive learning e suggerimento percorsi personalizzati.
+- **Canali di distribuzione**: app mobile AETERNA, social media, forum/community moderati.
+
+**Sintesi:**  
+L’architettura formativa AETERNA si fonda su una piattaforma cloud-native, integrata con sistemi di autenticazione federata e wallet, che gestisce contenuti versionati e personalizzati tramite RBAC e smart contract su blockchain. L’erogazione multicanale e il monitoraggio continuo, supportati da AI e workflow CI/CD, garantiscono aggiornamento, tracciabilità e adattamento dinamico dei percorsi, in linea con le evoluzioni normative e tecnologiche.

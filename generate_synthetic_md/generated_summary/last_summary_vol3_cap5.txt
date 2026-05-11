@@ -1,0 +1,25 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Interfaccia utente multisensoriale**: combinazione di display OLED ad alta risoluzione, feedback tattile (LRA) e LED RGB a codifica cromatica, per massima leggibilità, immediatezza e interazione fisica anche in caso di guasti.
+- **Ridondanza e fail-safe**: sensoriale (visiva+tattile), override manuale tramite sequenze tattili, fallback automatico del feedback tattile se il display è in fault.
+- **Standardizzazione**: codifica cromatica LED secondo standard AETERNA (verde, blu, ambra, rosso) e pattern luminosi associati a eventi prioritari.
+- **Integrazione nativa**: architettura firmware/hardware integrata (AETERNA-UI su RTOS AeternaOS), task dedicati per display, touch, feedback e LED, priorità real-time per emergenze.
+- **Sicurezza e logging**: autenticazione locale via gesture, logging cifrato eventi utente, isolamento buffer I/O secondo policy Kyoto 2.0.
+- **Propagazione eventi**: ogni evento locale viene sincronizzato (RTC Kyoto 2.0) e propagato al modulo Multi-Radio Routing Engine (MRRE) per escalation a livello Fog/Cloud.
+
+**Variabili Introdotte:**
+- **Display OLED**: risoluzione 128x64 px, profondità colore 24 bit, refresh 60 Hz, luminosità 10–350 cd/m² (regolazione automatica), sleep mode <0.1 mW, driver SSD1327 custom, interfaccia I²C (1 MHz) con fallback SPI (10 MHz).
+- **Feedback tattile**: attuatore LRA 200 Hz, intensità 10–50 mN (5 livelli), touch capacitivo multi-zona (6 aree), gesture (tap, double-tap, long-press, swipe), mapping evento-feedback codificato.
+- **LED di stato**: SMD RGB CRI>90, max 20 mA/canale, anello circolare 180°, driver PWM 12 bit, controllo I²C dedicato, pattern luminosi (statico, lampeggio lento/rapido, respiro).
+- **Firmware**: libreria AETERNA-UI per rendering vettoriale, supporto multilingua, modalità high-contrast, task real-time, fail-safe via sequenza tattile.
+- **Sicurezza**: autenticazione gesture, logging cifrato, buffer I/O isolati, policy Kyoto 2.0.
+
+**Dipendenze Tecniche:**
+- **Bus interni**: I²C (display, sensori, LED), SPI (fallback display), GPIO (feedback tattile, interrupt touch).
+- **Microcontrollore**: Aeterna-Core X1.
+- **Stack software**: RTOS AeternaOS, modulo AETERNA-UI, modulo sicurezza Kyoto 2.0, MRRE.
+- **Sincronizzazione**: RTC Kyoto 2.0 per timestamp eventi.
+- **Protocolli**: mapping bidirezionale evento-feedback, propagazione eventi critici, override manuale, logging cifrato.
+
+Queste scelte garantiscono sicurezza, resilienza, accessibilità e tracciabilità, abilitando l’autarchia energetica urbana e la robustezza dell’interazione uomo-macchina nell’ecosistema AETERNA.

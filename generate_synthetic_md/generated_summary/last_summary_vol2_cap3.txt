@@ -1,0 +1,29 @@
+**Riassunto Denso – Livello Fog: Coordinamento di Quartiere (Framework AETERNA)**
+
+**Decisioni Architetturali:**
+- Il Fog Layer funge da snodo intermedio tra Edge (H-Node) e Cloud, con ruolo attivo di aggregazione, pre-elaborazione e orchestrazione delle risorse energetiche distribuite (DER) e dati.
+- I nodi Fog formano cluster dinamici di edifici tramite algoritmi di clustering distribuiti e meccanismi di consenso lightweight, abilitando una “mente collettiva” adattiva e resiliente.
+- Architettura hardware eterogenea: x86_64, ARM Cortex-A, RISC-V, con virtualizzazione (KVM/QEMU, Docker/OCI) per microservizi isolati (coordinamento, AI, blockchain).
+- Modularità e fault-tolerance: cluster auto-riparanti, snapshot periodici e recovery geo-ridondante (IPFS, S3).
+
+**Variabili Introdotte:**
+- **Dynamic Fog Cluster Manager (DFCM):** Gestione dinamica di cluster, membership, fault detection.
+- **Algoritmi di Clustering:** DBSCAN adattato, K-Means decentralizzato, Label Propagation.
+- **Membership Protocol:** Gossip-based (SWIM, HyParView) per stato, guasti, bilanciamento.
+- **Fog AI Orchestrator:** Motore AI distribuito (TensorFlow Serving, PyTorch Serve) per inferenza predittiva, anomaly detection, ottimizzazione flussi.
+- **Federated Learning Fog:** Aggregazione modelli AI dagli Edge (FL-AETERNA Aggregator).
+- **Swarm Intelligence:** Algoritmi swarm-based per negoziazione risorse e resilienza.
+- **Quartiere Energy Ledger:** Registro energetico locale su DLT Bit-Energy.
+- **Smart Market Maker:** Gestione automatizzata offerte/domande energetiche, pricing dinamico.
+- **Demand Response Coordinator:** Strategie DR (load shedding, peak shaving, demand shifting).
+- **Disaster Recovery Engine:** Snapshot, failover, recovery automatico.
+
+**Dipendenze Tecniche:**
+- **Comunicazione:** gRPC/Protobuf (RPC tra Fog), ZeroMQ (P2P), MQTT (QoS 2, telemetria), CoAP/MQTT-SN (Edge-Fog), TLS 1.3 mutuale, PKI interna.
+- **Blockchain:** DLT Gateway (Bit-Energy), smart contract per trading intra-quartiere, audit trail.
+- **Sicurezza:** Isolamento container, RBAC avanzato, Secure Enclave TPM 2.0, audit su DLT, encryption at rest.
+- **Storage:** SSD/NVMe locale, storage distribuito (IPFS, S3 compatibile).
+- **AI:** TensorFlow Serving, PyTorch Serve, FL-AETERNA Aggregator.
+
+**Sintesi:**  
+Il livello Fog di AETERNA introduce cluster dinamici e intelligenti di edifici, orchestrati tramite microservizi virtualizzati, AI distribuita, blockchain e protocolli di comunicazione sicuri. Garantisce resilienza, ottimizzazione locale, trasparenza e continuità operativa, abilitando una governance energetica urbana distribuita e sostenibile.

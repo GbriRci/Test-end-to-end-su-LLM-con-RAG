@@ -1,0 +1,33 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il Consent Management System (CMS) è un servizio centralizzato, resiliente, integrato nativamente con Identity Provider federato e livelli Edge, Fog, Cloud.
+- Centralizzazione logica e distribuzione fisica: il CMS espone API RESTful sicure per orchestrare la raccolta, aggiornamento e revoca dei consensi su tutti i livelli.
+- Separazione logica tra consensi, preferenze e dati identificativi: repository cifrato separato per i consensi (chiavi gestite via TPM, rotazione periodica); preferenze archiviate in strutture dati distinte, accessibili solo con autenticazione forte.
+- Tracciabilità e auditabilità: tutte le operazioni su consensi sono registrate su blockchain tramite smart contract dedicati, con hash SHA-3-256 + salt TPM, timestamp NTP e Bit-Energy ID.
+- Federazione dei consensi in scenari multi-tenant tramite mapping con Identity Provider esterni (LDAP/SAML), con sincronizzazione e validazione cross-domain.
+- Policy di retention e data lifecycle configurabili per tenant, con workflow automatici di cancellazione dati alla scadenza/revoca.
+
+**Variabili Introdotte:**
+- Consent_ID: identificatore univoco del consenso.
+- User_ID (pseudonimizzato): hash SHA-3-256 + salt TPM.
+- Finalità: scopo specifico del trattamento (es. trading P2P, analisi predittiva).
+- Modalità_acquisizione: canale (dashboard, API, Edge).
+- Data_Ora: timestamp NTP.
+- Policy_Version: versione policy privacy accettata.
+- Bit-Energy_ID: identificativo transazione su blockchain.
+- Stato: attivo/revocato/scaduto.
+- Data_Revoca: timestamp revoca.
+- Preferenze utente: ricezione comunicazioni, modalità visualizzazione dati, parametri privacy avanzata.
+
+**Dipendenze Tecniche:**
+- Autenticazione forte (MFA) per tutte le operazioni sensibili.
+- API RESTful sicure (OAuth2.0 JWT, scope granulari: consent:write, consent:revoke, preferences:write, audit:read).
+- Crittografia end-to-end: TLS 1.3 in transito, AES-256 a riposo, chiavi gestite da TPM.
+- Audit logging immutabile su blockchain, accessibile tramite dashboard dedicata.
+- Workflow automatici per revoca/cessazione trattamento, data wiping secondo policy di retention.
+- Alerting e mitigazione: notifiche e blocchi su tentativi anomali.
+- Integrazione con sistemi esterni (LDAP/SAML), gestione multi-tenant e scope specifici (es. read:energydata:tenantX).
+- Logging e segregazione accessi tramite RBAC/ABAC.
+
+Queste scelte abilitano compliance, auditabilità, automazione e scalabilità nella gestione dei consensi e preferenze utente in ambienti energetici decentralizzati.

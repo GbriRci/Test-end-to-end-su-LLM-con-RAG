@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multi-livello**: suddivisa in Edge (H-Node domestici), Fog (microgrid di quartiere) e Cloud (governance e analisi).
+- **Inclusione sociale**: universalità dell’accesso, adattabilità locale, governance partecipativa.
+- **Ridondanza e resilienza**: ogni H-Node integra almeno due fonti energetiche con failover automatico; microgrid fog in modalità islanding.
+- **Accessibilità by design**: interfacce utente web/mobile conformi WCAG 2.1, portale governance accessibile, kit plug-and-play per contesti vulnerabili.
+- **Automazione intelligente**: load balancing locale, AI predittiva (LSTM, reinforcement learning) per allocazione risorse e priorità sociali.
+- **Monitoraggio capillare**: sensoristica IoT diffusa per parametri energetici e ambientali, alert predittivi multicanale.
+- **Self-healing**: routine automatiche di auto-ripristino su edge/fog.
+- **Supporto assistivo**: helpdesk multilingua, chatbot AI, formazione digitale, manuali semplificati.
+
+**Variabili Introdotte:**
+- **Energy Management Unit (EMU)**: microcontrollore ARM Cortex-M, interfacce IoT (Zigbee, LoRaWAN, Wi-Fi), moduli TPM 2.0.
+- **Fonti energetiche**: fotovoltaico, rete pubblica, batterie LiFePO₄, inverter bidirezionali MPPT.
+- **Protocolli di comunicazione**: MQTT su TLS 1.3, fallback LoRaWAN cifrato, RESTful API, Modbus.
+- **Identità e sicurezza**: UUID persistente per utenti/dispositivi, autenticazione multi-fattore (MFA), cifratura AES-256/TLS 1.3.
+- **Data lake**: dati anonimizzati, accessibili via API RESTful, PDF/UA, JSON, XML.
+- **Kit di accesso energetico**: dispositivi plug-and-play preconfigurati, firmware offline, onboarding facilitato.
+
+**Dipendenze Tecniche:**
+- **Hardware**: ARM Cortex-M, moduli TPM 2.0, sensori compatibili Modbus/MQTT/Zigbee, batterie LiFePO₄, inverter MPPT.
+- **Software**: firmware EMU ottimizzato per offline, algoritmi AI (LSTM, RL), dashboard web accessibili, chatbot AI.
+- **Reti**: Zigbee, LoRaWAN, Wi-Fi, fallback su reti a bassa infrastrutturazione.
+- **Sicurezza e compliance**: audit trail, reporting GHG Protocol, Kyoto 2.0, audit esterni, gestione granularità accessi.
+- **Supporto e formazione**: helpdesk video/WebRTC, app mobile offline, materiali accessibili.
+
+Queste scelte abilitano la scalabilità, la replicabilità e l’inclusione sociale, garantendo continuità, sicurezza e trasparenza nella gestione energetica.

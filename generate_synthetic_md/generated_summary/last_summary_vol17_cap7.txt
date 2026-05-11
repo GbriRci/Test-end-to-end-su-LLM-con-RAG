@@ -1,0 +1,30 @@
+**Riassunto Denso — Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il security testing è integrato come processo continuo nelle pipeline CI/CD e nella governance del ciclo di vita software, non come attività isolata.
+- L’architettura di AETERNA è distribuita su tre livelli (Edge, Fog, Cloud), con asset critici (smart contract, AI, ledger Bit-Energy, badge Kyoto 2.0).
+- Security testing copre sia vulnerabilità generiche sia specifiche del dominio energetico/distribuito.
+- Tutti gli strumenti di security testing sono integrati tramite runner dedicati nelle pipeline CI/CD, con trigger automatici su commit/PR di moduli critici.
+- Automazione avanzata: job paralleli, fail-fast policy (build bloccata su vulnerabilità High), reporting strutturato (Allure), audit trail su blockchain Bit-Energy, badge Kyoto 2.0 aggiornato in tempo reale.
+- Il ciclo di gestione delle vulnerabilità è workflow-driven: rilevazione, classificazione (CVSS, badge Kyoto 2.0, Bit-Energy), remediation, audit/compliance (ancoraggio su blockchain), monitoring continuo (security agent Edge/Fog).
+
+**Variabili Introdotte:**
+- UUID univoco per ogni vulnerabilità.
+- Severity/Priorità: High, Medium, Low (criteri: CVSS, impatto su badge Kyoto 2.0, esposizione Bit-Energy).
+- Badge Kyoto 2.0: stato di compliance aggiornato.
+- Hash report di security testing ancorato su Bit-Energy.
+- Identificatori di campagna: UUID, timestamp, moduli impattati.
+- Token JWT (rotazione, scadenza), cookie flag (HttpOnly, Secure, SameSite).
+
+**Dipendenze Tecniche:**
+- **Strumenti principali:**
+  - OWASP ZAP: vulnerability scanning automatizzato (UI Fog, API REST Edge/Cloud), custom script per pattern anomali.
+  - Burp Suite: penetration testing manuale/semi-automatizzato (injection, header, fuzzing smart contract, access control).
+  - Nessus: vulnerability scanning infrastrutturale (container, Kubernetes, Edge node).
+  - Custom Security Agent: micro-servizio per log, anomaly detection, compliance badge Kyoto 2.0 (Edge/Fog).
+- **Pipeline CI/CD:** runner dedicati, job paralleli, reporting Allure, trigger su commit/PR, fail-fast policy.
+- **Workflow di gestione vulnerabilità:** issue tracking integrato, audit trail su Bit-Energy, badge Kyoto 2.0, regression testing automatizzato.
+- **Ambiti di test:** API REST, Web UI, smart contract Bit-Energy, AI prediction API, session management, access control, input validation/output encoding.
+- **Standard e metodologie:** OWASP, NIST, CVE/CWE, regression testing, audit esterni/interni.
+
+**Nota:** Queste scelte abilitano la scalabilità, la compliance e la resilienza del sistema, garantendo auditabilità e sicurezza by design per le micro-reti energetiche decentralizzate di AETERNA.

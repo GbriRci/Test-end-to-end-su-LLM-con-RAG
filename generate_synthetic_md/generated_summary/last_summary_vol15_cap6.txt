@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Integrazione Modulare:** Le funzionalità di community di pratica e mentoring sono estensioni integrate nel portale AETERNA, sfruttando moduli custom (Docusaurus/MkDocs) e una Mentoring Suite proprietaria.
+- **Gestione Ruoli e Accessi:** Implementazione di RBAC per moderazione, visibilità e gestione dei contenuti.
+- **Collaborazione e Comunicazione:** Supporto a forum asincroni (Markdown, tagging semantico), chat persistenti (Matrix/Element), videoconferenze (Jitsi Meet custom, Zoom API), whiteboard digitali (Excalidraw/Draw.io), e repository documentali versionati (GitHub/GitLab, S3).
+- **Workflow Mentoring:** Matching mentor-mentee tramite algoritmo di affinity scoring (skill matrix, interessi, storico), scheduling integrato (CalDAV/Google Calendar API), tracciamento progressi e milestone, feedback strutturati, dashboard individuali e di gruppo.
+- **Audit e Notarizzazione:** Logging e notarizzazione di milestone, feedback e badge su blockchain Bit-Energy per garantire trasparenza, integrità e compliance Kyoto 2.0.
+- **Gamification:** Sistema badge engine custom per incentivare partecipazione e condivisione.
+
+**Variabili Introdotte:**
+- `community_id`, `user_id`, `session_id`, `timestamp` (partecipazione)
+- `skill_matrix_pre`, `skill_matrix_post`, `milestone_id` (progressi)
+- `material_id`, `version`, `author_id`, `tag` (materiali)
+- `badge_id`, `criteria`, `user_id`, `timestamp` (badge/certificati)
+- `feedback_id`, `from_id`, `to_id`, `score`, `comment` (feedback)
+- `forum_posts`, `chat_msgs`, `meeting_attendance` (engagement)
+
+**Dipendenze Tecniche:**
+- **Autenticazione/Autorizzazione:** OAuth2.0/SAML2.0 per accesso e candidature.
+- **API e Protocolli:** REST API (integrazione moduli, badge, mentoring), Matrix API (chat), WebRTC/RTMP (video), Git/S3 API (documentazione), Calendar API/Webhooks (scheduling), Bit-Energy API (notarizzazione).
+- **Storage e Versionamento:** S3-compatible storage, GitHub/GitLab per materiali e documenti.
+- **Dashboard e Analisi:** Grafana/Kibana per analisi engagement, dashboard avanzate per monitoraggio e reportistica.
+- **Compliance:** Audit trail e alert automatici su Bit-Energy per conformità Kyoto 2.0.
+- **Containerizzazione:** Videoconferenza e servizi integrati tramite container e bridge API.
+
+**Sintesi:**  
+L’architettura AETERNA per community di pratica e mentoring si basa su moduli integrati, workflow automatizzati e notarizzazione blockchain, con variabili strutturate per tracciamento e valutazione, e dipendenze tecniche su API standard, storage versionato, strumenti di collaborazione e compliance avanzata.

@@ -1,0 +1,26 @@
+**Riassunto Denso – Gestione delle Dipendenze Esterne in Emergenza (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Strategia Multi-Vendor/Multi-Cloud:** Tutti i servizi critici sono distribuiti su almeno due provider distinti, con sincronizzazione dati near real-time (es. S3 Cross-Region Replication, Cloud SQL Multi-Region, Bit-Energy Node Federation).
+- **Abstraction Layer & Adapter Pattern:** Accesso a servizi esterni tramite interfacce astratte (`ICloudStorage`, `IBlockchainClient`), permettendo sostituzione dinamica dei provider senza impatti sulle componenti core. Adapter implementano circuit breaker, fallback automatico, metriche di health/latency (esposte via Prometheus exporter).
+- **Health-Check Proattivi & Failover Automatico:** Monitoraggio continuo tramite gRPC Health Checking, custom health endpoint, synthetic transaction monitoring. In caso di anomalia: failover automatico (aggiornamento DNS, re-routing API Gateway, re-instanziazione container), notifica ai team, audit notarizzato su Bit-Energy Blockchain.
+- **Contratti SLA con Clausole di Emergenza:** SLA >99.95% per servizi critici, priorità di intervento, penali per downtime, accesso supporto 24/7, DR drill obbligatori.
+- **Documentazione Tecnica Versionata:** Interfacce documentate via OpenAPI/Swagger (REST) e `.proto` (gRPC), repository Git con tag di compatibilità, aggiornamento automatico via CI/CD, playbook di sostituzione rapida.
+
+**Variabili Introdotte:**
+- **Tipologia Dipendenza:** Cloud IaaS/PaaS, Storage Distribuito, Blockchain, API Terze Parti, Logging/Monitoring, Notification Services.
+- **Criteri di Valutazione:** SLA, supporto multi-region, compatibilità API, portabilità dati, reversibilità contrattuale, auditabilità, compliance (Kyoto 2.0, Bit-Energy, GDPR-like).
+- **Matrice di Valutazione:** Per ogni dipendenza: SLA, multi-region, adapter, health check, fallback, audit, exit strategy.
+
+**Dipendenze Tecniche:**
+- **Provider Cloud:** AWS, GCP, Azure, OVH (API REST/gRPC, SDK).
+- **Storage:** S3-compatible, Azure Blob, Google Cloud Storage (REST API, S3 SDK).
+- **Blockchain:** Bit-Energy (gRPC, REST API).
+- **API Terze Parti:** Weather, prezzi energia, identità digitale (REST API, OAuth2).
+- **Monitoring:** Prometheus Cloud, Grafana Cloud, Elastic Cloud (Push/Exporters, REST).
+- **Notifiche:** Twilio, SendGrid, Slack, Telegram, SMS Gateway (REST API, Webhook).
+- **Strumenti di Health/Failover:** Prometheus, Alertmanager, DNS dinamico, API Gateway, container orchestration.
+- **Audit:** Bit-Energy Blockchain per notarizzazione eventi.
+
+**Sintesi:**  
+L’architettura AETERNA adotta ridondanza, astrazione, automazione e auditabilità per garantire resilienza e business continuity in scenari di emergenza, minimizzando downtime, lock-in e rischi di compliance, e facilitando l’evoluzione futura del sistema.

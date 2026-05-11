@@ -1,0 +1,35 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Edge Layer AETERNA)**
+
+**Decisioni Architetturali:**
+- **Dispositivi Edge (H-Node):** Basati su micro-controller ARM Cortex-M4/M7/M33 (preferiti), Cortex-A o SoC RISC-V in configurazioni avanzate. Progettati per ambienti a risorse limitate, con elaborazione real-time, sicurezza hardware e interoperabilità con dispositivi legacy e nativi.
+- **Topologia:** Ogni H-Node si collega a sensori di consumo, attuatori, generatori locali (FV, eolico, batterie) e interfacce legacy (KNX, BACnet via bridge).
+- **Architettura Software:** Sistema operativo real-time custom (AETERNA-RTOS, derivato FreeRTOS, ottimizzato per ARM Cortex-M), con supporto per Linux Embedded (Yocto, Buildroot) su SoC avanzati.
+- **Middleware:** ALRM (AETERNA Local Resource Manager) per gestione risorse locali, orchestrazione AI, monitoraggio e fault recovery; Edge Swarm Agent per algoritmi swarm (bilanciamento, auto-riparazione); Secure Enclave Driver per sicurezza hardware.
+- **Protocolli di comunicazione:** MQTT-SN (telemetria, comandi), CoAP (RESTful, discovery), gRPC/Protobuf (RPC ad alte prestazioni), ZeroMQ (messaggistica P2P), DLT Gateway (integrazione blockchain Bit-Energy).
+- **AI/ML Edge:** Supporto TensorFlow Lite/ONNX Runtime per inferenza locale; FL-AETERNA Client per federated learning.
+- **Sicurezza:** Root-of-Trust hardware (Secure Enclave), Secure Boot, autenticazione device, storage chiavi sicuro, TLS 1.3/DTLS, RBAC locale, audit trail su DLT.
+- **Gestione Energetica Locale:** Energy Profile Engine (analisi profili consumo/generazione), Smart Scheduling (ottimizzazione carichi), Anomaly Detection (AI per guasti/manomissioni).
+- **Interoperabilità:** Bridge Middleware per dispositivi legacy; aggiornamenti OTA sicuri con rollback e verifica integrità via Secure Enclave.
+
+**Variabili Introdotte:**
+- Tipologia MCU (Cortex-M4/M7/M33, Cortex-A, RISC-V)
+- Quantità RAM/Flash (512KB–2MB RAM, 2–16MB Flash)
+- Tipologia e numero di periferiche (ADC/DAC, GPIO, I2C/SPI/UART, CAN, Ethernet, Wi-Fi/BLE, ZigBee, LoRa)
+- Stato e configurazione Secure Enclave
+- Versione e configurazione AETERNA-RTOS/Linux Embedded
+- Stato middleware ALRM, Edge Swarm Agent, Secure Enclave Driver
+- Protocolli attivi (MQTT-SN, CoAP, gRPC, ZeroMQ, REST)
+- Modelli AI/ML caricati e parametri FL-AETERNA
+- Stato aggiornamenti OTA e rollback
+
+**Dipendenze Tecniche:**
+- Micro-controller ARM Cortex-M/RISC-V compatibili
+- Secure Enclave hardware
+- Stack software: AETERNA-RTOS/FreeRTOS, Linux Embedded, ALRM, Edge Swarm Agent
+- Librerie AI: TensorFlow Lite, ONNX Runtime, FL-AETERNA
+- Protocolli: MQTT-SN, CoAP, gRPC/Protobuf, ZeroMQ, TLS 1.3/DTLS
+- Bridge Middleware per KNX/BACnet
+- DLT Gateway per Bit-Energy Blockchain
+- Infrastruttura OTA per aggiornamenti firmware
+
+Queste scelte e variabili costituiscono la base tecnica per i successivi livelli (Fog, Cloud) e per l’integrazione sicura, scalabile e intelligente dell’ecosistema AETERNA.

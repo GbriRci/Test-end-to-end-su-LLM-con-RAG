@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura a 3 livelli (Edge, Fog, Cloud):**  
+  - *Edge (H-Node):* Raccolta telemetria locale (hardware, IoT, sicurezza).
+  - *Fog (Quartiere):* Aggregazione, normalizzazione, correlazione eventi, analisi trend/anomalie, gestione soglie.
+  - *Cloud:* Analisi predittiva, orchestrazione risposte automatizzate, audit/reporting centralizzato.
+- **Federazione tramite bus di eventi distribuito** e comunicazione tra livelli via **gRPC** (serializzazione protobuf, cifratura TLS 1.3).
+- **Notarizzazione eventi critici e azioni su Bit-Energy Blockchain** per tracciabilità e immutabilità.
+- **Automazione incident response** tramite playbook digitali, versionati e distribuiti via pipeline CI/CD; esecuzione atomica/idempotente con rollback automatico.
+- **Centralizzazione dashboard e notifiche multi-canale** per governance e collaborazione.
+
+**Variabili Introdotte (Metriche Chiave):**
+- *Infrastrutturali:* CPU Utilization (%), RAM Utilization (MB/%), Disk I/O/Storage, Network Latency/Packet Loss, Uptime/Availability.
+- *Applicative/Telemetria:* Error Rate (per servizio), Transaction Throughput (Kyoto 2.0), Eventi di Sicurezza (accessi non autorizzati, escalation privilegi), Performance Degradation.
+- *Sicurezza/Integrità:* Integrity Check Failures (blockchain mismatch), Anomalie AI/ML (consumo energetico, manipolazione dati), Alert di Policy Violation (superamento soglie, accessi fuori orario).
+
+**Dipendenze Tecniche:**
+- **Prometheus** (metriche time-series, custom exporter Edge/Fog), **Grafana** (dashboard), **Elasticsearch + Fluentd/Logstash** (log ingest/search), **AIOps Engine** (TensorFlow/PyTorch per analisi predittiva e alert), **Alertmanager** (notifiche multi-canale), **Playbook Orchestrator** (StackStorm, Lambda custom), **Bit-Energy Blockchain API** (notarizzazione/audit), **gRPC Health Checking** (monitoraggio stato servizi).
+- **Policy Engine** per definizione soglie e trigger.
+- **Pipeline CI/CD** per distribuzione e versionamento playbook.
+
+**Altre Note Utili:**
+- Tutte le azioni sono tracciate e auditabili per compliance (Kyoto 2.0, Bit-Energy).
+- Il sistema è modulare, scalabile e adattabile a nuovi nodi/quartieri.
+- L’automazione riduce MTTD/MTTR, aumenta resilienza e accountability.
+- Le metriche e soglie sono definite per ogni categoria e integrate negli strumenti sopra elencati.
+
+**In sintesi:**  
+L’architettura di monitoraggio proattivo AETERNA si basa su una struttura federata Edge-Fog-Cloud, metriche e log granulari, automazione incident response tramite playbook, notarizzazione blockchain e una suite di strumenti open source integrati, garantendo resilienza, trasparenza e scalabilità.

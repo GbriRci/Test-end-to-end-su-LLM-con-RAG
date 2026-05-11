@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Adozione degli standard ISO/IEC 27001 (sicurezza) e 9001 (qualità) come fondamento per la scalabilità, interoperabilità e sostenibilità delle micro-reti AETERNA.
+- Architettura multilivello (Edge, Fog, Cloud) con processi certificativi e controlli applicati trasversalmente.
+- Integrazione nativa di auditabilità tramite blockchain Bit-Energy e gestione delle credenziali di sostenibilità (Kyoto 2.0).
+- Utilizzo di un sistema di gestione documentale avanzato, con versioning, workflow di approvazione e tracciamento revisioni, interfacciato con la blockchain per garantire immutabilità.
+- Automazione dei processi di change management e test tramite pipeline CI/CD.
+- Implementazione di feedback loop strutturati e KPI monitoring per il miglioramento continuo.
+
+**Variabili Introdotte:**
+- Ruoli granulari (es. H-Node User, Fog Operator, Cloud Admin) gestiti tramite RBAC e autenticazione a due fattori (MFA).
+- Policy di cifratura end-to-end (TLS 1.3 in transito, AES-256 a riposo), con rotazione chiavi e gestione centralizzata (HSM virtualizzato).
+- Procedure di incident response integrate con alerting automatico e playbook.
+- Indicatori di performance (KPI) per processi critici: tempo di recovery, errori, soddisfazione utente.
+- Badge Kyoto 2.0 come variabile di compliance e sostenibilità, con validazione e auditabilità automatica.
+
+**Dipendenze Tecniche:**
+- Strumenti di tracciamento e mapping requisiti: GitLab Issues, mapping automatico tra requisiti ISO/IEC e implementazioni.
+- Tecnologie di sicurezza: OAuth2, JWT, RBAC, MFA, ACL su microservizi, firewall NG, IDS/IPS distribuiti, backup cifrati, logging immutabile su Bit-Energy.
+- Monitoraggio e audit: Prometheus, Grafana, audit periodici, modelli ML per rilevamento anomalie.
+- Test e qualità: CI/CD, JUnit, PyTest, test di regressione automatizzati, simulazione fault, audit interni mensili.
+- Gestione documentale: sistema integrato con dashboard centralizzata, versioning, workflow, ancoraggio revisioni su blockchain.
+- Integrazione Kyoto 2.0: validazione badge, compliance automatica, registrazione su blockchain.
+- Tutte le operazioni critiche (log, revisioni, test) sono hashate e ancorate su Bit-Energy per trasparenza e non ripudiabilità.
+
+**Sintesi:**  
+L’architettura AETERNA integra la certificazione di sicurezza e qualità come processo dinamico, automatizzato e trasversale, con policy, controlli e strumenti interoperabili su tutti i livelli (Edge, Fog, Cloud), fortemente dipendente da tecnologie di tracciamento, automazione, blockchain e gestione documentale avanzata, e orientata a sostenibilità e auditabilità future.

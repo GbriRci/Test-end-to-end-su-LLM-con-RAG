@@ -1,0 +1,40 @@
+**Riassunto Denso – Capitolo 6: Gestione della Domanda Flessibile (FDM) – Progetto AETERNA**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello Edge–Fog–Cloud:**
+  - **Edge (H-Node/HEMS):** Gestione locale della domanda tramite Home Energy Management Systems, interfacciati con dispositivi di consumo e gateway di quartiere.
+  - **Fog:** Aggregazione e coordinamento delle risposte di carico, gestione segnali di congestione/prezzo, dispatch verso Edge.
+  - **Cloud:** Analisi predittiva e ottimizzazione DR su scala urbana, feedback tramite API standardizzate.
+- **Gestione carichi:** Distinzione tra carichi critici (esclusi dalla modulazione automatica salvo emergenze) e non critici (modulabili automaticamente); configurazione priorità tramite Priority Map (ConfigMap Kubernetes), sincronizzata Fog–Edge.
+- **Fallback:** In caso di failure comunicazione, mantenimento configurazione locale più recente.
+- **User Empowerment:** Notifiche push, override manuale (opt-out), reportistica personalizzata via portale/app.
+
+**Variabili Introdotte:**
+- **Device Profile (AETERNA-HEMS v1.2):** Definisce capability dispositivi (priorità, tempo risposta, range modulazione).
+- **Dynamic Tariff API:** Pubblicazione tariffe orarie e segnali prezzo in tempo reale (granularità 0.01 Bit-Energy/kWh, aggiornamento 5 min).
+- **HEMS Optimizer:** Algoritmo MILP embedded per ottimizzazione profilo di carico in base a tariffe e preferenze utente.
+- **User Feedback Loop:** Interfaccia per visualizzazione risparmi e configurazione flessibilità.
+- **Bit-Energy Ledger:** Tracciamento eventi DR, correlazione con metriche sostenibilità (Kyoto 2.0).
+- **Audit Logging:** Logging dettagliato eventi DR (timestamp, carico, device, outcome).
+- **Priority Map:** Mappa priorità carichi, gestita via ConfigMap Kubernetes.
+
+**Dipendenze Tecniche:**
+- **Protocolli:**  
+  - **OpenADR 2.0b:** Comunicazione eventi DR (shed, shift, modulate, restore).
+  - **IEC 61850:** Modellazione semantica e gestione interoperabile dispositivi distribuiti.
+  - **REST API:** Comunicazione tra livelli architetturali.
+- **Sicurezza:**  
+  - **TLS 1.3:** Cifratura end-to-end.
+  - **Mutual Authentication:** Certificati X.509 (CA interna AETERNA).
+- **Algoritmi:**  
+  - **MILP:** Ottimizzazione locale carichi.
+  - **Explainability AI:** Validazione automatica azioni DR, generazione reportistica governance.
+- **Logging & Compliance:**  
+  - **Bit-Energy Ledger, Audit Logging, Kyoto 2.0 compliance.**
+
+**Integrazione Sistemi:**
+- **Event Handler locale su H-Node:** Ricezione asincrona segnali DR.
+- **Dynamic Tariff API (Fog–Edge):** Accesso diretto HEMS.
+- **Reportistica e feedback:** Aggregazione risultati e ottimizzazione futura (Cloud–Fog–Edge).
+
+**Nota:** Queste scelte architetturali, variabili e dipendenze tecniche costituiscono la base per i successivi capitoli su orchestrazione, sicurezza, interoperabilità e governance della micro-rete AETERNA.

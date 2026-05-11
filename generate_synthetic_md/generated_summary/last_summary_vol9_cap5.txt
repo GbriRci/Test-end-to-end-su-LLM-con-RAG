@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Processi di onboarding/offboarding** formalizzati, automatizzati e orchestrati tramite workflow engine (es. Argo Workflows), con logging multilivello e notarizzazione su **Kyoto 2.0**.
+- **Validazione multilivello**: ogni onboarding richiede approvazione sequenziale da Network Operations Team e Comitato di Revisione Tecnica, con firme digitali e tracciabilità.
+- **Gestione credenziali** centralizzata tramite **HashiCorp Vault**; provisioning e revoca automatica delle chiavi e permessi su Edge, Fog e Cloud.
+- **Policy enforcement** tramite **Open Policy Agent (OPA)**, con policy RBAC distribuite e aggiornamento automatico dei policy engine.
+- **Audit e logging**: tutti gli eventi critici sono loggati in formato JSON (livello AUDIT), correlati tramite identificativi univoci e consultabili via dashboard Kibana; accesso ai log di offboarding riservato a ruoli autorizzati.
+- **Automazione completa**: trigger automatici per offboarding in caso di alert critici (es. Prometheus), propagazione in tempo reale delle revoche su tutti i livelli.
+- **Repository Git privato** per versionamento delle policy firmate (GitOps).
+
+**Variabili Introdotte:**
+- **User_ID, Role, Approver_ID, Signer_ID**: identificativi univoci per utenti, ruoli e approvatori.
+- **Policy_ID, Audit_Reference, Report_ID, Dispute_ID, Evidence_Hash, Error_Code**: tracciamento policy, audit, dispute e anomalie.
+- **Tx_ID, Timestamp, Hash**: notarizzazione e correlazione temporale su Kyoto 2.0.
+- **Issue correlata, motivazione**: cause di onboarding/offboarding.
+- **Status**: esito delle operazioni (Success/Failure).
+
+**Dipendenze Tecniche:**
+- **Kyoto 2.0**: notarizzazione di richieste, firme e eventi critici.
+- **OPA**: verifica credenziali, enforcement e revoca permessi RBAC.
+- **HashiCorp Vault**: gestione, rotazione e revoca sicura delle credenziali.
+- **Argo Workflows** (o equivalente): orchestrazione dei processi.
+- **Prometheus**: monitoraggio e trigger automatici per offboarding.
+- **Kibana**: dashboard per audit e consultazione log.
+- **GitOps**: versionamento policy e archiviazione firme digitali.
+- **TLS**: comunicazione sicura e autenticazione mutua nei test di compatibilità.
+
+Queste scelte garantiscono sicurezza, trasparenza, compliance, scalabilità e resilienza nei processi di gestione dei partecipanti della micro-rete AETERNA.

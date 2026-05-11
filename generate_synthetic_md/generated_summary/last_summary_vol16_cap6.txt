@@ -1,0 +1,24 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: suddivisione in Layer Edge (H-Node), Fog (quartiere) e Cloud (macro-analisi).
+- **Edge**: Sensori IoT multi-parametrici per monitoraggio in tempo reale (consumi, ambiente, stato batterie); gateway MQTT con cifratura TLS 1.3; edge analytics per pre-processing dati.
+- **Fog**: Fog Node aggrega dati da H-Node, esegue analisi predittiva (ML: regressione multipla, reti neurali leggere), controlla attuatori (illuminazione, HVAC, pompe) e offre API RESTful per interfacciamento.
+- **Cloud**: Data Lake centralizzato (S3-compatible, Parquet) per archiviazione storica; motore AI predittiva (TensorFlow, PyTorch) per ottimizzazione e anomaly detection; smart contract Kyoto 2.0 su blockchain Bit-Energy per gestione incentivi e certificazione performance.
+- **Automazione**: Regolazione dinamica di illuminazione e climatizzazione tramite sensori e ML; demand-response per carichi non prioritari; audit energetico continuo e workflow automatizzati per reportistica.
+- **Integrazione standard**: API dedicate per raccolta automatica metriche LEED/BREEAM.
+
+**Variabili Introdotte:**
+- **KPI monitorati**: consumo specifico (kWh/m²), % riduzione consumi vs baseline, tempo medio reazione anomalie, % carichi gestiti automaticamente, tasso occupazione illuminazione, emissioni evitate (kg CO₂eq).
+- **Profili di utilizzo**: dati di presenza, luminosità, occupazione reale, previsioni meteo.
+- **Dataset storici**: per addestramento modelli AI e benchmarking.
+- **Alert e suggerimenti**: generati da anomaly detection ML.
+
+**Dipendenze Tecniche:**
+- **Protocolli e standard**: Zigbee, Z-Wave, MQTT, TLS 1.3 (Edge); RESTful API (Fog/Cloud); IEC 62056, Modbus (Smart Meter); BACnet, KNX (attuatori); S3, Parquet (Data Lake).
+- **Tecnologie ML/AI**: TensorFlow, PyTorch per predizione e ottimizzazione; ML on-device per analisi locale.
+- **Blockchain**: Bit-Energy per tracciabilità e smart contract Kyoto 2.0.
+- **Interfacce**: API per dashboard KPI, reportistica, e compliance LEED/BREEAM.
+
+**Sintesi**:  
+L’architettura AETERNA adotta una struttura Edge-Fog-Cloud interoperabile, con sensori IoT, analytics distribuita, automazione intelligente e integrazione blockchain, supportata da protocolli standard e API per sostenibilità e reporting. Le variabili chiave includono KPI energetici, profili di utilizzo e dataset storici, mentre le dipendenze tecniche riguardano protocolli di comunicazione, tecnologie AI/ML e interfacce di integrazione.

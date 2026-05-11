@@ -1,0 +1,30 @@
+**Riassunto Denso — Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura a tre livelli**: Edge, Fog, Cloud, con carichi eterogenei e supporto a migliaia di interazioni simultanee (trading P2P, AI predittiva, audit blockchain).
+- **Testing integrato nel ciclo di vita**: I test di performance e scalabilità sono obbligatori in fase pre-release e pre-produzione, con pianificazione tracciata tramite UUID, dataset e moduli impattati.
+- **Esecuzione distribuita e containerizzata**: Test eseguiti su ambienti Docker orchestrati da Kubernetes, provisioning automatico tramite Terraform/Ansible.
+- **Orchestrazione e scaling dinamico**: Validazione della scalabilità orizzontale tramite Kubernetes (auto-scaling group, pod), con test specifici per failover e recovery (resilience testing).
+- **Auditabilità e compliance**: Ancoraggio immutabile dei risultati su blockchain Bit-Energy e correlazione con badge Kyoto 2.0 per audit e conformità.
+
+**Variabili Introdotte:**
+- **Metriche chiave**: Latenza media, throughput, utilizzo CPU/RAM, error rate, badge Kyoto 2.0 status, hash Bit-Energy, memory leak detection.
+- **Soglie di attenzione**: Latenza >200ms, throughput <90% baseline, CPU >80%, RAM >75%, error rate >1%, badge Kyoto 2.0 non-compliant.
+- **Tipologie di test**: Load, stress, soak, spike, scalability, resilience (fault-injection su nodi Edge, kill pod, disconnessioni parziali).
+- **Identificatori di campagna**: UUID, timestamp, dataset, moduli coinvolti.
+
+**Dipendenze Tecniche:**
+- **Strumenti di simulazione**:
+  - *Apache JMeter*: Carichi HTTP/REST, scripting avanzato, plugin custom.
+  - *Gatling*: Scripting Scala, scenari real-time, edge-case trading P2P.
+  - *K6*: Scripting JavaScript, esecuzione distribuita su Kubernetes, esportazione Prometheus.
+- **Monitoraggio e analisi**:
+  - *Prometheus*: Raccolta metriche in tempo reale, integrazione con Grafana.
+  - *Grafana*: Dashboard custom per correlazione dati di test e metriche operative.
+  - *JUnit/Allure*: Reportistica automatica dei risultati.
+  - *Bit-Energy Blockchain*: Audit trail, tracciabilità, compliance.
+- **Provisioning e orchestrazione**: Terraform, Ansible, Kubernetes.
+- **Custom plugin e badge**: Integrazione con badge Kyoto 2.0 per compliance e reporting.
+
+**Sintesi**:  
+La strategia di test di performance e scalabilità di AETERNA si fonda su orchestrazione containerizzata, automazione avanzata, metriche granulari e auditabilità blockchain, abilitando affidabilità, ottimizzazione risorse, compliance e scalabilità evolutiva per micro-reti energetiche urbane.

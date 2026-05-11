@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Adozione di un framework di audit e controllo interno multilayer (Edge, Fog, Cloud) per la governance e la trasparenza delle micro-reti AETERNA.
+- Integrazione di standard internazionali (ISO/IEC 27001 per SGSI, ISAE 3402 per controlli su servizi terzi) e di uno standard interno (Kyoto 2.0 Compliance Layer) per la verifica di policy ambientali, energetiche e di sicurezza tramite smart contract.
+- Utilizzo di metodologie di audit risk-based (analisi e prioritizzazione dei rischi per asset critici come moduli trading P2P, storage WORM, nodi blockchain Bit-Energy) e process-based (mappatura e verifica workflow, es. gestione licenze IP, transazioni energetiche).
+- Implementazione di strumenti tecnologici distribuiti: collector di evidenze digitali (agenti software su Edge, Fog, Cloud), SIEM centralizzato per correlazione eventi, modulo audit blockchain (smart contract per registrazione immutabile di eventi), Data Lake cifrato per archiviazione evidenze, motore AI per anomaly detection.
+- Segregazione dei permessi e autenticazione degli auditor tramite OpenID Connect.
+- Workflow operativo strutturato in fasi: pianificazione (scope, ruoli, permessi), raccolta evidenze (deploy collector, acquisizione log, verifica integrità hash su Bit-Energy), analisi/correlazione (SIEM, Data Lake, AI), gestione non conformità (classificazione, notifica automatica via smart contract, piano remediation tracciato su blockchain), follow-up/reporting (verifica remediation, report strutturati, archiviazione sicura).
+
+**Variabili Introdotte:**
+- Scope di audit (sistemi, processi, asset selezionati: H-Node, IP Watcher, storage WORM).
+- Ruoli auditor e permessi segregati.
+- Livello di severità delle non conformità (critica, alta, media, bassa).
+- Output di audit: log, hash, audit trail, timestamp, report, evidenze archiviate.
+
+**Dipendenze Tecniche:**
+- Collector agent distribuiti (Edge/Fog/Cloud).
+- SIEM centralizzato (Cloud).
+- Blockchain Bit-Energy per audit trail e hash.
+- Smart contract per workflow di audit, notifiche e remediation.
+- Data Lake cifrato, accessibile via OpenID Connect.
+- Motore AI per analisi comportamentale e pattern recognition.
+- Integrazione con moduli specifici (IP Watcher, trading P2P, storage WORM).
+- Checklist di conformità basate su ISO/IEC 27001, ISAE 3402, Kyoto 2.0.
+
+Queste scelte architetturali e tecniche costituiscono la base per i capitoli successivi su implementazione, gestione incidenti e compliance.

@@ -1,0 +1,29 @@
+**Riassunto Denso – Gestione dell’Intermittenza (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: Tre livelli (Edge, Fog, Cloud) per la gestione distribuita e scalabile dell’intermittenza.
+- **Edge**: Sensori, sistemi di accumulo (batterie Li-Ion), HEMS locale con AI lightweight.
+- **Fog**: Aggregazione dati, sistemi di accumulo avanzati (batterie Li-Ion, sistemi a flusso redox), compensazione reattiva (STATCOM, condensatori), orchestrazione demand response, piattaforma centralizzata con policy RBAC.
+- **Cloud**: Analisi predittiva, supervisione, notarizzazione eventi su Bit-Energy Blockchain.
+- **Notarizzazione e audit**: Ogni evento critico (storage, STATCOM, demand response) è registrato su blockchain con hash, timestamp e audit trail Prometheus.
+- **Configurazioni operative**: Template YAML/JSON per setpoint, soglie, priorità, parametri di sicurezza, versionabili per audit/rollback.
+
+**Variabili Introdotte:**
+- **Capacità storage**: Batterie Li-Ion (10 kWh–10 MWh), sistemi a flusso redox (>1 MWh).
+- **Setpoint configurabili**: Soglie di attivazione peak shaving/load leveling, priorità carichi, parametri sicurezza.
+- **Policy RBAC**: Gestione priorità e accessi per orchestrazione carichi.
+- **Parametri monitorati**: SoC, temperatura, cicli di vita, corrente, tensione, fault, eventi di variazione rapida (<50 ms).
+- **Audit e compliance**: Logging avanzato, MFA obbligatoria, compliance Kyoto 2.0.
+
+**Dipendenze Tecniche:**
+- **Protocolli di comunicazione**:
+  - *Modbus TCP/IP*: Monitoraggio storage (SoC, parametri vitali).
+  - *MQTT*: Telemetria, eventi di stato/allarmi, compensazione reattiva.
+  - *RESTful API*: Configurazione remota, raccolta dati storici, integrazione dashboard.
+  - *IEC 61850*: Gestione STATCOM, segnali GOOSE, sincronizzazione SNTP.
+  - *IEEE 2030.5*: Comandi demand response, autenticazione X.509, TLS 1.3.
+- **Sicurezza**: TLS su tutti i protocolli, RBAC, MFA, notarizzazione blockchain.
+- **Componenti chiave**: Batterie Li-Ion, sistemi a flusso redox, STATCOM (20 MVAr), condensatori statici, attuatori IoT IEEE 2030.5, HEMS, Bit-Energy Blockchain.
+- **Algoritmi**: Peak shaving/load leveling (AI lightweight/predittiva), load shedding AI-driven, feedback autenticato, logging notarizzato.
+
+**Sintesi**: L’architettura AETERNA integra storage, compensazione reattiva e demand response su livelli Edge/Fog/Cloud, con protocolli interoperabili, sicurezza avanzata e notarizzazione blockchain, ponendo le basi per una gestione energetica urbana resiliente, scalabile e auditabile.

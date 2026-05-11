@@ -1,0 +1,33 @@
+**Riassunto Denso – Capitolo 8: Gestione degli Alert e Automazione delle Risposte (AETERNA)**
+
+**Decisioni Architetturali:**
+- Il motore di alerting è implementato come microservizio indipendente nel Service Layer, integrato con moduli di telemetria (Edge, Fog, Cloud) e pipeline ML (Kyoto 2.0).
+- Componenti principali:  
+  - **Rule Engine** (Drools): gestisce regole statiche e dinamiche (ML).
+  - **ML Anomaly Detector** (TensorFlow/ONNX): elabora flussi dati normalizzati per trigger di anomalia.
+  - **Event Correlator**: correlazione temporale/semantica tra eventi multipli.
+  - **Escalation Manager**: gestisce workflow di escalation, priorità e assegnazione ticket.
+  - **Automation Orchestrator**: integra Ansible e webhook per incident management (PagerDuty, ServiceNow).
+- Workflow di escalation e policy sono formalizzati in YAML, versionati e auditati su blockchain Bit-Energy.
+- Automazione delle risposte tramite Ansible Playbook e webhook RESTful.
+- Tutte le azioni e notifiche sono tracciate su blockchain Bit-Energy (hash, timestamp NTP).
+
+**Variabili Introdotte:**
+- **Livello di Alert**: quattro livelli (Critico, Alto, Medio, Basso), ognuno con policy di risposta, destinatari, timeout e automazione specifici.
+- **Timeout di presa in carico**: intervallo massimo prima dell’escalation automatica (es. 2 min Critico, 5 min Alto, 15 min Medio).
+- **Ruoli destinatari**: mapping tra livello alert e gruppi (operatori, supervisori, tecnici).
+- **Azioni automatiche**: isolamento rete, failover storage, intervento predittivo, ticketing.
+- **Canali di notifica**: email, SMS, webhook, dashboard push.
+- **Audit log**: abilitazione tracciamento su blockchain per livelli medio-alti.
+
+**Dipendenze Tecniche:**
+- **Drools**: motore regole.
+- **TensorFlow/ONNX**: moduli ML per rilevamento anomalie.
+- **Ansible**: orchestrazione risposte automatiche.
+- **Webhook RESTful**: integrazione con piattaforme ITSM (PagerDuty, ServiceNow).
+- **Blockchain Bit-Energy**: auditabilità e versionamento policy/azioni.
+- **Kyoto 2.0**: pipeline ML e logging.
+- **Protobuf/JSON**: formati dati per telemetria e analisi.
+- **Adapter di normalizzazione**: aggregazione dati da fonti eterogenee.
+
+**Nota:** Queste scelte abilitano resilienza, efficienza, auditabilità e ottimizzazione continua, ponendo le basi per la gestione adattiva e sicura delle micro-reti energetiche AETERNA.

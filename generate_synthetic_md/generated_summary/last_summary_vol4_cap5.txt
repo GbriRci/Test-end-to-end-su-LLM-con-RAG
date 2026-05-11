@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **SOC Multilivello:** Architettura di Security Operations Center distribuita su tre livelli (Edge, Fog, Cloud), con agenti di monitoraggio residenti su H-Node (Edge), cluster Fog per aggregazione/correlazione eventi e SOC Cloud per escalation e audit.
+- **Automazione Incident Response:** Pipeline automatizzata per rilevamento, contenimento e recovery, integrata con sistemi IAM e orchestrazione Clean-Slate.
+- **Clean-Slate Recovery:** Meccanismo di ripristino atomico del nodo Edge, con wipe sicuro, bootstrap firmware autenticato, ripristino da snapshot notarizzato e handshake multilivello.
+- **Load Balancing AI-driven:** Durante il recovery, i peer Edge limitrofi assumono la quota energetica del nodo isolato tramite policy predittive AI.
+- **Auditabilità e Compliance:** Tutte le fasi sono notarizzate su Bit-Energy Ledger, in conformità agli standard Kyoto 2.0 e Bit-Energy.
+
+**Variabili Introdotte:**
+- **RTO (Recovery Time Objective):** ≤ 60 secondi per il ripristino completo del nodo.
+- **RPO (Recovery Point Objective):** 1 Pulse (massimo delta temporale tra ultimo Pulse notarizzato e recovery).
+- **Snapshot notarizzato:** Stato di riferimento per il recovery, estratto dal Bit-Energy Ledger.
+- **Pulse:** Unità di sincronizzazione notarizzata, usata come riferimento temporale e di coerenza.
+- **ACL (Access Control List):** Aggiornate dinamicamente per isolamento logico dei nodi compromessi.
+- **Chiavi PKI/Post-quantum:** Gestione e revoca automatica tramite IAM.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Ledger:** Registro distribuito per notarizzazione Pulse, snapshot e auditabilità.
+- **Kyoto 2.0:** Standard di timestamping e compliance.
+- **IAM (Identity & Access Management):** Sistema integrato per revoca/aggiornamento certificati e chiavi.
+- **Motori AI/ML:** Utilizzati nei cluster Fog per detection comportamentale e load balancing predittivo.
+- **Firmware autenticato:** Necessario per bootstrap sicuro durante il recovery.
+- **Protocolli di escalation:** Flusso automatizzato di alert e comandi tra Edge, Fog e Cloud.
+
+**Sintesi:**  
+L’architettura Incident Response di AETERNA si basa su SOC multilivello, automazione delle contromisure, recovery Clean-Slate e notarizzazione su Bit-Energy Ledger. Le variabili chiave sono RTO ≤ 60s, RPO = 1 Pulse, snapshot notarizzati e gestione dinamica di ACL e chiavi PKI. Le dipendenze tecniche includono Bit-Energy Ledger, Kyoto 2.0, IAM, AI/ML per detection e load balancing, e firmware autenticato. Tutte le fasi sono auditabili e compliant, garantendo resilienza e continuità operativa.

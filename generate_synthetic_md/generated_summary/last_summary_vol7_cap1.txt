@@ -1,0 +1,35 @@
+**Riassunto Denso – Architettura dei Contratti Intelligenti AETERNA**
+
+**Decisioni Architetturali:**
+- **Blockchain permissioned**: scelta per trasparenza, auditabilità e compliance normativa.
+- **Modularità e aggiornabilità**: smart contract suddivisi in moduli indipendenti, aggiornabili tramite pattern proxy upgradeable (separazione logica/proxy, upgrade senza perdita di stato, audit trail immutabile).
+- **Separazione responsabilità**: ogni modulo gestisce un dominio funzionale (identità, transazioni, tariffe, settlement, audit).
+- **Sicurezza multilivello**: validazione input rigorosa, RBAC integrato, multi-signature deployment, routine di lock-down automatica su incidenti.
+- **Ciclo di vita strutturato**: fasi di deploy (multi-firma), inizializzazione (parametri configurazione), esecuzione (API REST/gRPC, validazione forte), aggiornamento (proxy), terminazione (freezing, auditabilità storica).
+- **Audit e logging**: eventi critici registrati su Bit-Energy Ledger (immutabile) e ELK Stack (analisi operativa).
+- **Orchestrazione multi-layer**: integrazione nativa con Edge, Fog e Cloud Layer.
+
+**Variabili Introdotte:**
+- **Identity Registry**: registro attori, ruoli (prosumers, consumers, operatori Fog/Cloud), chiavi pubbliche.
+- **RBAC mapping**: ruoli-permessi aggiornabili via governance.
+- **Transazione energetica**: timestamp, ID parti, quantità (kWh), hash certificato misura, firma digitale.
+- **Tariffe dinamiche**: parametri di mercato (prezzi spot, domanda/offerta), incentivi Kyoto 2.0, penalità, soglie compliance.
+- **Wallet energetici**: Bit-Energy Token, escrow temporanei, limiti di credito.
+- **Certificato digitale**: hash SHA-3, timestamp, firma ECDSA.
+- **Parametri di configurazione**: policy tariffarie, limiti compliance, soglie credito.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Ledger**: persistenza transazioni, audit trail, certificati.
+- **ELK Stack**: logging operativo e compliance.
+- **API RESTful/gRPC**: esposizione funzioni pubbliche, integrazione con digital twin H-Node e orchestrazione Fog/Cloud.
+- **Proxy upgradeable pattern**: gestione upgrade contratti.
+- **SHA-3, ECDSA**: certificazione e firma digitale transazioni.
+- **Governance**: aggiornamento policy, mapping ruoli-permessi.
+- **Multi-signature**: validazione deploy/upgrade.
+- **Lock-down routine**: gestione incidenti automatica.
+
+**Contratti Implementati:**
+- P2P Scambio Energetico, Incentivazione Kyoto 2.0, Settlement Multi-Layer.
+
+**Impatto:**  
+L’architettura garantisce scalabilità, resilienza, compliance e tracciabilità, abilitando l’evoluzione verso mercati energetici decentralizzati e l’integrazione futura di AI per la governance predittiva.

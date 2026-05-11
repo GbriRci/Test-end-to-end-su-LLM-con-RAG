@@ -1,0 +1,34 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura a tre livelli (Edge-Fog-Cloud):**
+  - *Edge (H-Node domestici):* Interfacciamento diretto con inverter fotovoltaici, microeolici, batterie e stazioni di ricarica; ogni H-Node integra un modulo EMS locale per monitoraggio, autoconsumo, accumulo e scambio P2P.
+  - *Fog (quartiere):* Fog Controller aggrega dati dagli H-Node, ottimizza la distribuzione energetica, gestisce interfacce con DSO e mercati Bit-Energy.
+  - *Cloud:* Analisi predittiva tramite AI, gestione centralizzata dei ledger Kyoto 2.0 e Bit-Energy.
+- **Energy Management distribuito e AI-driven:** Algoritmi di ottimizzazione multi-obiettivo (autoconsumo > accumulo > vendita P2P > immissione in rete), con priorità dinamiche e gestione predittiva dei flussi.
+- **Compliance nativa:** Tracciabilità energetica e finanziaria tramite tagging Kyoto 2.0 e Bit-Energy, smart contract su Hyperledger Fabric.
+
+**Variabili Introdotte:**
+- *Surplus energetico locale* (kWh, timestamp, fonte, emissioni evitate)
+- *Stato dispositivi* (potenza attiva/reattiva, stato interruttori, allarmi)
+- *Crediti/debiti Bit-Energy* (quantità, prezzo, incentivi)
+- *Profili energetici* (Kyoto 2.0: fonte, emissioni, timestamp)
+- *Previsioni produzione/domanda* (orizzonte 15min-24h, granularità)
+- *Tariffe dinamiche, incentivi, condizioni di rete*
+
+**Dipendenze Tecniche:**
+- **Protocolli di comunicazione:**
+  - *IEC 61850* (Logical Nodes: MMXU, CSWI, XCBR, MMS su TCP/IP) per interoperabilità tra dispositivi energetici.
+  - *OCPP ≥1.6J* (JSON/WebSocket) per gestione stazioni di ricarica e demand-response.
+  - *Modbus TCP/IP* per dispositivi legacy.
+  - *OCPI v2.2.1* (RESTful API, custom endpoint) per scambio P2P e settlement Bit-Energy.
+  - *MQTT (TLS 1.3)* per telemetria real-time tra Edge e Fog.
+- **Ledger e Smart Contract:**
+  - *Hyperledger Fabric* per tracciamento transazioni, tagging Kyoto 2.0/Bit-Energy, settlement multilaterale.
+- **Sicurezza:**
+  - *TLS 1.3, ECDSA, OAuth2, HSM* per autenticazione, cifratura e integrità dei dati.
+- **AI/ML:**
+  - *Modelli LSTM, Random Forest* per previsione produzione/domanda, esecuzione su Fog/Cloud.
+
+**Implicazioni per i prossimi capitoli:**  
+Le scelte architetturali e le dipendenze tecniche delineano un framework modulare, interoperabile e scalabile, con variabili chiave tracciate e gestite in modo trasparente e sicuro, abilitando la futura espansione di logiche di business, compliance e ottimizzazione energetica.

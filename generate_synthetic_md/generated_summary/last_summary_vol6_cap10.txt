@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il framework di simulazione AETERNA adotta una struttura multilivello allineata all’architettura Edge-Fog-Cloud del sistema reale.
+    - **Edge Layer:** Simulazione dettagliata di H-Node domestici (prosumers, storage, carichi flessibili) tramite digital twin parametrizzati.
+    - **Fog Layer:** Emulazione della rete di quartiere, gestione aggregata dei flussi energetici, propagazione fault, load shedding e bilanciamento predittivo.
+    - **Cloud Layer:** Modellazione di analisi predittiva, ottimizzazione MILP, settlement su Bit-Energy Ledger, orchestrazione multi-tenant e variabilità di mercato.
+- Integrazione di digital twin, emulazione hardware-in-the-loop (HIL) e ambienti virtualizzati per coprire scenari realistici e stress test.
+- Processo iterativo di simulazione, analisi KPI, ottimizzazione parametrica e validazione, con logging centralizzato (ELK Stack) e tracciamento su ledger.
+
+**Variabili Introdotte:**
+- **Parametri di scenario:** Profili di carico/generazione, fault, prezzi energetici, input meteorologici stocastici.
+- **KPI monitorati:** Energy Autarky Ratio, Load Shedding Success Rate, Response Time, Prediction Accuracy (MAE/RMSE), Ledger Settlement Latency, Fault Recovery Time, Compliance Score (Kyoto 2.0), Scalability Index, Auditability Coverage.
+- **Soglie di accettazione:** Es. Energy Autarky Ratio >85%, Response Time <250ms, Compliance Score >99.5%, Auditability Coverage 100%.
+
+**Dipendenze Tecniche:**
+- **Piattaforme di simulazione:**
+    - *MATLAB/Simulink:* Modelli fisici/logici, supporto HIL.
+    - *OpenDSS:* Simulazione flussi di potenza, fault analysis.
+    - *GridLAB-D:* Modellazione dinamica reti distribuite, supporto multi-agente.
+    - *Docker/Kubernetes:* Virtualizzazione e orchestrazione ambienti Edge/Fog/Cloud.
+    - *OPAL-RT:* HIL per validazione real-time, interfaccia dispositivi fisici.
+    - *AETERNA Custom Sim:* Moduli proprietari per smart contract, ledger Bit-Energy, Kyoto 2.0.
+- **Logging e monitoraggio:** ELK Stack per raccolta log, Bit-Energy Ledger per tracciabilità eventi e settlement.
+- **Protocolli di testing:** Definizione parametri, esecuzione multi-livello, logging centralizzato, analisi post-processing, reportistica e audit trail.
+
+**Implicazioni per i prossimi capitoli:**  
+Le scelte architetturali e le variabili definite guidano la progettazione dei moduli algoritmici, la selezione delle piattaforme di sviluppo, la definizione dei dataset di test e la strutturazione dei processi di validazione e compliance, costituendo la base tecnica per l’implementazione e la scalabilità delle soluzioni AETERNA.

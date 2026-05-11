@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: suddivisione in Edge (sensori IoT/smart meter con pre-processing locale), Fog (gateway di quartiere per aggregazione, data fusion, compressione, sincronizzazione temporale) e Cloud (data lake centralizzato per storage, analytics e persistenza).
+- **Pipeline dati**: raccolta tramite MQTT (QoS 1/2, TLS 1.3), OPC UA (per dispositivi industriali/legacy), API RESTful (bulk/historic data). Payload in JSON/CBOR secondo modelli SAREF/CIM, arricchiti da metadati semantici.
+- **Semantic Mapping Service**: normalizzazione e trasformazione semantica dei dati per garantire coerenza e compatibilità con i modelli di analytics.
+- **Data Lake**: storage distribuito (HDFS, S3, MinIO), partizionamento temporale/asset, catalogazione automatica tramite tagging energetico (Kyoto 2.0, Bit-Energy).
+- **Data ingestion**: pipeline su Apache Kafka/Apache NiFi per buffering, deduplica, validazione.
+- **Analytics Engine**: modelli ML/AI (Random Forest, SVM, LSTM, autoencoder) per anomaly detection, predizione guasti, analisi pattern; feature engineering automatizzato; training/retraining continuo su dati storici e streaming.
+- **Alerting e decision support**: motore di regole (Drools/custom), integrazione con sistemi di ticketing e workflow manutentivi.
+- **Dashboard interattive**: visualizzazione real-time, drill-down, accesso profilato tramite SSO e policy centralizzate.
+- **Sicurezza e privacy**: crittografia end-to-end (TLS 1.3), gestione identità con Decentralized Identifiers (DID) e smart contract, audit trail completo.
+
+**Variabili Introdotte:**
+- **Tipologie di dati**: temperatura, vibrazione, corrente, tensione, stato di carica, KPI asset, metadati semantici (timestamp, deviceID, location, capability).
+- **Modelli dati**: SAREF, CIM.
+- **Tagging energetico**: Kyoto 2.0, Bit-Energy.
+- **Protocolli**: MQTT, OPC UA, RESTful, Modbus, WebSocket.
+- **Modelli ML/AI**: Random Forest, SVM, LSTM, autoencoder.
+- **Policy di accesso**: SSO, DID, smart contract.
+
+**Dipendenze Tecniche:**
+- **Hardware**: sensori IoT, smart meter, microcontrollori, gateway.
+- **Software/Framework**: Apache Kafka, Apache NiFi, HDFS, S3, MinIO, TensorFlow, PyTorch, Drools.
+- **Standard**: SAREF, CIM, NTP/PTP (sincronizzazione), TLS 1.3 (sicurezza).
+- **Integrazione**: sistemi di ticketing, workflow manutentivi, dashboard web-based.
+
+Queste scelte abilitano monitoraggio proattivo, manutenzione predittiva, resilienza e sicurezza nelle micro-reti energetiche urbane, ponendo le basi per i capitoli successivi su ottimizzazione, automazione e scalabilità.

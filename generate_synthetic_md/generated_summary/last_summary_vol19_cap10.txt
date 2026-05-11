@@ -1,0 +1,33 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Automazione dei workflow regolatori:** Eventi chiave (onboarding micro-rete, aggiornamenti policy, incidenti) attivano workflow digitali automatizzati per notifiche e richieste di autorizzazione verso le autorità.
+- **Smart contract di compliance:** Utilizzo di smart contract per generazione, firma digitale, archiviazione (Bit-Energy) e trasmissione sicura (API RESTful certificate, SFTP cifrato) di notifiche/documenti.
+- **Tracciamento centralizzato:** Ogni notifica/documento è associato a UUID e monitorato tramite dashboard compliance centralizzata.
+- **Gestione documentale avanzata:** Versionamento, storicizzazione e referenziazione incrociata delle evidenze tramite hash e UUID su Bit-Energy; archiviazione in data lake cifrato.
+- **Checklist digitalizzate e aggiornabili:** Integrazione di checklist Kyoto 2.0 e ISO/IEC 27001 nei workflow, aggiornate da feed normativi e incidenti.
+- **Workflow di validazione multi-attore:** Segregazione ruoli tramite OpenID Connect, audit trail su Bit-Energy, firma elettronica qualificata.
+- **Provisioning accessi temporanei:** Accesso in sola lettura per auditor esterni, logging granulare delle attività.
+- **Comunicazione proattiva e canali dedicati:** API sicure per interazione bidirezionale con autorità, alert automatici per timeboxing risposte.
+- **Simulazioni AI per audit:** Motore AI per simulazioni “what-if”, identificazione gap e suggerimento remediation.
+- **Gestione incidenti:** Notifica automatica di incidenti critici, invio report root cause, monitoraggio stato remediation e follow-up.
+
+**Variabili Introdotte:**
+- **UUID** per identificazione univoca notifiche/documenti.
+- **Hash** per integrità e non ripudio delle evidenze.
+- **KRI (Key Risk Indicator)** e stato non conformità su dashboard.
+- **Ruoli segregati** (OpenID Connect) per accesso e operatività.
+- **Checklist digitalizzate** (Kyoto 2.0, ISO/IEC 27001).
+- **Feed normativi** per aggiornamento automatico policy/processi.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy** (blockchain/audit trail, archiviazione documentale).
+- **API RESTful certificate, SFTP cifrato** (trasmissione sicura).
+- **OpenID Connect** (gestione identità e ruoli).
+- **Data Lake cifrato** (archiviazione centralizzata).
+- **Motore AI** (simulazioni audit, gap analysis).
+- **Dashboard compliance** (monitoraggio stato, KRI, remediation).
+- **Incident Notification System** (notifiche incidenti).
+- **PEC/portali istituzionali** (invio documentazione ove API non disponibili).
+
+Queste scelte abilitano resilienza normativa, efficienza operativa, accountability, adattabilità e cultura della compliance, ponendo le basi per la scalabilità del framework AETERNA.

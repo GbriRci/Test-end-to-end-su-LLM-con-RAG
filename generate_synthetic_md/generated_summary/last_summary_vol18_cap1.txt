@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (max 300 parole)**
+
+**Decisioni Architetturali:**
+- **Microservizi containerizzati**: Ogni dominio funzionale (gestione H-Node, bilanciamento AI, auditing blockchain, orchestrazione Fog) è implementato come microservizio autonomo, containerizzato (Docker) e orchestrato tramite Kubernetes (K8s).
+- **Edge Computing**: Elaborazione decentralizzata tramite orchestratori lightweight (K3s, OpenFaaS) su cluster H-Node, con pre-processing locale e data summarization per ridurre latenza e traffico verso il cloud.
+- **AI/ML distribuita**: Pipeline ML orchestrate con Apache Airflow; modelli (LSTM, Isolation Forest) serviti via TensorFlow Serving/ONNX Runtime come microservizi RESTful; federated learning su H-Node per privacy e riduzione traffico.
+- **Blockchain permissioned**: Uso di Bit-Energy con consenso BFT, smart contract per settlement, auditing e dispute, canali privati e zk-SNARKs per privacy, strategia on-chain/off-chain per dati critici.
+- **Event-driven architecture**: Comunicazione tra Edge e Fog tramite broker MQTT con QoS configurabile.
+- **Secret Management centralizzato**: HashiCorp Vault per gestione segreti, token e certificati TLS.
+
+**Variabili Introdotte:**
+- **Metriche custom per auto-scaling**: CPU, memoria, latenza, throughput energetico.
+- **Feature importances e explainability**: Logging strutturato tramite SHAP/LIME.
+- **Drift detection**: Meccanismi di retraining automatico dei modelli AI.
+- **QoS MQTT**: Configurabile per garantire affidabilità nella trasmissione eventi.
+- **Policy di network e firewalling L7**: Segmentazione tra Edge, Fog e Cloud.
+- **Replica e backup Vault**: Per garantire disponibilità dei segreti.
+
+**Dipendenze Tecniche:**
+- **Kubernetes (K8s)**: Orchestrazione, service discovery DNS-based, HPA, rolling update/rollback, network policy.
+- **Docker**: Containerizzazione dei microservizi.
+- **Apache Airflow**: Orchestrazione pipeline ML e federated learning.
+- **TensorFlow Serving/ONNX Runtime**: Model serving.
+- **K3s/OpenFaaS**: Orchestrazione edge.
+- **MQTT**: Event broker tra H-Node e Fog.
+- **Intel SGX**: Isolamento hardware per funzioni critiche in edge.
+- **Bit-Energy Blockchain**: Consenso BFT, smart contract, privacy layer, API REST/gRPC.
+- **HashiCorp Vault**: Secret management.
+- **SHAP/LIME**: Explainability AI.
+
+Queste scelte garantiscono modularità, interoperabilità, resilienza, sicurezza, compliance e flessibilità evolutiva, ponendo le basi tecniche per i capitoli successivi.

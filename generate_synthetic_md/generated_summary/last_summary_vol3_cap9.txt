@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Dual-Boot Firmware OTA:** Ogni H-Node adotta una memoria flash segmentata in due partizioni (A: attiva, B: staging) gestite da un bootloader avanzato in area protetta, abilitando aggiornamenti firmware atomici, sicuri e senza downtime.
+- **Rollback Automatico:** In caso di errore (firma digitale o checksum), il sistema esegue rollback automatico alla versione precedente, garantendo continuità operativa e prevenendo l’esecuzione di codice non verificato.
+- **Integrazione HSM e Logging:** Tutte le operazioni critiche (verifica, switch, rollback, reboot) sono firmate digitalmente dal modulo HSM AETERNA e timestampate tramite RTC Kyoto 2.0, assicurando tracciabilità e immutabilità dei log.
+- **Zero-Touch Deployment:** L’intero processo di aggiornamento e recovery è completamente automatizzato, senza necessità di intervento manuale.
+- **Compatibilità Retroattiva:** Il meccanismo dual-boot è retrocompatibile, consentendo aggiornamenti anche su dispositivi legacy tramite bridge certificati.
+- **Tamper Detection:** Il bootloader rileva tentativi di accesso/manipolazione non autorizzata, bloccando l’aggiornamento e notificando l’evento.
+
+**Variabili Introdotte:**
+- **Partition A/B:** Stato delle partizioni firmware (attiva/staging).
+- **Boot Flag:** Indica la partizione da avviare al boot successivo.
+- **Checksum SHA-256:** Valore di integrità dell’immagine firmware.
+- **Stato Bootloader:** Idle, Verifica Firma, Verifica Checksum, Sanity Check, Rollback.
+- **Eventi Critici:** Errori di firma, checksum, sanity check, tentativi di tampering.
+- **Rate-Limiting:** Numero massimo di tentativi di aggiornamento consentiti in caso di errori.
+
+**Dipendenze Tecniche:**
+- **Canali di Trasporto:** MRRE-LoRaWAN (primario), Zigbee (fallback) per ricezione firmware cifrato e firmato.
+- **HSM AETERNA:** Verifica firme digitali, firma log eventi.
+- **RTC Kyoto 2.0:** Timestamping eventi critici.
+- **Policy Kyoto 2.0:** Definisce regole di sicurezza, logging, rate-limiting e audit.
+- **Cloud/Fog Layer:** Propagazione firmware, ricezione notifiche di rollback, audit e blacklist pacchetti corrotti.
+- **Manifest Firmware:** Contiene checksum e metadati di verifica.
+
+**Impatto:**  
+L’architettura garantisce aggiornamenti sicuri, continuità di servizio, auditabilità, scalabilità e resilienza sistemica, costituendo un pilastro per la sicurezza e la sostenibilità delle micro-reti AETERNA.

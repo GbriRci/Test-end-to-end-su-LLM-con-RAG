@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: Storage distribuito su tre livelli – Edge (H-Node domestici, microgrid), Fog (cluster di quartiere), Cloud (data center centrale).
+- **Persistenza e buffering**: Meccanismo di persistenza locale per resilienza e continuità operativa anche in caso di fault o segmentazione di rete.
+- **Replica e sincronizzazione**: Dati replicati tra Edge e Fog (rsync/SSH, MQTT fallback), backup incrementali criptati dal Fog al Cloud.
+- **Notarizzazione**: Ogni evento critico e snapshot/versioning hashato e registrato su Bit-Energy Blockchain.
+- **Compliance e auditing**: Policy Kyoto 2.0 enforced, auditing tramite Prometheus, logging notarizzato su blockchain.
+
+**Variabili Introdotte:**
+- **Capacità storage Edge**: 2–8 TB per nodo; Fog: 100–500 TB per cluster.
+- **Replica**: Tripla (3x) su Edge e intra-cluster Fog; asincrona tra cluster Fog e verso Cloud.
+- **Retention**: Snapshot Edge 24h, Fog 7gg, Cloud 12 mesi per dati sensibili.
+- **Deduplicazione/compressione**: Inline, ZSTD (Edge), LZ4/ZSTD (Fog), granularità 4 KB (Edge), 8 KB (Fog).
+- **Rotazione chiavi**: Automatica ogni 90 giorni (Edge), gestione centralizzata HSM (Fog).
+- **Snapshot/versioning**: Edge (locale, 24h), Fog (ogni 15 min, 7gg, versioning abilitato).
+
+**Dipendenze Tecniche:**
+- **Hardware Edge**: SSD NVMe industrial-grade, ARM Cortex-A72, TPM 2.0.
+- **Hardware Fog**: Cluster x86_64, SSD NVMe + HDD, HSM centralizzato.
+- **File system**: CephFS/GlusterFS (Edge), Ceph (Fog, RADOS Gateway).
+- **Cifratura**: AES-256-XTS hardware (Edge), AES-256 end-to-end (Fog), chiavi via TPM/HSM.
+- **Protocolli**: rsync over SSH (TLS 1.3), MQTT (QoS 2), SFTP, Ceph RADOS peer-to-peer, RESTful API, Modbus TCP/IP, Prometheus exporter, Grafana alerting.
+- **Monitoraggio**: Prometheus node exporter (Edge), Prometheus/Grafana (Fog), audit trail.
+- **Accesso**: RBAC locale (Edge), multilivello (Fog), MFA obbligatoria.
+- **Notarizzazione**: Bit-Energy Blockchain (hash SHA-256 via RESTful API).
+- **Networking**: VLAN segmentate, QoS garantita, 40 Gbps Ethernet/fibra (Fog).
+
+**Implicazioni per i prossimi capitoli**: Le scelte di storage, sicurezza, replica e compliance sono vincolanti per la gestione dati, la resilienza operativa, l’integrazione con sistemi di trading P2P, la gestione fault e la scalabilità delle micro-reti urbane.

@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Cap. 8 SLA Internazionali AETERNA)**
+
+**Decisioni Architetturali:**
+- **Formalizzazione SLA:** Ogni SLA è un oggetto digitale versionato, firmato digitalmente, archiviato sia su repository Cloud centralizzati sia su blockchain privata AETERNA per tracciabilità e auditabilità.
+- **Architettura Edge-Fog-Cloud:** Il monitoraggio e la raccolta delle metriche SLA avvengono su tutti i livelli (Edge, Fog, Cloud), con pipeline di dati in tempo reale e processi ETL per aggregazione e normalizzazione.
+- **Compliance e Personalizzazione Locale:** Ogni SLA include una sezione `local_overrides` per deroghe e parametri specifici regionali/nazionali; la compliance è valutata tramite motore di regole (es. OPA).
+- **Sicurezza e Auditabilità:** Dati SLA cifrati (AES-256+), accesso tramite RBAC granulare, audit trail su blockchain, retention e backup geo-ridondati, accessibilità tramite dashboard/API per audit interni/esterni.
+- **Workflow di Escalation:** Escalation automatizzata multilivello (locale, regionale, internazionale, remediation), con tracking, timestamp NTP e firma digitale, fino a notifiche regolatorie automatiche.
+- **Reporting e Notifica:** Dashboard Kibana/Grafana per report digitalmente firmati; alerting via webhook/email/notifiche push.
+
+**Variabili Introdotte:**
+- `sla_id`, `sla_version`: identificativo e versionamento SLA.
+- Parametri SLA (JSON-Schema v7):  
+  - `availability_target` (es. 99.95%)
+  - `performance_thresholds` (es. <200ms)
+  - `incident_response_time` (<5min), `incident_resolution_time` (<1h)
+  - `energy_trading_latency` (<500ms)
+  - `blockchain_finality_time` (<2min)
+  - `localization_requirements` (compliance Kyoto 2.0, GDPR, custom)
+  - `local_overrides`: deroghe/estensioni normative locali.
+- Metriche raccolte: `service_availability`, `network_latency`, `api_response_time`, `trading_match_time`, `incident_detection_time`, `incident_resolution_time`, `sla_data_integrity`, `local_compliance_score`.
+
+**Dipendenze Tecniche:**
+- **Monitoring:** Agenti Prometheus e custom exporter AETERNA, normalizzazione su Elastic Common Schema esteso.
+- **Sicurezza:** TLS 1.3+ per trasporto dati, AES-256+ per storage, RBAC, firma digitale ETSI.
+- **Storage:** Database cifrati, hash su blockchain AETERNA.
+- **Compliance:** Motore OPA per regole, supporto multilingua e multiformato, reporting conforme a standard ISO/IEC 20000, Kyoto 2.0, Bit-Energy, GDPR, CCPA, LGPD.
+- **Reporting:** Kibana/Grafana, esportazione PDF/CSV/JSON.
+- **Escalation:** Workflow automatizzato, tracking su blockchain, timestamp NTP.
+
+Queste scelte abilitano la gestione SLA internazionale, garantendo affidabilità, compliance, trasparenza e reattività, e costituiscono la base tecnica per i capitoli successivi.

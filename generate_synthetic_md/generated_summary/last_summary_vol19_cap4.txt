@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Progetto AETERNA, Gestione Licenze Open Source)**
+
+**Decisioni Architetturali:**
+- **Architettura modulare e distribuita** su livelli Edge (H-Node), Fog e Cloud, con forte separazione tra moduli tramite microservizi, containerizzazione (Docker/OCI) e API RESTful.
+- **Isolamento licenze copyleft**: moduli core non integrano direttamente codice GPL/AGPL; eventuali componenti copyleft sono isolati tramite boundary architetturali (microservizi REST, container dedicati).
+- **Pipeline CI/CD** integrata con scanner OSS (FOSSA, ScanCode Toolkit, Syft) per automazione della compliance e aggiornamento del Registro Licenze.
+- **Audit trail** e logging immutabile su blockchain (Bit-Energy), con correlazione a identità digitale (OpenID Connect) e timestamp UTC.
+- **Endpoint pubblico `/licenses`** per esposizione runtime delle licenze.
+- **Gestione delle distribuzioni derivate** tramite revisione legale preventiva e generazione di SBOM firmato digitalmente.
+
+**Variabili Introdotte:**
+- **Registro Licenze** (YAML/JSON, versionato): contiene nome componente, versione, licenza primaria, origine, dipendenze transitive e relative licenze, compatibilità, note di attribuzione, clausole di brevetto, obblighi di redistribuzione.
+- **Matrice di compatibilità licenze**: guida le scelte di integrazione tra moduli e licenze (Permissiva, Copyleft, Dual, Proprietaria).
+- **File NOTICE, LICENSE, ATTRIBUTION**: aggregati e accessibili sia a runtime che in distribuzione.
+- **OSS Compliance Bot**: agente automatico per scansioni periodiche e notifiche di anomalie.
+- **Audit Trail**: log, hash (SHA-256), firma digitale, storage WORM, conservazione min. 10 anni.
+- **Workflow di escalation**: notifica, isolamento, audit e report in caso di violazione.
+
+**Dipendenze Tecniche:**
+- **Scanner OSS**: FOSSA, ScanCode Toolkit, Syft.
+- **Containerizzazione**: Docker/OCI.
+- **Blockchain**: Bit-Energy per logging e audit trail.
+- **Identità digitale**: OpenID Connect.
+- **Storage**: WORM per retention dati.
+- **CI/CD**: automazione di scansioni, verifica file licenza, generazione SBOM.
+- **Standard interni**: Kyoto 2.0, Bit-Energy.
+
+**Implicazioni per i prossimi capitoli:**  
+Le scelte architetturali e le variabili introdotte impongono vincoli e pattern di integrazione, tracciabilità e auditabilità che dovranno essere rispettati in tutte le fasi di sviluppo, deployment e distribuzione della piattaforma AETERNA.

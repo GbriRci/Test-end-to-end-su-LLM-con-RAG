@@ -1,0 +1,28 @@
+**Riassunto Denso – Capitolo 11: Integrazione con Sistemi di Ticketing e Incident Management**
+
+**Decisioni Architetturali:**
+- L’integrazione tra AETERNA Monitoring Core e sistemi di ticketing/incident management (Jira Service Management, ServiceNow, PagerDuty) è realizzata tramite API RESTful standardizzate e webhook bidirezionali.
+- Il microservizio **Incident Bridge** (deployato su Fog e Cloud) funge da orchestratore degli eventi tra Monitoring Core e piattaforme di ticketing.
+- L’**API Adapter Layer** implementa connettori specifici per ciascuna piattaforma, uniformando le chiamate e gestendo autenticazione (OAuth2, JWT).
+- Il **Webhook Dispatcher** gestisce la sincronizzazione asincrona dello stato dei ticket.
+- Il **Template Engine** genera dinamicamente i payload dei ticket, mappando alert type/severity su template predefiniti.
+- Tutti gli eventi chiave (creazione, aggiornamento, chiusura ticket) sono notarizzati su **Bit-Energy Blockchain** per garantire auditabilità e immutabilità.
+- La sincronizzazione dello stato dei ticket è bidirezionale; la chiusura e la riapertura automatica sono supportate tramite API PATCH e regole temporali configurabili.
+
+**Variabili Introdotte:**
+- **alert_id, asset_id, severity, description, kyoto_context, bitenergy_hash, trace_id, remediation_id, log_excerpt, sla_deadline**: campi strutturali obbligatori/opzionali nei payload dei ticket.
+- **Regole di assegnazione**: versionate e gestite via dashboard, es. (alert_type, severity) → team, SLA.
+- **Kyoto 2.0 context**: metadati per compliance e AI predittiva.
+- **Hash Bit-Energy**: per notarizzazione blockchain.
+- **Window temporale riapertura ticket**: configurabile (es. 24h).
+
+**Dipendenze Tecniche:**
+- **API RESTful** (TLS 1.3, OAuth2/JWT) per comunicazione sicura tra moduli e piattaforme esterne.
+- **Webhook** autenticati (HMAC-SHA256, nonce/timestamp) per notifiche asincrone e sincronizzazione stato.
+- **Bit-Energy Blockchain** per notarizzazione eventi.
+- **Dashboard di gestione** per versionamento regole di assegnazione e audit trail.
+- **Integrazione nativa** con sistemi di notifica (es. Slack/Email via Jira).
+- **Custom JSON schema** per i payload dei ticket.
+- **Automation Orchestrator** per remediation automatica e chiusura ticket.
+
+Queste scelte abilitano automazione, auditabilità, collaborazione cross-team e ottimizzazione SLA, ponendo le basi per una gestione incidentale scalabile, resiliente e conforme agli standard AETERNA.

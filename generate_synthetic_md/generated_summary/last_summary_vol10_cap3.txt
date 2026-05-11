@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Protocollo Custom su gRPC/Protocol Buffers:** La comunicazione d’emergenza tra nodi Edge/Fog e Cloud è implementata tramite un protocollo custom basato su gRPC, con serializzazione binaria tramite Protocol Buffers (.proto). Questo garantisce efficienza, interoperabilità e supporto a pattern sincroni/asincroni (richiesta/risposta e streaming bidirezionale).
+- **Sicurezza End-to-End:** Tutte le comunicazioni sono cifrate con TLS 1.3. È obbligatoria la mutual authentication tramite certificati X.509 emessi da una CA interna, con rotazione automatica. Ogni messaggio include un HMAC-SHA256 calcolato su payload e metadati, usando una chiave derivata dal canale TLS.
+- **Affidabilità e Resilienza:** Implementazione di retry esponenziale con backoff configurabile in caso di mancato acknowledgment. I messaggi critici sono persistiti localmente (database embedded o file system transazionale) fino a trasmissione avvenuta. Rate limiting e flood control sono gestiti da middleware custom con soglie dinamiche.
+- **Gestione Eventi Critici:** Gli eventi sono classificati per priorità; quelli di massima urgenza bypassano le code ordinarie e usano canali dedicati. Ogni evento è notarizzato su blockchain Bit-Energy per auditabilità e non ripudiabilità.
+- **Integrazione Pipeline DR e Telemetria:** Eventi critici possono attivare pipeline CI/CD di disaster recovery (failover, restore, riconfigurazione cluster). La telemetria (Prometheus/Grafana) integra i messaggi d’emergenza per visualizzazione real-time.
+
+**Variabili Introdotte:**
+- Identificativo univoco evento
+- Timestamp sincronizzato (NTP/PTP)
+- Stato risorse coinvolte
+- Firma HMAC-SHA256
+- Soglie di rate limiting dinamiche
+- Priorità evento (es. blackout, compromissione, restore)
+- Certificati X.509 univoci per ogni nodo/autorità
+
+**Dipendenze Tecniche:**
+- **gRPC** (trasporto), **Protocol Buffers** (serializzazione)
+- **TLS 1.3**, **X.509 CA interna** (mutual TLS)
+- **HMAC-SHA256** (integrità/autenticazione messaggi)
+- **Bit-Energy Blockchain** (notarizzazione eventi)
+- **Database/file system locale** (persistenza messaggi)
+- **Prometheus/Grafana** (telemetria)
+- **Middleware custom** (rate limiting/flood control)
+- **Pipeline CI/CD** (disaster recovery automation)
+
+Queste scelte garantiscono resilienza, sicurezza, auditabilità e scalabilità nella gestione delle emergenze nelle micro-reti AETERNA.

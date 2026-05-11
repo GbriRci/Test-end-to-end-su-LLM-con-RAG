@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il sistema formativo di AETERNA è progettato come piattaforma modulare e adattiva, integrata con i workflow operativi e la Bit-Energy Blockchain.
+- Il **Portale Formazione** è accessibile tramite autenticazione federata (User_Stakeholder_ID) e interoperabile con il Collaboration Portal.
+- Tutte le attività formative (moduli, esercitazioni, test, feedback) sono notarizzate su blockchain per garantire auditabilità, trasparenza e immutabilità.
+- Percorsi formativi personalizzati sono assegnati automaticamente in base al ruolo operativo, con dashboard individuali e repository didattico centralizzato.
+- Laboratori virtuali e simulazioni hands-on (policy-as-code, DR Drill, Red Team) sono integrati per la formazione pratica.
+- Il sistema di certificazione multilivello prevede badge digitali notarizzati e collegati a sistemi di incentivazione (token Bit-Energy, accesso a ruoli avanzati).
+- Tutte le interazioni formative (forum, workshop, test) sono tracciate tramite identificativi univoci (Feedback_ID, Forum_Thread_ID, Meeting_ID, Audit_Reference).
+
+**Variabili Introdotte:**
+- **User_Stakeholder_ID**: Identificativo federato per autenticazione e tracciamento utente.
+- **Feedback_ID**: Tracciamento feedback e completamento corsi.
+- **Forum_Thread_ID**: Identificativo thread forum/workshop.
+- **Meeting_ID**: Tracciamento partecipazione eventi formativi.
+- **Audit_Reference**: Riferimento per audit trail e compliance.
+- **Badge**: Certificazioni digitali notarizzate.
+- **Token Bit-Energy**: Incentivo interno.
+- **Ruoli Operativi**: Edge Maintainer, Fog Operator, Data Steward, Audit Committee.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Blockchain**: Notarizzazione di tutte le attività formative, badge, audit trail.
+- **Policy-as-code**: Oggetto di formazione e simulazione, integrato nei laboratori virtuali.
+- **AI-based anomaly detection**: Moduli formativi e aggiornamenti periodici.
+- **GitOps, Kibana**: Strumenti tecnici per esercitazioni e simulazioni.
+- **SDN, DR Drill**: Protocolli e scenari di esercitazione.
+- **Compliance Kyoto 2.0**: Standard di riferimento per moduli e validazione.
+
+**Sintesi:**  
+L’architettura formativa di AETERNA è strettamente integrata con la governance tecnica e operativa della rete, sfruttando identificativi univoci, blockchain e strumenti di simulazione per garantire tracciabilità, aggiornamento continuo e incentivazione. Le variabili introdotte e le dipendenze tecniche costituiscono la base per la scalabilità, la sicurezza e la compliance dei processi formativi nei capitoli successivi.

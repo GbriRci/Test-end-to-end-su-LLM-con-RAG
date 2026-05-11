@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Modello di governance multilivello** (Edge, Fog, Cloud) con comitato tecnico multidisciplinare (CTM) come organo centrale per indirizzo e controllo.
+- **Processo decisionale formalizzato** in quattro fasi: raccolta/formalizzazione proposte, analisi tecnica/rischi, revisione collegiale/validazione, implementazione/monitoraggio.
+- **Gestione innovazioni disruptive** tramite processo straordinario (fast-track, simulazioni in sandbox, coinvolgimento esperti esterni).
+- **Revisione periodica di policy** (audit trimestrali, versionamento formale, override dinamico policy e MFA).
+- **Tracciabilità e trasparenza** garantite da logging automatico (Git, SharePoint), audit log (Bit-Energy), e repository centralizzati.
+- **Allineamento strategico** tra roadmap tecnica e obiettivi di business tramite coinvolgimento continuo di Product Owner e stakeholder esterni.
+
+**Variabili Introdotte:**
+- **Tassonomia interna** per categorizzazione automatica delle proposte (sicurezza, performance, compliance, interoperabilità).
+- **KPI custom**: tempo medio presa in carico, ciclo decisionale, deviazione da baseline, impatto su metriche operative.
+- **Risk Matrix**: probabilità, severità, mitigazione per ogni proposta.
+- **Coverage policy** e compliance a standard interni (Kyoto 2.0, Bit-Energy).
+- **Override dinamico** delle policy e gestione MFA.
+- **Milestone e task** generati automaticamente nei sistemi di project management.
+
+**Dipendenze Tecniche:**
+- **Workflow digitali**: Jira, Azure DevOps per gestione proposte, task e workflow.
+- **Repository documentali**: SharePoint, Git per tracciabilità e versionamento decisioni.
+- **Sistemi di tracciamento e monitoraggio**: Audit log Bit-Energy, dashboard Grafana/Prometheus per KPI e audit.
+- **Comunicazione integrata**: Slack, Teams per notifiche e discussioni operative.
+- **Strumenti di analisi**: custom matrix tool per valutazione impatti e retrocompatibilità.
+- **Ambienti di staging/sandbox** per simulazione impatti innovazioni disruptive.
+
+**In sintesi**, la governance tecnologica di AETERNA si basa su processi strutturati, ruoli chiave, metriche custom e strumenti digitali integrati, garantendo trasparenza, rapidità, controllo dei rischi e adattabilità, con forti dipendenze da workflow digitali, repository centralizzati e sistemi di monitoraggio avanzati.

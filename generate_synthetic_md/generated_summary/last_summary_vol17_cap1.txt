@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura modulare, containerizzata e orchestrata su Kubernetes**: Tutti i microservizi sono distribuiti su livelli Edge, Fog e Cloud, con orchestrazione centralizzata.
+- **Adozione di strategie di test multilivello, automatizzate e ripetibili**: I test coprono funzionalità, carico, integrazione, regressione e hardware-in-the-loop (HIL).
+- **Pipeline CI/CD integrata (GitLab)**: Tutti i test sono automatizzati e integrati nei workflow di sviluppo, con tracciamento e versionamento dei risultati.
+- **Tracciamento e audit su blockchain Bit-Energy**: I risultati dei test e le release sono registrati su blockchain per auditabilità e compliance.
+- **Monitoraggio real-time (Prometheus & Grafana)**: Metriche di sistema e risultati dei test sono visualizzati su dashboard dedicate, con alert automatici.
+- **Orchestrazione ambienti di test isolati (Docker Compose & Kubernetes Test Suite)**: Deployment automatizzato di microservizi e simulazione di fault.
+
+**Variabili Introdotte:**
+- **Profili di carico per ogni microservizio**: Ramp-up fino al 150% del carico previsto, spike test, saturazione risorse (CPU, RAM, banda).
+- **Metriche monitorate**: Latenza media/massima, throughput, tasso di errori (4xx, 5xx), utilizzo risorse, persistenza/coerenza dati.
+- **Test case tracciati su GitLab**: Ogni requisito funzionale è associato a issue e test case automatizzati.
+- **Scenari di input anomali e condizioni di errore**: Per funzioni critiche (autenticazione, transazioni Bit-Energy, badge Kyoto 2.0).
+- **Simulazione fault hardware (HIL)**: Blackout, disconnessione, malfunzionamento sensori, perdita/reintegrazione nodi Edge.
+
+**Dipendenze Tecniche:**
+- **JUnit**: Test microservizi Java (orchestratori Fog, moduli Cloud AI).
+- **PyTest**: Test moduli Python (AI bilanciamento, agenti Edge).
+- **Postman/Newman**: Test API RESTful (trading P2P, badge, credenziali).
+- **Apache JMeter/Locust**: Stress test, simulazione traffico distribuito, raccolta metriche.
+- **Prometheus & Grafana**: Monitoraggio metriche e visualizzazione dashboard.
+- **Docker Compose & Kubernetes Test Suite**: Orchestrazione ambienti di test.
+- **Simulatori HIL/Fault Injector**: Emulazione guasti hardware.
+- **GitLab CI/CD**: Automazione pipeline di test, tracciamento versioni.
+- **Blockchain Bit-Energy**: Audit e compliance dei risultati di test.
+
+Queste scelte garantiscono qualità, scalabilità, resilienza, compliance e auditabilità, abilitando l’evoluzione sicura della piattaforma AETERNA.

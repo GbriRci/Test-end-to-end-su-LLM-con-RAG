@@ -1,0 +1,34 @@
+**Riassunto Denso – Gestione dei Crediti Energetici e Pagamenti in AETERNA**
+
+**Decisioni Architetturali:**
+- **Tokenizzazione Energetica:** Ogni kWh prodotto da fonti rinnovabili è convertito in Bit-Energy Token (BET) tramite lo smart contract _EnergyMint_, con emissione automatica validata da oracoli federati (IEC 61850/OpenADR 2.0b) e notary-based interledger per tracciabilità e non duplicazione.
+- **Smart Contract Modulari:** Quattro smart contract principali:
+  - _EnergyMint_ (emissione BET, time-lock, verifica produzione)
+  - _EnergySwap_ (trading P2P, atomic swap cross-chain, escrow)
+  - _PaymentSettlement_ (riconciliazione automatica, clearing)
+  - _DisputeArbitration_ (gestione dispute, arbitrato on-chain, enforcement policy)
+- **Wallet Multi-Asset:** Ogni attore dispone di un wallet digitale integrato, compatibile con BET, stablecoin (AEUR, AUSD) e valute fiat tramite gateway PSD2-compliant. Supporto per atomic swap e conversione automatica via oracoli federati.
+- **Riconciliazione e Reporting:** Il modulo _PaymentSettlement_ aggrega dati da Edge, Fog e Cloud, confrontando ledger on-chain e gateway fiat. Reporting avanzato in RDF/CSV/JSON, breakdown per periodo, attore, asset, e compliance Kyoto 2.0.
+- **Policy Anti-Frode e Limiti:** Machine learning per pattern detection, blacklist/whitelist dinamiche, transaction throttling, multi-signature approval, limiti configurabili per wallet/attore/asset via interfaccia amministrativa e enforcement smart contract.
+- **Gestione Dispute On-Chain:** _DisputeArbitration_ gestisce apertura dispute (trigger automatico/manuale), escrow, decisione arbitrale automatizzata e audit trail immutabile.
+- **Auditabilità e Trasparenza:** Tutte le transazioni sono registrate on-chain (AETERNA-compliant), con metadati semantici allineati alla Core Ontology. API per audit real-time da operatori, auditor terzi e autorità.
+
+**Variabili Introdotte:**
+- BET (Bit-Energy Token)
+- Stablecoin (AEUR, AUSD)
+- Valute fiat (via gateway)
+- Limiti di transazione (giornalieri, per asset, per attore)
+- Soglie multi-firma
+- Pattern di frode/anomalia
+- Stato transazione (Pending, Confirmed, Settled, Completed, Open, Resolved)
+
+**Dipendenze Tecniche:**
+- Oracoli federati (IEC 61850/OpenADR 2.0b)
+- Notary-based interledger per cross-chain
+- Gateway PSD2-compliant per fiat
+- Machine learning per anti-frode
+- API per audit/reporting
+- Smart contract AETERNA-compliant
+- AETERNA Core Ontology per metadati
+
+Queste scelte abilitano automazione, trasparenza, resilienza e compliance, ponendo le basi tecniche per i capitoli successivi.

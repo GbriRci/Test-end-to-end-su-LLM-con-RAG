@@ -1,0 +1,26 @@
+**Riassunto Denso – Capitolo 10: Monitoraggio delle Performance Applicative (APM) in AETERNA**
+
+**Decisioni Architetturali:**
+- **Architettura Multi-livello:** Il sistema APM è distribuito su Edge, Fog e Cloud, con agenti software (“APM Agents”) installati su tutti i nodi e integrati nei microservizi core.
+- **Osservabilità End-to-End:** Supporto nativo per tracing distribuito (OpenTelemetry), correlazione tra metriche, log e tracing, e risposta automatizzata tramite Automation Orchestrator.
+- **Pipeline Dati Sicura:** I dati raccolti sono serializzati (Protobuf/Avro), trasmessi via TLS 1.3 a collector regionali (Fog) e backend centrale (Cloud), con masking/tokenizzazione per dati sensibili.
+- **Persistenza e Audit:** Telemetria archiviata nel Data Lake (Processed Zone) con metadati Kyoto 2.0 e hash Bit-Energy; log critici replicati in cold storage e notarizzati su blockchain Bit-Energy.
+- **Dashboard e Alerting:** Dashboard interattive centralizzate per visualizzazione e drill-down; alerting automatico con soglie dinamiche e workflow di remediation integrati.
+- **Integrazione Estesa:** Alert e metriche APM integrati con Automation Orchestrator (workflow automatici), Bit-Energy Blockchain (auditabilità), e Kyoto 2.0 (AI predittiva e ottimizzazione energetica).
+
+**Variabili Introdotte:**
+- **APM Agents:** Parametri di overhead (<2%), configurazione tracing (sampling rate), identificatori trace-id/span-id.
+- **Metriche Monitorate:** Response time, throughput (RPS), error rate, CPU/memory usage, trace anomaly score (ML-based), uptime, audit log integrity.
+- **Soglie di Alert:** Configurabili per ogni metrica (es. response time >200ms, error rate >2%, CPU >85%, trace anomaly >0.8).
+- **Azioni Automatiche:** Scaling, restart microservizi, isolamento nodo, root cause analysis, migrazione workload.
+
+**Dipendenze Tecniche:**
+- **OpenTelemetry:** Standard per tracing distribuito.
+- **Protobuf/Avro:** Serializzazione dati telemetrici.
+- **TLS 1.3:** Sicurezza nella trasmissione dati.
+- **Bit-Energy Blockchain:** Auditabilità e notarizzazione eventi/log.
+- **Kyoto 2.0:** Consumo metriche APM per AI predittiva e ottimizzazione energetica.
+- **Automation Orchestrator:** Innesco workflow automatici di remediation.
+- **Data Lake (Processed Zone):** Persistenza dati telemetrici e metadati.
+
+**Nota:** Tutte le policy e soglie sono configurabili e versionate tramite dashboard, con audit trail persistente su blockchain.

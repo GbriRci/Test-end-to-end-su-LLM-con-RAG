@@ -1,0 +1,32 @@
+**Riassunto Denso – Ottimizzazione dei Carichi Cross-Layer (AETERNA)**
+
+**Decisioni Architetturali:**
+- L’ottimizzazione cross-layer è centrale nel framework AETERNA e si basa sulla massimizzazione della Compute-to-Watt Efficiency (CWE) tramite orchestrazione predittiva e reattiva su Edge, Fog e Cloud.
+- Le decisioni di scheduling, scaling e migrazione delle istanze V-Energy sono globali e non limitate a un singolo livello, con orchestrazione tramite Docker-Grid.
+- L’osservabilità è garantita da un Cluster dedicato che raccoglie metriche in tempo reale da tutti i nodi tramite API GraphQL autenticata (Kyoto 2.0 mutual TLS).
+- L’allocazione e la migrazione delle risorse sono guidate da uno Scheduler AI-aware che utilizza modelli predittivi basati su dati storici e in streaming.
+- Tutte le azioni cross-layer sono coordinate tramite il protocollo CL-RAP, che garantisce handshake autenticato, atomicità delle operazioni, negoziazione del consistencyLevel (Edge-local, Fog-consistent, Cloud-global) e rollback automatico.
+- Policy Bit-Energy e auditabilità sono enforce tramite Policy Engine e Audit Engine, con ogni evento tracciato e firmato su storage distribuito.
+- Integrazione con marketplace P2P interno (ledger AETERNA) per trading di risorse computazionali/energetiche in surplus, con dynamic pricing legato a CWE e domanda/offerta.
+
+**Variabili Introdotte:**
+- **CWE (Compute-to-Watt Efficiency):** Rapporto tra throughput computazionale e consumo energetico, calcolato in tempo reale ([GFLOPS/Watt], ecc.).
+- **CER (Carico Elettrico Residuo):** Energia disponibile meno riserva per carichi critici (Wh o %).
+- **resourceLimits:** Limiti dinamici di CPU/RAM/Storage per istanze V-Energy.
+- **consistencyLevel:** Livello di consistenza negoziato per operazioni cross-layer.
+- **policyRef:** Riferimento alla policy Bit-Energy applicata.
+- **auditLogRef:** Riferimento all’evento di audit.
+- **instanceUUID:** Identificatore univoco istanza V-Energy.
+- **snapshotRefs:** Riferimenti a snapshot di stato istanza.
+
+**Dipendenze Tecniche:**
+- Orchestrator Docker-Grid per provisioning, scaling, migrazione e deprovisioning.
+- Cluster di Osservabilità con agenti su ogni nodo.
+- Scheduler AI-aware per analisi predittiva e decisioni di allocazione.
+- API GraphQL autenticata (Kyoto 2.0 mutual TLS) per raccolta metriche.
+- Protocollo CL-RAP per coordinamento cross-layer (inclusi JWT Bit-Energy per autorizzazione).
+- Policy Engine e Audit Engine per enforcement e tracciabilità.
+- Storage distribuito per audit log e snapshot.
+- Ledger AETERNA per marketplace P2P e dynamic pricing.
+
+Queste scelte e variabili costituiscono la base tecnica e concettuale per i successivi capitoli su orchestrazione, resilienza, sostenibilità e mercato energetico/computazionale.

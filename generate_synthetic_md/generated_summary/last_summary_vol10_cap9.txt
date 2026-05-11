@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Protocollo di comunicazione formale**: Definizione di ruoli, canali, tempistiche e modalità di archiviazione, con focus su sicurezza, auditabilità e compliance (Kyoto 2.0, Bit-Energy).
+- **Ruolo dei Portavoce Ufficiali**: Comunicazione esterna affidata solo a figure designate, con formazione periodica e registro notarizzato su Bit-Energy Blockchain.
+- **Principio Four-Eyes**: Doppia validazione asincrona per ogni comunicazione critica.
+- **Template standardizzati**: Utilizzo obbligatorio per notifiche e report, riducendo errori e discrepanze.
+- **Segregazione dei canali**: Ogni canale ha scopo, destinatari e livelli di sicurezza specifici.
+- **Archiviazione immutabile**: Storage distribuito multi-region, read-only, con hash e timestamp notarizzati su blockchain.
+- **Monitoraggio automatico**: Sistema Prometheus in high-frequency per controllo flussi, alert su anomalie e tentativi di accesso non autorizzato.
+
+**Variabili Introdotte:**
+- **Registro Portavoce**: Lista aggiornata e notarizzata dei portavoce ufficiali.
+- **SLA di comunicazione**: Notifica incidente entro 15 minuti, aggiornamenti ogni 60 minuti, risposte a richieste entro 30 minuti.
+- **Policy di retention**: Minimo 10 anni per tutte le comunicazioni.
+- **Audit trail**: Logging avanzato e accesso tracciato per ogni operazione.
+- **Livelli di accesso**: Solo soggetti autorizzati tramite Identity Provider e MFA.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Blockchain**: Notarizzazione di registro portavoce, hash e timestamp di tutte le comunicazioni.
+- **Secure Email Gateway**: Crittografia end-to-end (AES-256, chiavi effimere), MFA.
+- **Portale Stakeholder**: Autenticazione hardware/biometrica, pubblicazione report e aggiornamenti.
+- **Linea Telefonica VoIP cifrata**: Registrazione e archiviazione cifrata delle chiamate.
+- **API Regolatori**: Endpoint RESTful autenticati (OAuth2), notarizzazione, logging avanzato.
+- **Archivio Documentale**: Storage distribuito, accesso limitato, hash e timestamp su blockchain.
+- **Prometheus**: Monitoraggio automatico dei flussi di comunicazione.
+
+**Sintesi:**  
+L’architettura di comunicazione di AETERNA si basa su ruoli segregati, canali sicuri e tracciati, notarizzazione blockchain, validazione multi-livello e monitoraggio automatico, garantendo sicurezza, trasparenza, compliance e resilienza operativa in ogni fase della gestione emergenziale.

@@ -1,0 +1,28 @@
+**Riassunto Denso – Modulo HSM AETERNA (max 300 parole)**
+
+**Decisioni Architetturali:**
+- L’HSM è un sottosistema embedded fisicamente separato dal SoC principale (Aeterna-Core X1), con interfaccia autenticata (SPI/I²C sicuro).
+- Tutte le chiavi private e operazioni crittografiche (ECDSA secp256k1, SHA-256) sono gestite esclusivamente all’interno dell’HSM; solo i risultati (es. signature) sono esportati.
+- Nessuna chiave è mai scritta su memoria non volatile; storage solo in SRAM volatile alimentata da micro-batteria.
+- Secure Bootloader in ROM verifica l’integrità del firmware tramite SHA-256 e policy Kyoto 2.0, bloccando il boot in caso di compromissione.
+- Policy di accesso alle funzioni crittografiche tramite challenge-response autenticata, con time-out e rate-limiting hardware.
+- Logging e audit: ogni evento di sicurezza/autodistruzione genera log firmato e timestampato (RTC Kyoto 2.0), propagato via MRRE (LoRaWAN prioritario, fallback Zigbee) a Fog/Cloud per quarantena e audit.
+
+**Variabili Introdotte:**
+- **Secure Enclave (SRAM 32–128 KB, battery-backed):** Custodia temporanea chiavi.
+- **TRNG certificato:** Generazione chiavi private.
+- **Tamper Sensors (4+ tipologie):** Micro-interruttori, loop conduttivi, sensori ottici, termistori.
+- **Micro-batteria:** Alimentazione SRAM per wipe sicuro (>60s).
+- **Bus SPI/I²C autenticato:** Comunicazione sicura con Aeterna-Core X1.
+- **Policy Kyoto 2.0:** Gestione integrità, timestamp, session key.
+- **MRRE:** Canale di propagazione eventi/log di sicurezza.
+
+**Dipendenze Tecniche:**
+- **Firmware Secure Bootloader** (ROM, SHA-256, Kyoto 2.0).
+- **Protocolli di comunicazione sicura**: SPI/I²C autenticato, handshake crittografico, time-out sessione.
+- **Protocolli di logging e propagazione eventi**: MRRE (LoRaWAN/Zigbee), compatibilità “Last Gasp” (super-condensatori).
+- **Standard di cancellazione sicura**: NIST SP 800-88 (overwrite multiplo, zeroization).
+- **Sincronizzazione sicurezza**: Timestamp e chiavi via Kyoto 2.0.
+
+**In sintesi:**  
+L’HSM AETERNA introduce un’architettura hardware/software segregata, con autodistruzione dati su trigger fisici/ambientali, gestione chiavi solo volatile, logging forense e propagazione eventi di sicurezza, abilitando security-by-design e compliance per micro-reti energetiche decentralizzate.

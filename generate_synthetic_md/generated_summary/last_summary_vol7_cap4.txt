@@ -1,0 +1,25 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Blockchain Permissioned:** Utilizzo di Hyperledger Fabric per garantire controllo degli accessi e governance distribuita.
+- **Pipeline di Audit Multilivello:** Processo strutturato in quattro fasi: analisi statica automatizzata, revisione manuale interna, test di compliance normativa, audit esterno indipendente.
+- **Logging e Auditabilità:** Replica in tempo reale di tutte le operazioni critiche su ELK Stack, con hash chain e firma digitale per garantire tracciabilità e integrità.
+- **Gestione Compliance Integrata:** Meccanismi nativi negli smart contract per GDPR (pseudonimizzazione, revoca consenso), MiCA (identity registry, KYC/AML, asset whitelist), Kyoto 2.0 (campo complianceKyoto2, certificatoHash).
+- **Upgrade Path e Revoca:** Architettura modulare che consente aggiornamento sicuro degli smart contract tramite governance multi-signature (>50% validatori) e funzioni di revoca consenso per il diritto all’oblio.
+- **Audit Trail e Accesso Auditabile:** Ogni accesso ai dati sensibili è tracciato e associato a ruolo/chiave pubblica.
+
+**Variabili Introdotte:**
+- **Funzioni Smart Contract:** `grantConsent(address user)`, `revokeConsent(address user)`, `identityRegistry`, `assetWhitelist`, `complianceKyoto2`, `certificatoHash`, `RBACPolicy`, `multiSig`, `lockDown`.
+- **Log e Audit Trail:** Timestamp, hash transazione, firma digitale validatore, identificativo ruolo/chiave pubblica.
+- **Report di Audit:** Vulnerability report per commit, verbale di code review, report di conformità firmato (ECDSA), log eventi critici.
+
+**Dipendenze Tecniche:**
+- **Tool di Analisi Statica:** MythX, Slither, Securify per scanning automatico di vulnerabilità (reentrancy, overflow/underflow, access control flaws, unchecked call return values).
+- **ELK Stack:** Per logging, replica eventi, alert e audit retrospettivo.
+- **Sistema di Ticketing:** Per tracciamento osservazioni e remediation.
+- **Test Suite in Staging:** Per simulazione scenari di compliance e audit.
+- **Firma Digitale (ECDSA):** Per validazione e pubblicazione dei report di audit.
+- **Governance Multi-signature:** Per upgrade e modifiche agli smart contract.
+
+**Sintesi:**  
+L’architettura di audit e compliance di AETERNA si basa su una pipeline multilivello, strumenti di analisi automatizzata, logging avanzato e funzioni smart contract dedicate alla compliance normativa. Le dipendenze tecniche includono tool di sicurezza, sistemi di logging e ticketing, e meccanismi di firma digitale e governance distribuita, garantendo sicurezza, trasparenza, tracciabilità e adattabilità normativa.

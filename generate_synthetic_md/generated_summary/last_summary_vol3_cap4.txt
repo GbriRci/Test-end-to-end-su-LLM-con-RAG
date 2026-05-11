@@ -1,0 +1,26 @@
+**Riassunto Denso – Modulo di Comunicazione Multi-Radio (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Integrazione nativa** di un modulo multi-radio su ogni H-Node e nodo Fog, per garantire comunicazione affidabile, flessibile e a bassa latenza.
+- **Coesistenza e gestione simultanea** di tre tecnologie radio: WiFi 7 (IEEE 802.11be), Zigbee 4.0 e LoRaWAN, ciascuna con transceiver, antenna e front-end RF dedicati, collegati via bus SPI ad alta velocità al microcontrollore Aeterna-Core X1.
+- **Layer di astrazione software (Radio Abstraction Layer, RAL):** virtualizza le interfacce radio, gestisce la concorrenza tra canali, instradamento pacchetti, negoziazione parametri di trasmissione, gestione collisioni MAC e isolamento logico dei buffer radio.
+- **Multi-Radio Routing Engine (MRRE):** modulo software che implementa logica di selezione multi-criterio e aggiorna la tabella di routing interna ogni 100 ms, garantendo failover <50 ms tra tecnologie in caso di degrado.
+- **Policy di sicurezza:** stack conforme Kyoto 2.0 e Bit-Energy, handshake hardware, crittografia end-to-end, isolamento buffer per prevenire cross-protocol injection.
+- **Sincronizzazione hardware:** time-stamping pacchetti via RTC sincronizzato Kyoto 2.0, code di priorità e traffic shaping per QoS.
+
+**Variabili Introdotte:**
+- **Parametri di selezione canale:** RSSI, SNR, LQI, latenza, jitter, carico traffico, stato interferenza, requisiti sicurezza, priorità dato, vincoli energetici.
+- **Classi di servizio:** Critical, High, Standard, Low.
+- **Spreading factor dinamico (LoRaWAN):** SF7–SF12.
+- **Aggiornamento tabella routing:** ogni 100 ms.
+- **Failover radio:** <50 ms.
+
+**Dipendenze Tecniche:**
+- **Hardware:** Aeterna-Core X1, transceiver WiFi 7 (MIMO 4x4, WPA3-Enterprise), Zigbee 4.0 (AES-256, mesh), LoRaWAN (EUI-64, SF dinamico).
+- **Software:** RAL, MRRE, Security Layer Kyoto 2.0.
+- **Protocolli supportati:** WiFi 7 (TCP/IP, MQTT-SN, WebSocket, GraphQL/TLS 1.3), Zigbee 4.0 (ZCL, AETERNA-Lite), LoRaWAN 1.1 (AETERNA-LoRa).
+- **Sicurezza:** crittografia, handshake hardware, isolamento buffer, policy Kyoto 2.0.
+- **Sincronizzazione:** RTC via Kyoto 2.0.
+
+**Impatto:**  
+Il modulo multi-radio abilita selezione dinamica del canale ottimale, mitigazione interferenze, ottimizzazione energetica, sicurezza avanzata, self-healing e scalabilità della micro-rete AETERNA. Costituisce la dorsale comunicativa intelligente per un ecosistema energetico urbano resiliente e decentralizzato.

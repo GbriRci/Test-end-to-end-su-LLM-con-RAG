@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Interoperability by Design:** L’architettura AETERNA è modulare e aperta, progettata per federarsi con infrastrutture eterogenee tramite interfacce e protocolli standard.
+- **API RESTful Versionate:** Esposte su tutti i livelli (Edge, Fog, Cloud), progettate secondo HATEOAS, documentate OpenAPI 3.0, con autenticazione mutual TLS e permessi RBAC on-chain.
+- **Adapter Layer:** Strato di adattatori software per la conversione semantica e la mappatura tra il modello dati interno (AETERNA Data Model, RDF/OWL) e standard esterni, garantendo compatibilità con sistemi legacy e terze parti.
+- **Supporto nativo a protocolli di settore:** Integrazione diretta di OpenADR 2.0b (demand response), IEC 61850 (automazione sottostazioni), CIM IEC 61970/61968 (scambio dati EMS/DMS/SCADA).
+- **Ontologie Semantiche:** Sviluppo di una AETERNA Core Ontology (RDF/OWL) allineata a CIM, SAREF, BRICK, per la descrizione formale dei dati e la discovery automatica di servizi.
+- **Smart Contract Cross-Chain:** Federazione di marketplace energetici tramite smart contract cross-chain, atomic swap, oracoli federati e notary-based interledger, con audit trail on-chain.
+- **Microservizi Containerizzati:** Modularità e scalabilità orizzontale tramite microservizi e moduli plug-in, con aggiunta dinamica di adapter/connettori senza downtime.
+- **Compliance e Sicurezza:** Conformità a normative (Kyoto 2.0, privacy-by-design, auditability), sicurezza end-to-end (TLS, firma digitale, audit on-chain).
+
+**Variabili Introdotte:**
+- **AETERNA Data Model:** Basato su ontologie RDF/OWL, mappato su standard esterni.
+- **Adapter Layer:** Moduli per conversione semantica e mapping dati.
+- **AETERNA Core Ontology:** Ontologia proprietaria allineata a standard di settore.
+- **Smart Contract Cross-Chain Module:** Gestione trading e federazione blockchain.
+- **Bit-Energy Token:** Asset energetico tokenizzato per il trading cross-chain.
+- **RBAC on-chain:** Gestione permessi e autenticazione su blockchain.
+
+**Dipendenze Tecniche:**
+- **Protocolli:** OpenADR 2.0b (Fog/Cloud), IEC 61850 (Edge/Fog), CIM IEC 61970/61968 (Cloud).
+- **Tecnologie di sicurezza:** Mutual TLS, firma digitale, audit on-chain.
+- **Framework semantici:** RDF/OWL, SPARQL, mapping automatico tra modelli ontologici.
+- **Blockchain:** Supporto a bridge cross-chain, atomic swap, oracoli federati, standard Kyoto 2.0.
+- **Microservizi/container:** Scalabilità e modularità tramite containerizzazione.
+- **Documentazione API:** OpenAPI 3.0.
+
+**In sintesi:** L’architettura AETERNA si fonda su interoperabilità, modularità, compliance normativa e sicurezza, abilitando federazione di marketplace, portabilità semantica e integrazione plug-and-play con attori e sistemi eterogenei tramite standard di settore, ontologie e smart contract cross-chain.

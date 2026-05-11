@@ -1,0 +1,31 @@
+**Riassunto Denso — Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il sistema di voto elettronico di AETERNA si basa su una blockchain permissioned (Kyoto 2.0) come registro immutabile e auditabile.
+- L’architettura è modulare e comprende:  
+  1. **Modulo Identità Digitale Federata** (integrazione provider eIDAS, autenticazione forte 2FA, gestione sessioni via token firmati dal KMS centrale).
+  2. **Modulo Voto** (interfacce web/mobile, generazione locale voto cifrato con crittografia omomorfica, trasmissione via TLS 1.3).
+  3. **Modulo Delega** (smart contract Kyoto 2.0, deleghe come asset digitali con metadati: durata, ambito, condizioni di revoca, Audit_Reference).
+  4. **Modulo Tallying Distribuito** (algoritmi distribuiti: mixnet, homomorphic tallying, anonimato e verificabilità pubblica).
+- Integrazione nativa con processi di governance multilivello (proposte NOT, revisioni CRT, delibere CAR), con policy di accesso RBAC/ABAC.
+- Gestione delle chiavi segregata per livello (H-KMS/Edge, F-KMS/Fog, KMS Centrale/Cloud), con rotazione periodica e audit automatizzato.
+
+**Variabili Introdotte:**
+- **Audit_Reference:** identificatore univoco per ogni transazione di voto/delega, usato per audit e tracciabilità.
+- **Delegator_ID / Delegatee_ID:** identificatori univoci per delegante e delegato.
+- **Scope, Duration, Revocation_Condition, Status:** metadati delle deleghe (ambito, durata, condizioni di revoca, stato).
+- **Blockchain_Tx:** hash della transazione su Kyoto 2.0.
+- **Token di sessione:** per autenticazione e gestione sicura delle sessioni utente.
+
+**Dipendenze Tecniche:**
+- **Kyoto 2.0 Blockchain:** registro principale per voti, deleghe, audit trail.
+- **Provider eIDAS (SPID, CIE):** per identità digitale federata.
+- **Crittografia Omomorfica (Paillier, ElGamal adattato):** per cifratura e aggregazione dei voti.
+- **TLS 1.3:** per trasmissione sicura dei dati.
+- **Zero-Knowledge Proof (ZKP):** per validazione di voti/deleghe senza esposizione di dati sensibili.
+- **Smart Contract Kyoto 2.0:** per gestione deleghe, notarizzazione voti, revoca e tracciabilità.
+- **Algoritmi di tallying distribuito (mixnet, homomorphic tallying):** per scrutinio anonimo e verificabile.
+- **Policy RBAC/ABAC:** per controllo accessi multilivello.
+- **Audit Dashboard:** per verifica pubblica e audit indipendenti.
+
+Queste scelte garantiscono sicurezza, trasparenza, privacy, auditabilità e adattabilità del sistema di voto e delega, ponendo le basi per la governance digitale distribuita di AETERNA.

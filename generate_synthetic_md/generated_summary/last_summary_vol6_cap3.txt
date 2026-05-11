@@ -1,0 +1,31 @@
+**Riassunto Denso – Capitolo 5: Ottimizzazione Multi-Obiettivo (AETERNA)**
+
+**Decisioni Architetturali:**
+- L’ottimizzazione multi-obiettivo è centrale e formalizzata come problema di programmazione matematica vincolata, con funzione obiettivo composta da efficienza (E), costo (C) e sostenibilità (S), pesati da parametri α, β, γ configurabili via ConfigMap Kubernetes.
+- Implementazione di algoritmi avanzati:  
+  - **NSGA-II** per la generazione di soluzioni Pareto-efficienti nell’allocazione dei workload.
+  - **Multi-Objective Reinforcement Learning (MORL)** per policy di bilanciamento dinamico tra costi, efficienza e sostenibilità.
+  - **Constraint Programming** con vincoli hard/soft espressi in DSL custom.
+- Architettura cloud ibrida con virtualizzazione container-based (monitoraggio tramite cgroup e Prometheus), live migration (CRIU + API Kubernetes) e offloading automatico verso data center cloud green selezionati tramite API Kyoto 2.0.
+- Resource pooling dinamico basato su previsioni ML (Random Forest, LSTM) per ottimizzare l’allocazione delle risorse.
+- Monitoraggio granulare di metriche di basso (CPU, RAM, GPU/TPU, emissioni, energia rinnovabile) e alto livello (throughput, SLA violation, carbon footprint, Bit-Energy score).
+- Feedback loop automatico: azioni correttive (scaling, migrazione, offloading) suggerite e validate da explainability AI.
+- Auditabilità e compliance tramite **Bit-Energy Ledger** (logging digitale di ogni decisione) e notifiche webhook verso sistemi di incident management.
+
+**Variabili Introdotte:**
+- **α, β, γ:** pesi funzione obiettivo (0–1, configurabili via ConfigMap).
+- **cpu_threshold, ram_threshold:** soglie dinamiche per scaling/migrazione.
+- **renewable_energy_share, max_co2_emission, bit_energy_score:** parametri di policy (Kyoto 2.0 e Bit-Energy).
+- **audit_logging_enabled:** abilitazione logging su Bit-Energy Ledger.
+
+**Dipendenze Tecniche:**
+- **Kubernetes** (ConfigMap, API, orchestrazione container, live migration).
+- **Prometheus Node Exporter** (monitoraggio risorse).
+- **CRIU** (live migration container).
+- **API Kyoto 2.0** (metriche sostenibilità, compliance).
+- **Modelli ML** (Random Forest, LSTM per predizione carico e anomalie).
+- **Bit-Energy Ledger** (audit logging, compliance).
+- **Explainability AI** (validazione automatica azioni).
+- **Webhook** (notifiche governance/incident management).
+
+Queste scelte architetturali e variabili costituiscono la base tecnica per i successivi capitoli su orchestrazione, compliance e sostenibilità.

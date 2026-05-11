@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Struttura Modulare a Tre Livelli:** Edge (H-Node), Fog (quartiere), Cloud. Ogni livello ha responsabilità contrattuali e SLA specifici.
+- **Responsabilità Formalizzate:** Matrice RAM obbligatoria in ogni contratto, con associazione processi-moduli-responsabili.
+- **Contrattualistica Integrata:** I contratti includono allegati tecnici vincolanti (Registro Licenze, SBOM, Matrice Compatibilità Licenze) e requisiti di compliance (Kyoto 2.0, Bit-Energy).
+- **Gestione SLA Multi-Cloud:** SLA modulari e atomici, con parametri misurabili e workflow di escalation automatizzati.
+- **Auditabilità e Logging Immutabile:** Tutte le operazioni critiche e le revisioni contrattuali/SLA sono tracciate su blockchain Bit-Energy.
+- **Revisione e Versionamento:** Workflow digitale per revisione periodica (almeno semestrale) di contratti e SLA, con storicizzazione su blockchain.
+- **Risoluzione Controversie:** Meccanismi di mediazione tecnica, arbitrato terzo e smart contract per esecuzione automatica di penali/compensazioni.
+
+**Variabili Introdotte:**
+- **Parametri SLA per ogni livello:**
+  - Edge: Disponibilità ≥99,5%, MTTR ≤4h, Latenza ≤200ms.
+  - Fog: Disponibilità ≥99,7%, Throughput ≥1.000 msg/sec, Propagazione eventi ≤1s.
+  - Cloud: Disponibilità ≥99,9%, Analisi predittiva ≤2s, Retention audit trail ≥10 anni.
+- **Penali:** Calcolo automatico tramite smart contract Bit-Energy, con escalation e isolamento moduli in caso di violazione.
+- **Clausole di riservatezza:** Pseudonimizzazione, cifratura, tracciabilità accessi (OpenID Connect), obblighi di notifica data breach.
+- **Requisiti compliance:** Audit trail su storage WORM, SBOM firmato, compatibilità API RESTful, formati YAML/JSON.
+
+**Dipendenze Tecniche:**
+- **Blockchain Bit-Energy:** Per logging immutabile, audit trail, calcolo penali, versionamento contratti/SLA.
+- **OSS Compliance Bot:** Rilevamento anomalie, data breach, trigger escalation.
+- **OpenID Connect:** Gestione accessi e tracciabilità operazioni.
+- **API RESTful, YAML/JSON:** Interoperabilità tra moduli e provider.
+- **Storage WORM:** Conservazione log/audit trail ≥10 anni.
+- **SBOM e Registro Licenze:** Gestione componenti software, licenze e dipendenze, obbligatori per ogni modulo.
+
+**Sintesi:**  
+L’architettura contrattuale di AETERNA prevede la formalizzazione multilivello di responsabilità, SLA e compliance, con allegati tecnici obbligatori e workflow digitali di revisione. L’infrastruttura si basa su blockchain Bit-Energy per auditabilità, automazione delle penali e tracciabilità, integrando strumenti di monitoraggio (OSS Compliance Bot), gestione accessi (OpenID Connect) e interoperabilità standardizzata (API RESTful, YAML/JSON, SBOM). Queste scelte minimizzano rischi operativi/legali e abilitano la scalabilità in ambienti multi-cloud e multi-fornitore.

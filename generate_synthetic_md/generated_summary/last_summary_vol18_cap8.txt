@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Security by Design**: Ogni componente (Edge, Fog, Cloud) è progettato con sicurezza intrinseca, threat modeling (STRIDE) e mitigazione delle vulnerabilità.
+- **Secure SDLC**: Pipeline CI/CD (GitLab CI) integra SAST/DAST e gate di quality assurance per la sicurezza.
+- **Accesso e Autenticazione**: Implementazione di RBAC e ABAC su Kubernetes, Istio e database; autenticazione federata (OAuth2/OpenID Connect) con MFA; segregazione tra identità umane, servizi e dispositivi (Edge H-Node) con provisioning/deprovisioning automatizzati.
+- **Crittografia End-to-End**: Comunicazioni cifrate con TLS 1.3 e mTLS enforced da Istio; dati a riposo cifrati (AES-256) su PostgreSQL, TimescaleDB, Cassandra, S3, Ceph; gestione centralizzata delle chiavi (HashiCorp Vault) con rotazione automatica e audit trail.
+- **Rilevamento e Risposta alle Minacce**: AI/ML-based anomaly detection (Elastic APM, Dynatrace), SIEM centralizzato (ELK Stack), playbook SOAR, micro-segmentazione di rete (Istio, NetworkPolicy Kubernetes).
+- **Vulnerability Management**: Scansione continua di container (Trivy, Clair), dipendenze (OWASP Dependency-Check), infrastruttura (OpenSCAP); patch management rolling con canary deployment e rollback.
+- **Incident Response & Business Continuity**: Incident Response Plan (IRP), runbook per scenari critici, backup cifrati, replica geografica, failover orchestrato multi-cluster.
+- **Formazione e Awareness**: Security training obbligatorio, simulazioni di attacco, canali di segnalazione sicuri e anonimi.
+
+**Variabili Introdotte:**
+- **Identità**: Distinzione tra identità umane, di servizio e di dispositivo.
+- **Policy di Accesso**: RBAC/ABAC parametrizzate per cluster, namespace e database.
+- **Chiavi di Crittografia**: Gestione, rotazione e auditing centralizzati.
+- **Log e Audit Trail**: Conservazione crittografata, accesso regolamentato, retention ≥24 mesi.
+- **Compliance-as-Code**: Policy e controlli automatizzati (OPA, Sentinel).
+
+**Dipendenze Tecniche:**
+- **Kubernetes, Istio**: Gestione cluster, service mesh, RBAC/ABAC, mTLS, network segmentation.
+- **HashiCorp Vault**: Key management centralizzato.
+- **Elastic APM, Dynatrace, ELK Stack**: Monitoraggio, anomaly detection, SIEM.
+- **Trivy, Clair, OWASP Dependency-Check, OpenSCAP**: Vulnerability scanning.
+- **S3, Ceph**: Storage distribuito cifrato.
+- **OPA, HashiCorp Sentinel**: Compliance-as-Code.
+- **OAuth2/OpenID Connect, MFA**: Autenticazione federata.
+- **Kyoto 2.0, Bit-Energy**: Standard interni per auditing energetico e smart contract.
+- **GDPR, ISO/IEC 27001, NIS2**: Normative di riferimento per compliance.
+
+Queste scelte strutturano la sicurezza e la compliance di AETERNA, abilitando resilienza, auditabilità e conformità normativa per i capitoli successivi.

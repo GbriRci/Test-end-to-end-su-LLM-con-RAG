@@ -1,0 +1,32 @@
+**Riassunto Denso – Ottimizzazione dei Costi Operativi (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura distribuita** su tre livelli: Edge (H-Node), Fog (aggregazione/orchestrazione), Cloud (analisi predittiva/ML).
+- **Motore predittivo multi-livello** per domanda energetica e prezzi, con pipeline di retraining automatico e feedback loop.
+- **Energy Procurement Orchestrator** centralizza la pianificazione dinamica degli acquisti energetici tramite algoritmi MILP, integrando smart contract su Bit-Energy Ledger per esecuzione e settlement.
+- **Asset Health Monitoring** per manutenzione predittiva, integrato con ERP per scheduling e gestione costi.
+- **Load Shedding Orchestrator** per controllo automatico dei carichi non critici, con policy Kyoto 2.0 e interfaccia MQTT (TLS 1.3) verso dispositivi edge.
+- **Dashboard real-time** (ELK Stack, React) per visualizzazione costi, heatmap inefficienze, alert e correlazione con dati ERP.
+- **Middleware AETERNA-ERP Bridge** per sincronizzazione bidirezionale dati energetici/economici (RESTful API, webhooks, data masking).
+- **Smart contract** su Bit-Energy Ledger per tariffe dinamiche, penalità/premialità, settlement e audit trail.
+- **Auditabilità e compliance** garantite tramite tracciamento su Bit-Energy Ledger e policy Kyoto 2.0.
+
+**Variabili Introdotte:**
+- **Previsioni di domanda energetica** (serie storiche, meteo, comportamenti utenti).
+- **Prezzi spot e previsti** (mercato P2P Bit-Energy).
+- **Fabbisogno stimato, disponibilità locale, vincoli contrattuali** per ottimizzazione acquisti.
+- **Dati sensori industriali** (vibrazione, temperatura, ciclo vita) per manutenzione predittiva.
+- **Stato carichi non critici** e policy di attivazione/disattivazione.
+- **Dati energetici ed economici** normalizzati secondo AETERNA Data Model.
+- **Alert, soglie di costo, eventi critici** (superamento budget, necessità manutenzione).
+
+**Dipendenze Tecniche:**
+- **Algoritmi ML:** LSTM, Random Forest Regression, Isolation Forest, K-Means, DBSCAN.
+- **Ottimizzazione:** MILP.
+- **Protocolli:** MQTT (TLS 1.3), RESTful API, webhooks.
+- **Stack tecnologico:** ELK (Elasticsearch, Logstash, Kibana), React.
+- **Ledger e smart contract:** Bit-Energy Ledger.
+- **Policy e compliance:** Kyoto 2.0.
+- **ERP Integration:** middleware AETERNA-ERP Bridge, data masking, schema dati condiviso.
+
+Queste scelte abilitano riduzione dei costi operativi (18-27%), trasparenza, auditabilità, scalabilità e replicabilità del modello AETERNA in contesti urbani diversi.

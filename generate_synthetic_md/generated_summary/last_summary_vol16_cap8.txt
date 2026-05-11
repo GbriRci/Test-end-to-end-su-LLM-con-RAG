@@ -1,0 +1,27 @@
+**Riassunto Denso – Capitolo 4: Innovazione Tecnologica per la Sostenibilità (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura cloud-native e serverless**: Utilizzo di funzioni on-demand (AWS Lambda, Google Cloud Functions) per orchestrazione workflow, inferenza AI e gestione smart contract, con containerizzazione (Docker, Kubernetes) per microservizi, API gateway e dashboard.
+- **Data Lake sostenibile**: Persistenza dati su S3/Parquet, pipeline ETL (Apache NiFi), politiche di lifecycle management per riduzione storage idle.
+- **Edge/Fog Computing**: Previsioni e ottimizzazione AI sia su H-Node (Edge) che su micro-rete (Fog), con deployment serverless per minimizzare il consumo computazionale.
+- **Blockchain permissioned**: Bit-Energy su Hyperledger Fabric, con smart contract custom (Solidity-like), audit log immutabile, tokenizzazione (BET) e API RESTful per interoperabilità.
+- **Open Innovation**: API pubbliche, repository open source (GitLab, licenza AETERNA-OSL), challenge/hackathon per estendibilità e collaborazione.
+
+**Variabili Introdotte:**
+- **Dati di input**: Sensori IoT, smart meter, fonti meteorologiche, profili storici di consumo.
+- **Feature set**: Variabili selezionate tramite wrapper (Recursive Feature Elimination), data augmentation.
+- **Token BET**: Rappresentazione digitale di kWh prodotti/consumati/scambiati, associati a wallet utente.
+- **Parametri di qualità energetica**: Carbon footprint, provenienza generazione, log transazioni (SHA-256).
+- **KPI di sostenibilità**: Riduzione consumo IT, autoconsumo, tempo settlement P2P, riduzione guasti, carbon footprint.
+
+**Dipendenze Tecniche:**
+- **AI/ML**: LSTM, ARIMA, RL, Autoencoder, Isolation Forest per ottimizzazione consumi, bilanciamento, manutenzione predittiva.
+- **ETL/Data pipeline**: Apache NiFi per ingestione dati real-time.
+- **Serverless/Container**: AWS Lambda, Google Cloud Functions, Docker, Kubernetes.
+- **Blockchain**: Hyperledger Fabric, smart contract custom, RESTful API.
+- **Dashboard/Monitoring**: Power BI per KPI, alerting e gestione risorse.
+- **Ticketing/Alert**: Integrazione con Jira per manutenzione predittiva.
+- **Interoperabilità**: API RESTful per integrazione con sistemi legacy e soluzioni di terze parti.
+
+**Sintesi:**  
+L’architettura AETERNA integra AI predittiva, blockchain permissioned, cloud-native/serverless, edge/fog computing e open innovation. Le variabili chiave includono dati IoT, token energetici, parametri di sostenibilità e KPI misurabili. Le dipendenze tecniche principali sono modelli AI avanzati, pipeline ETL, infrastrutture serverless/container, blockchain interoperabile e dashboard di monitoraggio, garantendo efficienza, trasparenza, scalabilità e replicabilità per micro-reti energetiche urbane sostenibili.

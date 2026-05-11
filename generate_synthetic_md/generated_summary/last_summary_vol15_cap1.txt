@@ -1,0 +1,25 @@
+**Riassunto Denso – Capitolo 14: Programmi di Formazione Tecnica (AETERNA)**
+
+**Decisioni Architetturali:**
+- La formazione tecnica è integrata nativamente nell’architettura AETERNA, con percorsi modulari e multilivello per operatori di primo livello, amministratori di sistema e utenti finali.
+- L’erogazione avviene tramite una piattaforma LMS federata, integrata con il Single Sign-On (SSO) di AETERNA tramite protocollo SAML 2.0 e autenticazione a due fattori (2FA).
+- Tutte le attività formative sono tracciate tramite identificatori univoci (trace_id), con reportistica automatica e notarizzazione dei certificati su Bit-Energy Blockchain per garantire auditabilità e immutabilità.
+- I ruoli e le policy di accesso ai contenuti formativi sono mappati e sincronizzati con i ruoli di sistema (es. Auditor Compliance, Amministratore Cloud), abilitando policy granulari e workflow automatizzati (notifiche, onboarding, reminder).
+- I materiali didattici rispettano gli standard di accessibilità WCAG 2.1 e sono disponibili in formati digitali (PDF, HTML, video, simulazioni web-based) e cartacei.
+
+**Variabili Introdotte:**
+- **trace_id**: identificatore univoco per la tracciabilità delle attività formative.
+- **bitenergy_hash**: hash per la notarizzazione dei certificati e dei report su Bit-Energy Blockchain.
+- **Ruoli LMS**: Operatore Primo Livello, Amministratore di Sistema, Utente Finale, Auditor Compliance.
+- **Policy di retention e data masking**: configurabili dagli amministratori per la gestione dei dati formativi.
+- **Soglie metriche e policy di alerting**: configurabili dagli operatori per la gestione delle segnalazioni.
+
+**Dipendenze Tecniche:**
+- **LMS integrato** con SSO federato (SAML 2.0), interoperabile con provider cloud (AWS, Azure, OpenStack, Kubernetes).
+- **Bit-Energy Blockchain**: notarizzazione di certificati e report formativi.
+- **Kyoto 2.0**: compliance normativa e audit.
+- **Dashboard centralizzate** e motore di alerting per operatori.
+- **Assistenti virtuali AI-driven** per simulazioni e supporto agli utenti.
+- **Materiali didattici accessibili** (WCAG 2.1), distribuiti tramite piattaforma LMS e integrati con FAQ dinamiche AI.
+
+Queste scelte garantiscono sicurezza, tracciabilità, compliance e scalabilità dei processi formativi, ponendo la formazione come elemento strutturale e abilitante dell’ecosistema AETERNA.

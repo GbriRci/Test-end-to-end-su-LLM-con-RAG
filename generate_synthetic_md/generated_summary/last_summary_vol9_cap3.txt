@@ -1,0 +1,25 @@
+**Riassunto Denso – Gestione dei Conflitti in AETERNA (max 300 parole)**
+
+**Decisioni Architetturali:**
+- La gestione delle dispute è formalizzata e automatizzata tramite smart contract su blockchain permissioned (Kyoto 2.0), garantendo trasparenza, auditabilità e resilienza.
+- L’identificazione delle dispute avviene sia automaticamente (monitoraggio errori, mismatch log, alert su hash/timeout) sia manualmente (segnalazione da utenti/nodi/admin).
+- Ogni disputa è registrata come **Dispute_Event** su Kyoto 2.0, con metadati strutturati (Dispute_ID, Audit_Reference, Initiator_ID, Dispute_Type, Status, ecc.).
+- Le evidenze sono raccolte dal **Dispute Evidence Module (DEM)**, che aggrega log firmati, snapshot di stato, hash transazionali, prove di consenso (BFT, firme validatori), e Zero-Knowledge Proof, tutte notarizzate su blockchain.
+- L’arbitraggio è affidato a un **Arbitration Quorum**: sottoinsieme dinamico di nodi (Edge/Fog/Cloud) selezionati tramite algoritmo BFT, con rotazione e segregazione dei ruoli.
+- Le decisioni sono prese secondo una **Dispute Resolution Policy** codificata in smart contract, che definisce regole di voto (maggioranza, stake, reliability score).
+- Il verdetto del quorum è firmato digitalmente e validato da uno smart contract dedicato (**Dispute_Resolver**), che esegue azioni atomiche (rimborso, rollback, penalità, update risorsa) o, in caso di stallo, escalates a layer superiore (Cloud/governance CAR).
+- Tutte le fasi sono tracciate e auditabili tramite dashboard, con notifiche automatizzate agli utenti coinvolti.
+
+**Variabili Introdotte:**
+- Dispute_ID, Audit_Reference, Initiator_ID, Dispute_Type, Status, Evidence_Hash, Arbitration_Result, Resolution_Action.
+
+**Dipendenze Tecniche:**
+- Blockchain Kyoto 2.0 (registrazione eventi, notarizzazione evidenze, smart contract).
+- Modulo DEM per raccolta e notarizzazione evidenze.
+- Algoritmo BFT per selezione e funzionamento Arbitration Quorum.
+- Smart contract Dispute_Resolver per validazione e automazione outcome.
+- Dashboard di audit e sistema di notifica (push/email).
+- Integrazione con policy RBAC/ABAC per la visibilità delle dispute.
+
+**Impatto:**  
+Questa architettura garantisce affidabilità, resilienza, auditabilità, scalabilità e tutela degli interessi, costituendo un pilastro per la legittimità e l’espansione di AETERNA.

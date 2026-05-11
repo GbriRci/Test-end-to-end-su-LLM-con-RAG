@@ -1,0 +1,39 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Integrazione a Layer:** L’integrazione tra AETERNA e sistemi legacy avviene tramite due layer:
+  - **Adapter Layer:** Microservizi stateless, containerizzati (Docker), orchestrati su Kubernetes (Fog/Cloud), con versionamento indipendente. Ogni adapter traduce tra API/messaggi AETERNA e interfacce legacy, implementando mapping dati, normalizzazione payload, gestione eccezioni di protocollo.
+  - **Facade Layer:** Espone un’unica interfaccia RESTful standardizzata verso AETERNA, aggrega/orchestra chiamate agli adapter, implementa policy di sicurezza (OAuth 2.0, SAML), logging avanzato (audit trail su S3 + hash Bit-Energy).
+- **Pattern di Comunicazione:** 
+  - **RESTful API:** Tutte le interfacce sono RESTful, documentate OpenAPI 3.0, protette TLS 1.3. Adapter convertono formati legacy (SOAP/XML, CSV, fixed-length) in JSON.
+  - **Message Brokering:** RabbitMQ per eventi asincroni, code dedicate per dominio legacy, messaggi Avro/JSON, firmati e cifrati end-to-end.
+  - **ETL/Data Sync:** Pipeline ETL orchestrate da Apache Airflow, connettori JDBC/ODBC/API custom, operazioni idempotenti e transazionali, rollback automatico.
+  - **LDAP Bridge:** Servizio bridge per federazione identità, traduce SAML/OAuth in query LDAP (Active Directory/altro), propaga policy RBAC e gestisce password.
+- **Gestione Consistenza Dati:**
+  - **Transactional Outbox Pattern:** Consistenza tra eventi legacy e microservizi tramite polling e pubblicazione atomica su RabbitMQ.
+  - **Schema Registry:** Validazione payload tramite registry centralizzato (Avro/JSON Schema), garantendo compatibilità e retro-compatibilità.
+  - **Audit/Logging:** Log strutturati su storage geo-ridondato (S3), referenziati su blockchain Bit-Energy per integrità e non ripudiabilità.
+- **Sicurezza e Monitoraggio:**
+  - **Autenticazione/Autorizzazione:** Token OAuth 2.0 o assertion SAML, policy RBAC granulari propagate via LDAP bridge.
+  - **Monitoraggio/Alerting:** Prometheus/Grafana per monitoraggio, alert su anomalie, log analizzati da moduli AI-driven (Isolation Forest).
+
+**Variabili Introdotte:**
+- Adapter microservizi (UserLDAPAdapter, FinanceETLAdapter, SCADAAdapter, LegacyDBAdapter, CustomApiAdapter)
+- Policy di sicurezza (OAuth 2.0, SAML, RBAC)
+- Formati dati (JSON, Avro, SOAP/XML, CSV)
+- Pipeline ETL, job schedulati, rollback
+- Schema registry centralizzato
+- Audit trail e hash blockchain
+
+**Dipendenze Tecniche:**
+- Docker, Kubernetes (orchestrazione microservizi)
+- RabbitMQ (message brokering)
+- Apache Airflow (orchestrazione ETL)
+- JDBC/ODBC/API custom (connettori dati)
+- LDAP/Active Directory (federazione identità)
+- S3 (storage log), Bit-Energy blockchain (audit)
+- Prometheus, Grafana (monitoraggio)
+- OpenAPI 3.0, TLS 1.3 (documentazione e sicurezza API)
+- AI-driven anomaly detection (Isolation Forest)
+
+Queste scelte abilitano interoperabilità, scalabilità, sicurezza e tracciabilità nell’integrazione tra AETERNA e sistemi legacy, minimizzando lock-in e facilitando la migrazione progressiva.

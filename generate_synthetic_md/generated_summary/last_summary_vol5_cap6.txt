@@ -1,0 +1,30 @@
+**Riassunto Denso – Capitolo 7: Protocolli di Sicurezza e Cifratura (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Cifratura delle comunicazioni:**  
+  - *TLS 1.3* obbligatorio per tutte le comunicazioni tra microservizi (Fog, Cloud, backend, API gateway), con ciphersuite `TLS_AES_256_GCM_SHA384`, Perfect Forward Secrecy (DHE), mutual TLS (mTLS) su canali critici, certificate pinning e nessun fallback a versioni precedenti.
+  - *DTLS 1.2* (in futuro 1.3) per comunicazioni Edge (H-Node) ↔ Fog Gateway su UDP, con ciphersuite `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`, session resumption, anti-replay, autenticazione X.509 device-specific.
+- **Gestione delle chiavi:**  
+  - *Hardware Security Module (HSM)* centralizzato per generazione, custodia, rotazione (ogni 90 giorni/evento), revoca (CRL), backup geografico cifrato, audit logging integrato con Bit-Energy Ledger.
+  - *Provisioning/Enrollment* sicuro: onboarding fisico/out-of-band per Edge, orchestrazione automatica (Consul/etcd) per microservizi.
+  - *Catena di fiducia:* Root CA offline, Intermediate CA per dominio (Edge, Fog, Cloud), validazione obbligatoria della chain.
+- **Certificati digitali:**  
+  - *X.509 v3* con estensioni custom (energy_zone_id, ruolo), validità: 1 anno (Edge), 90 giorni (microservizi), distribuzione via enrollment sicuro e protocollo ACME interno.
+- **Algoritmi di cifratura:**  
+  - *Simmetrica:* AES-256-GCM (payload, storage temporaneo, log sensibili).
+  - *Asimmetrica:* ECC (P-384, Curve25519) per scambio chiavi, firme digitali (Bit-Energy), autenticazione.
+  - *Hash/Integrità:* SHA-384 (handshake, firme), SHA-256 (fingerprinting, integrità messaggi).
+- **Standard e compliance:**  
+  - Adozione di Kyoto 2.0 e Bit-Energy impone notarizzazione, gestione identità e auditabilità end-to-end.
+
+**Variabili Introdotte:**
+- *energy_zone_id* e *ruolo dispositivo* come estensioni custom nei certificati X.509.
+- *Rotazione chiavi* (90 giorni), *validità certificati* (1 anno Edge, 90 giorni microservizi).
+- *Session resumption* e *anti-replay* per DTLS.
+- *Provisioning automatico* tramite orchestratore (Consul/etcd).
+
+**Dipendenze Tecniche:**
+- *TLS 1.3*, *DTLS 1.2/1.3*, *AES-256-GCM*, *ECC (P-384, Curve25519)*, *SHA-384/256*, *X.509 v3*, *HSM*, *Consul/etcd*, *ACME protocol* (interno), *Bit-Energy Ledger*, *Kyoto 2.0*.
+- *CRL* per revoca certificati, *audit logging* integrato, *Root/Intermediate CA* segregate.
+
+**Nota:** Queste scelte architetturali e variabili sono fondamentali per la sicurezza, la compliance e la scalabilità dei capitoli successivi relativi a identità, governance e resilienza della micro-rete AETERNA.

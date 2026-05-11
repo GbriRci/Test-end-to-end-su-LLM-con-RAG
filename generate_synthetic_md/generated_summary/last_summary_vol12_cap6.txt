@@ -1,0 +1,41 @@
+**Riassunto Denso – Gestione Dinamica delle Tariffe di Ricarica (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Microservizio distribuito** per il dynamic pricing, orchestrato a livello Fog, sincronizzato con backend Cloud (analisi macro, compliance Kyoto 2.0/Bit-Energy).
+- **Interazione Edge (H-Node) – Fog – Cloud** tramite API RESTful AETERNA; notifiche real-time via WebSocket.
+- **Algoritmi AI** (Spark/TensorFlow): regressione multivariata e RNN per previsione domanda e calcolo tariffe.
+- **Smart contract su blockchain (Hyperledger Fabric)** per orchestrazione incentivi, auditabilità e compliance.
+- **Ledgerizzazione** di ogni evento tariffario/sessione ricarica (nonce-timestamp-hash, tag Kyoto 2.0, Bit-Energy).
+- **Aggiornamento tariffe** ogni 5 minuti (configurabile), override manuale in emergenza.
+- **Comunicazione**: App mobile (notifiche push, visualizzazione tariffe), sistemi di bordo veicoli (OCPP ≥1.6J), API pubbliche RESTful per terze parti.
+- **Pagamenti**: gateway elettronici (NFC, QR, wallet), ledgerizzazione transazioni, gestione crediti/incentivi via smart contract.
+
+**Variabili Introdotte (Parametri Algoritmici):**
+- **Orario Slot** (timestamp, segmentazione 5 min)
+- **Congestione Rete** (float [0,1], telemetria Fog)
+- **Energia Rinnovabile Disponibile** (float [0,1], previsioni meteo/H-Node)
+- **Priorità Utente** (int [1-3], smart contract/ledger)
+- **SoC Veicolo** (float [0,1], OCPP/telemetria)
+- **Storico Utente** (JSON, pattern ricarica, compliance, feedback)
+- **Tag Kyoto 2.0** (string, classificazione energetica)
+- **Identificativo Bit-Energy** (string, tracciabilità sessione)
+
+**Funzione di Pricing:**
+P(t) = α * C(t) + β * (1 - R(t)) + γ * L(t) + δ * S(u) + ε * H(u,t)
+- α, β, γ, δ, ε: pesi dinamici ottimizzati AI
+
+**Dipendenze Tecniche:**
+- **Spark/TensorFlow** (AI/ML)
+- **Hyperledger Fabric** (blockchain/ledger)
+- **OCPP ≥1.6J** (comunicazione veicolo)
+- **API RESTful/WebSocket** (integrazione sistemi)
+- **HSM Fog** (firma digitale ECDSA)
+- **Scheduler/NTP/PTP** (sincronizzazione temporale)
+- **Gateway pagamento elettronico** (NFC, QR, wallet)
+- **Backend analitico** (storico comportamentale)
+
+**Incentivi e Compliance:**
+- Sconti automatici in slot a bassa domanda, incentivi per ricarica green (>80% rinnovabile), premi comportamentali (crediti Bit-Energy).
+- Tutte le operazioni sono ledgerizzate per trasparenza, auditabilità e compliance Kyoto 2.0/Bit-Energy.
+
+**Nota:** L’architettura modulare e l’adozione di protocolli standard garantiscono scalabilità, replicabilità e adattabilità del sistema.

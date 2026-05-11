@@ -1,0 +1,34 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Cap. 12)**
+
+**Decisioni Architetturali:**
+- **Controlli di accesso:** Implementazione di RBAC avanzato su tutti i layer (Edge, Fog, Cloud) con segregazione dei privilegi e principio del least privilege.
+- **Autenticazione:** 2FA per utenti umani, mutual TLS (mTLS) per servizi, Identity Provider federato compatibile OpenID Connect e SAML 2.0.
+- **Audit trail:** Log append-only, notarizzazione su Bit-Energy Blockchain, tracciamento dettagliato (timestamp, utente/servizio, azione, asset, outcome, hash, trace_id).
+- **Cifratura:** TLS 1.3 obbligatorio per dati in transito; AES-256-GCM per dati a riposo; gestione centralizzata delle chiavi tramite HSM FIPS 140-2 L3.
+- **Gestione chiavi:** Rotazione automatica ogni 90 giorni, key versioning, revoca immediata, accesso limitato tramite policy HSM e audit dedicato.
+- **Data masking/anonimizzazione:** Mascheramento configurabile nei log/dashboard; anonimizzazione irreversibile per dataset macro/AI (Cloud Layer), in linea con GDPR e Kyoto 2.0.
+- **Retention e lifecycle:** Policy di retention differenziate per tipologia dati, versionate e auditabili; cancellazione sicura (NIST SP 800-88) con report notarizzati su blockchain.
+- **Gestione consensi:** Modulo per visualizzazione, modifica e revoca consensi, propagazione real-time su tutti i layer.
+- **Audit e alerting:** Log dettagliati di accesso/operazioni, audit periodici (automatici/manuali), alert automatici su anomalie, integrazione con incident management e ticketing (Cap. 11).
+- **Compliance by design:** Mappatura processi su GDPR e Kyoto 2.0, DPIA automatizzato per nuove feature, formazione periodica operatori con tracciamento.
+
+**Variabili Introdotte:**
+- **Ruoli RBAC:** Operatore Fog, Amministratore Cloud, Auditor Compliance, ecc.
+- **Trace_id:** Identificatore univoco per tracciamento operazioni.
+- **kyoto_context, bitenergy_hash:** Metadati per compliance e notarizzazione.
+- **Policy di retention:** Parametri configurabili per durata e tipologia dati.
+- **Consenso utente:** Stato e storico consensi/revoche.
+- **Audit schedule:** Frequenza e modalità audit (mensile, on-demand).
+- **Key version:** Versionamento chiavi cifratura.
+
+**Dipendenze Tecniche:**
+- **Identity Provider federato** (OpenID Connect, SAML 2.0).
+- **Bit-Energy Blockchain** per notarizzazione log e report.
+- **HSM certificati FIPS 140-2 L3** per gestione chiavi.
+- **TLS 1.3** per tutte le comunicazioni.
+- **AES-256-GCM** per cifratura dati a riposo.
+- **Modulo incident management/ticketing** (integrazione Cap. 11).
+- **Dashboard compliance** per audit, DPIA, gestione consensi.
+- **Processi di secure erase** (NIST SP 800-88).
+
+Queste scelte garantiscono sicurezza multilivello, auditabilità, compliance normativa e integrazione trasparente con i sistemi di gestione incidenti, costituendo la base tecnica per i capitoli successivi.

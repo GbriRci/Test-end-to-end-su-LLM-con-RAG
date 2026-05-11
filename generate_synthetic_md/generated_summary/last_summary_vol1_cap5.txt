@@ -1,0 +1,33 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Algoritmo Fair-Share**: modulo centrale per l’allocazione energetica in condizioni di scarsità, basato su equità, priorità dei bisogni e trasparenza.
+- **Ledger Distribuito**: tutte le decisioni di allocazione, pesi e razionali sono storicizzate tramite hash chaining, garantendo auditabilità e non modificabilità.
+- **Smart Contract di Contestazione**: ogni utente può contestare la propria allocazione tramite dashboard; la contestazione è validata dal modulo Fog Leader.
+- **Audit Quantistico**: verifica randomizzata e non ripudiabile delle allocazioni, con notifiche automatiche in caso di anomalie.
+- **Access Control Layer**: applica le policy di priorità e impedisce override manuali non autorizzati.
+- **Dashboard Fog-Cloud**: visualizzazione in tempo reale di allocazioni, motivazioni e stato delle contestazioni.
+- **Feedback Loop AI**: monitoraggio degli esiti e aggiornamento dinamico delle policy tramite moduli di intelligenza artificiale predittiva.
+
+**Variabili Introdotte:**
+- **NODES**: insieme degli H-Node attivi.
+- **ENERGY_AVAILABLE**: energia totale disponibile nella finestra di scarsità.
+- **MIN_QUOTA**: quota minima garantita (default 15% Bit-Energy).
+- **PROFILE[n]**: profilo socio-energetico di ciascun nodo.
+- **PRIORITY_WEIGHT[n]**: peso di priorità per ciascun nodo, calcolato su vulnerabilità, criticità, ruolo prosumer, standard e contributo storico.
+- **NEED[n]**: fabbisogno energetico stimato per ciascun nodo.
+- **ALLOCATION[n]**: energia assegnata a ciascun nodo.
+- **MIN_ALLOCATION[n]**: quota minima garantita per ciascun nodo.
+- **REMAINING_ENERGY**: energia residua da allocare.
+
+**Dipendenze Tecniche:**
+- **Sensori Edge & Modulo Fog Leader**: rilevamento e validazione degli eventi di scarsità.
+- **Clustering Adattivo**: aggiornamento in tempo reale dei profili socio-energetici.
+- **Policy Kyoto 2.0 e Bit-Energy**: standard interni per la definizione delle quote minime e delle priorità.
+- **Ledger Distribuito**: per storicizzazione, audit e contestazione.
+- **Smart Contract**: per contestazione automatica e audit.
+- **Moduli AI**: per feedback loop e ottimizzazione predittiva.
+- **Dashboard**: per interazione utente e trasparenza.
+
+**Sintesi:**  
+L’architettura AETERNA integra l’algoritmo Fair-Share, ledger distribuito, smart contract e moduli AI per garantire allocazione energetica equa, trasparente e auditabile, con variabili e flussi ben definiti e dipendenze tecniche modulari e interoperabili.

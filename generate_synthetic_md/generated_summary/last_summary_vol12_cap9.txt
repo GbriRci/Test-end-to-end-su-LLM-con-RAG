@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Design Universale e Accessibilità:** Adozione di WCAG 2.1 AA, ARIA, ISO 21542 e palette Color Universal Design per garantire accessibilità sia su app mobile che su colonnine fisiche.
+- **Interfacce Multicanale:** UI responsive e adattiva su mobile (supporto dynamic type/font scaling), interfacce touch e tasti fisici sulle colonnine, con feedback aptico, sonoro e sintesi vocale locale (TTS embedded).
+- **Comandi Vocali e Screen Reader:** Integrazione di moduli Speech-to-Text/Text-to-Speech tramite API native (Android/iOS) e fallback cloud (Google Speech API, Azure Cognitive Services); annotazioni ARIA per compatibilità screen reader.
+- **Prenotazione e Navigazione Accessibile:** Sistema di booking real-time sincronizzato tra app e colonnina (WebSocket su OCPP 1.6J), routing accessibile integrato con Google Maps/Apple Maps/OSM.
+- **Monitoraggio e Pagamenti:** Monitoraggio sessione via MQTT (TLS 1.3) e WebSocket; pagamenti digitali multi-wallet (Bit-Energy, carte, Apple/Google Pay) con feedback multimodale; compliance PCI DSS.
+- **Notifiche e Suggerimenti Proattivi:** Notification engine (Firebase Cloud Messaging, APNS) e suggerimenti AI-driven (Random Forest) per ottimizzazione esperienza e accessibilità.
+- **Feedback e Miglioramento Continuo:** Raccolta feedback accessibile (in-app, tasto fisico, QR code), analisi semantica automatizzata (NLP/BERT su Cloud AETERNA), pipeline di miglioramento continuo.
+
+**Variabili Introdotte:**
+- **Stato sessione ricarica** (in corso, in attesa, terminata)
+- **Energia erogata** (kWh), **costo stimato** (Bit-Energy, EUR), **emissioni evitate** (Kyoto 2.0)
+- **Tipologia di disabilità** (motorie, sensoriali, cognitive) per segmentazione feedback
+- **Fascia oraria prenotazione**, **tipo connettore**, **potenza desiderata**
+- **Preferenze utente** (contrasto, dark mode, routing accessibile)
+- **Storico utilizzo** e **profili utente** per suggerimenti AI
+
+**Dipendenze Tecniche:**
+- **Standard e Protocolli:** WCAG 2.1 AA, ARIA, ISO 21542, OCPP 1.6J, PCI DSS, MQTT (TLS 1.3)
+- **API e Servizi:** Android/iOS SpeechRecognizer, Google Speech API, Azure Cognitive Services, eSpeak NG (TTS embedded), Google Maps/Apple Maps/OSM, Firebase Cloud Messaging, APNS
+- **Hardware:** Raspberry Pi Compute Module (TTS locale), display touch capacitivi, tasti fisici retroilluminati
+- **Analytics e Feedback:** Google Firebase, Matomo, Cloud AETERNA data lake, NLP/BERT per analisi semantica
+- **Sicurezza:** WebSocket sicuri, compliance PCI DSS per pagamenti
+
+Queste scelte strutturano la piattaforma AETERNA per garantire accessibilità, inclusività, scalabilità e miglioramento continuo, ponendo solide basi tecniche e operative per i capitoli successivi.

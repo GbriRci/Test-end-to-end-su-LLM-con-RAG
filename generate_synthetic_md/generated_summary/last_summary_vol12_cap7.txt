@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **AETERNA come hub federativo**: funge da punto centrale di interoperabilità tra operatori di ricarica (CPO) e aggregatori, orchestrando comunicazione e transazioni tramite protocolli standardizzati.
+- **Architettura modulare**: include moduli per federazione delle identità (IdP centralizzato), gateway di protocollo (OCPI/OICP), ledgerizzazione su blockchain (Hyperledger Fabric), e motore di clearing multilaterale.
+- **Identity Provider (IdP) AETERNA**: compatibile OpenID Connect/OAuth2, abilitando Single Sign-On (SSO) tra operatori federati.
+- **Ledgerizzazione e smart contract**: ogni evento (autenticazione, ricarica, clearing) è tracciato su blockchain, con tagging Kyoto 2.0 e Bit-Energy per compliance e tracciabilità.
+- **Clearing multilaterale**: motore automatico per riconciliazione finanziaria e gestione crediti Bit-Energy, con reporting centralizzato e settlement configurabile (fiat/Bit-Energy).
+- **Sicurezza**: crittografia end-to-end (TLS 1.3, ECDSA), gestione chiavi tramite HSM Fog, audit trail completo.
+
+**Variabili Introdotte:**
+- **Token di autenticazione**: generato e validato tramite IdP AETERNA (OAuth2).
+- **Nonce, timestamp, hash**: per ogni evento ledgerizzato.
+- **Tag Kyoto 2.0 e Bit-Energy**: associati a ogni transazione per tracciabilità energetica e finanziaria.
+- **Identificativo Bit-Energy**: per settlement e incentivi.
+- **Tariffe dinamiche**: sincronizzate con modulo di pricing AI/Fog.
+- **Cicli di settlement**: configurabili (giornaliero, settimanale).
+
+**Dipendenze Tecniche:**
+- **Protocolli standard**: OCPI v2.2.1 (RESTful), OICP v2.3 (XML/JSON), OCPP ≥1.6J (Edge-Fog).
+- **Blockchain**: Hyperledger Fabric per ledgerizzazione e smart contract.
+- **Identity Management**: OpenID Connect, OAuth2.
+- **Sicurezza**: TLS 1.3, ECDSA, HSM Fog per gestione chiavi.
+- **Compliance**: Kyoto 2.0 (tracciabilità energetica/emissioni), Bit-Energy (crediti digitali/incentivi).
+- **Reporting**: dashboard centralizzata AETERNA, audit trail accessibile agli operatori.
+
+**Sintesi:**  
+L’architettura AETERNA abilita l’interoperabilità tra operatori di ricarica tramite protocolli aperti (OCPI, OICP, OCPP), federazione delle identità (SSO), ledgerizzazione su blockchain (Hyperledger), e clearing multilaterale automatizzato, garantendo sicurezza, compliance (Kyoto 2.0, Bit-Energy), trasparenza e scalabilità. Le variabili chiave includono token di autenticazione, tagging energetico/finanziario, tariffe dinamiche e cicli di settlement. Le dipendenze tecniche riguardano protocolli standard, blockchain, sistemi di identity management e moduli di sicurezza avanzata.

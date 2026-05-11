@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Ciclo Virtuoso di Resilienza:** Implementazione sistematica di test di business continuity, disaster recovery e audit periodici come processo iterativo di miglioramento continuo.
+- **Macro-componenti Target:** I test coinvolgono tutte le macro-componenti architetturali (Edge, Fog, Cloud) e i nodi H-Node.
+- **Notarizzazione e Tracciabilità:** Tutti gli eventi critici, esiti di test e audit sono notarizzati su Bit-Energy Blockchain e archiviati su storage versionato, garantendo auditabilità e trasparenza.
+- **Versionamento e Compatibilità:** Ogni modifica a playbook, configurazioni e procedure è versionata, con tagging di compatibilità e riferimenti incrociati agli esiti dei test/audit.
+- **Ruoli e Responsabilità:** Coinvolgimento obbligatorio di team multidisciplinari (DevOps, Security, Data Engineering, Blockchain Ops, Compliance, Auditor, SRE, Incident Response) per ogni tipologia di test/audit.
+- **Automazione e Monitoring:** Utilizzo di meccanismi di failover automatico/manuale, DNS dinamico, API Gateway re-routing, health-check, monitoring (Prometheus), e trigger di alerting.
+- **Ciclo di Feedback:** Analisi post-mortem, root cause analysis e aggiornamento dei piani di emergenza e procedure operative dopo ogni test/audit.
+
+**Variabili Introdotte:**
+- **Frequenza Minima:** Semestrale (Disaster Recovery Drill, Audit Tecnico/Sicurezza), Trimestrale (Failover, Ripristino dati secondari), Mensile (Ripristino dati critici), Annuale (Audit Conformità).
+- **Metriche di Performance:** RTO (Recovery Time Objective), RPO (Recovery Point Objective), downtime, integrità dati (checksum), trasparenza verso utenti, copertura test.
+- **Dataset Critici:** Ledger blockchain, dati energetici, configurazioni H-Node.
+- **Policy e Permessi:** Policy di accesso, configurazioni di adapter e circuit breaker, SLA, standard Kyoto 2.0, GDPR-like.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Blockchain:** Per notarizzazione eventi, audit trail e verifica di conformità.
+- **Storage Versionato:** Per archiviazione report, documentazione tecnica (OpenAPI, .proto, playbook).
+- **Prometheus:** Per raccolta e analisi delle metriche di monitoring.
+- **Adapter e Circuit Breaker:** Per gestione fault tolerance e automazione failover.
+- **Backup Multi-region e Storage Distribuito:** Per garantire recuperabilità e integrità dati.
+- **Strumenti di Audit e Penetration Test:** Per identificazione vulnerabilità e assessment sicurezza.
+
+Queste scelte e variabili costituiscono la base tecnica e organizzativa per la resilienza, la trasparenza e la compliance del framework AETERNA, e saranno fondamentali per la trattazione dei capitoli successivi.

@@ -1,0 +1,29 @@
+**Riassunto Denso – Capitolo 15: Supporto Tecnico e Helpdesk (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Struttura multilivello:** Supporto tecnico organizzato su tre livelli (Tier 1: Frontline, Tier 2: Technical Specialist, Tier 3: Architect & Developer), con ruoli, strumenti e responsabilità distinti per ciascun tier.
+- **Integrazione nativa:** Il sistema di ticketing è integrato con la piattaforma di monitoraggio AETERNA tramite API RESTful e WebSocket, e con Single Sign-On (SAML 2.0, 2FA).
+- **Escalation strutturata:** Workflow di escalation automatica/manuale tra i tier, basata su SLA e policy di priorità, con notifiche real-time.
+- **Knowledge base centralizzata:** Repository unico, accessibile via SSO, aggiornato e versionato da Tier 2/3, integrato con assistenti AI e notarizzazione su Bit-Energy Blockchain.
+- **Auditabilità e compliance:** Notarizzazione degli interventi critici e degli aggiornamenti della knowledge base su Bit-Energy Blockchain, audit trail immutabile, reportistica automatica per compliance Kyoto 2.0.
+- **Sicurezza e privacy:** Data masking sui log/ticket per Tier 1, retention configurabile, archiviazione cifrata, logging dettagliato e gestione vulnerabilità integrata.
+
+**Variabili Introdotte:**
+- **ticket_id:** Identificatore univoco per ogni ticket.
+- **trace_id:** Variabile per tracciamento distribuito degli eventi.
+- **bitenergy_hash:** Hash di notarizzazione su blockchain per interventi critici.
+- **Ruoli utente:** Utente domestico, amministratore di quartiere, operatore cloud.
+- **KPI:** MTTR, First Contact Resolution Rate, User Satisfaction Score, Change Success Rate, Escalation Rate.
+- **Tassonomia ticket:** Incident, Request, Problem, Change.
+
+**Dipendenze Tecniche:**
+- **Piattaforma di monitoraggio AETERNA:** Fonte dati per ticketing e dashboard.
+- **Sistema di ticketing:** Integrato con SSO, API, WebSocket, knowledge base.
+- **Bit-Energy Blockchain:** Per notarizzazione e audit trail.
+- **Repository codice (Git, CI/CD):** Accesso Tier 3 per debug e deployment.
+- **Strumenti di accesso remoto:** VPN, SSH (2FA) per Tier 2/3.
+- **Tool RCA e AI assistant:** Per analisi root cause e suggerimenti proattivi.
+- **Sistemi di vulnerability management:** Alert automatici verso Tier 3.
+
+**Sintesi:**  
+Il supporto tecnico AETERNA adotta un’architettura multilivello, integrata e tracciabile, con workflow di escalation, knowledge base centralizzata e notarizzazione blockchain. Introduce variabili chiave per tracciabilità e compliance, e dipende da integrazioni tecniche con sistemi di monitoraggio, ticketing, sicurezza e gestione del codice, garantendo resilienza, auditabilità e ottimizzazione della conoscenza per l’ecosistema energetico distribuito.

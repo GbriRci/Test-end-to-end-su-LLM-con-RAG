@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il Data Lifecycle Management (DLM) è centrale e orchestrato dal modulo **Data Lifecycle Orchestrator (DLO)**, integrato con il Consent Management System (CMS) e sistemi di audit.
+- I processi DLM sono **automatizzati e distribuiti** su Edge, Fog e Cloud, garantendo resilienza e scalabilità.
+- Tutte le operazioni di data lifecycle sono esposte tramite **API RESTful** sicure, con autenticazione OAuth2.0 JWT e scope granulari.
+- **RBAC/ABAC** regola l’accesso ai workflow, con segregazione per tenant e livello infrastrutturale.
+- **Crittografia**: dati in transito (TLS 1.3), a riposo (AES-256), gestione chiavi e salt tramite Hardware TPM, con rotazione periodica.
+- **Audit trail** e logging su **blockchain interna (Kyoto 2.0)**, accessibile via dashboard avanzata.
+- **Compliance Engine** automatizza la verifica tra policy dichiarate e applicate, generando report e alert.
+- Workflow dedicati per la gestione delle richieste degli interessati (es. diritto all’oblio), con attestato digitale e logging su blockchain.
+
+**Variabili Introdotte:**
+- **Classificazione dati**: per tipologia (identificativi pseudonimizzati, consensi, preferenze, energetici, log, audit), criticità (critici, operativi, temporanei), finalità (trading P2P, AI, compliance).
+- **Retention Policy** (in YAML, versionata): periodo di conservazione, azioni post-scadenza (anonimizzazione, cancellazione sicura, archiviazione cold storage, notifica), eccezioni (blocchi, sospensioni).
+- **Metadati associati**: Consent_ID, User_ID, Finalità, Policy_Version, Bit-Energy_ID, Data_Ora.
+- **Logging dettagliato**: hash pre/post, timestamp, operatore, nodo, Bit-Energy_ID, NTP.
+
+**Dipendenze Tecniche:**
+- **Algoritmi**: SHA-3-256 + salt TPM per anonimizzazione, DoD 5220.22-M per data wiping.
+- **Scheduler distribuiti** (cron) per monitoraggio e task periodici.
+- **Cold storage cifrato** (AES-256, chiavi TPM) per archiviazione dati.
+- **Alerting**: integrazione con Security Operations Center (SOC) e Data Protection Officer (DPO).
+- **Dashboard di audit**: filtri avanzati per periodo, operazione, tenant, Bit-Energy_ID.
+- **Gestione richieste utenti**: workflow API/dashboard, autenticazione forte, attestato digitale.
+
+**Impatto:**  
+L’architettura garantisce ottimizzazione risorse, riduzione rischi, accountability tramite tracciabilità blockchain, automazione nella gestione dei diritti degli interessati e compliance continua, abilitando una governance dinamica e sostenibile per micro-reti energetiche decentralizzate.

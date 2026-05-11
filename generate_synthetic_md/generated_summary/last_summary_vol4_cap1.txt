@@ -1,0 +1,31 @@
+**Riassunto Denso – Modello di Minaccia AETERNA (max 300 parole)**
+
+**Decisioni Architetturali:**
+- **Zero-Trust**: Tutti i livelli (Edge/H-Node, Fog, Cloud) operano secondo il principio del minimo privilegio, con micro-segmentazione dei processi critici in container/VM dedicate.
+- **Trusted Execution Environment (TEE)**: Codice sensibile (es. gestione chiavi) eseguito in enclave hardware.
+- **Sandboxing Sensoriale**: Validazione incrociata dei dati sensoriali tramite AI e quorum di sensori ridondanti.
+- **Mutual TLS & PKI**: Comunicazioni cifrate e autenticate tramite certificati X.509 gestiti da PKI AETERNA.
+- **Immutable Logging & Audit**: Tutti gli eventi di sicurezza sono notarizzati su Bit-Energy Ledger (blockchain), garantendo non ripudiabilità e auditabilità.
+- **Failover Distribuito**: Replica geografica dei servizi Fog, sincronizzati tramite Bit-Energy Ledger.
+- **Load Shedding & Circuit Breaker**: In caso di DDoS, sospensione automatica dei servizi non critici e isolamento dei nodi anomali.
+- **Quarantena Automatica**: Isolamento e revoca chiavi per nodi compromessi, con trigger EoL se necessario.
+
+**Variabili Introdotte:**
+- **UUID hardware**: Identificativo univoco per la whitelist dei sensori.
+- **Certificati X.509**: Per autenticazione mutua tra nodi.
+- **Timestamping Kyoto 2.0**: Marcatura temporale certificata e notarizzata su blockchain.
+- **Nonce**: Per prevenire replay attack.
+- **Quorum sensori**: Soglia minima di sensori per validazione dati.
+- **Policy di rate limiting**: Soglie dinamiche per richieste da H-Node.
+- **Livelli di privilegio**: Policy di accesso minime per ogni processo/container.
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Ledger**: Blockchain per notarizzazione eventi, logging immutabile e sincronizzazione servizi Fog.
+- **HSM (Hardware Security Module)**: Per firma digitale, autenticazione e attestazione hardware degli H-Node.
+- **AI embedded**: Modelli di anomaly detection per validazione dati sensoriali.
+- **Protocolli di sicurezza**: Enrollment H-Node (provisioning chiavi, registrazione blockchain), validazione sensori (challenge-response), quarantena automatica.
+- **Moduli di comunicazione**: Wi-Fi, ZigBee, LoRaWAN, Ethernet, NFC/barcode.
+- **RTC certificato**: Per timestamping affidabile degli eventi critici.
+
+**Sintesi:**  
+Il modello AETERNA adotta un’architettura Zero-Trust multilivello, con segmentazione rigorosa, autenticazione hardware, notarizzazione blockchain e AI per la validazione, garantendo resilienza, auditabilità e continuità operativa delle micro-reti energetiche urbane.

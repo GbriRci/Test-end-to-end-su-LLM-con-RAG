@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Pipeline multilivello (Edge, Fog, Cloud):** La pipeline di forecasting è suddivisa in tre livelli, ciascuno con modelli ML specifici e orchestrazione asincrona tramite workflow, API RESTful e message bus (MQTT/Kafka).
+- **Microservizi containerizzati:** Tutti i modelli sono pacchettizzati come microservizi Docker, orchestrati da Kubernetes, con supporto GPU/TPU per inferenza accelerata.
+- **Ciclo CI/CD automatizzato:** Addestramento, validazione e deployment dei modelli avvengono in ambiente isolato Kubernetes, con versionamento tramite MLflow e strategie canary/blue-green.
+- **Audit e compliance integrati:** Tutte le operazioni sono tracciate su Bit-Energy Ledger per audit trail e compliance Kyoto 2.0.
+- **API standardizzate e interoperabilità:** Scambio dati e risultati predittivi tramite API RESTful descritte in OpenAPI 3.0, con notifiche asincrone via webhook/Kafka.
+- **Sicurezza e governance:** Enforcement di RBAC, gestione certificati con Vault/Cert-Manager, endpoint sicuri (OAuth2/mTLS), logging notarizzato.
+
+**Variabili Introdotte:**
+- **Dati raccolti:** Consumi elettrici, produzione locale, stato di accumulo, parametri ambientali (temperatura, umidità, luminosità), eventi locali, profili di consumo aggregati, dati di mobilità elettrica, dataset storici urbani/metropolitani, dati meteorologici (OpenWeatherMap, SolarForecastAPI), indicatori socio-economici.
+- **Feature derivate:** Lag features, rolling statistics, indicatori di stagionalità, one-hot encoding per eventi discreti.
+- **Metriche di valutazione:** RMSE, MAE, MAPE, F1-score per eventi critici.
+- **Modelli ML:** LSTM/ARIMA (Edge), GBM/XGBoost/LightGBM (Fog), DNN/ensemble (Cloud).
+
+**Dipendenze Tecniche:**
+- **Tecnologie di orchestrazione:** Kubernetes, Docker.
+- **Message bus/event streaming:** MQTT, Kafka.
+- **Gestione modelli:** MLflow per versionamento, deployment canary/blue-green.
+- **Data quality e compliance:** Bit-Energy Ledger per audit, Kyoto 2.0 per validazione sostenibilità.
+- **Sicurezza:** OAuth2, mTLS, RBAC, Vault/Cert-Manager.
+- **API e interoperabilità:** OpenAPI 3.0, webhook, topic Kafka.
+- **Pre-processing:** Normalizzazione (Z-score, Min-Max), imputazione valori mancanti (KNN, interpolazione, modelli bayesiani), validazione automatica tramite regole di business.
+
+Queste scelte abilitano una gestione predittiva, scalabile e conforme delle micro-reti energetiche, integrando forecasting avanzato con automazione, trading P2P e governance trasparente.

@@ -1,0 +1,37 @@
+**Riassunto Denso – Capitolo 8: Obiettivi Socio-Tecnici (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Ridistribuzione automatica dei carichi sociali** tramite un framework che integra smart contract, AI predittiva e ledger distribuito.
+- **Profilazione dinamica** degli H-Node domestici, con raccolta e anonimizzazione dati socio-energetici, elaborati a livello Fog.
+- **Classificazione adattiva** delle unità (Vulnerabile, Standard, Prosumer, Infrastruttura critica) tramite clustering (es. K-means con feature weighting).
+- **Tokenizzazione prioritaria**: allocazione garantita di Bit-Energy ai vulnerabili, gestita da smart contract.
+- **Scheduler dinamico** (Weighted Fair Queuing modificato) per riallocazione risorse in deficit, minimizzando l’impatto sugli utenti standard.
+- **Audit quantistico**: tutte le operazioni sono storicizzate su ledger distribuito, auditabili e non ripudiabili.
+- **Monitoraggio real-time** tramite sensori edge e telemetria MQTT-SN, con feedback loop predittivo (AI: LSTM, Prophet) e adaptive policy update.
+- **Access Control Layer**: modulo software per regole di accesso prioritario, integrato con smart contract.
+- **Meccanismo di voto P2P**: deliberazione comunitaria per riallocazione temporanea di risorse.
+- **Dashboard Fog-Cloud**: interfaccia di monitoraggio multi-livello e alerting proattivo verso servizi sociali.
+- **Compliance**: operazioni vincolate a smart contract auditabili (hash chaining), con reportistica periodica su ledger.
+
+**Variabili Introdotte:**
+- **Profilo socio-energetico** (consumi, ISEE, fragilità).
+- **Classi di vulnerabilità** (Vulnerabile, Standard, etc.).
+- **Quota minima Bit-Energy** (default: 15%).
+- **Soglia vulnerabilità** (es. ISEE < 8.000 €/anno).
+- **Finestra di scarsità** (default: 30 min).
+- **Peso priorità scheduler** (default: 2.0).
+- **Soglia alerting sociale** (default: 3 eventi critici).
+- **Indicatori di impatto**: tasso di accesso prioritario, entropia energetica sociale, tempo medio di riallocazione, numero alert sociali.
+
+**Dipendenze Tecniche:**
+- **Algoritmi AI**: LSTM, Prophet per forecasting.
+- **Clustering**: K-means con feature weighting.
+- **Protocollo MQTT-SN** per telemetria.
+- **Smart contract** per policy di ridistribuzione e compliance.
+- **Ledger distribuito** per audit e reportistica.
+- **Dashboard Fog-Cloud** per monitoraggio e alerting.
+- **Fog Leader**: orchestrazione policy e aggiornamento dinamico.
+- **Moduli edge**: sensori e telemetria.
+- **Kyoto 2.0, Bit-Energy**: standard di compliance e tokenizzazione.
+
+Queste scelte abilitano una governance energetica inclusiva, trasparente e adattiva, fondamento per i capitoli successivi.

@@ -1,0 +1,37 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Blockchain Permissioned:** AETERNA adotta una blockchain permissioned, con nodi validatori autenticati tramite certificati digitali (Kyoto 2.0 PKI).
+- **Distribuzione Geografica:** I nodi validatori sono distribuiti su Edge, Fog e Cloud per tolleranza ai guasti e resilienza.
+- **Consenso BFT:** Utilizzo di un protocollo PBFT ottimizzato, tollerante fino a f nodi malevoli su 3f+1, con messaggi firmati ECDSA e timestamping.
+- **Replica Multi-Data Center:** Ogni blocco è replicato in tempo reale su almeno tre data center separati, con sincronizzazione asincrona e verifica tramite hash chain.
+- **Backup e Retention:** Backup incrementali giornalieri, full settimanali, retention minima 12 mesi, repliche off-site cifrate.
+- **Failover e Disaster Recovery:** Hot-standby geografico dei nodi, orchestrazione failover tramite Kubernetes, RTO ≤ 1h, RPO ≤ 15min, procedure di restore testate trimestralmente.
+- **Sicurezza End-to-End:** Crittografia AES-256-GCM per i dati in transito, chiavi negoziate ECDH e rotate ogni 24h, dati a riposo cifrati con chiavi in HSM FIPS 140-2.
+- **Autenticazione e RBAC:** Mutual TLS, challenge-response ECDSA, modello RBAC on-chain con permessi granulari per nodi, smart contract e attori umani.
+- **Monitoraggio e SIEM:** Sistema SIEM integrato con ELK Stack per anomaly detection, alerting su eventi anomali e incident response automatizzata.
+- **Audit e Penetration Test:** Audit periodici e penetration test (fuzzing, static/dynamic analysis) su smart contract, tracciamento vulnerabilità on-chain, governance distribuita per la risoluzione.
+- **Aggiornamenti Sicurezza:** Rolling upgrade con voting on-chain, deployment progressivo.
+- **Scalabilità Orizzontale:** Aggiunta dinamica di nodi e replica servizi senza impatto su performance/latency.
+
+**Variabili Introdotte:**
+- Numero e distribuzione dei nodi validatori (Edge/Fog/Cloud).
+- Parametri PBFT: f (nodi malevoli tollerati), 3f+1 (totale nodi).
+- Periodicità backup (giornaliera/settimanale), retention (12 mesi).
+- RTO/RPO per componenti critici.
+- Frequenza rotazione chiavi (24h).
+- Permessi granulari RBAC per domini funzionali.
+- Soglie di alert e pattern di anomaly detection.
+
+**Dipendenze Tecniche:**
+- Certificati digitali Kyoto 2.0 PKI.
+- ECDSA per firme digitali, ECDH per scambio chiavi.
+- AES-256-GCM per cifratura dati.
+- HSM FIPS 140-2 per gestione chiavi.
+- SIEM/ELK Stack per monitoraggio.
+- Kubernetes per orchestrazione e failover.
+- On-chain governance per audit, patching e gestione permessi.
+- Sistemi di backup e restore multi-region.
+- Tool di penetration test e audit (fuzzing, static/dynamic analysis).
+
+Queste scelte e variabili costituiscono la base tecnica per la sicurezza, resilienza e compliance della blockchain AETERNA, e saranno fondamentali per la progettazione e l’implementazione dei moduli successivi.

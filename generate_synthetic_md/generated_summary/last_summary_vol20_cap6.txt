@@ -1,0 +1,31 @@
+**Riassunto Denso – Capitolo 10: Ottimizzazione dei Costi Operativi (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Automazione Operativa:** Rilascio, aggiornamento e patching software su Edge, Fog e Cloud gestiti tramite pipeline CI/CD (GitLab CI + Kubernetes), minimizzando interventi manuali e downtime.
+- **Auto-Scaling Dinamico:** Cluster cloud e Fog scalano automaticamente in base a metriche di carico/consumo energetico, usando Kubernetes HPA/VPA e orchestratori cloud-native (AWS, GCP).
+- **Provisioning On-Demand:** Risorse (VM, container, storage) allocate just-in-time per evitare over-provisioning.
+- **Standardizzazione:** Procedure operative formalizzate in runbook digitali versionati, accessibili via portale e integrati con ticketing (Jira, ServiceNow). Policy di gestione centralizzate tramite policy engine (APL – Aeterna Policy Language). Configurazioni standardizzate via template YAML/JSON.
+- **Monitoring Avanzato:** Stack monitorato con dashboard real-time (Grafana, Kibana), aggregando dati da Prometheus, Spark e log centralizzati. Analisi costi multi-livello (Edge, Fog, Cloud; computazionale, storage, networking, licenze, energia).
+- **Alerting Proattivo:** Soglie dinamiche (AI/ML) per alert su deriva dei costi.
+- **Virtualizzazione:** Servizi containerizzati (Docker) e orchestrati con Kubernetes. Storage multi-tier (hot/warm/cold) con lifecycle management automatizzato. Uso di spot instance/serverless (AWS Lambda, GCP Cloud Functions) per workload non critici.
+- **AI per Efficienza:** Modelli AI/ML (TensorFlow, PyTorch) per previsione consumi, manutenzione predittiva (anomaly detection), ottimizzazione trading P2P tra H-Node.
+- **Ottimizzazione Continua:** Feedback loop automatizzato con report mensili e benchmarking interno tra micro-reti/cluster Fog.
+
+**Variabili Introdotte:**
+- **Metriche di carico e consumo energetico** (per auto-scaling).
+- **Soglie di alerting e baseline di costo** (policy engine, AI/ML).
+- **Livelli di storage** (hot, warm, cold) e policy di lifecycle.
+- **Tipologie di costo** (computazionale, storage, networking, licenze, energia).
+- **Dati storici e real-time** (per AI/ML).
+
+**Dipendenze Tecniche:**
+- **CI/CD:** GitLab CI, Kubernetes.
+- **Orchestrazione/Scaling:** Kubernetes HPA/VPA, AWS Auto Scaling, GCP Compute Autoscaler.
+- **Monitoring/Logging:** Prometheus, Grafana, Kibana, Spark.
+- **Ticketing/Runbook:** Jira, ServiceNow.
+- **Policy Engine:** APL (Aeterna Policy Language).
+- **Container/Serverless:** Docker, Kubernetes, AWS Lambda, GCP Cloud Functions.
+- **AI/ML:** TensorFlow, PyTorch.
+- **Storage:** Multi-tier, lifecycle management automatizzato.
+
+Queste scelte abilitano una gestione proattiva, scalabile e data-driven dei costi, favorendo efficienza, trasparenza e replicabilità del modello AETERNA.

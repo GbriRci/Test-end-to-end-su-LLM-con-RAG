@@ -1,0 +1,39 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Piattaforma modulare a microservizi**: Ogni funzionalità (proposte, issue tracking, sondaggi, laboratori digitali) è un modulo containerizzato (Docker/Kubernetes), esposto via API RESTful/WebSocket, integrabile con client web/mobile e sistemi esterni.
+- **Frontend**: React/Angular con autenticazione SSO (SAML 2.0, 2FA).
+- **Backend**: Node.js/Python, orchestrazione workflow tramite BPMN (Camunda).
+- **Storage**: Database relazionale (PostgreSQL) per dati operativi; notarizzazione hash SHA-256 su Bit-Energy Blockchain per tracciabilità e auditabilità.
+- **Repository pubblici**: Issue tracking e bug reporting su GitLab/GitHub Enterprise, con webhook CI/CD (Jenkins, GitHub Actions).
+- **E-voting**: Sistema di voto elettronico con crittografia end-to-end (Paillier/ElGamal), audit trail su blockchain, pesatura voto per ruolo e storico.
+- **Laboratori digitali**: Sessioni calendarizzate, strumenti di co-design (Figma, Miro) integrati via API, logging e versioning su repository Git.
+- **Gamification**: Badge NFT (ERC-721-like su Bit-Energy Blockchain), leaderboard pubbliche, micro-crediti Bit-Energy come premi.
+- **Sicurezza e compliance**: RBAC integrato con SSO, data masking su log pubblici, audit trail notarizzato, aderenza a standard Kyoto 2.0.
+
+**Variabili Introdotte:**
+- `proposal_id`: Identificatore proposta community.
+- `issue_id`: Identificatore issue/bug.
+- `vote_id`: Identificatore voto elettronico.
+- `lab_id`: Identificatore laboratorio digitale.
+- `user_id`: Identificatore utente autenticato.
+- `bitenergy_hash`: Hash notarizzazione su blockchain.
+- `badge_id`: Identificatore badge NFT.
+- `vote_weight`: Peso voto (ruolo, storico).
+- `session_log_hash`: Hash log attività laboratorio.
+
+**Dipendenze Tecniche:**
+- **Containerizzazione**: Docker, Kubernetes.
+- **Orchestrazione workflow**: Camunda BPMN.
+- **CI/CD**: Jenkins, GitHub Actions.
+- **Analisi codice**: SonarQube, OWASP ZAP, Snyk.
+- **Blockchain**: Bit-Energy (notarizzazione, badge NFT, audit trail).
+- **Autenticazione**: SSO (SAML 2.0), 2FA, RBAC.
+- **Frontend**: React/Angular.
+- **Database**: PostgreSQL.
+- **Strumenti co-design**: Figma, Miro (API).
+- **Repository**: GitLab/GitHub Enterprise.
+- **Crittografia e-voting**: Paillier/ElGamal.
+- **Compliance**: Kyoto 2.0.
+
+Queste scelte abilitano trasparenza, tracciabilità, auditabilità, meritocrazia e scalabilità, ponendo le basi tecniche per la governance partecipata e resiliente della community AETERNA.

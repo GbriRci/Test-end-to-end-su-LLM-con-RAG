@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Simulazione multi-livello/multi-fase**: adozione di fault injection programmata su nodi/link critici tramite orchestratori (GNS3, Mininet), con scripting di eventi secondo pattern temporali/topologici.
+- **Test Black-box e White-box**: analisi sia dal punto di vista utente che tramite introspezione di log, stati di protocollo e metriche, sfruttando telemetria avanzata integrata.
+- **Riproduzione topologica fedele**: emulazione completa della micro-rete (Edge, Fog, Cloud), incluse segmentazione di sicurezza, VLAN, VRF, policy di routing avanzate.
+- **Automazione drill di disaster recovery**: pipeline CI/CD per orchestrare failover/restore, con validazione automatica e notarizzazione eventi su blockchain Bit-Energy.
+- **Integrazione AI per anomaly detection**: modelli predittivi per rilevamento pattern anomali e generazione alert proattivi.
+- **Gestione automatizzata di cluster/storage**: operator Kubernetes custom per failover, restore e simulazione fault su cluster HA e storage S3-compatible.
+
+**Variabili Introdotte:**
+- **Metriche di resilienza**: RTO (Recovery Time Objective), packet loss durante failover, latenza di rerouting, throughput residuo, coerenza ledger Bit-Energy, numero eventi notarizzati, tempo isolamento segmenti compromessi.
+- **Pattern di fault**: guasto simultaneo backbone, DDoS su Edge, isolamento zone Fog, corruzione storage distribuito, attacco split-brain su cluster HA.
+- **Soglie accettabili**: RTO < 60-120s, packet loss < 1%, latenza < 2s, throughput > 80%, restore < 10min, coerenza ledger < 5min, isolamento < 30s, quorum recovery < 60s.
+
+**Dipendenze Tecniche:**
+- **GNS3/Mininet**: modellazione/emulazione topologia multilivello.
+- **Prometheus/Grafana**: raccolta/visualizzazione metriche in tempo reale.
+- **AI Anomaly Detection**: rilevamento automatico anomalie.
+- **Kubernetes Operator Custom**: gestione failover/restore e fault injection su cluster/storage.
+- **Bit-Energy Blockchain**: notarizzazione eventi di test, audit trail.
+- **Ansible/Terraform**: provisioning e riconfigurazione automatica infrastruttura.
+- **Pipeline CI/CD**: automazione drill di disaster recovery e validazione risultati.
+
+**Sintesi:**  
+L’architettura di simulazione catastrofica di AETERNA si fonda su orchestrazione automatizzata, telemetria avanzata, notarizzazione blockchain e AI per anomaly detection, con metriche oggettive e soglie definite per la valutazione della resilienza. Le dipendenze tecniche e le variabili introdotte costituiscono la base per i successivi capitoli su ottimizzazione, compliance e gestione operativa della micro-rete.

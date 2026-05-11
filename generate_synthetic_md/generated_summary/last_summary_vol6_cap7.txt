@@ -1,0 +1,26 @@
+**Riassunto Denso – Capitolo 9: Monitoraggio e Analisi dei Dati Energetici (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello distribuita**: suddivisione in Edge (sensori H-Node, IoT, smart meter), Fog (aggregazione/pre-elaborazione), Cloud (data lake centralizzato).
+- **Flusso dati Edge–Fog–Cloud**: raccolta dati a intervalli configurabili (100ms–5s), bufferizzazione e pre-filtraggio locale, trasmissione via MQTT (QoS 2, TLS 1.3), aggregazione e normalizzazione (JSON esteso, AETERNA Data Model v2), inoltro dati tramite RESTful API autenticata (JWT, mutual TLS).
+- **Data Lake centralizzato**: ingestion asincrona (Apache Kafka, NiFi), storage transazionale e versionato (Apache Hudi su S3-compatibile), formato Parquet, governance e catalogazione (Apache Atlas), policy di retention e masking.
+- **Zone logiche**: Raw (dati grezzi), Cleansed (dati validati/arricchiti), Analytics (dataset ottimizzati per BI/ML).
+- **Sicurezza e compliance**: crittografia end-to-end (TLS 1.3, AES-256), segregazione accessi (AETERNA IAM), audit trail immutabile (Bit-Energy Ledger), data masking, logging per Kyoto 2.0.
+
+**Variabili Introdotte:**
+- **Intervallo di raccolta dati**: configurabile tra 100ms e 5s.
+- **Schema dati**: AETERNA Data Model v2 (JSON esteso).
+- **Indicatori di qualità**: QoS, SoH (State of Health), indici di efficienza energetica.
+- **Feature esterne**: meteo, calendario lavori.
+- **Zone del data lake**: Raw, Cleansed, Analytics.
+
+**Dipendenze Tecniche:**
+- **Edge**: MQTT, IEC 61850, smart meter Kyoto 2.0.
+- **Fog**: Modbus TCP/IP, JSON, REST API, LZ4 (compressione), ontologia AETERNA.
+- **Cloud/Data Lake**: Apache Kafka (ingest), Apache NiFi (orchestrazione), Apache Hudi (storage/versionamento), Apache Parquet (formato), S3-compatibile (storage), Apache Atlas (governance).
+- **Analisi**: Python ML, Spark, Drools (motore regole), algoritmi ML (Random Forest, SVM, Autoencoder, Isolation Forest, LSTM, Change Point Detection).
+- **Visualizzazione/Alerting**: Grafana, Kibana, ServiceNow, Jira (ITSM).
+- **Sicurezza**: TLS 1.3, AES-256, JWT, IAM AETERNA, Bit-Energy Ledger.
+
+**Sintesi:**  
+L’architettura AETERNA adotta una pipeline dati Edge–Fog–Cloud, con data lake centralizzato e zone logiche, garantendo sicurezza, compliance e scalabilità. Le variabili chiave (intervalli, modelli dati, indicatori) e le dipendenze tecniche (stack open-source, protocolli sicuri, strumenti ML/BI) costituiscono la base per i capitoli successivi su automazione, manutenzione predittiva e ottimizzazione energetica.

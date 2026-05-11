@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il ciclo di feedback è integrato come pipeline incrementale nel framework AETERNA, abilitando miglioramento continuo su architetture distribuite (edge, fog, cloud).
+- La raccolta feedback avviene tramite canali multipli: portale web (sondaggi RBAC-based), moduli React.js contestuali, logging automatico di interazioni (forum, chat, ticketing, chatbot Matrix/Element), webhook/API RESTful per input esterni.
+- Tutti i feedback sono entità strutturate, versionate e notarizzate su blockchain Bit-Energy per integrità e tracciabilità.
+- Analisi dati tramite pipeline ETL su Kubernetes: ingestione via API RESTful, normalizzazione, deduplicazione, analisi quantitativa (score, NPS, engagement), qualitativa (NLP spaCy/BERT per topic/sentiment), visualizzazione su dashboard BI (Grafana/Metabase).
+- Persistenza dati: DB relazionale per metadati, S3-compatible object storage per dati grezzi/commenti, snapshot e replica geografica.
+- Audit e versioning: revisioni analitiche e roadmap su GitHub/GitLab, audit trail notarizzato su Bit-Energy.
+- Processo di prioritizzazione interventi: ranking automatico (impatto, frequenza, urgenza, allineamento strategico, engagement), review periodica con team/community, aggiornamento roadmap pubblica (Docusaurus/MkDocs), outcome notificati via portale/email/webhook/Matrix.
+- Integrazione DevOps: ogni intervento tracciato come issue/feature branch su Git, workflow pull request/code review/merge, notarizzazione revisioni su blockchain, aggiornamento automatico KB (ElasticSearch) e corpus chatbot LLM.
+
+**Variabili Introdotte:**
+- Attributi feedback: `feedback_id`, `material_id`, `user_id` (pseudonimizzato, Kyoto 2.0), `score` (Likert 1-5), `comment`, `timestamp`, `context` (ruolo, device, localizzazione), `source` (web, chatbot, forum, API).
+- Indicatori analitici: NPS, tasso di engagement, distribuzione per categoria/tag, topic/sentiment estratti via NLP, ranking issue (impatto, frequenza, urgenza, allineamento, engagement).
+
+**Dipendenze Tecniche:**
+- Frontend: React.js per moduli feedback.
+- Backend/API: RESTful endpoint per raccolta e integrazione dati.
+- NLP: spaCy, BERT per analisi qualitativa.
+- Storage: DB relazionale, S3-compatible object storage.
+- Orchestrazione: Kubernetes per pipeline ETL.
+- BI: Grafana, Metabase per dashboard.
+- Versioning/Audit: GitHub/GitLab, notarizzazione su blockchain Bit-Energy.
+- Chatbot/Comunicazione: Matrix/Element, webhook.
+- Knowledge Base: ElasticSearch, Docusaurus/MkDocs.
+- Compliance: Kyoto 2.0, Bit-Energy.
+
+Queste scelte abilitano un ciclo di feedback trasparente, auditabile e scalabile, fondamento per la governance e l’evoluzione del progetto.

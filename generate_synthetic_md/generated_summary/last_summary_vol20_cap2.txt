@@ -1,0 +1,31 @@
+**Riassunto Denso – Scalabilità e Crescita della Rete AETERNA**
+
+**Decisioni Architetturali:**
+- **Architettura a Microservizi containerizzati** su Kubernetes, con orchestrazione automatica e stratificazione modulare (Edge, Fog, Cloud).
+- **Auto-scaling orizzontale e verticale** dei pod Kubernetes, basato su metriche di carico (CPU, memoria, throughput REST, latenze smart contract).
+- **Gestione stateless** (notifiche, orchestrazione smart contract, API gateway) per servizi replicabili e bilanciabili; **gestione stateful** (data lake, wallet, compliance dashboard) tramite database NoSQL (MongoDB) con sharding automatico e replica geografica.
+- **Pipeline CI/CD** per ogni microservizio, con supporto a blue/green deployment, rollback istantanei e deployment multi-cluster/federato su più regioni.
+- **Sharding della blockchain Bit-Energy**: ledger segmentato per quartiere (Fog) e cluster di H-Node, con smart contract modulari e versionabili.
+- **Caching distribuito** (Redis) per sessioni, pricing dinamico e checklist compliance.
+- **Protocolli di comunicazione**: API RESTful certificate (con versionamento e throttling), WebSocket per notifiche real-time, Incident Notification System asincrono e prioritizzato.
+- **Monitoraggio distribuito** (KRI Monitoring) e motore AI per simulazioni di audit e stress test regolatori, con scaling automatico.
+- **Supporto nativo a localizzazione (i18n)** e personalizzazione offerte tramite engine dedicato.
+- **Disaster recovery** e compliance garantiti da replica geografica e sharding dei dati.
+
+**Variabili Introdotte:**
+- **Metriche di scaling**: CPU, memoria, throughput REST, latenze smart contract, matching rate, pricing latency, volume transazioni, hit rate Redis, complessità simulazione AI, numero incidenti.
+- **Segmentazione logica**: per quartiere, segmento di mercato, livello di compliance.
+- **Policy di compliance**: caricamento dinamico di checklist Kyoto 2.0 e localizzazione normativa.
+- **Parametri di personalizzazione**: profilo energetico, preferenze trading, stato compliance utente.
+
+**Dipendenze Tecniche:**
+- **Kubernetes** (orchestrazione, scaling, multi-cluster/federazione).
+- **MongoDB** (NoSQL, sharding, replica geografica).
+- **Redis** (caching distribuito).
+- **API RESTful certificate** e **WebSocket**.
+- **CI/CD pipeline** (test, build, deploy, rollback).
+- **Motore AI distribuito**.
+- **Incident Notification System** (queue distribuite).
+- **Smart contract modulari** su blockchain Bit-Energy.
+
+Queste scelte abilitano resilienza, espansione commerciale, efficienza regolatoria, ottimizzazione risorse e flessibilità evolutiva, ponendo la scalabilità come principio fondante dell’ecosistema AETERNA.

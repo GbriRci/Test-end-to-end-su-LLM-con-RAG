@@ -1,0 +1,30 @@
+**Riassunto Denso – Gestione delle Latenze Critiche in AETERNA**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello:** suddivisione in Edge (H-Node domestici), Fog (cluster di quartiere), Cloud (macro-analisi/governance).
+- **SLA di latenza differenziati:** Edge <10ms, Fog <100ms, Cloud <2s, con enforcement tramite policy engine (OPA) e smart contract Kyoto 2.0.
+- **Segmentazione del traffico:** ogni livello gestisce specifiche tipologie di traffico (es. sensoriale, attuazione, smart contract, analisi predittive).
+- **Mitigazione multilivello:** strategie dedicate per ogni livello (es. edge caching, failover locale, load balancing L7, geo-redundancy).
+- **Edge-first decision making:** in caso di disconnessione, gli H-Node applicano policy locali e mantengono la micro-rete in isola.
+- **Orchestrazione asincrona in Cloud:** task batch e analisi predittive gestite in modalità asincrona, con priorità a feedback critici.
+- **Priorità dinamica e QoS:** pacchetti critici marcati e instradati su canali prioritari.
+- **Failover e load shedding:** replica locale dello stato, degradazione servizi non critici in overload, circuit breaker su errori/timeout.
+- **Backpressure e throttling:** regolazione dinamica del flusso dati in Cloud.
+
+**Variabili Introdotte:**
+- **Soglie di latenza per livello:** <10ms (Edge), <100ms (Fog), <2s (Cloud).
+- **Flag QoS per traffico critico.**
+- **Heartbeat a 1ms e watchdog hardware/software.**
+- **Metriche di latenza (p99, p95, p50, max, min) con tagging Kyoto 2.0.**
+- **Policy locali Kyoto 2.0 per operatività in isola.**
+
+**Dipendenze Tecniche:**
+- **Protocolli:** gRPC/Protobuf su TLS 1.3 (Edge/Fog), MQTT 5.0 (fallback Edge), HTTP/2 REST e Kafka Streams (Fog), REST/gRPC, NiFi ETL, WebSocket (Cloud).
+- **Strumenti di mitigazione:** buffer circolari, edge caching, micro-batching, circuit breaker, retry esponenziale, local state replication, autoscaling K8s, geo-replica.
+- **Monitoraggio:** Prometheus/OpenTelemetry per telemetry distribuita, Jaeger/OpenTracing per tracing end-to-end, AI/ML (LSTM) per anomaly detection, OPA per enforcement SLA.
+- **Sincronizzazione temporale:** NTP/PTP.
+- **Alerting:** Slack, webhook, smart contract Bit-Energy.
+- **Audit e incentivazione:** smart contract Kyoto 2.0, policy engine OPA.
+
+**Sintesi:**  
+La gestione delle latenze critiche in AETERNA si basa su una rigorosa segmentazione architetturale, SLA stringenti, strategie di mitigazione multilivello e monitoraggio real-time, abilitando resilienza, continuità operativa, compliance e ottimizzazione predittiva tramite AI, con forti dipendenze da protocolli sicuri, strumenti di orchestrazione e policy engine automatizzati.

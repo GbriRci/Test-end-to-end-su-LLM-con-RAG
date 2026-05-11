@@ -1,0 +1,37 @@
+**Riassunto Denso – Capitolo 8: Monitoraggio delle Interfacce e Telemetria (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Osservabilità Multi-Livello:** Monitoraggio distribuito su livelli Edge, Fog e Cloud, con correlazione eventi tra microservizi, infrastruttura e dominio energetico.
+- **Raccolta Metriche:**  
+  - Microservizi Fog/Cloud espongono endpoint `/metrics` Prometheus-compatibili (exporter nativi/sidecar).
+  - H-Node Edge usa agenti lightweight (Node Exporter custom) che pushano metriche a un Fog Gateway Aggregator.
+- **Aggregazione e Normalizzazione:** Gateway Fog aggrega e normalizza dati Edge prima dell’inoltro al backend centrale.
+- **Persistenza:** Cluster Prometheus federato con retention configurabile (default: 90 giorni dettaglio, 1 anno aggregati). Dati critici duplicati e notarizzati su Bit-Energy Ledger.
+- **Visualizzazione:** Dashboard Grafana custom per dominio (Edge, Fog, Cloud), energy_zone_id, ruolo dispositivo, servizio. Integrazione SSO e RBAC.
+- **Alerting e Remediation:**  
+  - Alertmanager Prometheus con regole statiche (soglie) e dinamiche (deviazione standard, AI-driven).
+  - Alert critici attivano playbook di auto-remediation (riavvio servizi, rotazione certificati, failover).
+  - Notifica via Slack, email, webhook.
+  - Audit e notarizzazione alert critici su Bit-Energy Ledger (compliance Kyoto 2.0).
+
+**Variabili Introdotte:**
+- **Metriche di Interfaccia:** Latenza (p50, p95, p99), throughput, error rate (4xx/5xx), uptime, jitter.
+- **Metriche di Infrastruttura:** CPU, memoria, disco, code messaggi, saturazione rete, health check.
+- **Metriche di Sicurezza/Integrità:** Handshake TLS/DTLS, errori autenticazione, replay, revoche certificati, chain validation.
+- **Granularità:** Microservizio, host, energy_zone_id, dominio.
+- **Soglie di Alert:** Es. p95 latenza > 200ms, error rate > 2%, uptime < 99.95%, handshake TLS fail > 5/min.
+
+**Dipendenze Tecniche:**
+- **Prometheus:** Raccolta, aggregazione, persistenza metriche (cluster federato).
+- **Grafana:** Visualizzazione, dashboarding, drill-down, heatmap, export, reportistica.
+- **Alertmanager:** Gestione alert, escalation, integrazione canali notifica.
+- **Bit-Energy Ledger:** Notarizzazione dati critici e alert per auditabilità e compliance.
+- **Kyoto 2.0:** Standard di compliance e SLA.
+- **SSO/RBAC:** Controllo accessi dashboard.
+- **Remediation Orchestrator:** Esecuzione playbook automatici su alert critici.
+
+**Flusso Tecnico Sintetico:**  
+Edge Agent → Fog Gateway → Prometheus (Fog/Cloud) → Grafana/Alertmanager → Remediation Orchestrator → Aggiornamento stato.
+
+**Impatto:**  
+Affidabilità, resilienza, sicurezza, ottimizzazione risorse, governance trasparente. Il sistema di monitoraggio e telemetria è centrale per la gestione intelligente e conforme della micro-rete AETERNA.

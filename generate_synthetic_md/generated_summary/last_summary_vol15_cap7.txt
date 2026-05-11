@@ -1,0 +1,44 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- La knowledge base (KB) è un servizio modulare containerizzato, orchestrato su Kubernetes e integrato nel portale web AETERNA.
+- Storage versionato: contenuti testuali su repository GitHub/GitLab (Markdown), allegati su S3-compatible object storage.
+- Motore di ricerca semantico: ElasticSearch 8.x con plugin NLP (spaCy, BERT), supporto a query semantiche, fuzzy matching, sinonimie.
+- Portale web responsive: realizzato in React.js, integrato con Docusaurus/MkDocs per la navigazione strutturata.
+- API RESTful: gestione CRUD articoli, ricerca, categorizzazione, integrazione con sistemi esterni (chatbot, ticketing, dashboard).
+- Chatbot AI-integrato: modelli LLM customizzati, addestrati sul corpus KB, accessibili via webchat e Matrix/Element.
+- Sistema di versioning e revisione: workflow Git (pull request, code review), metadati articolati, audit trail notarizzato su blockchain Bit-Energy.
+- RBAC (Role-Based Access Control) per controllo granulare di visibilità e permessi.
+- Autenticazione/autorizzazione: OAuth2.0/SAML2.0.
+- Backup/disaster recovery: snapshot periodici su S3, replica geografica repository Git.
+
+**Variabili Introdotte (Metadati Articoli):**
+- `material_id`: identificativo univoco articolo.
+- `version`: versione semantica (major.minor.patch).
+- `author_id`: autore principale.
+- `reviewer_id`: revisore responsabile.
+- `tag`: tag semantici multilivello (es. ["Edge", "Blockchain", "FAQ"]).
+- `timestamp`: data/ora creazione o revisione.
+- `status`: stato (draft, in review, published, archived).
+- `bitenergy_hash`: hash notarizzazione su blockchain Bit-Energy.
+- `changelog`: sintesi modifiche versione corrente.
+- `feedback_id`, `score`, `comment`: per feedback strutturati.
+- `forum_posts`, `chat_msgs`: log di engagement.
+
+**Dipendenze Tecniche:**
+- Kubernetes (orchestrazione container).
+- GitHub/GitLab (repository versionati).
+- S3-compatible object storage (allegati, backup).
+- ElasticSearch 8.x + plugin NLP (ricerca semantica).
+- spaCy, BERT (pipeline NLP).
+- React.js, Docusaurus/MkDocs (frontend web).
+- API RESTful (integrazione sistemi esterni).
+- LLM customizzati (chatbot AI).
+- Matrix/Element (canali chatbot).
+- Bit-Energy blockchain (notarizzazione revisioni, audit trail).
+- OAuth2.0/SAML2.0 (autenticazione/ruoli).
+- Webhook, email, Matrix (notifiche).
+- ML per tagging semantico automatico.
+- Standard Kyoto 2.0 (compliance).
+
+**Processi chiave:** raccolta input (ticketing, feedback, log), redazione/validazione (workflow Git), notarizzazione revisioni (blockchain), distribuzione (indicizzazione ElasticSearch, aggiornamento chatbot, notifiche utenti).

@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Governance distribuita**: Coinvolgimento strutturato di stakeholder esterni (enti pubblici, aziende, università, associazioni) tramite processi trasparenti e bidirezionali.
+- **Architettura Edge-Fog-Cloud**: Workflow di valutazione proposte suddiviso in livelli (Fog per analisi preliminare, Cloud per valutazione finale).
+- **Integrazione DAO**: Policy e metriche di reward versionate via GitOps e sottoposte a votazione DAO tramite smart contract.
+- **Notarizzazione su Blockchain**: Tutte le decisioni finali sulle proposte sono notarizzate su blockchain Bit-Energy per auditabilità.
+- **Strumenti digitali integrati**: Suite di strumenti (Collaboration Portal, forum, S.P.I., feedback, sessioni pubbliche, repository GitOps) con autenticazione SSO federata e logging centralizzato.
+- **Processo automatizzato e tracciabile**: Workflow multi-livello con validazione automatica, filtri smart contract, tracciamento identificativi univoci e raccolta/analisi feedback automatica.
+
+**Variabili Introdotte:**
+- **User_Stakeholder_ID**: Identificativo univoco per stakeholder autenticati.
+- **Forum_Thread_ID**: Tracciamento thread nei forum moderati.
+- **Proposal_ID**: Identificativo univoco per ogni proposta presentata.
+- **Feedback_ID**: Tracciamento feedback contestuali.
+- **Meeting_ID**: Identificativo eventi di consultazione pubblica.
+- **External_Contributor_ID, PR_ID**: Tracciamento contributi tecnici nei repository collaborativi.
+- **Audit_Reference**: Riferimento univoco per notarizzazione su blockchain.
+
+**Dipendenze Tecniche:**
+- **Collaboration Portal**: Accesso centralizzato, SSO federato, logging.
+- **Forum Moderati**: Moderazione certificata, versionamento thread, integrazione con S.P.I. e feedback.
+- **S.P.I. (Sistema Proposta Iniziative)**: Workflow di sottomissione, validazione sintattica/semantica, tagging NLP.
+- **Smart Contract**: Screening proposte, sorteggio commissione, governance DAO.
+- **Kibana**: Dashboard operative per raccolta feedback, engagement, pubblicazione risultati e monitoraggio stato proposte.
+- **Repository GitOps**: Co-sviluppo policy, smart contract, documentazione tecnica, versionamento policy-as-code.
+- **Blockchain Bit-Energy**: Notarizzazione esiti, auditabilità end-to-end.
+- **Sentiment Analysis/Clustering**: Analisi automatica feedback community.
+- **Compliance Policy Kyoto 2.0**: Validazione proposte rispetto a policy energetiche e di sostenibilità.
+
+Queste scelte e variabili abilitano un ecosistema partecipativo, trasparente e auditabile, garantendo scalabilità, sicurezza e innovazione continua nel ciclo di vita delle micro-reti AETERNA.

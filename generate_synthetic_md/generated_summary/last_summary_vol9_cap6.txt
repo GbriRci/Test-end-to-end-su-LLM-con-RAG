@@ -1,0 +1,32 @@
+**Riassunto Denso – Gestione delle Policy di Sicurezza in AETERNA**
+
+**Decisioni Architetturali:**
+- **Policy-as-Code:** Le policy di sicurezza sono definite in linguaggio dichiarativo (es. Rego per OPA), versionate e gestite tramite repository Git privato.
+- **Ciclo di Vita Automatizzato:** Il ciclo di vita delle policy prevede proposta (pull request), validazione automatica (CI/CD), approvazione multilivello (CRT e CAR), notarizzazione (Kyoto 2.0), distribuzione automatica (Argo Workflows) e audit/logging (Kibana).
+- **Workflow di Approvazione Multilivello:** Ogni modifica richiede doppia approvazione (CRT e CAR), con autenticazione tramite firma digitale e tracciamento degli approvatori.
+- **Distribuzione Distribuita:** Le policy sono propagate automaticamente a tutti i policy engine OPA su Edge, Fog e Cloud.
+- **Notarizzazione e Audit:** Ogni policy approvata è notarizzata su Kyoto 2.0 (integrità, non ripudio) e tutte le operazioni sono tracciate tramite identificativi univoci (`Policy_ID`, `Tx_ID`, `Audit_Reference`).
+- **Gestione Incidenti e Rollback:** In caso di anomalie (rilevate da Prometheus), Argo Workflows attiva escalation e blocco temporaneo delle operazioni; rollback automatico tramite GitOps e nuova notarizzazione.
+
+**Variabili Introdotte:**
+- `Policy_ID`: Identificativo univoco della policy.
+- `Version`: Versionamento semantico.
+- `Owner`/`User_ID`: Proponente della policy.
+- `Approver_ID`: Identificativi degli approvatori.
+- `Signature`: Hash della firma digitale.
+- `Tx_ID`: ID transazione Kyoto 2.0.
+- `Timestamp`: Data/ora notarizzazione.
+- `Audit_Reference`: Identificativo per audit.
+- `Status`: Esito operazione.
+- `Evidence_Hash`: Hash evidenza per dispute.
+
+**Dipendenze Tecniche:**
+- **Open Policy Agent (OPA):** Enforcement e validazione runtime delle policy.
+- **HashiCorp Vault:** Gestione centralizzata dei segreti e chiavi di firma.
+- **Argo Workflows:** Orchestrazione dei workflow di approvazione/distribuzione.
+- **GitOps (GitLab/GitHub Enterprise):** Versionamento, audit trail, archiviazione.
+- **Kyoto 2.0:** Notarizzazione policy e approvazioni.
+- **Prometheus:** Monitoraggio compliance, trigger escalation.
+- **Kibana:** Analisi e visualizzazione log di audit.
+
+Queste scelte abilitano sicurezza, trasparenza, auditabilità, efficienza e compliance, costituendo la base tecnica per la gestione resiliente e scalabile delle policy nei capitoli successivi.

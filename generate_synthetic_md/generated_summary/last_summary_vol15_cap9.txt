@@ -1,0 +1,35 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Il sistema di gamification è implementato come microservizio dedicato, integrato orizzontalmente nella piattaforma community AETERNA.
+- Comunicazione e interoperabilità tramite API RESTful sicure.
+- Integrazione diretta con moduli: feedback, forum, webinar, ticketing, chatbot.
+- Flusso eventi asincrono: ogni interazione utente genera un evento JSON (schema predefinito).
+- Validazione eventi e rate limiting per prevenire abusi.
+- Motore di regole per badge/XP/premi: basato su Drools (open source) o logica custom (Python/Node.js), con knowledge base versionata.
+- Persistenza su DB relazionale; milestone e premi principali notarizzati su blockchain Bit-Energy per auditabilità.
+- Aggiornamento dashboard utente (frontend React.js) in tempo reale via WebSocket o polling API.
+- Pipeline ETL (Kubernetes) per aggregazione eventi e analisi BI (Grafana/Metabase).
+- Regole di assegnazione badge/premi pubbliche e versionate (Docusaurus/MkDocs).
+- Accesso e permessi gestiti tramite RBAC; logging di tutte le visualizzazioni/modifiche.
+
+**Variabili Introdotte:**
+- Evento JSON: `user_id` (pseudonimizzato Kyoto 2.0), `event_type`, `timestamp`, `context`, `source`.
+- Badge, XP, premi virtuali, milestone.
+- Knowledge base regole (versionata).
+- Dashboard utente: badge ottenuti, XP, livello, progressi, storico attività.
+- Opt-in/opt-out per visibilità pubblica dei badge/progressi.
+
+**Dipendenze Tecniche:**
+- Microservizi e API RESTful (sicurezza, interoperabilità).
+- Motore regole (Drools/Python/Node.js).
+- DB relazionale per persistenza; blockchain Bit-Energy per notarizzazione.
+- Frontend React.js per dashboard utente.
+- WebSocket/polling API per aggiornamenti real-time.
+- Pipeline ETL su Kubernetes; BI tools (Grafana/Metabase).
+- Pseudonimizzazione Kyoto 2.0 per compliance privacy.
+- Repository documentazione (Docusaurus/MkDocs) per regole pubbliche.
+- RBAC per gestione accessi; audit trail completo.
+
+**Sintesi:**
+Il sistema di gamification di AETERNA è un microservizio orizzontale, integrato tramite API RESTful con i principali moduli della piattaforma. Ogni interazione utente genera eventi JSON pseudonimizzati, validati e processati da un motore di regole che assegna badge, XP e premi, con persistenza su DB e notarizzazione su blockchain per milestone. Le dashboard utente sono aggiornate in tempo reale e le metriche aggregate sono analizzate tramite pipeline ETL e BI. Tutte le regole sono pubbliche e versionate, con compliance privacy e sicurezza garantite da pseudonimizzazione, rate limiting, RBAC e audit trail.

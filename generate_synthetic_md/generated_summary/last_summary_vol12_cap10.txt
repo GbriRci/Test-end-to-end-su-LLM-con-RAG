@@ -1,0 +1,35 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura a 3 livelli (Edge, Fog, Cloud):**  
+  - *Edge (H-Node):* Sensori locali, AI embedded per anomaly detection (LSTM, Random Forest), doppia alimentazione (rete + storage/batteria), microgrid islanding, firmware hot standby.
+  - *Fog (Quartiere):* Cluster HA con election RAFT, aggregazione dati, clustering AI (DBSCAN, Isolation Forest), replica dati (Cassandra multi-datacenter), service migration automatica.
+  - *Cloud:* Multi-region, orchestrazione Kubernetes multi-cluster, storage geo-ridondato (S3 cross-region), disaster recovery automatizzato, replica ledger blockchain (Bit-Energy) tra nodi validatori.
+
+- **Disaster Recovery e Backup:**  
+  - Snapshot incrementali, backup offsite cifrati, retention configurabile, test di ripristino trimestrali automatizzati.
+
+- **Comunicazione Multimodale:**  
+  - Notifiche push (Firebase, APNS), fallback SMS, display/LED/TTS su colonnine, banner/app web, canale bidirezionale (chatbot AI/operatori), personalizzazione canali, accessibilità WCAG 2.1 AA.
+
+- **Formazione e Simulazioni:**  
+  - Training periodico, tabletop exercise, penetration test, feedback NLP/BERT per iterazione procedure.
+
+**Variabili Introdotte:**
+- *QoS MQTT (livelli 1-2)* per messaggi critici.
+- *Heartbeat periodici* e watchdog per failover automatico.
+- *RTO < 15 min, RPO < 5 min* per dati critici.
+- *Retention policy* backup configurabile.
+- *Preferenze utente* per canali di notifica.
+- *Livelli di escalation* (Edge → Fog → Cloud) per gestione emergenze.
+
+**Dipendenze Tecniche:**
+- *Protocolli:* MQTT (TLS 1.3), WebSocket (TLS 1.3), RAFT per election, Cassandra per replica dati, S3 per storage geo-ridondato.
+- *AI/ML:* LSTM, Random Forest (Edge); DBSCAN, Isolation Forest (Fog); NLP/BERT (feedback simulazioni).
+- *Blockchain:* Bit-Energy, replica ledger tra validatori.
+- *Backup:* Storage offsite (cloud secondario, cold storage), snapshot automatizzati.
+- *Comunicazione:* Firebase Cloud Messaging, APNS, SMS fallback, TTS embedded, canali accessibili (WCAG 2.1 AA).
+- *Orchestrazione:* Kubernetes multi-cluster, disaster recovery plan automatizzato.
+
+**Sintesi:**  
+L’architettura AETERNA integra nativamente resilienza multilivello tramite ridondanza, failover, backup distribuiti e disaster recovery automatizzato, supportata da protocolli sicuri e AI per monitoraggio e risposta proattiva. La comunicazione d’emergenza è multimodale e accessibile, mentre la formazione continua e le simulazioni assicurano adattabilità e miglioramento costante. Queste scelte tecniche e organizzative costituiscono la base per la continuità operativa e la sicurezza delle micro-reti urbane.

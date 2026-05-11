@@ -1,0 +1,24 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Pipeline di Testing Multilivello**: Il processo di testing è strutturato in fasi distinte (unitari, integrazione, E2E, sicurezza, carico, copertura), fortemente automatizzate e integrate nella CI/CD (Jenkins).
+- **Automazione e Standardizzazione**: Tutti i test sono automatizzati e standardizzati per garantire interoperabilità tra moduli eterogenei (Edge, Fog, Cloud).
+- **Certificazione Formalizzata**: La certificazione di ogni componente segue un workflow documentato, con revisione indipendente (comitato tecnico) e rilascio di certificazione digitale registrata su blockchain (Bit-Energy).
+- **Gestione delle Revisioni**: Ogni modifica a un componente richiede la ripetizione del ciclo di testing e la riemissione della certificazione, assicurando tracciabilità e coerenza evolutiva.
+- **Integrazione con la Governance**: Le metriche di test alimentano il ciclo di aggiornamento degli standard interni e delle policy di testing, con archiviazione delle evidenze su storage geo-ridondato (S3) e accesso controllato tramite RBAC.
+
+**Variabili Introdotte:**
+- **Soglia di copertura minima**: 85% di coverage del codice di produzione (monitorata da SonarQube).
+- **Standard di conformità**: Kyoto 2.0, Bit-Energy, OpenAPI 3.0, ETSI EN 303 645, GDPR, ISO/IEC 29115, ISO/IEC 20889.
+- **Strumenti di raccolta metriche**: Prometheus, Grafana, Isolation Forest.
+- **Tipologie di test**: Unitarî (JUnit, PyTest), Integrazione (Postman, test custom su RabbitMQ), E2E (Selenium, Apache Airflow), Sicurezza (OWASP ZAP), Carico/Scalabilità (Apache JMeter), Copertura (SonarQube).
+
+**Dipendenze Tecniche:**
+- **Linguaggi e Framework**: Java (H-Node, Adapter Layer, orchestrazione Edge/Fog), Python (AI, ETL), JUnit, PyTest, Postman, Selenium, Apache Airflow, RabbitMQ.
+- **CI/CD**: Jenkins per orchestrazione pipeline, esecuzione test e generazione report.
+- **Storage e Audit**: S3 geo-ridondato per log e report, hash delle revisioni su blockchain Bit-Energy per immutabilità e tracciabilità.
+- **Sicurezza e Policy**: Autenticazione federata (SAML/OAuth), bridge LDAP, RBAC, policy di segregazione accessi.
+- **Comitato Tecnico**: Revisione indipendente dei report e delle evidenze di test, emissione certificazione.
+
+**Sintesi**:  
+Il sistema di testing e certificazione di AETERNA è una pipeline multilivello, automatizzata e integrata nella CI/CD, che garantisce affidabilità, interoperabilità, compliance e tracciabilità tramite workflow formalizzati, strumenti dedicati e storage sicuro. Le decisioni architetturali e le variabili introdotte assicurano la scalabilità e l’evolutività del framework, mentre le dipendenze tecniche definiscono l’ecosistema di strumenti e standard necessari per la qualità e la sicurezza dei componenti.

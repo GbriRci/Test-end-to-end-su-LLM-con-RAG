@@ -1,0 +1,24 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Dualità Ambienti di Validazione:** Validazione su ambienti pilota sia reali (micro-reti fisiche) sia simulati (testbed virtuali via Docker/Kubernetes), per copertura esaustiva e riduzione del rischio di failure.
+- **Stratificazione Architetturale:** Tre livelli principali: H-Node Edge (dispositivi domestici con sensori/attuatori e agenti AETERNA), Fog Node (server di quartiere/orchestratori microservizi, interfacciati con sistemi legacy), Cloud Layer (analisi, ML, storage).
+- **Pipeline CI/CD:** Automazione dei test (end-to-end, stress, integrazione, fault injection) su ogni commit, con esecuzione sia in ambienti simulati che reali.
+- **Monitoraggio e Audit:** Prometheus per metriche granulari, Grafana per dashboard, Bit-Energy Blockchain per auditabilità e tracciabilità immutabile dei risultati di test e release.
+- **Gestione Issue e Test Case:** Tracciamento su GitLab, con associazione tra requisiti e test case per garantire copertura e ripetibilità.
+- **Compliance e Sicurezza:** Validazione specifica per Badge Kyoto 2.0 (gestione credenziali di sostenibilità), audit su blockchain, test di input anomali e tentativi di frode.
+
+**Variabili Introdotte:**
+- **Metriche Monitorate:** Latenza, throughput, errori, saturazione risorse, recovery time, persistenza dati, validità badge, coerenza transazioni.
+- **Tipologie di Test:** End-to-end, stress test (fino al 150% carico), interoperabilità (API, legacy), fault injection (hardware/software), compliance (Kyoto 2.0), trading Bit-Energy.
+- **Eventi e Fault Simulati:** Disconnessione nodi, blackout, malfunzionamento sensori, attacchi di sicurezza, congestione rete, collasso micro-reti.
+
+**Dipendenze Tecniche:**
+- **Strumenti di Test:** JUnit, PyTest, JMeter, Locust, Postman, Newman, Chaos Monkey, simulatori HIL, framework custom.
+- **Tecnologie di Virtualizzazione:** Docker, Kubernetes.
+- **Monitoraggio e Reporting:** Prometheus, Grafana, GitLab CI/CD, automated reporting.
+- **Blockchain:** Bit-Energy per auditabilità e tracciabilità delle transazioni e dei risultati di test.
+- **Sistemi Legacy:** Integrazione tramite Modbus, MQTT, RESTful API.
+- **Badge Kyoto 2.0:** Gestione e validazione credenziali di sostenibilità.
+
+Queste scelte e variabili costituiscono la base tecnica e metodologica per i successivi capitoli, garantendo robustezza, tracciabilità e compliance della piattaforma AETERNA.

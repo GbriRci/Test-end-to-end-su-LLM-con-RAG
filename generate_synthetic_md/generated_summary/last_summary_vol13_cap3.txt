@@ -1,0 +1,20 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Collaborazione strutturata con enti regolatori** (ISO/IEC JTC 1, ETSI, W3C) come pilastro strategico per garantire conformità, anticipare evoluzioni normative e influenzare gli standard rilevanti per micro-reti energetiche decentralizzate.
+- **Partecipazione attiva ai tavoli tecnici** tramite rappresentanti esperti, con presentazione di casi d’uso architetturali, proposte di modifica agli standard (es. estensioni SAML/OpenID Connect per scenari edge/fog), e redazione di position paper basati su deployment reali.
+- **Ciclo di feedback continuo** tra deployment AETERNA e standardizzazione: raccolta metriche (Prometheus, Grafana, Isolation Forest), analisi gap, formalizzazione proposte, aggiornamento specifiche interne e rilascio versioni di adapter, policy e workflow ETL.
+- **Adozione di un modello di autenticazione federata multilivello** (ISO/IEC 29115, SAML 2.0, OpenID Connect), con federazione delle identità tra Edge/Fog/Cloud tramite bridge LDAP, assertion SAML/OAuth e propagazione automatica delle policy RBAC.
+- **Gestione privacy e compliance** integrata by design: audit trail strutturati su storage geo-ridondato (hash su blockchain Bit-Energy), data minimization e pseudonimizzazione (ISO/IEC 20889), data retention e diritto all’oblio nei workflow ETL (Apache Airflow).
+- **Interoperabilità e integrazione legacy**: RESTful API documentate OpenAPI 3.0, conversione payload legacy (SOAP/XML, CSV) in JSON/Avro, Adapter Layer containerizzati e versionabili, transactional outbox pattern per rollback/atomicità.
+- **Resilienza infrastrutturale**: monitoring AI-driven, rollback automatici, gestione emergenze secondo ETSI EN 303 645.
+
+**Variabili Introdotte:**
+- **Bridge LDAP**, **Schema Registry centralizzato**, **Audit trail su S3**, **Hash su blockchain Bit-Energy**, **Adapter Layer containerizzati**, **Workflow ETL orchestrati da Apache Airflow**, **Policy RBAC propagate**, **Metriche AI-driven**.
+
+**Dipendenze Tecniche:**
+- **Standard e specifiche**: ISO/IEC 29115, SAML 2.0, OpenID Connect, OpenAPI 3.0, ETSI GS MEC, ISO/IEC 27001, GDPR, Kyoto 2.0, ISO/IEC 20889, ETSI EN 303 645.
+- **Tecnologie**: Prometheus, Grafana, Isolation Forest (monitoraggio), Bit-Energy (blockchain), Apache Airflow (orchestrazione ETL), S3 (storage), LDAP, RESTful API, Adapter Layer, transactional outbox pattern.
+
+**Sintesi:**  
+L’architettura AETERNA si fonda su una collaborazione proattiva con enti regolatori, implementando un ciclo di feedback tra deployment e standardizzazione, e adottando soluzioni tecniche e organizzative per garantire interoperabilità, sicurezza, privacy e resilienza, in linea con i più recenti standard internazionali.

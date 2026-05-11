@@ -1,0 +1,28 @@
+**Riassunto Denso – Gestione delle Non Conformità in AETERNA**
+
+**Decisioni Architetturali:**
+- Architettura multilivello (Edge, Fog, Cloud) con gestione distribuita e automatizzata delle non conformità.
+- Integrazione nativa di logging avanzato, metriche Prometheus custom, anomaly detection ML, e controlli di integrità dati (hash periodici, confronto con blockchain Bit-Energy).
+- Repository centralizzato per le non conformità (es. GitLab Issues esteso), con tracciamento completo (UUID, timestamp, modulo, gravità, badge Kyoto 2.0, hash Bit-Energy).
+- Workflow di gestione integrato con pipeline CI/CD, RBAC per assegnazione ticket, e automazione delle notifiche/SLA.
+- Tutte le azioni e revisioni sono ancorate su blockchain Bit-Energy per garantire immutabilità, trasparenza e auditabilità.
+- Integrazione con badge Kyoto 2.0 per la gestione della compliance energetica: le non conformità possono sospendere/revocare badge fino a risoluzione.
+- Gestione documentale versionata e ancorata su blockchain, con workflow di approvazione.
+
+**Variabili Introdotte:**
+- Livelli di gravità: Bloccante, Critica, Maggiore, Minore (con azioni, SLA e impatti badge specifici).
+- Metadati associati a ogni non conformità: UUID, timestamp, modulo/livello architetturale, gravità, badge Kyoto 2.0, hash Bit-Energy, collegamenti a commit/revisioni.
+- Soglie di anomalia (statiche e auto-tuning via ML) per alerting automatico.
+- Stato badge Kyoto 2.0 associato a ciascuna non conformità.
+- Policy di classificazione automatica/manuale secondo matrice di impatto (sicurezza, compliance, business continuity).
+
+**Dipendenze Tecniche:**
+- Logging strutturato e centralizzato su tutti i microservizi (Edge/Fog/Cloud).
+- Metriche Prometheus, dashboard Grafana, modelli ML per anomaly detection.
+- Hashing e ancoraggio su blockchain Bit-Energy (per log, revisioni, ticket).
+- Repository ticketing (es. GitLab Issues custom), integrato con CI/CD e RBAC.
+- Strumenti di code scanning (es. SonarQube), penetration test automatizzati.
+- Badge Kyoto 2.0 per compliance energetica, con processi di validazione/revoca automatica.
+- Gestione documentale versionata, workflow di approvazione, ancoraggio blockchain.
+
+**Nota:** Il sistema prevede revisione semestrale, fault-injection e audit interni per validare l’efficacia della gestione delle non conformità.

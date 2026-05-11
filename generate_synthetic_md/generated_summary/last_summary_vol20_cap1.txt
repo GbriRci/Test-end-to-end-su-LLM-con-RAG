@@ -1,0 +1,50 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura a tre livelli**:  
+  - **Edge Layer (H-Node)**: smart meter, wallet Bit-Energy, raccolta dati real-time, autenticazione (OpenID Connect), firma digitale, generazione certificati energia.
+  - **Fog Layer**: aggregazione dati H-Node, matching domanda-offerta, pricing dinamico, orchestrazione smart contract Bit-Energy, gestione compliance locale (checklist Kyoto 2.0, monitoraggio KRI).
+  - **Cloud Layer**: data lake cifrato per archiviazione transazioni, analisi AI (ottimizzazione, rilevamento anomalie), reportistica regolatoria.
+
+- **Blockchain Bit-Energy**:  
+  - Audit trail, archiviazione smart contract, settlement automatizzato, certificazione energia, logging granulare.
+
+- **Gestione Identità e Sicurezza**:  
+  - Strong authentication (OpenID Connect), segregazione ruoli (prosumer, fog operator, auditor), policy di accesso dinamiche in base a compliance e audit AI.
+
+- **Compliance e Auditabilità**:  
+  - Audit trail su Bit-Energy (hash, UUID, firma digitale), monitoraggio KRI, simulazioni AI per anomalie e gap normativi, checklist digitalizzate integrate nei workflow.
+
+**Variabili Introdotte:**
+- **Profilo energetico utente** (storico, pattern consumo/produzione)
+- **Preferenze di trading** (es. priorità energia rinnovabile)
+- **Parametri di flessibilità** (es. disponibilità a shiftare carichi)
+- **Vincoli regolatori** (es. limiti Kyoto 2.0)
+- **Quantità energia scambiata (kWh)**
+- **Prezzo unitario dinamico**
+- **Provenienza certificata (hash, timestamp)**
+- **Condizioni di settlement** (immediato/differito, token/fiat)
+- **Clausole di compliance** (checklist Kyoto 2.0)
+- **Stato compliance utente** (dinamico, influenzato da audit AI)
+
+**Dipendenze Tecniche:**
+- **Protocolli di comunicazione**:  
+  - API RESTful certificate (Edge-Fog-Cloud)
+  - SFTP cifrato (documentazione regolatoria)
+  - WebSocket (notifiche push real-time)
+  - Incident Notification System (alert anomalie/frodi)
+
+- **Smart contract Bit-Energy**:  
+  - Formalizzazione transazioni, settlement automatizzato, firma elettronica qualificata, referenziazione UUID.
+
+- **Integrazione sistemi esterni**:  
+  - Sistemi bancari (API certificate per settlement fiat)
+  - Feed normativi per aggiornamento checklist compliance
+
+- **Motore AI**:  
+  - Analisi predittive, simulazioni audit, suggerimenti remediation
+
+- **Dashboard Compliance**:  
+  - Monitoraggio KRI, gestione incidenti, accessi auditor temporanei
+
+**Nota**: L’interoperabilità, la scalabilità e la compliance sono requisiti trasversali e abilitanti per i successivi sviluppi architetturali.

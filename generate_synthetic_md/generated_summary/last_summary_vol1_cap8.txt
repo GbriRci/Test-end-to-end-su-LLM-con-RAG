@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Decentralizzazione Radicale:** Superamento del modello centralizzato tramite una rete di nodi autonomi (Edge/H-Node, Fog, Cloud) capaci di operare in isolamento (autofagia locale).
+- **Swarm Intelligence Energetica:** I nodi agiscono come agenti intelligenti, cooperando tramite algoritmi swarm (Ant Colony, Particle Swarm Optimization) per auto-organizzazione, resilienza e ottimizzazione locale/globale.
+- **Gestione Locale delle Risorse:** Ogni nodo integra un AETERNA Local Resource Manager (ALRM) per monitoraggio, auto-consumo, accumulo, disconnessione selettiva e gestione di smart contract locali.
+- **Persistenza e Sicurezza:** Ledger locale persistente, sincronizzazione post-isolamento; chiavi private custodite in hardware secure enclave, con rotazione e recovery multi-factor.
+- **Cluster Dinamici:** I nodi formano cluster temporanei (Fog Cluster), con elezione dinamica di Fog Leader e supporto a subnet temporanee in caso di partizionamento.
+- **Leaderless Consensus:** In caso di perdita del leader, protocollo di coordinamento asincrono (ASCP) con quorum dinamici e fallback su consensus leaderless.
+- **Smart Contract Locali:** Ogni nodo può istanziare smart contract per micro-scambi P2P, regole di emergenza e allocazione priorità, deploy su DLT permissioned o fallback locale.
+- **Auditabilità e Trasparenza:** Tutte le decisioni sono tracciate tramite metadati standardizzati e audit log accessibili via Public Audit Gateway (API RESTful/OpenAPI 3.0).
+
+**Variabili Introdotte:**
+- **NodeStatus:** Stato carico, accumulo, health score.
+- **EnergyOffer/EnergyRequest:** Quantità (Bit-Energy), priorità, timestamp.
+- **SwarmDecision:** Votazione locale su azioni collettive.
+- **Health Score:** Valutazione dello stato del nodo.
+- **Snapshot Differenziali:** Per sincronizzazione ledger.
+- **Parametri di trading, accumulo, consumo:** Ottimizzati dinamicamente da AI locale.
+
+**Dipendenze Tecniche:**
+- **Protocolli:** Gossip protocol energetico (CBOR serializzato, TLS 1.3+), ASCP per coordinamento swarm, PBFT per consenso e risoluzione fork, heartbeat crittografici/challenge-response per fault detection.
+- **DLT Permissioned:** Per deploy smart contract e registro transazioni.
+- **AI Lightweight Locale:** Per analisi predittiva e adattamento strategico.
+- **Hardware Secure Enclave:** Per gestione sicura delle chiavi.
+- **Public Audit Gateway:** Per auditabilità e trasparenza.
+- **API RESTful/OpenAPI 3.0:** Per accesso e query resilienti.
+- **RBAC:** Per controllo accessi audit log.
+
+Queste scelte e variabili costituiscono la base tecnica per i successivi capitoli su resilienza, governance distribuita e scalabilità.

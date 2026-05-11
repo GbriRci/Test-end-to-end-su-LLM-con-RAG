@@ -1,0 +1,29 @@
+**Riassunto Denso – Capitolo 7: Visualizzazione e Dashboard (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura modulare e scalabile**: Separazione tra front-end, service layer, data adapter e sicurezza.
+- **Front-end**: 
+  - *Operatori*: Dashboard avanzate in React.js con D3.js (visualizzazione dati complessi, interattività, server-side rendering).
+  - *Cittadini*: Interfacce mobile-first in React.js/Next.js, mappe (Leaflet.js), timeline, grafici semplici; conformità WCAG 2.1 AA.
+- **Service Layer**: Microservizi Node.js/Express.js per estrazione, normalizzazione (Kyoto 2.0), aggregazione dati; RESTful API e WebSocket per real-time; autenticazione OAuth2/OpenID Connect federata (SPID/CIE).
+- **Data Adapter Layer**: Adapter per output ML (Protobuf, JSON) verso formati front-end; sicurezza TLS 1.3; segregazione e pseudonimizzazione dati in base al profilo utente.
+- **Audit e Compliance**: Tracciamento interazioni su blockchain Bit-Energy (hash, timestamp NTP); enforcement RBAC; esportazione dati solo previa autorizzazione; compatibilità con pipeline ML (Kyoto 2.0, Drools).
+
+**Variabili Introdotte:**
+- *Ruolo utente* (operatore, supervisore, amministratore, cittadino) → determina permessi, viste e azioni disponibili.
+- *Profilo autenticato* (SPID/CIE) → personalizzazione contenuti, notifiche, accesso dati storici.
+- *Livello di accesso* → segregazione logica dataset, pseudonimizzazione automatica.
+- *Formato dati* (Protobuf, JSON, CSV, PDF) → interoperabilità tra pipeline ML, adapter e front-end.
+- *Stato servizi energetici, metriche di sistema, alert ML* → variabili visualizzate in tempo reale.
+
+**Dipendenze Tecniche:**
+- *Librerie front-end*: React.js, Next.js, D3.js, Leaflet.js.
+- *Back-end*: Node.js, Express.js.
+- *Protocolli*: RESTful API, WebSocket, OAuth2/OpenID Connect, JWT, TLS 1.3.
+- *Standard e compliance*: WCAG 2.1, Kyoto 2.0, Bit-Energy (blockchain), SPID/CIE.
+- *Output pipeline ML*: Protobuf, JSON.
+- *Storage dati aggregati*: Kyoto 2.0.
+- *Audit trail*: Blockchain Bit-Energy.
+
+**Sintesi:**  
+La visualizzazione in AETERNA si fonda su un’architettura modulare, con dashboard differenziate per operatori (avanzate, granulari) e cittadini (intuitive, accessibili), integrate con sistemi di autenticazione federata, audit blockchain e pipeline ML. Le variabili chiave sono ruolo, profilo autenticato, livello di accesso e formato dati. Le dipendenze tecniche includono stack React/Node.js, protocolli di sicurezza e standard di accessibilità e compliance, garantendo scalabilità, trasparenza e adattabilità futura.

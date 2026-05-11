@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Validazione multilivello**: I dati sono validati in ingresso e in uscita su Edge, Fog e Cloud tramite motori di regole (Talend Data Quality Rules Engine) e microservizi custom.
+- **Controlli di integrità**: Applicazione di checksum, hash SHA-256 e firme digitali (Bit-Energy) per garantire immutabilità e non ripudiabilità.
+- **Profiling e anomaly detection**: Apache Griffin integrato per analisi in tempo reale di distribuzione, outlier e pattern anomali.
+- **Validazione in uscita**: Conformità a schemi (JSON Schema, Avro, XSD) e contratti di interoperabilità (API/CDC); audit trail automatico.
+- **Ancoraggio blockchain**: Ogni record critico è ancorato su blockchain Bit-Energy per tracciabilità e certificazione temporale.
+- **Audit periodici**: Audit automatizzati (settimanali/mensili) con logging firmato e repository immutabili.
+- **Data lineage**: Tracciabilità end-to-end dal dato generato (H-Node) fino all’analisi aggregata (Cloud), con visualizzazione grafica e reportistica.
+- **Reportistica compliance**: Generazione automatica di report conformi a Kyoto 2.0 tramite pipeline Talend/Griffin, distribuiti via API sicure (OAuth2/SAML).
+- **Monitoraggio e correzione**: Integrazione Prometheus/Grafana per alerting; workflow di correzione automatica (Talend Job, microservizi) o escalation manuale (Jira); feedback loop per apprendimento continuo.
+
+**Variabili Introdotte:**
+- **Regole di business**: Range checking, verifica timestamp, matching identificativi H-Node/blockchain.
+- **Metriche di qualità**: Completezza, accuratezza, unicità, tempestività.
+- **Soglie di alert**: Configurabili per attivare workflow di correzione.
+- **Contratti di servizio**: Schemi dati e API/CDC per interoperabilità.
+- **Indicatori di compliance**: Inclusi nei report per Kyoto 2.0 e Bit-Energy.
+
+**Dipendenze Tecniche:**
+- **Talend Data Quality**: Regole di validazione, deduplica, standardizzazione, scoring, pipeline ETL.
+- **Apache Griffin**: Profiling, anomaly detection, metriche, alert, dashboard.
+- **Bit-Energy Blockchain**: Ancoraggio hash, certificazione temporale, audit trail.
+- **Custom Microservices**: Validazione on-the-fly, logging, rollback/compensazione.
+- **Prometheus/Grafana**: Monitoraggio, alerting, visualizzazione.
+- **Jira**: Ticketing, escalation manuale.
+- **Repository immutabili**: Per log e audit trail.
+- **API sicure (OAuth2/SAML)**: Distribuzione reportistica agli enti regolatori.
+
+Queste scelte garantiscono affidabilità, compliance, resilienza, tracciabilità e scalabilità per la gestione della data quality nel progetto AETERNA.

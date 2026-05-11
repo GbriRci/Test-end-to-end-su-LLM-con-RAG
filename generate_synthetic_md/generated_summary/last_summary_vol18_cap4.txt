@@ -1,0 +1,23 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- La roadmap tecnologica di AETERNA è gestita come processo ciclico e strutturato, con revisione mensile generale e per sprint sui moduli, per garantire resilienza, scalabilità e compliance.
+- Le decisioni di aggiornamento sono formalizzate tramite incontri periodici con architetti, responsabili di prodotto, compliance, lead developer (Edge, Fog, Cloud) e stakeholder.
+- Ogni modifica alla roadmap è tracciata tramite sistemi di version control (Git, SharePoint), con changelog dettagliati e riferimenti incrociati a ticket, decisioni e dipendenze impattate.
+- L’adozione di nuove tecnologie o policy (es. MFA avanzata, override dinamico delle policy) è subordinata a una matrice di impatto (tecnico, economico, compliance) e validazione collegiale.
+- Le azioni correttive (anticipazione/posticipo milestone, ridefinizione dipendenze) sono decise in base a scostamenti da baseline, criticità normative (Kyoto 2.0, Bit-Energy) o feedback operativi.
+
+**Variabili Introdotte:**
+- KPI customizzati (latenza, throughput, error rate, coverage policy sicurezza) come metriche di riferimento per il gap assessment.
+- Tassonomia interna per la categorizzazione dei feedback (sicurezza, performance, compliance, interoperabilità semantica).
+- Matrice di impatto quantitativa per valutare proposte di adozione tecnologica o modifiche normative.
+- Versionamento formale di deliverable e milestone, con tracciabilità delle modifiche e notifiche automatiche agli stakeholder.
+
+**Dipendenze Tecniche:**
+- Integrazione di strumenti: issue tracker (Jira/Azure DevOps), metriche (Prometheus, Grafana), audit log (Bit-Energy), query federate (SPARQL), dashboard (Grafana), version control (Git, SharePoint), canali di comunicazione (Slack, Teams).
+- Dipendenze tra moduli: es. MFA anticipato richiede revisione servizi audit log e gestione segreti; posticipo logging dovuto a libreria non conforme Bit-Energy; mapping RDF delle ontologie energetiche allineato a Kyoto 2.0.
+- Automazione tramite webhook per generazione ticket e classificazione segnalazioni.
+- Nuove API RESTful per override dinamico delle policy, integrate nel policy engine del Fog layer.
+
+**Sintesi:**  
+Il processo di aggiornamento roadmap in AETERNA si fonda su workflow ciclici, metriche custom, strumenti integrati e tracciabilità rigorosa, abilitando decisioni architetturali rapide e documentate, gestione efficiente delle dipendenze tecniche e adozione tempestiva di innovazioni e compliance.

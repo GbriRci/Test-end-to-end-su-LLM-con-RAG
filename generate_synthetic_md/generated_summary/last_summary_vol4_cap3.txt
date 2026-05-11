@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche IAM in AETERNA**
+
+**Decisioni Architetturali:**
+- **IAM centralizzato e federato**: Gestione identità e accessi tramite Authorization Server AETERNA, con federazione tra Edge, Fog e Cloud via OpenID Connect (SSO).
+- **Autenticazione multi-fattore**: Obbligatoria combinazione di credenziali biometriche (impronta, volto, voce), token hardware FIDO2 e PIN locale (fallback).
+- **Identità digitale univoca**: Ogni H-Node/IoT riceve UUID hardware, coppia di chiavi post-quantum (Kyber/Dilithium) certificate dalla PKI AETERNA, e (per H-Node) token FIDO2.
+- **RBAC dinamico**: Permessi granulari e ruoli (H-Node User/Admin, Fog Operator, Cloud Analyst) gestiti e aggiornati tramite smart contract su Bit-Energy Ledger.
+- **Provisioning e revoca automatizzati**: Enrollment, revoca e rotazione delle identità gestiti tramite CRL notarizzate e propagazione via Ledger.
+- **Audit e notarizzazione**: Tutti gli eventi IAM critici (registrazione, autenticazione, revoca, rotazione) sono notarizzati su Bit-Energy Ledger (hash SHA-3, timestamp Kyoto 2.0), garantendo auditabilità e immutabilità.
+
+**Variabili Introdotte:**
+- **UUID hardware**: Identificatore univoco per ogni dispositivo.
+- **Chiavi post-quantum (Kyber/Dilithium)**: Per firma e autenticazione.
+- **Token OAuth2 (access/refresh)**: Validità breve (max 15 min), rotazione automatica.
+- **Token FIDO2**: Associato a dispositivi e utenti per challenge-response.
+- **Credenziali biometriche**: Memorizzate localmente in enclave TEE/HSM.
+- **Ruoli RBAC**: Mappati su permessi e scope (Edge, Fog, Cloud).
+- **CRL notarizzata**: Lista revoche pubblicata e propagata via Ledger.
+- **Smart contract IAM**: Gestione dinamica permessi e ruoli.
+
+**Dipendenze Tecniche:**
+- **PKI AETERNA**: Emissione e gestione certificati X.509 post-quantum.
+- **Bit-Energy Ledger**: Notarizzazione eventi IAM, CRL, smart contract permessi.
+- **TLS 1.3 ibrido (ECDHE+Kyber)**: Tunnel sicuro per enrollment e autenticazione.
+- **OAuth2/OpenID Connect**: Gestione token, federazione identità, SSO.
+- **TEE/HSM**: Custodia sicura di credenziali biometriche e chiavi.
+- **Kyoto 2.0 timestamp**: Sincronizzazione temporale e validazione eventi.
+
+**Sintesi:**  
+L’architettura IAM di AETERNA integra autenticazione multi-fattore, gestione centralizzata/federata delle identità, permessi granulari RBAC e notarizzazione su Ledger, con variabili e dipendenze tecniche orientate a sicurezza post-quantum, auditabilità e automazione di rotazione/revoca, costituendo la base per la governance sicura e trasparente delle micro-reti energetiche urbane.

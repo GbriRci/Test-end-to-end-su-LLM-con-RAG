@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Le partnership sono gestite come asset strategici tramite un **Partnership Management Framework (PMF)** che regola selezione, onboarding, gestione ciclo di vita e accordi digitalizzati (smart contract su blockchain AETERNA).
+- L’ecosistema si basa su una **suite di piattaforme digitali interoperabili**:
+  - **Partner Portal**: dashboard centralizzata per onboarding, gestione documentale, KPI e comunicazione.
+  - **Data Exchange Layer**: API/webhook per scambio sicuro dati, data anonymization, gestione licenze, tracciamento accessi.
+  - **Co-Creation Sandbox**: namespace Kubernetes dedicati per sviluppo/test microservizi congiunti.
+  - **Project Management Hub**: integrazione strumenti tipo Jira/Confluence per roadmap e deliverable condivisi.
+- **Protocolli di integrazione e sicurezza**: SDK multi-linguaggio per partner (Edge/Fog/Cloud), Secure API Gateway (OAuth2, rate limiting, logging crittografato), smart contract templates (revenue sharing, licenze, audit), monitoring nativo (Prometheus/Grafana).
+- **Onboarding e performance**: pipeline CI/CD dedicata per ogni partner, provisioning automatico risorse, compliance GDPR/ISO 27001, scorecard KPI multi-variabile, moduli AI/ML per forecasting e risk engine, audit notarizzato su blockchain.
+
+**Variabili Introdotte:**
+- **Criteri di selezione partner**: scoring algoritmico multidimensionale (tecnico, economico, reputazionale).
+- **KPI di partnership**: numero partner attivi, revenue share, tasso conversione lead, marginalità, SLA, churn.
+- **Scorecard performance**: indicatori finanziari, tecnici, innovazione, simulazione impatto ecosistema.
+- **Policy di accesso e compliance**: ruoli, permessi, auditing, standard Kyoto 2.0/Bit-Energy.
+
+**Dipendenze Tecniche:**
+- **Blockchain AETERNA**: gestione smart contract, auditing, revenue sharing, IP co-ownership.
+- **API RESTful e webhook**: integrazione dati e servizi tra partner.
+- **Kubernetes**: isolamento ambienti di co-creazione.
+- **Prometheus/Grafana**: monitoring e alerting real-time.
+- **CI/CD pipeline**: automazione onboarding e provisioning.
+- **SDK multi-linguaggio**: estensione servizi partner.
+- **Strumenti project management**: Jira/Confluence-like.
+- **Compliance**: GDPR, ISO 27001, auditing accessi e transazioni.
+
+Queste scelte abilitano modularità, scalabilità, sicurezza, compliance e innovazione continua, ponendo le basi tecniche e organizzative per i successivi capitoli di sviluppo dell’ecosistema AETERNA.

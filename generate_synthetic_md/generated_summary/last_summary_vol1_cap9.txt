@@ -1,0 +1,32 @@
+**Riassunto Denso – Politiche di Green-Whitelisting (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Meccanismo di green-whitelisting**: selezione automatizzata e trasparente delle fonti energetiche tramite criteri oggettivi di purezza, tracciabilità e impatto ambientale.
+- **Tassonomia decimale di Purezza Verde**: 10 livelli, valutati da parametri misurabili, per classificare le fonti.
+- **Processo distribuito e multilivello**: valutazione locale (ALRM), verifica Fog (Fog Leader), validazione e reporting in Cloud.
+- **Distribuzione prioritaria**: solo fonti ai livelli 8, 9, 10 accedono alla green-whitelist e alla priorità distributiva; livelli inferiori usati come backup/emergenza.
+- **Auditabilità e trasparenza**: tutte le decisioni tracciate su DLT permissioned tramite smart contract, audit log accessibili via Public Audit Gateway.
+- **Gestione dispute**: consensus PBFT e fallback leaderless in caso di partizionamento.
+- **Incentivi/penalità**: accesso a bonus e priorità per fonti whitelisted, penalità e reporting negativo per escluse.
+- **Sicurezza**: firme digitali in secure enclave, challenge-response tra ALRM e Fog Leader, RBAC per modifiche, API RESTful/OpenAPI 3.0 per interfacciamento.
+
+**Variabili Introdotte:**
+- **Parametri di Purezza Verde**: emissioni specifiche (gCO2e/kWh), tracciabilità, sostenibilità, certificazione Kyoto 2.0, quota rinnovabili, indice intermittenza, LCA, componente locale, auditabilità blockchain, resilienza locale.
+- **Livello di Purezza Verde**: valore intero 1-10, calcolato localmente e propagato.
+- **Stato di whitelisting**: booleano (in whitelist/priorità o no).
+- **Audit log**: registro immutabile delle decisioni di whitelisting.
+- **Incentivi/penalità**: flag e parametri economici associati allo stato di whitelist.
+
+**Dipendenze Tecniche:**
+- **ALRM (AETERNA Local Resource Manager)**: raccolta dati, calcolo livello, firma digitale.
+- **Fog Cluster & Fog Leader**: ricezione, verifica coerenza, correzione dati, propagazione.
+- **DLT permissioned**: smart contract per whitelisting, audit log.
+- **Public Audit Gateway**: accesso pubblico ai log.
+- **API RESTful/OpenAPI 3.0**: endpoint `/green-whitelist` per query, inserimento, audit.
+- **Secure Enclave**: gestione chiavi e firme digitali.
+- **RBAC**: controllo accessi per modifiche.
+- **Challenge-response**: prevenzione spoofing tra ALRM e Fog Leader.
+- **AI locale e swarm intelligence**: adattamento dinamico della whitelist.
+
+**Impatto**:  
+Il green-whitelisting garantisce sostenibilità, trasparenza e resilienza della micro-rete, promuove la competizione virtuosa tra produttori, rafforza la governance distribuita e l’auditabilità, e abilita l’adattamento dinamico tramite AI e swarm intelligence.

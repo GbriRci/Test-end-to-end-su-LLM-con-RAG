@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Ruoli chiave formalizzati**: Data Protection Officer (DPO), Data Owner, Data Steward, Operatore Nodo. Ogni ruolo ha responsabilità e strumenti specifici, con workflow di escalation e reporting strutturati.
+- **Governance multilivello**: Applicazione delle policy e dei controlli su tutti i livelli dell’architettura (Edge, Fog, Cloud).
+- **Blockchain Kyoto 2.0**: Utilizzo di una blockchain nativa per logging immutabile, auditabilità, tracciabilità delle operazioni e gestione smart contract di data sharing.
+- **Access Control distribuito**: Enforcement di RBAC (Role-Based) e ABAC (Attribute-Based) su tutti i nodi, con principio del least privilege.
+- **Data Catalog centralizzato**: Registro versionato e strutturato di tutti gli asset informativi, con metadati su owner, steward, sensibilità, policy, ciclo di vita, Bit-Energy_ID.
+- **Gestione consensi**: Ogni operazione su dati sensibili richiede Consent_ID tracciato e auditato.
+- **Incident Response automatizzato**: Workflow di rilevazione (SIEM/AI), notifica, escalation e attivazione playbook, con logging su blockchain e audit forense attivabile dal DPO.
+- **Formazione continua**: Piano obbligatorio per tutti i ruoli, con tracciamento, test e certificazioni interne.
+
+**Variabili Introdotte:**
+- **Bit-Energy_ID**: Identificatore univoco per asset e consensi.
+- **Consent_ID**: Token per la tracciabilità dei consensi.
+- **Livello Sensibilità Dato**: Attributo formale (Sensibile, Critico, Pubblico) per ogni dominio dati.
+- **Owner/Steward Assignment**: Mappatura tra asset e responsabili.
+- **Policy Versioning**: Versionamento delle policy applicate a ciascun asset.
+- **Alert/Anomaly Notification**: Variabili di stato per workflow di escalation.
+
+**Dipendenze Tecniche:**
+- **Blockchain Kyoto 2.0**: Per logging, smart contract, audit trail.
+- **Compliance Engine**: Per verifica automatica coerenza policy e smart contract.
+- **SIEM/AI**: Per rilevazione incidenti e anomalie.
+- **Dashboard e Console**: Per DPO, Owner, Steward (monitoraggio, gestione policy, audit).
+- **Tool di Data Quality**: Per monitoraggio, cleansing, normalizzazione.
+- **Workflow Engine**: Per gestione escalation, incident response, formazione.
+- **Data Catalog**: Per gestione metadati, versionamento, tracciabilità asset.
+
+Queste scelte architetturali e variabili costituiscono la base tecnica e organizzativa per la scalabilità, sicurezza e compliance delle micro-reti AETERNA, e saranno fondamentali per i capitoli successivi su gestione dati, sicurezza, interoperabilità e automazione.

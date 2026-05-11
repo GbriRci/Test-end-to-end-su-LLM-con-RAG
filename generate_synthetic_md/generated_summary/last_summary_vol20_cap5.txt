@@ -1,0 +1,24 @@
+**Riassunto Denso – Capitolo 9: Gestione dei Rischi e Resilienza Operativa (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Framework di Risk Management**: Ciclo continuo ispirato a ISO/IEC 27005 e NIST SP 800-30, adattato al contesto energetico decentralizzato. Include identificazione minacce (Edge, Fog, Cloud), valutazione tramite risk scoring e matrice custom, mitigazione (Zero Trust, segmentazione, autenticazione forte, replica geografica, rate limiting, patching CI/CD), monitoraggio proattivo e revisione periodica.
+- **Resilienza Operativa**: Strategie native di business continuity, disaster recovery e incident response integrate nei workflow delle micro-reti. Replica dati (PostgreSQL, Bit-Energy, IPFS) su più regioni, failover automatico, microservizi containerizzati (Docker/Kubernetes) con auto-healing e rolling update, load balancing intelligente tra cluster Fog.
+- **Monitoraggio e Alerting**: Agenti su ogni nodo (Edge, Fog, Cloud) raccolgono metriche; pipeline Kafka+Spark per analisi real-time; Prometheus, Grafana e AI anomaly detector; heartbeat periodici; soglie dinamiche via Policy Engine (APL); alerting multi-canale e integrazione con ticketing (Jira, ServiceNow).
+- **Audit e Compliance**: Audit trail immutabile su blockchain Bit-Energy; dashboard centralizzata per incidenti, backup, compliance Kyoto 2.0; policy engine parametrico per adattamento normativo.
+- **Formazione e Simulazioni**: Corsi periodici obbligatori, aggiornamenti su minacce, tabletop e red/blue team exercise trimestrali, aggiornamento runbook post-simulazione.
+
+**Variabili Introdotte:**
+- **Risk Scoring**: Basato su impatto (finanziario, operativo, reputazionale) e probabilità, con pesi specifici per fault tecnici, cyber, eventi naturali, rischi normativi.
+- **Soglie di Alerting**: Dinamiche e configurabili per uptime, latenza, errori, consumi, tentativi di accesso, perdita replica.
+- **Policy di Replica**: Numero minimo di regioni (≥3 per reward ledger), test periodici di restore, pinning multi-provider per IPFS.
+- **Parametri di Segmentazione**: Isolamento automatico nodi compromessi, rerouting, auto-healing.
+
+**Dipendenze Tecniche:**
+- **Tecnologie Core**: Kubernetes, Docker, PostgreSQL, IPFS, Kafka, Spark, Prometheus, Grafana, Bit-Energy blockchain.
+- **Sicurezza**: PKI, MFA, Zero Trust, CI/CD con security gate, vulnerability scanning.
+- **Orchestrazione e Ticketing**: Jira, ServiceNow.
+- **AI/ML**: Moduli predittivi per threat intelligence e anomaly detection.
+- **Comunicazione**: Email, SMS, webhook, push app operatori.
+- **Compliance**: Middleware per Kyoto 2.0, audit trail su blockchain.
+
+Queste scelte architetturali, variabili e dipendenze tecniche costituiscono la base per la resilienza, la continuità e la scalabilità del sistema AETERNA, e saranno fondamentali per i capitoli successivi su implementazione, governance e scaling.

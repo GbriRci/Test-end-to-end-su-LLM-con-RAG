@@ -1,0 +1,39 @@
+**Riassunto Denso – Capitolo 9: Data Lake e Storage per la Telemetria (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Data Lake su Hadoop HDFS**: scelta per scalabilità, fault tolerance e gestione distribuita.
+- **Suddivisione in Zone**:  
+  - *Raw Zone*: dati grezzi ingestati da Edge, Fog, Cloud.
+  - *Processed Zone*: dati normalizzati/arricchiti tramite pipeline ETL (Apache NiFi).
+  - *Curated Zone*: dataset raffinati per analisi, ML (Kyoto 2.0), BI; include versionamento e metadati.
+- **Pipeline di Ingestione**:
+  - *Real-Time*: Apache Kafka, serializzazione Protobuf/Avro.
+  - *Batch*: Apache NiFi, validazione schema, arricchimento metadati.
+- **Policy di Retention**:  
+  - *Raw*: 7-30 giorni (180 se flagged Bit-Energy).
+  - *Processed*: 90-365 giorni, cold storage dopo 90.
+  - *Curated*: fino a 5 anni, indefinita per log critici.
+  - Gestione tramite modulo Retention Manager integrato con Automation Orchestrator e audit blockchain Bit-Energy.
+- **Sicurezza**:
+  - Cifratura dati a riposo (AES-256/HDFS Transparent Encryption) e in transito (TLS 1.3).
+  - RBAC centralizzato, logging accessi/modifiche su blockchain Bit-Energy.
+  - Data masking/tokenizzazione su dati sensibili.
+- **Integrazione DB**:
+  - *Relazionali* (PostgreSQL, MySQL): metadati, indici, lookup, query transazionali.
+  - *NoSQL* (Cassandra, MongoDB): time-series, dati semi-strutturati, log.
+- **Interoperabilità**:
+  - Standardizzazione formati (Parquet, Avro, Protobuf, ORC, JSON, CSV).
+  - Schema registry centralizzato.
+  - Versionamento tramite hash SHA-256 (Bit-Energy) e metadati Kyoto 2.0.
+
+**Variabili Introdotte:**
+- *Bit-Energy*: standard interno per audit, hash, flag retention.
+- *Kyoto 2.0*: standard pipeline ML, versionamento dataset.
+- *Retention Manager*: modulo automatizzato per policy di retention.
+- *Automation Orchestrator*: orchestrazione pipeline/processi.
+- *NTP timestamp*: sincronizzazione temporale dati.
+
+**Dipendenze Tecniche:**
+- Hadoop HDFS, Apache Kafka, Apache NiFi, Protobuf, Avro, Parquet, ORC, PostgreSQL, MySQL, Cassandra, MongoDB, TLS 1.3, AES-256, Bit-Energy Blockchain, Kyoto 2.0, RBAC, schema registry.
+
+**Nota**: Queste scelte abilitano tracciabilità, auditabilità, sicurezza, scalabilità, interoperabilità e compliance, ponendo le basi per le funzioni avanzate di monitoraggio, analisi e automazione predittiva del progetto AETERNA.

@@ -1,0 +1,28 @@
+**Riassunto Denso – Capitolo 13: Monitoraggio delle Risorse Cloud e Ibride (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura a tre livelli (Edge–Fog–Cloud):**
+  - *Edge Layer*: Raccolta real-time di metriche da H-Node, buffering e trasmissione sicura verso Fog.
+  - *Fog Layer*: Aggregazione locale, normalizzazione, pre-elaborazione e forwarding selettivo al Cloud.
+  - *Cloud Layer*: Supervisione centralizzata, orchestrazione policy, analisi macro, dashboard unificate, correlazione eventi cross-domain.
+- **Dashboard unificate**: Accesso web sicuro (TLS 1.3, SSO federato), drill-down multi-livello, filtri avanzati, visualizzazione compliance (Kyoto 2.0, Bit-Energy).
+- **Motore di alerting multi-dominio**: Soglie statiche/dinamiche (AI/ML), audit trail notarizzato su Bit-Energy Blockchain, notifiche multi-canale, integrazione con incident management.
+- **Sicurezza e compliance**: Cifratura end-to-end (TLS 1.3), gestione privilegi, data masking, retention e audit periodici, report notarizzati.
+
+**Variabili Introdotte:**
+- *trace_id, kyoto_context, bitenergy_hash*: Identificatori per audit e notarizzazione alert/eventi.
+- *Soglie metriche*: Configurabili per ogni dominio (compute, storage, networking, energia, sicurezza, compliance).
+- *Policy di retention*: Definiscono durata e cancellazione sicura di metriche/log.
+- *Ruoli autorizzati*: Auditor Compliance, Amministratore Cloud, ecc.
+
+**Dipendenze Tecniche:**
+- **Integrazioni cloud pubblici**: AWS (CloudWatch API), Azure (Monitor API), Google Cloud (Operations Suite API).
+- **Cloud privati/on-premise**: VMware vCenter API, OpenStack (Ceilometer/Gnocchi), Prometheus, Grafana Agent, Telegraf, Node Exporter.
+- **Container/orchestratori**: Kubernetes (kube-state-metrics, cAdvisor, Prometheus Operator), Docker Swarm (Docker API, Prometheus).
+- **Sistemi di incident management/ticketing**: Integrazione via webhook (vedi Cap. 11).
+- **Bit-Energy Blockchain**: Notarizzazione eventi/alert per compliance e audit.
+- **Dashboard**: Portale web centralizzato, filtri per provider, cluster, nodo, servizio, periodo, tipologia metrica.
+
+**Tipologie di metriche raccolte**: Compute (CPU, memoria), Storage (disco, oggetti), Networking (traffico, connessioni), Servizi (stato, log), Energia (consumo, bilanciamento), Sicurezza (accessi, policy), Compliance (Kyoto 2.0, Bit-Energy).
+
+**Impatto**: Governance centralizzata, ottimizzazione operativa (AI-driven), sicurezza/compliance avanzata, supporto scalabilità, facilitazione bilanciamento energetico urbano.

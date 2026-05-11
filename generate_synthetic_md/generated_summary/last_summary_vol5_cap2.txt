@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Separazione API Pubbliche/Private:** Le API pubbliche sono esposte verso partner/terzi, mentre le private sono riservate alla comunicazione interna tra microservizi nella VPC AETERNA.
+- **REST per API Pubbliche:** Design RESTful, stateless, versioning (es. `/api/v1/`), documentazione OpenAPI 3.x, policy di deprecazione/backward compatibility.
+- **REST e Event-Driven per API Private:** Comunicazione REST sincrona per operazioni immediate; pattern event-driven asincrono (Apache Kafka) per decoupling e flussi ad alta latenza.
+- **GraphQL per Aggregazione Dati:** Endpoint GraphQL federati tra domini (ordini, inventario, pagamenti), usati per dashboard/reportistica, con rate/depth limiting a livello di gateway.
+- **Service Mesh (Istio):** Gestione discovery, routing, RBAC, cifratura end-to-end, rate limiting e policy di accesso per API interne.
+- **Audit e Notarizzazione:** Logging centralizzato e notarizzazione tramite modulo conforme a Bit-Energy Ledger per tutte le operazioni critiche.
+
+**Variabili Introdotte:**
+- **Token JWT:** Claims granulari (scope, expiration, actor_id, livello di rischio).
+- **Scope OAuth:** Es. `energy:trade:write`, `inventory:read`, mappati dinamicamente su permessi applicativi.
+- **Certificati X.509:** Per autenticazione mTLS tra microservizi.
+- **Metadati Eventi Kafka:** `event_id`, `timestamp`, `actor_id`.
+- **Identificativi Risorse:** Es. `order_id` per ordini, tracciato in tutte le fasi.
+- **Policy di Accesso:** Definite per endpoint/risorsa (pubbliche) e per namespace/servizio/metodo (private, via Istio AuthorizationPolicy).
+
+**Dipendenze Tecniche:**
+- **OAuth 2.0/JWT:** Standard per autenticazione/ autorizzazione API pubbliche e GraphQL.
+- **HTTPS (TLS 1.3):** Obbligatorio per tutte le comunicazioni; mTLS per API interne.
+- **OpenAPI (Swagger):** Documentazione e discoverability API pubbliche.
+- **Apache Kafka:** Message broker per comunicazione asincrona tra microservizi, serializzazione Avro/JSON.
+- **Istio Service Mesh:** Enforcement di sicurezza, RBAC, rate limiting, discovery interna.
+- **Bit-Energy Ledger:** Sistema di audit e notarizzazione per compliance e tracciabilità.
+- **Schema Federation GraphQL:** Aggregazione dati multi-dominio senza coupling diretto tra microservizi.
+
+Queste scelte garantiscono sicurezza, scalabilità, interoperabilità, auditabilità e compliance, ponendo le basi tecniche per i capitoli successivi.

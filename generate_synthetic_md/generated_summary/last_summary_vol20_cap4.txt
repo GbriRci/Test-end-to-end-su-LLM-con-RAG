@@ -1,0 +1,34 @@
+**Riassunto Denso – Capitolo 8: Incentivi e Meccanismi di Monetizzazione (AETERNA)**
+
+**Decisioni Architetturali:**
+- Il sistema di incentivazione è realizzato come microservizio dedicato (`IncentiveEngine`), orchestrato in Kubernetes e accessibile via API RESTful certificate.
+- Modularità: ogni componente (Reward Ledger, Policy Engine, Conversion Gateway, Badge Authority, Operator KPI Monitor) è isolato e integrato tramite API.
+- Persistenza e tracciabilità: Reward Ledger su PostgreSQL con replica asincrona su ledger distribuito Bit-Energy (blockchain).
+- Policy Engine configurabile tramite DSL proprietario (AETERNA Policy Language, APL), integrato con middleware di compliance Kyoto 2.0.
+- Conversion Gateway per la trasformazione di punti in asset digitali (sconti, servizi premium, token Bit-Energy), con gestione fee e soglie.
+- Badge Authority conforme OpenBadge, con badge firmati digitalmente e storage su IPFS.
+- Operator KPI Monitor basato su pipeline Kafka + Spark per calcolo e pubblicazione KPI su dashboard cloud-native.
+- Tutte le regole di incentivazione sono versionate, auditabili e modificabili tramite interfaccia amministrativa.
+
+**Variabili Introdotte:**
+- Punti reward, badge digitali, crediti, token Bit-Energy.
+- Parametri configurabili: soglie, moltiplicatori, penalità, fee di conversione, regole temporanee (challenge/eventi).
+- KPI operatori: uptime cluster Fog, soddisfazione utenti, rapidità di intervento.
+- Status utente (tramite badge), livelli di efficienza, feedback, task completati.
+
+**Dipendenze Tecniche:**
+- PostgreSQL per persistenza reward.
+- Bit-Energy (blockchain) per tracciabilità finanziaria e tokenizzazione.
+- IPFS per storage badge digitali.
+- Apache Kafka + Spark per data ingestion e processing KPI.
+- Middleware Kyoto 2.0 per compliance normativa.
+- API RESTful certificate per integrazione servizi.
+- Smart contract per trasferimento token Bit-Energy su wallet esterni.
+- Dashboard cloud-native per visualizzazione KPI e remunerazione.
+
+**Utilità per i Prossimi Capitoli:**
+- La struttura modulare e le API certificate facilitano l’estensione e l’integrazione di nuovi servizi.
+- La parametrizzazione delle regole di incentivazione consente rapidi adattamenti a evoluzioni normative e di business.
+- La tracciabilità su blockchain e IPFS garantisce auditabilità e trasparenza, elementi chiave per la fiducia nell’ecosistema.
+- L’adozione di pipeline analitiche e dashboard real-time supporta la governance dinamica e la remunerazione meritocratica degli operatori.
+- La monetizzazione multi-stream (crediti, servizi premium, token interoperabili) apre scenari di business scalabili e federabili.

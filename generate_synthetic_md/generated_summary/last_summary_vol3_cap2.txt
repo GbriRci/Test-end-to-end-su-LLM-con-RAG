@@ -1,0 +1,24 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura Multi-Core:** Il chipset Aeterna-Core X1 adotta una CPU a 16 core fisici, suddivisi in 8 core general-purpose (RISC-V custom, 2.8 GHz), 4 core crittografici dedicati (ASIC, 3.2 GHz, supporto Bit-Energy, SHA3-512, curve post-quantum) e 4 core AI-dedicati (tensoriali, 3.6 GHz, ottimizzati per inferenza/training locale).
+- **Unità di Accelerazione Integrata:** Include moduli AI Accelerator (8 TOPS/core, INT8/FP16, quantizzazione dinamica), Secure Enclave (gestione chiavi, secure boot, autenticazione isolata), modulo TRNG (Kyoto 2.0 compliant).
+- **Gestione Energetica e Termica:** Implementa DVFS per regolazione dinamica di tensione/frequenza per core, power gating selettivo (disattivazione/riattivazione sub-ms di core AI/crittografici), sensori termici on-die collegati a microcontrollore AI-aware per ottimizzazione real-time della dissipazione.
+- **Sicurezza Crittografica Energetica:** Protocollo Bit-Energy hardware (multi-sig, time-lock), Kyoto 2.0 Secure Boot (catena di fiducia firmware, auditLogRef, snapshotRefs su storage distribuito), protezione anti-manomissione (circuiti CL-RAP).
+- **Interfacce e Compatibilità:** Kyoto 2.0 Service Port (diagnostica, firmware, audit log), API GraphQL autenticata (metriche di stato, sicurezza, performance), compatibilità backward con moduli legacy (bridge HW/SW per H-Node v3/v4).
+- **Gestione Parallela e Scheduling:** Hypervisor AETERNA (orchestrazione processi crittografici/AI), Scheduler AI-aware (bilanciamento dinamico, riallocazione core in tempo reale).
+
+**Variabili Introdotte:**
+- **CWE (Carico di lavoro energetico):** Parametro per la regolazione DVFS.
+- **auditLogRef, snapshotRefs:** Riferimenti sincronizzati per audit e snapshot su storage distribuito.
+- **Parametri di sicurezza, performance, integrità:** Esposti via API GraphQL.
+
+**Dipendenze Tecniche:**
+- **Protocolli:** Bit-Energy, Kyoto 2.0 (secure boot, TRNG, service port).
+- **Algoritmi supportati:** SHA3-512, curve elliptiche post-quantum.
+- **Compatibilità:** H-Node v3/v4 tramite bridge HW/SW.
+- **Infrastruttura di monitoraggio:** Sensori termici, microcontrollore AI-aware.
+- **Interfacce:** API GraphQL autenticata, Kyoto 2.0 Service Port.
+
+**Sintesi:**  
+Il chipset Aeterna-Core X1 introduce un’architettura multi-core specializzata, accelerazione AI nativa, sicurezza crittografica hardware avanzata e gestione energetica intelligente, con forti dipendenze dai protocolli Bit-Energy e Kyoto 2.0, e garantisce compatibilità retroattiva e scalabilità per micro-reti energetiche urbane decentralizzate.

@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Differential Privacy (DP) come standard** per l’anonimizzazione dei dati energetici in AETERNA, applicata a tutti i livelli della micro-rete (Edge, Fog, Cloud).
+- **Applicazione stratificata della DP:**
+  - **Edge (H-Node):** Local Differential Privacy (LDP) su dati pre-aggregati, con trasmissione sicura verso Fog.
+  - **Fog:** Central Differential Privacy (CDP) su dati aggregati da H-Node, con ulteriore trasmissione sicura verso Cloud e API di quartiere.
+  - **Cloud:** Analisi macro su dati già anonimizzati, garantendo doppia protezione.
+- **Notarizzazione di ogni operazione di anonimizzazione** su Bit-Energy Ledger, con livelli di dettaglio configurabili (Full, Summary, Minimal) per audit e compliance Kyoto 2.0.
+- **Gestione del privacy budget** per ogni entità (H-Node, gruppo, quartiere), con sospensione automatica delle analisi granulari al superamento del budget e reset periodico (24h).
+- **API privacy-aware** che espongono metadati su parametri di privacy e budget residuo.
+- **Compatibilità con IDS e ML:** Moduli di detection e modelli predittivi operano solo su dati anonimizzati.
+
+**Variabili Introdotte:**
+- **Epsilon (ε):** Parametro di privacy controllato centralmente (tipici valori 0.1–1.0), esposto via API.
+- **Delta (δ):** Solo per rumore gaussiano (valore < 10^-6), esposto via API.
+- **Tipo di rumore:** Laplaciano (Edge, query semplici), Gaussiano (Fog/Cloud, query complesse o composte).
+- **Privacy budget:** Valore cumulativo per entità, decrementato a ogni query, esposto via API.
+- **Livello di aggregazione:** Edge, Fog, Cloud (esposto via API).
+- **Audit reference:** Hash evento su Bit-Energy Ledger (esposto via API).
+
+**Dipendenze Tecniche:**
+- **Generatori crittograficamente sicuri** per la generazione del rumore.
+- **Bit-Energy Ledger** per notarizzazione e auditabilità.
+- **Policy Engine** per la gestione centralizzata dei parametri di privacy.
+- **Interfacce API** per l’esposizione di metadati privacy-aware.
+- **Compatibilità con moduli IDS distribuiti** (accesso solo a dati aggregati e rumorosi).
+- **Composizione del privacy budget** secondo i teoremi di DP (sequenziale/parallela).
+
+Queste scelte garantiscono privacy by design, auditabilità, resilienza operativa e compliance, ponendo le basi tecniche per i capitoli successivi.

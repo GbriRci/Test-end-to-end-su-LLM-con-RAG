@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Portale documentazione**: Web portal open-source (Docusaurus/MkDocs), containerizzato e orchestrato secondo pratiche DevOps AETERNA.
+- **Autenticazione federata**: OAuth 2.0 integrato con SSO (SAML 2.0) già in uso.
+- **Controllo accessi**: RBAC granulare, coerente con la matrice ruoli AETERNA.
+- **Audit trail**: Ogni modifica/accesso notarizzato tramite hash SHA-256 su blockchain Bit-Energy, per integrità e non ripudio (compliance Kyoto 2.0).
+- **Tassonomia documentale**: Struttura gerarchica allineata ai moduli architetturali e workflow AETERNA; macro-sezioni: API, pipeline dati, deployment, sicurezza, laboratori digitali, gamification.
+- **Metadati strutturati**: YAML front matter per ogni sezione, per indicizzazione, ricerca semantica e analisi automatica.
+- **Workflow contributivo**: Basato su Git (GitHub Enterprise/GitLab), con fork, branch, pull request, validazione automatica, revisione umana, merge e notarizzazione su blockchain.
+- **Integrazione CI/CD**: Build automatica (Jenkins, GitHub Actions), deploy su CDN, health-check, deployment atomico con rollback, audit continuo tramite identificatori (`proposal_id`, `issue_id`, `user_id`, `bitenergy_hash`).
+
+**Variabili Introdotte:**
+- **Metadati per sezioni**: `api_version`, `openapi_spec`, `owner`, `etl_id`, `data_masking`, `dependencies`, `script_id`, `os_support`, `requirements`, `rbac_matrix`, `audit_hash`, `compliance`, `lab_id`, `template_version`, `author`, `badge_id`, `ruleset`, `bitenergy_hash`.
+- **Identificatori di audit**: `proposal_id`, `issue_id`, `user_id`, `bitenergy_hash`.
+
+**Dipendenze Tecniche:**
+- **Piattaforme documentazione**: Docusaurus, MkDocs.
+- **Containerizzazione e orchestrazione**: Stack DevOps AETERNA.
+- **Autenticazione**: OAuth 2.0, SAML 2.0.
+- **Blockchain**: Bit-Energy per notarizzazione e audit trail.
+- **CI/CD**: Jenkins, GitHub Actions.
+- **Repository**: GitHub Enterprise, GitLab.
+- **Linting/validazione**: markdownlint, yamllint, OpenAPI Lint, Semgrep, Policy Checker, ShellCheck, NFT Schema Validator, Compliance Bot.
+- **Distribuzione**: CDN, strumenti health-check.
+- **Standard interni**: Kyoto 2.0, Bit-Energy.
+
+**Nota**: Queste scelte garantiscono trasparenza, auditabilità, compliance, resilienza e scalabilità, e costituiscono la base tecnica per i capitoli successivi.

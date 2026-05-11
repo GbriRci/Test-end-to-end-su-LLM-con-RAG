@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **API standardizzate e sicure**: Tutti i sottosistemi espongono API RESTful/gRPC secondo OpenAPI/ProtoBuf, con versioning, OPA per policy di accesso, autenticazione federata (OAuth2/OpenID Connect), autorizzazione RBAC/ABAC, mTLS, rate limiting e logging.
+- **Middleware di integrazione**: Uso di ESB (es. Red Hat Fuse, Apache Camel) per routing intelligente, mediazione protocollare (HTTP, MQTT, AMQP, Modbus), arricchimento/validazione dati (OWL, JSON-LD), gestione transazioni distribuite (XA, SAGA).
+- **Event-Driven Architecture (EDA)**: Broker (Kafka, RabbitMQ, EMQX) per decoupling, buffering, replay, partizionamento, garanzia di consegna (at-least/exactly-once), monitoraggio eventi critici e trigger smart contract (Kyoto 2.0).
+- **Gestione trasformazioni dati**: Motori ETL (Apache NiFi, Talend, pipeline Python) per ingestion batch/streaming, deduplicazione, validazione, normalizzazione, auditabilità (lineage, logging cifrato).
+- **Testing e monitoraggio**: Pipeline CI/CD con test di contract (Pact), Chaos Engineering, coverage multi-protocollo; monitoraggio con Elastic APM, Dynatrace, Prometheus; remediation automatica tramite playbook SOAR.
+
+**Variabili Introdotte:**
+- **Protocolli**: REST (HTTPS), gRPC, MQTT, AMQP, Modbus/TCP, con livelli di sicurezza (TLS 1.3, mTLS, X.509, RBAC).
+- **Formati dati**: JSON, XML, Avro, Protobuf.
+- **Ontologie e mapping semantico**: OWL/SHACL, motori di mapping (Apache Jena, Stardog).
+- **Audit trail**: Integrazione con Kyoto 2.0 per tracciabilità e compliance.
+- **Eventi e notifiche**: Webhook, stream gRPC, topic Kafka/MQTT.
+
+**Dipendenze Tecniche:**
+- **Middleware/Broker**: Apache Camel, Red Hat Fuse, Apache Kafka, RabbitMQ, EMQX, Apache NiFi.
+- **Motori di mapping/ETL**: Apache Jena, Stardog, Talend, pipeline Python.
+- **Sistemi legacy**: SCADA, BEMS integrati tramite gateway e mediazione protocollare.
+- **Piattaforme cloud**: AI, Analytics, Kyoto 2.0, Bit-Energy.
+- **Strumenti di monitoraggio**: Elastic APM, Dynatrace, Prometheus.
+- **Sicurezza**: OPA, OAuth2/OpenID Connect, RBAC/ABAC, mTLS, X.509, audit log.
+
+**Impatto:**  
+L’architettura favorisce scalabilità, modularità, interoperabilità, sicurezza, resilienza e flessibilità, abilitando l’integrazione incrementale di nuovi partner e tecnologie nell’ecosistema AETERNA.

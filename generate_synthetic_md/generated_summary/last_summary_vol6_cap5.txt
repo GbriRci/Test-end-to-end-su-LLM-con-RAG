@@ -1,0 +1,23 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Cap. 7: Integrazione SAE)**
+
+**Decisioni Architetturali:**
+- **Distribuzione Multilivello:** I sistemi di accumulo energetico (SAE) sono integrati su tre livelli (Edge, Fog, Cloud) con coordinamento multilivello, in linea con demand response e trading P2P.
+- **Tipologie SAE:** Scelte tecnologiche includono batterie Li-ion (Edge/Fog), volani (Fog), accumulo termico (Edge/Fog), selezionate per densità energetica, rapidità di risposta, durata e sinergia con impianti termici.
+- **Gestione Centralizzata e Locale:** Orchestrazione centralizzata tramite AETERNA Storage Control Platform (ASCP, cloud-native su Kubernetes), gestione locale tramite Edge Storage Agent (ESA) su H-Node.
+- **Algoritmi di Controllo:** Implementazione di Predictive Charge/Discharge Optimizer (PCDO, AI-based), Battery Degradation Predictor (BDP, ML supervisionato), Thermal Storage Scheduler (TSS, MILP).
+- **Manutenzione Predittiva:** Data Lake cloud per telemetria storica, Predictive Maintenance Scheduler integrato con CMMS, anomaly detection (DBSCAN, autoencoder), feedback loop per retraining modelli.
+- **Compliance e Logging:** Bit-Energy Ledger per logging immutabile, audit trail integrato con AETERNA IAM, correlazione Kyoto 2.0.
+
+**Variabili Introdotte:**
+- **Parametri Monitorati:** SoC, SoH, temperatura, corrente, tensione, numero cicli, vibrazioni (volano), efficienza scambio termico, eventi di anomalia.
+- **Frequenze di Campionamento:** Da 500 ms (CAN bus) a 6h (SoH, numero cicli Fog), realtime per allarmi critici.
+- **Soglie Tecniche:** SoC <20%, temperatura >60°C (Li-ion), efficienza termica <80%.
+
+**Dipendenze Tecniche:**
+- **Bus e Protocolli:** Modbus RTU/TCP (Edge/Fog), CAN bus (batterie/BMS), MQTT (TLS 1.3, QoS 2 per allarmi), RESTful API (JSON, Fog–Cloud), IEC 61850 MMS (interoperabilità EMS/terze parti).
+- **Piattaforme e Microservizi:** ASCP (Kubernetes, API RESTful), ESA (driver Modbus/CAN, algoritmi predittivi locali).
+- **Data Lake e Telemetria:** Archiviazione cloud, accesso API per analisi retrospettiva e manutenzione.
+- **Integrazione con Sistemi Esterni:** CMMS per ticket manutentivi, Kyoto 2.0 per compliance, IAM per audit.
+
+**Implicazioni per i Prossimi Capitoli:**
+- Le scelte architetturali e le variabili definite sono prerequisito per la gestione avanzata dei flussi energetici, la resilienza di rete e l’integrazione con moduli di demand response e trading P2P. L’adozione di questi standard è fondamentale per l’autarchia energetica urbana e la scalabilità del sistema AETERNA.

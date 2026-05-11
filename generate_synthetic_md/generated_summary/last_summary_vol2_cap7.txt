@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Ridondanza Multi-Livello:** Replica dello stato critico (ledger blockchain, buffer Pulse, snapshot AI) su tre livelli:  
+  - *Edge:* Replica locale/peer-to-peer, storage decentralizzato (DHT custom).
+  - *Fog:* Replica sincrona tra nodi Fog, failover automatico del ruolo di Fog Leader tramite consensus (Fast Paxos custom).
+  - *Cloud:* Replica geografica multi-region, heartbeat e health-check distribuiti.
+- **Modalità Fog-Independence:** In caso di perdita Cloud, i cluster Fog assumono il controllo operativo, garantendo trading P2P, bilanciamento predittivo e sincronizzazione temporale senza Cloud.
+- **Election e Failover:** Elezione automatica del Fog Leader (Fast Paxos) su metriche di affidabilità/disponibilità; il leader coordina operazioni locali e replica log eventi.
+- **Gestione Isolamento Topologico:** Cluster Fog isolati diventano “Autonomous Operational Domains”, aggiornano dinamicamente le tabelle di routing per evitare tentativi di riconnessione falliti.
+- **Riconciliazione Post-Ripristino:** Al ripristino Cloud, i Fog inviano log differenziali per la riconciliazione dello stato globale tramite algoritmi di consensus/merge (CRDT custom).
+
+**Variabili Introdotte:**
+- *Heartbeat Interval:* 200ms (configurabile, default), policy Kyoto 2.0.
+- *Heartbeat Timeout:* 2s (default, configurabile).
+- *Check Fog-Independence:* 10min.
+- *Payload Notifiche:* timestamp Pulse, ID cluster, stato sincronizzazione, hash snapshot ledger.
+- *Metriche Monitorate:* latenza, jitter, availability, error rate (Prometheus/OpenTelemetry).
+
+**Dipendenze Tecniche:**
+- *Protocolli di Comunicazione:* gRPC/Protobuf, TLS 1.3, autenticazione mutuale (certificati Kyoto 2.0).
+- *Consensus:* Fast Paxos customizzato per election e consistenza log.
+- *Replica Stato:* DHT custom (Edge), replica sincrona (Fog), multi-region (Cloud).
+- *Event Streaming:* Kafka Streams/REST, topic dedicati (“failover_event”, “cloud_disconnect”, “fog_leader_elected”).
+- *Audit/Compliance:* Log firmati digitalmente (Bit-Energy), replica locale e push post-ripristino.
+- *AI Locale:* Modelli pre-addestrati, fallback su inferenza edge.
+- *Riconciliazione:* Algoritmi CRDT customizzati per merge stato globale.
+
+**Sintesi:**  
+L’architettura AETERNA implementa ridondanza e failover distribuiti su Edge, Fog e Cloud, con transizione automatica a modalità Fog-Independence in caso di fault critici. Le variabili di heartbeat, timeout e policy Kyoto 2.0 regolano la resilienza operativa. Le dipendenze tecniche includono protocolli sicuri, consensus distribuito, storage decentralizzato, event streaming e compliance audit, garantendo continuità, scalabilità e auditabilità anche in scenari di isolamento prolungato.

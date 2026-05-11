@@ -1,0 +1,28 @@
+**Riassunto Denso – Gestione della Tracciabilità dei Requisiti (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Strumenti ALM**: Adozione integrata di Jira e Azure DevOps per la gestione granulare e tracciata dei requisiti, con sincronizzazione tramite connettori nativi, API REST e webhook.
+- **Tracciabilità End-to-End**: Collegamento bidirezionale tra requisiti, casi di test (manuali/automatizzati), task di sviluppo, commit Git (tramite tag e naming convention), bug, risultati di validazione e campagne di test.
+- **Automazione**: Policy di linking automatico (webhook/script custom) per generazione e associazione di test case e task di sviluppo; creazione automatica di issue di “Non Conformità” in caso di gap.
+- **Versionamento e Audit**: Ogni requisito ha UUID univoco, categorizzazione (funzionale, non funzionale, sicurezza, interoperabilità, performance, compliance Kyoto 2.0, tracciamento Bit-Energy), versionamento e audit trail automatico.
+- **Blockchain**: Ancoraggio dei risultati di validazione e milestone su blockchain Bit-Energy tramite hash, per garantire integrità, non ripudiabilità e auditabilità.
+- **Badge Kyoto 2.0**: Stato di compliance aggiornato dinamicamente in base alla copertura e qualità dei test associati ai requisiti critici.
+- **Dashboard e Reporting**: Dashboard custom (Grafana, Power BI) e report automatici (PDF, Excel, JSON) per monitoraggio, gap analysis e supporto alla certificazione.
+
+**Variabili Introdotte:**
+- **UUID Requisito**: Identificatore univoco per ogni requisito.
+- **Categoria Requisito**: Tipologia (funzionale, sicurezza, ecc.).
+- **Stato Copertura**: (Passed, Failed, Blocked, In Progress).
+- **Hash Bit-Energy**: Riferimento immutabile su blockchain.
+- **Badge Kyoto 2.0**: Stato di compliance per requisito/release.
+- **Audit Trail**: Timestamp, autore, motivazione delle modifiche.
+
+**Dipendenze Tecniche:**
+- **Jira, Azure DevOps**: Gestione e tracciamento requisiti, task, test.
+- **Git**: Commit/tag/branch naming per collegamento sviluppo-requisiti.
+- **Bit-Energy Blockchain**: Ancoraggio milestone e risultati.
+- **Grafana, Power BI**: Dashboard di monitoraggio e analisi.
+- **API REST, Webhook, Script Custom**: Integrazione e automazione tra strumenti.
+- **Autenticazione Federata (OAuth2, SAML)**: Gestione sicura degli accessi e segregazione dei ruoli.
+
+Queste scelte abilitano auditabilità, compliance, efficienza operativa e stakeholder engagement, costituendo la base tecnica per la scalabilità e la resilienza del framework AETERNA.

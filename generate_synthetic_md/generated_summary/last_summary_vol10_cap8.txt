@@ -1,0 +1,36 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Introduzione del *Security Emergency Mode (SEM)*, attivabile automaticamente (rilevamento anomalie: breach, escalation privilegi, incongruenze ledger) o manualmente (Incident Response/Security Lead).
+- SEM comporta lockdown dei privilegi (“least privilege”), isolamento logico dei segmenti compromessi (circuit breaker, re-routing su API Gateway), blocco sessioni non conformi, revoca/rotazione automatica delle credenziali sospette (Edge, Fog, Cloud).
+- Gestione accessi privilegiati tramite *Break Glass Accounts*: account temporanei, MFA rafforzato, scadenza automatica, accesso tracciato e notarizzato su Bit-Energy Blockchain.
+- Segregazione dinamica dei ruoli: inibizione super-user, abilitazione solo incident responder, obbligo di “four-eyes principle” (doppia validazione asincrona), accesso JIT (permessi temporanei e revoca automatica).
+- Logging avanzato: log duplicati su storage distribuito, notarizzazione e timestamping su blockchain, forward-secrecy.
+- Alerting/monitoring intensificati: Prometheus in modalità high-frequency, notifiche automatiche a team e compliance.
+- Isolamento/segmentazione dinamica: quarantena automatica nodi Edge/Fog compromessi, re-routing dati/energia tramite API Gateway e DNS dinamico, possibilità di disconnessione fisica remota (H-Node/cluster Fog).
+- Protezione dati: crittografia on-the-fly con chiavi effimere, blocco esportazioni non autorizzate, backup immutabili multi-region in modalità read-only.
+- Revoca/ripristino credenziali: integrazione con Identity Provider per revoca centralizzata, rotazione forzata post-emergenza, report di impatto, analisi forense su accessi break glass.
+- Formazione e drill periodici: simulazioni obbligatorie, aggiornamento continuo playbook/procedure.
+
+**Variabili Introdotte:**
+- Stato SEM (attivo/inattivo)
+- Lista segmenti/nodi isolati
+- Stato credenziali (valide, sospette, revocate)
+- Stato account break glass (attivi, scaduti)
+- Finestra temporale JIT
+- Log notarizzati (hash, timestamp, evento)
+- Stato backup (immutabile, accessibile)
+- Stato drill (eseguito, in programma)
+
+**Dipendenze Tecniche:**
+- Bit-Energy Blockchain (notarizzazione log, accessi, revoche)
+- API Gateway (re-routing, isolamento segmenti)
+- Identity Provider (revoca/rotazione credenziali)
+- Prometheus (monitoring/alerting high-frequency)
+- Storage distribuito multi-region (log, backup)
+- MFA avanzato (biometrico/token hardware)
+- DNS dinamico (re-routing segmenti)
+- Circuit breaker logici (isolamento rapido)
+- Sistemi di audit e compliance (reportistica, analisi forense)
+
+Queste scelte e variabili costituiscono la base per la resilienza e la gestione sicura delle micro-reti AETERNA in emergenza, e saranno approfondite nei capitoli successivi.

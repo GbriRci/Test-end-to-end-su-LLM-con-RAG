@@ -1,0 +1,35 @@
+**Riassunto Denso – Ottimizzazione della Domanda Energetica nel Progetto AETERNA**
+
+**Decisioni Architetturali:**
+- **Architettura Edge-Fog-Cloud:**  
+  - **Edge (H-Node):** Smart meter (TPM 2.0), sensori ambientali, moduli IoT per raccolta dati in tempo reale (consumi, parametri ambientali, stato fonti rinnovabili).
+  - **Fog Node:** Aggregazione e anonimizzazione dati a livello di micro-rete, elaborazione locale tramite modelli predittivi lightweight (LSTM, ARIMA), invio segnali di prezzo dinamico (DPS).
+  - **Cloud:** Centralizzazione dati storici, AI avanzata (ensemble forecasting, reinforcement learning) per pianificazione e strategie DSM a livello distrettuale/urbano.
+- **Automazione Domestica:**  
+  - Integrazione gateway domotici (Zigbee, Z-Wave, KNX, MQTT), programmazione automatica carichi energivori, override manuale via app/web.
+- **Sicurezza e Privacy:**  
+  - Dati firmati digitalmente (TPM/HSM), cifratura TLS 1.3, policy RBAC e GDPR-like, audit/logging tramite Prometheus/Grafana.
+
+**Variabili Introdotte:**
+- **Consumo istantaneo (W, kWh), profilo temporale elettrodomestici, parametri ambientali (temperatura, luminosità, presenza), stato fonti rinnovabili.**
+- **Prezzi dinamici (Bit-Energy token), vincoli di comfort/preferenze utente, limiti capacità micro-rete.**
+- **Segnali DPS, feedback risparmio stimato, rewarding tramite token Bit-Energy.**
+
+**Dipendenze Tecniche:**
+- **Protocolli di comunicazione:** MQTT/TLS 1.3, Modbus, RESTful API, HTTPS.
+- **Standard domotici:** Zigbee, Z-Wave, KNX, MQTT Home Assistant.
+- **Modelli ML/AI:** RNN/LSTM per forecasting, ARIMA, ensemble forecasting, reinforcement learning, ottimizzazione multi-obiettivo (Particle Swarm, Genetic Algorithm).
+- **DLT Bit-Energy:** Tracciamento strategie DSM, rewarding, smart contract, compliance Kyoto 2.0.
+- **Sistemi di audit/logging:** Prometheus, Grafana.
+
+**Strategie DSM Implementate:**
+- **Shifting programmato:** Spostamento carichi flessibili in fasce di alta produzione rinnovabile.
+- **Demand Response attivo:** Riduzione consumi su segnale di congestione/prezzi elevati.
+- **Ottimizzazione predittiva:** Suggerimenti proattivi e simulazione scenari risparmio.
+- **Incentivazione tokenizzata:** Premi Bit-Energy per adesione volontaria, tracciati via smart contract.
+
+**Interoperabilità e Scalabilità:**
+- **Protocolli e standard aperti** per facile integrazione e replicabilità in contesti urbani diversi.
+- **RESTful API** per dashboard, servizi terzi, analisi avanzata.
+
+**Nota:** Tutte le specifiche sono soggette a revisione continua secondo roadmap e feedback delle micro-reti pilota.

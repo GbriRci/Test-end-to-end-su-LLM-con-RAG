@@ -1,0 +1,27 @@
+**Riassunto Denso – Gestione della Proprietà Intellettuale in AETERNA (max 300 parole)**
+
+**Decisioni Architetturali:**
+- **Registro Licenze**: modulo digitale centralizzato (Cloud), replicato in modalità read-only su Fog/Edge per auditabilità e visibilità distribuita.
+- **Blockchain Bit-Energy**: usata per hash, timestamp, versionamento, audit trail e gestione automatica di smart contract (deposito, licenze, royalty, notifiche).
+- **Storage WORM**: per segreti industriali, con cifratura e logging accessi.
+- **OpenID Connect Compliance Layer**: per gestione ruoli, permessi e accessi differenziati (proprietario, licenziatario, auditor, osservatore).
+- **Modulo IP Pre-Assessment**: workflow di pre-screening per brevetti/marchi.
+- **Modulo IP Watcher**: monitoraggio proattivo di banche dati e repository per rilevamento contraffazioni.
+- **Comitato IP**: organo di co-decisione per strategie brevettuali, licenze e dispute, con votazioni tracciate su blockchain.
+
+**Variabili Introdotte:**
+- **Tipologie di asset IP**: brevetti (algoritmi AI, protocolli P2P, architetture micro-reti, sicurezza blockchain), marchi (nomi, loghi, moduli), diritti d’autore (codice, documentazione, smart contract, dataset AI), segreti industriali (algoritmi proprietari, configurazioni, chiavi crittografiche).
+- **Matrice di titolarità**: definita nei contratti di consorzio, con co-titolarità proporzionale salvo deroghe formalizzate via smart contract.
+- **Metadati licenze**: condizioni, limitazioni, versionamento e notifiche automatiche.
+- **Ruoli e permessi**: proprietario (lettura/scrittura/licenze), licenziatario (lettura/uso), auditor (lettura/audit), osservatore (lettura parziale).
+
+**Dipendenze Tecniche:**
+- **Blockchain Bit-Energy**: per tracciabilità, versionamento, smart contract, audit trail.
+- **PKI interna**: per firma digitale di codice/documenti.
+- **OpenID Connect**: per autenticazione e segregazione accessi.
+- **Storage WORM**: per conservazione sicura di segreti industriali.
+- **Smart contract**: per automatizzare workflow di deposito, licenze, royalty, notifiche e gestione deroghe.
+- **Integrazione con moduli compliance (Kyoto 2.0)**: per auditabilità e conformità.
+
+**Sintesi:**  
+L’architettura IP di AETERNA si fonda su un registro licenze centralizzato, blockchain per tracciabilità e automazione, storage sicuro e gestione ruoli/accessi, garantendo protezione multilivello, auditabilità, collaborazione e valorizzazione economica degli asset IP in un contesto multi-partner.

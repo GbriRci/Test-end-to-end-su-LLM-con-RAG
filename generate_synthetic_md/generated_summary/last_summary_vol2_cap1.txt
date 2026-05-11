@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Stratificazione Edge–Fog–Cloud**: Architettura multilivello per interoperabilità, scalabilità e resilienza, con orchestrazione di dispositivi eterogenei (dalla sensoristica legacy all’AI distribuita).
+- **Blockchain Permissioned (Bit-Energy)**: Integrazione di DLT (Hyperledger Fabric custom) per audit, tokenizzazione e smart contract (MetaGov-SC).
+- **Federated Learning**: Protocollo FL-AETERNA per apprendimento distribuito privacy-preserving, con aggregazione e pruning dei modelli.
+- **Compatibilità Sistemi Operativi**: Matrice di compatibilità per supporto a OS custom (AETERNA-RTOS/FogOS/CloudOS), Linux embedded, FreeRTOS, Ubuntu, RHEL/CentOS, Windows IoT e bridge per sistemi legacy (KNX/BACnet).
+- **Middleware Custom**: ALRM (gestione risorse edge), FL-AETERNA (federated learning), MetaGov-SC (governance smart contract), Secure Enclave (root-of-trust), Swarm Agent (algoritmi swarm).
+- **Protocolli Standardizzati**: MQTT-SN, CoAP, gRPC, REST, AMQP, ZeroMQ, WebSocket, GraphQL per comunicazione affidabile e low-latency.
+- **Explainable AI (XAI)**: Moduli per interpretabilità, Ethical Impact Score e tracciabilità decisionale.
+
+**Variabili Introdotte:**
+- **Hardware Target**: Microcontroller ARM Cortex-M, SoC RISC-V, gateway x86 (Edge); server ARM/x86, micro-datacenter (Fog); cloud pubblico/privato, cluster HPC (Cloud).
+- **Sistemi Operativi**: AETERNA-RTOS, Linux Embedded, FreeRTOS (Edge); AETERNA-FogOS, Ubuntu Server, RHEL (Fog); AETERNA-CloudOS, Ubuntu LTS, CentOS, SUSE (Cloud).
+- **Middleware**: ALRM, Secure Enclave, Edge Swarm Agent (Edge); Fog Orchestrator, FL-AETERNA Aggregator, Blockchain Node, MetaGov-SC Engine (Fog); Macro Orchestrator, FL-AETERNA Supervisor, MetaGov-SC Supervisor, DLT Explorer (Cloud).
+- **AI/ML Frameworks**: TensorFlow Lite, ONNX Runtime (Edge); PyTorch, TensorFlow, XAI Module (Fog); Federated Model Repository, XAI Dashboard (Cloud).
+
+**Dipendenze Tecniche:**
+- **Bridge Middleware**: Integrazione dispositivi legacy tramite bridge per KNX/BACnet.
+- **DLT Gateway**: Connessione tra Edge/Fog e blockchain Bit-Energy.
+- **Secure Enclave**: Dipendenza hardware/software per sicurezza e root-of-trust.
+- **Data Lake Connector**: Integrazione storage distribuito in Cloud.
+- **Audit Trail**: Logging immutabile su DLT.
+- **Tokenizzazione**: Bit-Energy Token per scambio energetico e incentivi.
+- **Swarm Protocols**: Digital Pheromone Token e Swarm Consensus per bilanciamento e auto-riparazione.
+
+Queste scelte e variabili costituiscono la base tecnica per i capitoli successivi, abilitando interoperabilità, sicurezza, auditabilità e governance distribuita nell’ecosistema AETERNA.

@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche di Secure-Pulse (max 300 parole)**
+
+**Decisioni Architetturali:**
+- **Sincronizzazione multilivello**: Secure-Pulse opera su tre livelli (Edge/H-Node, Fog, Cloud), con handshake e propagazione Pulse tra livelli e peer.
+- **Catena crittografica leggera**: Ogni Pulse include l’hash SHA-3 del Pulse precedente e una firma digitale post-quantum (Kyber/Dilithium), creando una sequenza verificabile simile a una blockchain.
+- **Propagazione gossip multi-canale**: Pulse trasmessi su canali autenticati e ridondanti (wired/wireless: LoRa, WiFi mesh) per resilienza a jamming e isolamento.
+- **Notarizzazione periodica**: I cluster Fog aggregano e notarizzano hash di sintesi delle catene Pulse su Bit-Energy Ledger, garantendo auditabilità e immutabilità.
+- **Riconciliazione peer-to-peer**: In caso di isolamento, i nodi Edge negoziano temporaneamente la sincronizzazione tra pari, mantenendo la catena di firme per successiva riconciliazione.
+
+**Variabili Introdotte (Campi Pulse):**
+- **UUID Nodo**: Identificatore hardware univoco (certificato PKI AETERNA).
+- **Timestamp Kyoto 2.0**: Tempo di emissione secondo standard AETERNA.
+- **Nonce**: Numero casuale per unicità e protezione anti-replay.
+- **Hash Pulse Precedente**: SHA-3 del Pulse precedente.
+- **Payload Sincronizzazione**: Offset temporale, jitter, drift stimato, info correzione locale.
+- **Firma Digitale Concatenata**: Firma post-quantum su tutti i campi precedenti + hash Pulse precedente.
+
+**Dipendenze Tecniche:**
+- **Crittografia post-quantum**: Kyber/Dilithium per firme digitali.
+- **Hashing**: SHA-3 per integrità sequenza.
+- **Bit-Energy Ledger**: Ledger distribuito per notarizzazione e auditabilità.
+- **Standard temporale Kyoto 2.0**: Riferimento temporale interno AETERNA.
+- **Canali di comunicazione**: Wired/wireless (LoRa, WiFi mesh) per propagazione Pulse.
+- **IAM e audit**: Integrazione con sistemi di Identity & Access Management per segnalazione eventi critici e compliance.
+
+**In sintesi**, Secure-Pulse introduce una sincronizzazione temporale resiliente e auditabile tramite catena di Pulse firmati e notarizzati, abilitando sicurezza, trasparenza e stabilità nelle micro-reti energetiche multilivello AETERNA.

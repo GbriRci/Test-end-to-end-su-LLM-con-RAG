@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Separazione multilivello:** L’architettura AETERNA distingue tra Edge (H-Node), Fog (quartiere) e Cloud (macro-analisi), applicando tecniche di anonimizzazione e pseudonimizzazione specifiche per ciascun livello.
+- **Anonimizzazione irreversibile:** All’Edge, dati personali sono anonimizzati tramite masking, generalizzazione e hashing (SHA-3-256 con salt TPM), impedendo la re-identificazione. I dati anonimizzati restano locali, solo aggregati vengono trasmessi.
+- **Aggregazione e privacy differenziale:** Al Fog, si applicano k-anonymity, l-diversity, suppression e data shuffling su cluster di almeno 10 H-Node (soglia configurabile via DAO). In Cloud, si usa Differential Privacy (epsilon configurabile) per analisi AI/ML.
+- **Pseudonimizzazione segregata:** Identificativi pseudonimi (hash utente, Bit-Energy ID) sono gestiti tramite mapping table su HSM, accessibile solo con autenticazione X.509 e TPM. Token OAuth2.0 JWT temporanei sono usati per accesso ai dati.
+- **Accesso condizionato e auditabilità:** RBAC/ABAC multilivello, MFA obbligatorio, audit logging su blockchain per ogni operazione, con masking e hash delle operazioni.
+
+**Variabili Introdotte:**
+- **Salt TPM locale:** Per ogni operazione di hashing, generato dal TPM dell’H-Node.
+- **Soglia cluster Fog:** Minimo 10 H-Node, configurabile via DAO.
+- **Epsilon Differential Privacy:** Parametro configurabile per il rumore aggiunto nei dataset Cloud.
+- **Scope/validità token JWT:** Definiti granularmente per ogni sessione/accesso.
+- **Policy DAO:** Definisce trigger e parametri di anonimizzazione/aggregazione.
+- **Mapping table location:** Su HSM segregato, accessibile solo da processi autenticati.
+- **Rotazione chiavi AES-256 GCM:** Gestita via HSM, con periodicità definita.
+
+**Dipendenze Tecniche:**
+- **Hashing:** SHA-3-256 (salt TPM) per anonimizzazione e pseudonimizzazione.
+- **Crittografia:** AES-256 GCM per dati a riposo; TLS 1.3 per dati in transito.
+- **Tokenizzazione:** OAuth2.0 JWT per sessioni temporanee.
+- **Autenticazione:** X.509 + TPM per accesso mapping table e processi critici.
+- **Identificativi blockchain:** Bit-Energy ID, gestito da smart contract.
+- **Audit trail:** Logging immutabile su blockchain, con timestamp NTP.
+- **Gestione chiavi:** HSM per mapping table e chiavi di crittografia.
+- **Access control:** RBAC/ABAC multilivello, MFA (password + challenge TPM).
+
+Queste scelte garantiscono privacy, compliance, auditabilità, resilienza e scalabilità, e costituiscono la base tecnica per i capitoli successivi.

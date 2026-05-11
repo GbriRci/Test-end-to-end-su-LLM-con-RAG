@@ -1,0 +1,32 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Separazione logica/fisica (unbundling):** Sistemi e interfacce (API, message broker, data bus) progettati per isolare dati e processi tra produttori (H-Node), distributori (Fog), operatori di mercato (Cloud).
+- **Data governance e accesso:** Policy di accesso RBAC/ABAC enforceate tramite OPA; logging e audit trail separati e compliance Kyoto 2.0.
+- **Interfacce pubbliche e interoperabilità:** API RESTful versionate, OpenAPI/GraphQL, documentazione pubblica, rate limiting; pubblicazione automatica dati di mercato (JSON/CSV), notifiche via webhook/MQTT.
+- **Tracciabilità e blockchain:** Integrazione di Bit-Energy Blockchain per registrazione transazioni P2P (smart contract, hash, timestamp); sistemi di data lineage (Apache Atlas); sincronizzazione ledger tra Edge, Fog, Cloud.
+- **Standard di comunicazione:** Adozione di protocolli IEC 61850, CIM/XML, MQTT, OPC-UA; adapter/proxy per legacy; validazione automatica schemi dati (JSON/XML Schema); test suite di interoperabilità.
+- **Monitoraggio e reporting:** Sensoristica distribuita (smart meter, IoT edge) conforme MID, pipeline dati resilienti, data lake centralizzato, dashboard real-time, esportazione CSV/XML/API.
+- **Audit e feedback:** Moduli di audit automatico in CI/CD, report periodici personalizzati, alert su soglie, feedback tramite API/portali web/mobile.
+- **Resilienza e sicurezza:** Topologie mesh/failover tra Fog/Cloud, backup/disaster recovery geo-ridondati, policy sicurezza OPA, logging cifrato, gestione segreti centralizzata.
+- **Project management e compliance:** Tracciamento costi/milestone (Jira, Confluence), esportazione report avanzamento/compliance, repository centralizzato documentazione/audit log.
+
+**Variabili Introdotte:**
+- **Ruoli e domini:** Produttori (H-Node), distributori (Fog), operatori di mercato (Cloud).
+- **Dati energetici:** Consumi, transazioni P2P, prezzi, volumi, metriche di performance.
+- **Eventi di mercato:** Notifiche, alert, audit, feedback utente.
+- **Milestone progettuali e costi:** Per rendicontazione e finanziamento.
+
+**Dipendenze Tecniche:**
+- **OPA (Open Policy Agent):** Enforcement policy di accesso e sicurezza.
+- **Bit-Energy Blockchain:** Tracciabilità, immutabilità, auditabilità transazioni.
+- **Apache Atlas:** Data lineage.
+- **Protocolli standard:** IEC 61850, CIM/XML, MQTT, OPC-UA, LoRaWAN, Zigbee.
+- **Smart meter/IoT sensor:** Raccolta dati conforme MID.
+- **Jira/Confluence:** Project management, audit, compliance.
+- **Data lake, dashboard, API REST/GraphQL:** Raccolta, normalizzazione, reporting dati.
+- **CI/CD pipeline:** Audit automatico.
+- **Mesh network, backup geo-ridondato:** Resilienza infrastrutturale.
+
+**Sintesi:**  
+Il rispetto del quadro normativo UE guida la progettazione di AETERNA verso architetture segregate, interoperabili, tracciabili e resilienti, con forti dipendenze da policy enforcement, blockchain, standard di comunicazione, sensoristica avanzata e strumenti di project management, garantendo compliance, trasparenza e scalabilità.

@@ -1,0 +1,32 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Standardizzazione API:** Tutte le API AETERNA (Edge, Fog, Cloud) sono descritte tramite specifiche formali OpenAPI 3.0 (YAML) e, per casi complessi, RAML.  
+- **Documentazione automatizzata:** Generazione e pubblicazione automatica tramite Swagger UI e Redoc, integrate nei portali di dominio e pipeline CI/CD.
+- **Progettazione RESTful:** Risorse con URI stabili, statelessness (token JWT/OAuth), gestione errori secondo RFC 7807, versioning esplicito nell’URI, idempotenza per PUT/DELETE, supporto nativo a paginazione/filtri/ordinamento.
+- **Sicurezza:** Tutte le API protette da OAuth 2.0 (grant type differenziati), scope granulari coerenti con RBAC/ABAC, header di sicurezza (CSRF, CORS), rate limiting configurabile.
+- **Contratti versionati:** Ogni specifica API è versionata semanticamente, revisionata tramite pull request e changelog; breaking change → incremento major version.
+- **Testing e mock:** Pipeline CI/CD con linting (Spectral), test di contract compatibility (Dredd, Schemathesis), mock server automatici (Prism, WireMock).
+- **Best practice:** Naming convention (snake_case per risorse, camelCase per payload), internazionalizzazione (Accept-Language), HATEOAS, policy di deprecazione (sunset ≥12 mesi), OpenAPI linting.
+- **Governance:** Pubblicazione versionata e accessibile delle specifiche, tracciabilità delle modifiche, supporto audit/compliance (Kyoto 2.0, Bit-Energy).
+
+**Variabili Introdotte:**
+- **Versione API** (es. `/v1/`)
+- **Scope OAuth 2.0** (es. `read:meter`, `write:trade`, `admin:fog`, `audit:cloud`, `partner:integration`)
+- **Ruoli IAM** (es. HNodeOperator, FogAdmin, CloudAuditor, PartnerService)
+- **Parametri di paginazione/filtraggio** (`limit`, `offset`, `sort`, `filter`)
+- **Header di sicurezza** (`X-CSRF-Token`, `Access-Control-Allow-Origin`)
+- **Header internazionalizzazione** (`Accept-Language`)
+
+**Dipendenze Tecniche:**
+- **Specifiche:** OpenAPI 3.0 (YAML), RAML (per orchestrazione avanzata)
+- **Documentazione:** Swagger UI, Redoc
+- **Testing/Mock:** Prism, WireMock, Dredd, Schemathesis
+- **Linting:** Spectral
+- **SDK generation:** Swagger Codegen/OpenAPI Generator
+- **CI/CD:** Pipeline integrate per validazione, testing, generazione e deploy documentazione/mock server
+- **Sicurezza:** OAuth 2.0, JWT, RBAC/ABAC, CORS, CSRF, rate limiting
+- **Pubblicazione:** Portali Edge/Fog/Cloud/Partner, autenticazione federata dove richiesto
+
+**Impatto:**  
+Queste scelte abilitano interoperabilità, riducono il time-to-market, migliorano qualità/sicurezza, facilitano la scalabilità e la governance, garantendo allineamento continuo tra codice e documentazione.

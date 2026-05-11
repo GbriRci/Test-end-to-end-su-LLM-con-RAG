@@ -1,0 +1,25 @@
+**Riassunto Denso – Audit e Monitoraggio della Sicurezza dei Dati in AETERNA**
+
+**Decisioni Architetturali:**
+- **Audit log centralizzati**: raccolta, normalizzazione (JSON-LD) e conservazione immutabile dei log da tutti i livelli (Edge, Fog, Cloud) tramite cluster di Log Collector.
+- **Sicurezza trasmissione log**: canali cifrati TLS 1.3, autenticazione mutuale, firma digitale TPM locale, buffering locale in caso di disconnessione.
+- **Persistenza e immutabilità**: log scritti su storage distribuito cifrato (AES-256, chiavi TPM) e su blockchain interna Kyoto 2.0 (hash SHA-3-256, firma digitale, metadati).
+- **Integrazione SIEM**: ricezione log normalizzati in tempo reale, correlazione multi-livello di eventi da Log Collector, API Gateway, DLO, CMS, autenticazione.
+- **Motori di correlazione e AI**: detection pattern sospetti (escalation privilegi, accessi anomali, manipolazione dati), anomaly detection AI (supervisionata/non supervisionata), alert signature-based e behavioral-based.
+- **Gestione alert**: workflow automatico di notifica/escalation (classificazione INFO, WARNING, CRITICAL, BLOCKING), notifiche real-time a SOC/DPO via canali sicuri, logging alert su blockchain.
+- **Dashboard centralizzata**: accesso MFA, viste personalizzabili per ruolo, filtri avanzati (periodo, operazione, tenant, Bit-Energy_ID, policy), drill-down eventi, replay sequenziale, accesso diretto ai log immutabili.
+- **Workflow di risposta automatica**: integrazione con playbook (sospensione account, isolamento nodo, revoca chiavi), tracking stato su blockchain.
+- **Audit consensi e policy**: logging digitale di ogni operazione su consensi/policy, audit trail esteso, verifica automatica coerenza policy tramite Compliance Engine, report periodici conservati su cold storage cifrato e blockchain.
+
+**Variabili Introdotte (campi log principali):**
+- Timestamp_NTP, Operatore, Nodo, Bit-Energy_ID, Consent_ID, Policy_Version, Operazione, Hash_Pre, Hash_Post, Esito, Firma_TPM, Entry_Blockchain, Severity, Correlazione_ID.
+
+**Dipendenze Tecniche:**
+- **Kyoto 2.0 Blockchain**: per immutabilità, tracciabilità, logging alert/notifiche.
+- **TPM locale**: per firma digitale log e gestione chiavi storage cifrato.
+- **SIEM (Elastic, Graylog, AETERNA-SIEM)**: per correlazione, analisi comportamentale, gestione alert.
+- **Dashboard real-time**: per visualizzazione, filtri, replay eventi.
+- **Workflow di notifica/escalation**: integrazione con sistemi di ticketing, incident response, playbook automatici.
+- **Compliance Engine**: verifica automatica coerenza policy.
+
+Queste scelte garantiscono accountability, detection proattiva, risposta tempestiva e compliance, abilitando audit forense e governance trasparente dei dati nelle micro-reti AETERNA.

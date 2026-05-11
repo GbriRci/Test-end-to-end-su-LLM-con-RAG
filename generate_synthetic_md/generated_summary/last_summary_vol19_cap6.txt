@@ -1,0 +1,26 @@
+**Riassunto Denso – Gestione dei Requisiti Regolatori Nazionali in AETERNA**
+
+**Decisioni Architetturali:**
+- **Compliance by Design:** La compliance normativa è integrata come processo dinamico e iterativo, non statico, nei workflow digitali e nei contratti (Registro Licenze, SBOM, Matrice RAM).
+- **Architettura Multi-Livello:** I requisiti sono classificati per dominio (energia, privacy, sicurezza, ambiente) e mappati sui livelli Edge, Fog, Cloud.
+- **Automazione e Auditabilità:** L’intero ciclo di compliance è automatizzato tramite strumenti dedicati (OSS Compliance Bot, Regulatory Update Notifier) e audit trail immutabili su blockchain Bit-Energy e storage WORM.
+- **Smart Contract e SLA:** Gli obblighi normativi critici sono formalizzati in SLA con penali automatiche gestite da smart contract Bit-Energy.
+- **Segregazione e Pseudonimizzazione:** Enforcement delle policy di segregazione ruoli e pseudonimizzazione tramite OpenID Connect Compliance Layer.
+
+**Variabili Introdotte:**
+- **Parametri di configurazione compliance:** Logging, retention (min. 10 anni), cifratura, policy di accesso, procedure di notifica incidenti.
+- **Matrice RAM:** Associazione tra requisiti normativi, livelli architetturali e responsabilità contrattuali.
+- **SBOM (Software Bill of Materials):** Obbligo di presenza e firma digitale per ogni modulo.
+- **Audit trail:** Logging di eventi critici, versionamento contratti/SLA, storicizzazione su blockchain e WORM.
+- **SLA e Penali:** Parametri automatici per gestione delle violazioni normative.
+
+**Dipendenze Tecniche:**
+- **OSS Compliance Bot:** Scansione continua configurazioni, verifica SBOM, rilevamento anomalie/data breach, trigger escalation automatica via API RESTful (Edge/Fog/Cloud).
+- **Bit-Energy Blockchain:** Logging immutabile, versionamento contratti/SLA, automazione penali, audit trail accessibile per ispezioni (ARERA, Garante Privacy).
+- **OpenID Connect Compliance Layer:** Gestione/tracciabilità accessi, enforcement policy ruoli, logging eventi sicurezza.
+- **WORM Storage Compliance Engine:** Conservazione log/audit trail, inalterabilità e reperibilità per 10 anni, supporto richieste accesso/cancellazione dati.
+- **Regulatory Update Notifier:** Parsing automatico fonti normative (Gazzetta Ufficiale, ARERA, Garante Privacy), notifica modifiche a responsabili compliance.
+- **Workflow digitali di reporting:** API per invio dati produzione/consumo, emissioni, gestione rifiuti elettronici secondo formati ARERA/GSE/D.Lgs. 152/2006.
+
+**Sintesi:**  
+AETERNA adotta un framework modulare e automatizzato per la gestione della compliance normativa nazionale, basato su mappatura sistematica dei requisiti, traduzione in specifiche tecniche, integrazione nei contratti/SLA, monitoraggio automatico e audit trail su blockchain e storage WORM. Le principali variabili e dipendenze tecniche sono formalizzate e tracciate, garantendo auditabilità, scalabilità e riduzione del rischio normativo.

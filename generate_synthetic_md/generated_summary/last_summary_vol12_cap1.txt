@@ -1,0 +1,41 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (max 300 parole)**
+
+**Decisioni Architetturali:**
+- **Stratificazione a tre livelli:**  
+  - *Edge Layer*: H-Node domestico con HEMS, interfaccia OCPP 2.0.1 verso punti di ricarica, modulo MQTT per comunicazione con Fog Layer.
+  - *Fog Layer*: Gateway di quartiere che aggrega dati, valida richieste V2G tramite smart contract su Hyperledger Fabric, coordina strategie di bilanciamento e ottimizzazione secondo forecast AI e tariffe dinamiche (Bit-Energy).
+  - *Cloud Layer*: Analisi predittive (AI: LSTM, Random Forest), aggiornamento policy, dashboard avanzate.
+- **Gestione policy multilivello:**  
+  - Policy configurabili da utente (preferenze, limiti SoC), sistema (ottimizzazione automatica), sicurezza (controlli batteria, compliance).
+  - Versionamento e tracciabilità policy tramite smart contract su blockchain.
+- **Tracciabilità e remunerazione:**  
+  - Ogni sessione V2G/smart charging è taggata (Kyoto 2.0), registrata su blockchain, remunerata in Bit-Energy (token interno).
+
+**Variabili Introdotte:**
+- *DID Utente/Dispositivo*: Identificativi decentralizzati per autenticazione/autorizzazione.
+- *SoC (State of Charge)*: Stato di carica VE.
+- *Energia Scambiata (kWh)*: Quantità caricata/scaricata.
+- *Policy Attiva*: Parametri di smart charging/V2G applicati.
+- *Stato Rete Locale*: Condizioni micro-rete.
+- *Valore Bit-Energy*: Token dinamico per remunerazione.
+- *Geolocalizzazione (hash)*: Localizzazione anonimizzata.
+- *Esito Validazione Sicurezza*: Risultato controlli sicurezza.
+
+**Dipendenze Tecniche:**
+- *Protocolli*:  
+  - OCPP 2.0.1 (comunicazione punto ricarica-HEMS),  
+  - MQTT (Edge-Fog, eventi real-time),  
+  - RESTful API (integrazione dashboard/wallet/Cloud).
+- *Sicurezza*:  
+  - TLS 1.3 (dati in transito),  
+  - AES-256 (dati a riposo),  
+  - DID, 2FA, ZKP (privacy e autenticazione).
+- *Blockchain*:  
+  - Hyperledger Fabric per smart contract, audit trail, tracciabilità Kyoto 2.0.
+- *AI Forecast*:  
+  - LSTM, Random Forest per ottimizzazione dinamica.
+- *Tokenizzazione*:  
+  - Bit-Energy per incentivi economici.
+
+**Sintesi:**  
+L’architettura V2G di AETERNA si basa su una stratificazione Edge-Fog-Cloud, policy multilivello, protocolli interoperabili e sicurezza avanzata, con tracciabilità e remunerazione su blockchain, abilitando la gestione intelligente e scalabile della mobilità elettrica urbana.

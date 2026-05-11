@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Pipeline Integrata PT/VM:** Penetration Testing (PT) e Vulnerability Management (VM) sono integrati in pipeline continue, orchestrate dal SOC multilivello di AETERNA, coprendo Edge (H-Node), Fog e Cloud.
+- **Red Teaming Continuo e Automatizzato:** Simulazioni di attacco persistente su firmware, protocolli custom e API, tramite container isolati e tecniche di fuzzing, reverse engineering e injection.
+- **Firmware Testing Avanzato:** Ogni release firmware è testata in ambienti hardware-in-the-loop (HIL), con simulazione di fault energetici e manipolazione dei canali di comunicazione.
+- **Clean-Slate Recovery:** Pipeline automatica di recovery e revoca chiavi PKI/Post-quantum tramite IAM in caso di vulnerabilità critiche.
+- **Notarizzazione e Compliance:** Tutte le attività di PT/VM, remediation e aggiornamenti sono notarizzate su Bit-Energy Ledger, in conformità a Kyoto 2.0, garantendo tracciabilità, auditabilità e non ripudio.
+- **Aggiornamenti OTA Sicuri:** Firmware firmato digitalmente, validato via challenge-response multilivello, con rollback atomico (RPO = 1 Pulse) e revoca automatica delle chiavi compromesse.
+- **Pulse-based Synchronization:** Tutte le azioni sono sincronizzate su base Pulse per coerenza temporale tra i livelli.
+
+**Variabili Introdotte:**
+- **Pulse:** Unità di sincronizzazione temporale per scansioni, aggiornamenti e rollback.
+- **RTO/RPO:** Recovery Time Objective ≤ 60s, Recovery Point Objective = 1 Pulse.
+- **Livelli CVSS:** Classificazione delle vulnerabilità (Critico, Alto, Medio, Basso) con azioni automatiche associate.
+- **Bit-Energy Ledger:** Registro distribuito per notarizzazione di eventi di sicurezza.
+- **Kyoto 2.0:** Standard di compliance e timestamping.
+
+**Dipendenze Tecniche:**
+- **SOC multilivello:** Orchestrazione e correlazione eventi tra Edge, Fog e Cloud.
+- **IAM (Identity & Access Management):** Gestione automatica di chiavi PKI/Post-quantum e enforcement di ACL dinamiche.
+- **SAST/DAST:** Scansioni statiche e dinamiche su firmware e servizi runtime, con regole custom per protocolli AETERNA.
+- **Canali di Escalation Sicuri:** Propagazione automatica degli alert tra livelli tramite protocolli sicuri.
+- **Audit e Reporting:** Integrazione con sistemi di audit e forensics per compliance regolatoria.
+
+**In sintesi:** L’architettura AETERNA adotta una pipeline di sicurezza automatizzata, tracciabile e resiliente, con gestione proattiva delle vulnerabilità, recovery rapido, aggiornamenti sicuri e compliance integrata, abilitando la sicurezza adattiva delle micro-reti energetiche urbane.

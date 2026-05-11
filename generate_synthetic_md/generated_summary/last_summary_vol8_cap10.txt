@@ -1,0 +1,33 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Crittografia come elemento strutturale**: Applicata in ogni fase del ciclo di vita dei dati (generazione, trasmissione, archiviazione, portabilità).
+- **Architettura multilivello**: Protezione implementata su Edge (H-Node), Fog (aggregatori), Cloud (core), con gestione delle chiavi distribuita e sincronizzata.
+- **KMS multilivello**: H-KMS (Edge), F-KMS (Fog), KMS Centrale (Cloud), con segregazione per tenant, versioning, rotazione automatica (default: 90 giorni), revoca immediata propagata via smart contract (Kyoto 2.0).
+- **Cifratura estesa**: Applicata a backup, log di audit, dati esportati, con chiavi dedicate e rotazione (backup: 30 giorni).
+- **Audit e compliance**: Logging immutabile su blockchain Kyoto 2.0, accesso ai log solo a DPO/steward autorizzati, audit trail granulari.
+- **Sicurezza in transito**: Tutte le comunicazioni su TLS 1.3 con PFS e cipher suite restrittive.
+- **Cifratura end-to-end**: Payload cifrati con AES-256-GCM (one-time key per sessione/richiesta), chiave simmetrica cifrata con RSA-4096 del destinatario/KMS.
+- **Protezione metadati**: Metadati critici (Bit-Energy_ID, Consent_ID, Owner/Steward) cifrati separatamente e trasmessi su canali distinti.
+- **Disaster recovery**: Backup cifrati, chiavi custodite in HSM con dual control.
+- **Verifica periodica**: Audit trimestrali, penetration test su tutti i livelli, monitoraggio SIEM/AI per anomalie e tentativi di attacco.
+
+**Variabili Introdotte:**
+- **Bit-Energy_ID, Consent_ID, Owner/Steward**: Metadati critici cifrati e gestiti separatamente.
+- **Audit_Reference**: Identificatore univoco per ogni operazione tracciata.
+- **Hash_Payload**: Hash dei dati esportati, incluso nei metadati JSON.
+- **H-KMS, F-KMS, KMS Centrale**: Moduli di gestione chiavi per Edge, Fog, Cloud.
+- **Policy di rotazione**: 90 giorni (dati a riposo/log), 30 giorni (backup), one-time (dati in transito/esportati).
+- **RBAC/ABAC**: Policy di accesso ai dati cifrati in Cloud.
+- **Smart contract Kyoto 2.0**: Meccanismo di propagazione revoche e logging.
+
+**Dipendenze Tecniche:**
+- **Algoritmi**: AES-256 (cifratura simmetrica), RSA-4096 (cifratura asimmetrica), AES-256-GCM (Authenticated Encryption).
+- **Protocolli**: TLS 1.3 (con PFS, cipher suite TLS_AES_256_GCM_SHA384).
+- **Blockchain Kyoto 2.0**: Audit trail, logging immutabile, propagazione revoche.
+- **HSM**: Custodia sicura delle chiavi di backup.
+- **SIEM/AI**: Monitoraggio eventi di sicurezza e pattern anomali.
+- **Dashboard**: Notifiche e reporting per DPO/steward.
+- **Autenticazione forte**: Accesso a chiavi/log riservato a utenti autorizzati.
+
+Queste scelte architetturali e variabili costituiscono la base tecnica per la protezione dei dati sensibili nei successivi capitoli del progetto AETERNA.

@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- La riduzione delle emissioni di CO₂ è vincolo progettuale trasversale e misurabile, integrato nei tre livelli architetturali AETERNA (Edge, Fog, Cloud).
+- Migrazione progressiva dei workload verso data center green (ISO 50001, alimentazione rinnovabile RECS/GO), con audit LCA trimestrali e soglia massima di 50 kg CO₂eq/anno per componente.
+- Adozione di virtualizzazione (VMware ESXi, KVM) e containerizzazione (Docker, Kubernetes) con policy di consolidamento (soglie minime CPU/RAM) e dismissione automatica di ambienti sottoutilizzati.
+- Dematerializzazione dei workflow tramite piattaforme collaborative (Nextcloud, OnlyOffice, DocuSign), policy paperless enforced by design e tracciabilità documentale via UUID.
+- Implementazione di smart working (min. 60% personale) e sostituzione flotte aziendali con veicoli ibridi/elettrici dotati di telemetria.
+- Deploy di sensoristica IoT per monitoraggio energetico a livello di sub-modulo, centralizzazione dati in data lake conforme GHG Protocol, dashboard unificata per KPI ambientali e alert automatici.
+- Reporting conforme a GHG Protocol e Kyoto 2.0 (PDF/UA, XML, JSON), audit esterni con accesso controllato e ciclo di miglioramento continuo.
+
+**Variabili Introdotte:**
+- UUID per workload, VM/container e documenti digitali, associati a profili di consumo/emissioni e audit trail.
+- Profili di consumo energetico e CO₂eq per ogni componente IT e processo aziendale.
+- Soglie di utilizzo risorse (CPU/RAM) per attivazione/dismissione VM/container.
+- Volumi carta (kg/mese), km percorsi, tipologia veicolo, percentuale personale in smart working.
+- Dati granulari di consumo/emissioni raccolti da sensori IoT e agent software.
+
+**Dipendenze Tecniche:**
+- Data center green certificati, software LCA (SimaPro, GaBi), dashboard centralizzata AETERNA.
+- Stack di virtualizzazione/orchestrazione: VMware ESXi, KVM, Docker, Kubernetes; pipeline CI/CD integrate con moduli LCA.
+- Piattaforme collaborative (Nextcloud, OnlyOffice, DocuSign), app mobile per tracking mobilità, sistemi telemetrici veicoli.
+- Sensoristica IoT, data lake ambientale, agent software per monitoraggio VM/container.
+- Standard di reporting (GHG Protocol, Kyoto 2.0), strumenti di audit e remediation automatizzata.
+
+**Queste scelte abilitano tracciabilità, auditabilità e remediation dinamica, garantendo la conformità normativa e la resilienza del sistema rispetto a evoluzioni tecnologiche e regolatorie.**

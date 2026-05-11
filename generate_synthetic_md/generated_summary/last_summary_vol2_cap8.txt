@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **API Gateway** come punto di accesso unificato, implementato come microservizio stateless, scalabile orizzontalmente, distribuito multi-region su Cloud e Fog, con fallback locale (Fog-Independence).
+- **Protocollo di esposizione GraphQL** scelto per query flessibili, riduzione overfetching, controllo granulare dei dati, versionamento evolutivo senza breaking changes.
+- **Reverse proxy ad alte prestazioni** basato su **Envoy** con plugin custom per autenticazione, autorizzazione, rate limiting, QoS, audit e logging.
+- **Fallback REST**: compatibilità garantita tramite traduzione automatica REST→GraphQL.
+- **Documentazione** tramite OpenAPI (REST) e SDL (GraphQL); processi di review per estensioni schema.
+- **Audit log replicato** localmente e su Cloud, con storage e sincronizzazione post-ripristino.
+- **Modalità Fog-Independence**: in caso di isolamento, il gateway locale espone solo dati disponibili nel cluster Fog, marcando la consistenza.
+
+**Variabili Introdotte:**
+- **Certificati Kyoto 2.0** per mutual TLS 1.3 (autenticazione forte).
+- **Token JWT Bit-Energy** per identificazione e autorizzazione.
+- **Policy di accesso** granulari per ruolo/applicazione.
+- **Rate limit configurabili** per client/app, enforcement a livello di cluster.
+- **Livello di consistenza** (Fog/Cloud/Edge) marcato nelle risposte.
+- **Auditabilità**: ogni chiamata tracciata, firmata digitalmente, audit log obbligatorio/facoltativo per endpoint.
+- **Schema GraphQL** principale: `DistrictEnergyState`, `NodeEnergyState`, query `getDistrictEnergyState`, ecc.
+
+**Dipendenze Tecniche:**
+- **Envoy** come reverse proxy.
+- **Kyoto 2.0** (PKI, mutual TLS) e **Bit-Energy** (JWT, policy, audit log) come standard di sicurezza e compliance.
+- **OpenAPI** e **SDL** per documentazione e interoperabilità.
+- **Ledger/AI Snapshot** come fonte dati per stato energetico e metadati di consistenza.
+- **Cluster Fog/Cloud/Edge** come backend per aggregazione e risposta dati.
+- **Processi di review interni** per estensione schema e policy di sicurezza.
+- **Marketplace e servizi terzi**: interoperabilità garantita tramite standard aperti e documentazione.
+
+**Impatto:**  
+L’architettura abilita interoperabilità sicura, granularità informativa, auditabilità e resilienza, supportando scenari avanzati (dashboard, automazione, trading P2P) e la continuità operativa anche in condizioni di isolamento.

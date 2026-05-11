@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Alimentazione di Backup:** Implementazione di un sistema di backup basato su super-condensatori (SC) per garantire la funzione “Last Gasp data upload” in caso di blackout totale, assicurando la trasmissione sicura dei dati critici.
+- **Composizione del Sottosistema:** Il backup power system include: array di super-condensatori (20–40 F, 2.7–5.4 V, ESR < 20 mΩ), modulo di gestione SC (SCM) con interfaccia I²C, Power Path Controller (PPC) per la commutazione automatica delle fonti di alimentazione, e firmware Last Gasp Handler (LGH) su AeternaOS.
+- **Gestione Energetica:** Isolamento automatico delle periferiche non essenziali tramite GPIO, priorità energetica agli stack MRRE e sicurezza Kyoto 2.0, protezione sovrascarica (cut-off 2.2 V).
+- **Sequenza Operativa:** Protocollo di failover che prevede: rilevamento blackout, commutazione su SC, attivazione LGH, dump e cifratura dati, trasmissione via MRRE (LoRaWAN/Zigbee), verifica ACK, shutdown sicuro.
+- **Sicurezza e Tracciabilità:** Cifratura end-to-end (AES-256), firma digitale locale, timestamp RTC Kyoto 2.0, audit trail propagato a Fog e Cloud.
+
+**Variabili Introdotte:**
+- **Capacità SC:** 20–40 F (array serie/parallelo).
+- **Tensione Nominale SC:** 2.7–5.4 V.
+- **ESR SC:** < 20 mΩ.
+- **Soglia Cut-off SCM:** 2.2 V.
+- **Budget Energetico:** ≥5 upload da 4 kB, autonomia tipica 30 s.
+- **Timeout ACK:** Default 2 s, configurabile.
+- **Precisione RTC:** ±2 ppm.
+- **Protocolli di Sicurezza:** AES-256, SHA-256, policy Kyoto 2.0.
+
+**Dipendenze Tecniche:**
+- **Interfacce:** SCM comunica via I²C con Aeterna-Core X1; PPC gestisce la logica di commutazione; LGH opera come task real-time su AeternaOS.
+- **Stack di Comunicazione:** MRRE supporta dual-radio (LoRaWAN prioritario, fallback Zigbee).
+- **Firmware:** LGH gestisce dump, compressione, cifratura, trasmissione e shutdown.
+- **Sincronizzazione:** Timestamping e chiavi di cifratura sincronizzate via Kyoto 2.0.
+- **Audit e Logging:** Log di Last Gasp marcato come evento di sicurezza, propagato a Fog/Cloud per audit.
+
+**Implicazioni per i Prossimi Capitoli:**
+- L’architettura richiede la gestione integrata di energia, sicurezza, comunicazione e logging.
+- Le variabili di dimensionamento energetico e i parametri di sicurezza sono vincolanti per la progettazione hardware/firmware.
+- Le dipendenze tra moduli (SCM, PPC, LGH, MRRE, AeternaOS) e i protocolli di comunicazione/sicurezza sono fondamentali per l’interoperabilità e la compliance.

@@ -1,0 +1,40 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura a tre livelli (Edge, Fog, Cloud):**  
+  - *Edge (H-Node):* Raccolta dati energetici, comportamentali e ambientali a livello domestico.
+  - *Fog:* Aggregazione, anonimizzazione (GDPR/ISO 27001), arricchimento dati con contesto locale.
+  - *Cloud:* Data Lake centralizzato per analisi AI/ML, calcolo KPI ESG, reporting avanzato.
+- **Sicurezza e Tracciabilità:**  
+  - Accesso e notarizzazione dati tramite smart contract su blockchain AETERNA per auditabilità e non ripudiabilità.
+- **Reporting e Trasparenza:**  
+  - Dashboard interattive (Partner Portal, User App), report periodici (PDF, CSV, API), alerting automatico (Prometheus/Grafana), audit trail completo.
+- **Compliance e Integrazione:**  
+  - Allineamento a standard Kyoto 2.0 (audit periodici), correlazione transazioni Bit-Energy con impatti ESG, generazione token di sostenibilità.
+
+**Variabili Introdotte:**
+- **Indicatori Quantitativi:**  
+  - Riduzione emissioni CO2eq (kgCO2eq risparmiati, oraria/giornaliera/mensile)
+  - Autarchia energetica locale (% energia autoprodotta)
+  - Numero utenti attivi, livello di engagement (frequency, feedback, demand response)
+  - Inclusione digitale (% famiglie raggiunte, adozione interfacce accessibili)
+  - Valore economico redistribuito (transazioni Bit-Energy, revenue sharing)
+- **Indicatori Qualitativi:**  
+  - Empowerment energetico (survey, indice 1-10)
+  - Soddisfazione stakeholder (NPS, sentiment analysis)
+  - Cambiamento comportamentale (variazione pattern consumo)
+
+**Dipendenze Tecniche:**
+- **Protocolli:**  
+  - *Data Acquisition Protocol (DAP):* API RESTful, validazione locale (checksum, timestamp), crittografia end-to-end.
+  - *Data Anonymization Pipeline (DAP2):* k-anonymity, differential privacy a livello Fog.
+  - *ESG Reporting Protocol:* Automazione reportistica, data visualization (Grafana), dashboard interattive.
+  - *Smart Contract Notarization:* Notarizzazione dati critici su blockchain AETERNA.
+- **Strumenti e Standard:**  
+  - AI/ML per analisi predittive e calcolo KPI.
+  - Prometheus/Grafana per alerting e visualizzazione.
+  - Blockchain AETERNA per audit trail e tokenizzazione.
+  - Conformità GDPR/ISO 27001, Kyoto 2.0, Bit-Energy Ledger.
+
+**Sintesi:**  
+L’architettura modulare e i protocolli digitali avanzati abilitano una valutazione trasparente, sicura e conforme agli standard internazionali dell’impatto sociale e ambientale, ponendo le basi tecniche e metodologiche per la scalabilità e la legittimazione dell’ecosistema AETERNA.

@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Versionamento API:** AETERNA adotta Semantic Versioning 2.0.0 (MAJOR.MINOR.PATCH) per tutte le API (REST, gRPC, MQTT, WebSocket), con versionamento esplicito su URI, header custom o handshake binario.
+- **Coesistenza Multi-Versione:** In caso di breaking change (incremento MAJOR), è garantita la coesistenza di almeno due versioni major tramite API Gateway (Fog/Cloud) con routing dinamico e Edge Gateway con fallback automatico.
+- **Deprecazione Progressiva:** Processo strutturato con annuncio formale, fase di coesistenza (min. 6 mesi, configurabile), header `Deprecation` e `Sunset`, monitoraggio utilizzo, rimozione graduale (rate limiting, error 410 Gone), audit e notarizzazione su Bit-Energy Ledger.
+- **Documentazione Contrattuale:** Ogni versione API è descritta tramite OpenAPI Specification 3.x, pubblicata su repository centralizzati e notarizzata per auditabilità e compliance.
+- **Test Automatizzati:** Pipeline CI/CD attiva test di regressione, contract test, integration test e simulazione multi-versione; metriche di compatibilità esposte via Prometheus.
+- **Governance Centralizzata:** Comitato Tecnico AETERNA API responsabile di approvazione breaking change, validazione OAS, gestione ciclo di vita versioni, compliance Kyoto 2.0 e Bit-Energy, con repository Git e notarizzazione periodica.
+
+**Variabili Introdotte:**
+- **Versione API:** `MAJOR.MINOR.PATCH` (es. `/v2/energy-trade`, `X-Aeterna-Api-Version`)
+- **Header di Deprecazione:** `Deprecation: true`, `Sunset: <ISO8601 date>`
+- **Metriche di Compatibilità:** `api_compatibility_failures_total` (Prometheus)
+- **Durata Coesistenza:** Default 6 mesi, configurabile da policy
+- **Notifiche:** Webhook, email, Slack per annuncio deprecazione
+
+**Dipendenze Tecniche:**
+- **OpenAPI Specification 3.x** per descrizione e changelog API
+- **Bit-Energy Ledger** per notarizzazione e auditabilità di specifiche e transizioni
+- **API Gateway (Fog/Cloud)** per routing multi-versione
+- **Edge Gateway** per fallback e logging compatibilità
+- **CI/CD Pipeline** per test automatizzati e simulazione multi-versione
+- **Prometheus** per esposizione metriche di compatibilità
+- **Repository Git** per versionamento e governance documentale
+- **Compliance:** Kyoto 2.0, policy Bit-Energy
+
+Queste scelte garantiscono scalabilità, auditabilità, continuità operativa e trasparenza nell’evoluzione delle API AETERNA.

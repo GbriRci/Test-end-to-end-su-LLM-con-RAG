@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Progetto AETERNA)**
+
+**Decisioni Architetturali:**
+- **Adozione DevOps avanzata**: integrazione sistemica di sviluppo, test, rilascio e manutenzione tramite pipeline CI/CD automatizzate, Infrastructure as Code (IaC), versionamento e monitoraggio proattivo.
+- **Ciclo di vita suddiviso in 6 fasi**: Pianificazione (Jira, Confluence), Sviluppo (Git, branching GitFlow, semantic versioning), Testing (unit, integration, E2E, chaos), Build/Packaging (Maven, Docker), CI/CD (Jenkins, ArgoCD, Helm), Monitoraggio/Maintenance (Prometheus, ELK).
+- **Pipeline CI/CD modulari e parametrizzabili**: supporto multi-tenancy, segmentazione ambienti (dev, test, staging, prod), compliance Kyoto 2.0, step dichiarativi (YAML), rollback automatico, artifact promotion, notifica/logging eventi.
+- **Deployment su Kubernetes/OpenShift**: strategie Blue/Green, Canary, Rolling Update.
+- **Gestione ambienti tramite IaC**: provisioning con Terraform, configurazione con Ansible, deployment con Helm/Kustomize, enforcement di environment parity e drift detection (OPA).
+- **Sicurezza e compliance by design**: policy OPA in pipeline, audit trail Kyoto 2.0, gestione segreti (Vault, AWS Secrets Manager), logging cifrato, rotazione automatica credenziali.
+
+**Variabili Introdotte:**
+- **Branching e versioning**: GitFlow, semantic versioning (Major.Minor.Patch), tagging automatico, changelog generato da pipeline.
+- **Parametri pipeline**: ambiente di destinazione, step modulari, soglie di coverage (es. 85%), policy di rilascio (approval gates).
+- **Template YAML/JSON**: per coerenza ambienti, variabilizzazione tramite secret manager.
+- **Badge di copertura**: enforcement coverage minimo.
+- **Output chiave per fase**: User Story, Acceptance Criteria, branch, artifact, report test, release note, audit log.
+
+**Dipendenze Tecniche:**
+- **Strumenti di gestione**: Jira, Confluence, GitHub Issues, Git (GitHub/GitLab), SonarQube, CodeClimate, Snyk, OWASP Dependency-Check.
+- **Testing**: JUnit, PyTest, Mocha, Testcontainers, Pact, Cypress, Selenium, Gremlin, OWASP ZAP.
+- **Build/Packaging**: Maven, Gradle, npm, pip, Nexus, Artifactory, Docker, Trivy, Clair.
+- **CI/CD**: Jenkins, GitHub Actions, GitLab CI, ArgoCD, Helm, Kustomize.
+- **Monitoraggio/Logging**: Prometheus, Elastic APM, Dynatrace, ELK, Fluentd, Loki, Alertmanager.
+- **Compliance/Security**: OPA, Vault, Kyoto 2.0.
+- **Provisioning**: Terraform, Ansible.
+- **Audit e feedback**: survey automatizzate, portali supporto, retrospettive Agile.
+
+**Implicazioni per i prossimi capitoli**: Le scelte architetturali e le dipendenze tecniche delineano un framework scalabile, sicuro e tracciabile, abilitando automazione, compliance e innovazione continua, con variabili e strumenti già standardizzati per ogni fase del ciclo di vita.

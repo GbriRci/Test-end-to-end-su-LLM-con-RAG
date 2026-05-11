@@ -1,0 +1,28 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- Ogni H-Node domestico del framework AETERNA integra sensori di corrente ad effetto Hall ad alta fedeltà, progettati per misurare AC/DC fino a 63A RMS, con isolamento galvanico >4kV.
+- La pipeline di acquisizione dati prevede: digitalizzazione locale tramite ADC 16 bit @ 100kHz, buffer DMA a bassa latenza, pre-elaborazione real-time su microcontrollore AI-aware (Aeterna-Core X1), validazione integrità (SHA3-512, auditLogRef), esposizione dati tramite API GraphQL e canali sicuri Bit-Energy.
+- Implementazione di filtri hardware anti-aliasing e doppio stadio EMI/RFI (>60dB @ 100MHz), compensazione termica integrata e filtri mediani adattivi per la rimozione di outlier.
+- Tutti i dati sono firmati digitalmente a livello hardware (Kyoto 2.0 Secure Data Path), con time-stamp crittografato e snapshotRefs su storage distribuito.
+- Sistemi anti-manomissione CL-RAP monitorano in tempo reale tentativi di alterazione fisica/logica; anomalie vengono loggate e notificate tramite Kyoto 2.0 Service Port.
+- Gestione dinamica delle tolleranze di errore tramite tabella aggiornata via firmware OTA; superamento limiti attiva alert e marca i dati come “non affidabili”.
+
+**Variabili Introdotte:**
+- **Corrente misurata (A):** 0–63A RMS, linearità >99,98%.
+- **Frequenza di campionamento:** 100kHz (10μs/campione).
+- **Rumore intrinseco:** <0,1% FSR.
+- **Isolamento galvanico:** >4kV.
+- **Tolleranze di errore:** definite per range di voltaggio, aggiornabili OTA.
+- **Checksum SHA3-512, auditLogRef, snapshotRef:** per tracciabilità e validazione.
+- **Condizioni ambientali:** 20–40°C, 0–80% RH.
+
+**Dipendenze Tecniche:**
+- **Hardware:** Sensori Hall, ADC 16 bit, microcontrollore AI-aware (Aeterna-Core X1), filtri hardware EMI/RFI, circuiti CL-RAP.
+- **Firmware:** Gestione buffer DMA, filtri mediani, compensazione termica, aggiornamento OTA delle tolleranze.
+- **Sicurezza:** Kyoto 2.0 Secure Data Path, Bit-Energy secure channel, SHA3-512, time-stamp crittografato.
+- **Interfacce:** API GraphQL autenticata, Kyoto 2.0 Service Port, moduli AI/Trading.
+- **Storage:** Storage distribuito per snapshotRefs e audit trail.
+- **Standard di conformità:** Kyoto 2.0, Bit-Energy, Safety Layer 1–3.
+
+Queste scelte abilitano sicurezza operativa, granularità dati per AI, auditabilità e conformità, costituendo la base tecnica per i capitoli successivi.

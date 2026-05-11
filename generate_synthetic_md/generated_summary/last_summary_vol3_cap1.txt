@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (H-Node v4)**
+
+**Decisioni Architetturali:**
+- **Struttura modulare avanzata**: Il telaio è suddiviso in tre moduli principali (potenza, computazionale, interfaccia), separabili tramite connettori a sgancio rapido per hot-swap e manutenzione facilitata.
+- **Materiali riciclati ad alta efficienza termica**: Uso prevalente di alluminio (>85% post-consumo), rame, grafene e polimeri rinforzati, tutti riciclati e tracciati tramite QR-code Kyoto 2.0.
+- **Dissipazione termica ibrida**: Integrazione di heat pipe in rame riciclato e sistema di ventilazione PWM intelligente, gestito da microcontrollore AI-aware, per ottimizzare raffreddamento e consumi.
+- **Schermatura EMI multistrato**: Ogni modulo è protetto da strati di rame, poliestere e grafite riciclati, connessi a un bus di terra centralizzato e monitorati da circuito diagnostico.
+- **Manutenzione predittiva e auditabilità**: Sensori integrati (temperatura, umidità, integrità materiali) inviano metriche in tempo reale al Cluster di Osservabilità tramite API GraphQL autenticata; tutti gli eventi sono tracciati e firmati su storage distribuito (auditLogRef).
+- **Fail-safe termico**: Shutdown controllato e notifica tramite protocollo CL-RAP in caso di superamento soglie di sicurezza, con sincronizzazione stato su snapshotRefs.
+- **Sicurezza fisica**: Sensori anti-manomissione integrati nel telaio, con tracciamento eventi su auditLogRef.
+- **Riciclo facilitato**: Struttura e materiali progettati per separazione rapida e tracciabilità a fine vita, con aggiornamento automatico del ledger AETERNA.
+
+**Variabili Introdotte:**
+- **auditLogRef**: Riferimento per tracciamento e firma eventi su storage distribuito.
+- **snapshotRefs**: Stato sincronizzato durante operazioni di fail-safe.
+- **CWE (Carico Computazionale)**: Variabile per la regolazione dinamica della ventilazione.
+- **QR-code Kyoto 2.0**: Identificatore univoco per tracciabilità materiali e componenti.
+- **Kyoto 2.0 Service Port**: Interfaccia standardizzata per diagnostica, aggiornamenti e accesso log.
+- **Cluster di Osservabilità**: Destinazione delle metriche di monitoraggio.
+- **CL-RAP protocollo**: Protocollo di notifica e shutdown controllato.
+
+**Dipendenze Tecniche:**
+- **API GraphQL autenticata** per invio metriche diagnostiche.
+- **Storage distribuito** per audit e snapshot.
+- **Standard Kyoto 2.0**: Normativa interna per sicurezza, EMI/EMC, tracciabilità e riciclo.
+- **Policy Bit-Energy**: Linee guida per auditabilità e sicurezza operativa.
+- **Ledger AETERNA**: Registro per tracking materiali e operazioni di riciclo.
+- **Microcontrollore AI-aware**: Gestione intelligente della ventilazione.
+- **Bus di terra centralizzato**: Sicurezza elettrica e monitoraggio EMI.
+
+Queste scelte abilitano scalabilità, resilienza, sostenibilità e auditabilità per le micro-reti AETERNA.

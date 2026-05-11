@@ -1,0 +1,25 @@
+**Riassunto Denso – Capitolo 4: Standard di Comunicazione IoT (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Paradigma Multi-Protocollo:** AETERNA adotta MQTT, CoAP e LwM2M, orchestrati tramite gateway multi-protocollo a livello Fog, per ottimizzare comunicazione, interoperabilità e resilienza tra Edge, Fog e Cloud.
+- **Selezione Dinamica del Protocollo:** Il protocollo viene scelto in base a tipo di nodo, dato, condizioni di rete e criticità dell’operazione (es. trading energetico vs. telemetria ambientale).
+- **Gateway Multi-Protocollo:** I gateway Fog fungono da bridge, traducendo e normalizzando i payload, arricchendo i messaggi con metadati (`event_id`, `timestamp`, `actor_id`) e instradandoli verso moduli di logging, audit e notarizzazione.
+- **Failover e Resilienza:** In caso di indisponibilità di un protocollo/broker, i gateway eseguono failover automatico su protocollo alternativo.
+- **Compliance e Audit:** Tutti i protocolli sono conformi a Kyoto 2.0 e Bit-Energy Ledger, garantendo tracciabilità crittografica, notarizzazione e compatibilità con sistemi di audit.
+
+**Variabili Introdotte:**
+- **Metadati di Messaggio:** Ogni messaggio IoT include variabili come `event_id`, `timestamp`, `actor_id` per tracciabilità e audit.
+- **Policy di Sicurezza:** Variabili di policy (livello di rischio, tipo di operazione) determinano autenticazione, cifratura e accesso.
+- **QoS (Quality of Service):** Per MQTT, livelli QoS 0/1/2 selezionabili in base a criticità e overhead.
+- **Policy di Aggiornamento:** LwM2M introduce variabili per gestione batch, FOTA, reboot/reset sicuro.
+
+**Dipendenze Tecniche:**
+- **MQTT:** TCP/IP, TLS 1.3, X.509/JWT, clustering/federazione broker; usato per telemetria e monitoraggio.
+- **CoAP:** UDP, DTLS, PSK/X.509, pattern RESTful, Observe Option; usato per controllo attuatori e comandi a bassa latenza.
+- **LwM2M:** Basato su CoAP/UDP, DTLS, OMA Object Model, provisioning/configurazione/aggiornamento massivo; usato per gestione centralizzata H-Node.
+- **Gateway Fog:** Implementano mapping semantico, normalizzazione payload, policy di sicurezza, failover, logging e notarizzazione.
+- **Moduli di Audit & Ledger:** Ricevono eventi da broker/server, garantendo compliance e tracciabilità.
+- **Compatibilità futura:** Architettura predisposta per integrazione con 6LoWPAN, Thread, edge AI, federated learning.
+
+**Sintesi:**  
+L’architettura AETERNA si fonda su uno stack IoT multi-protocollo (MQTT, CoAP, LwM2M) orchestrato da gateway Fog, con gestione avanzata di sicurezza, tracciabilità e compliance, e variabili di configurazione dinamica per ottimizzare performance, resilienza e interoperabilità, ponendo solide basi per l’estensione futura dell’ecosistema.

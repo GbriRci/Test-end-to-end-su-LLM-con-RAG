@@ -1,0 +1,33 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Modularità e Interoperabilità:** L’architettura AETERNA privilegia l’integrazione modulare di componenti esterni, garantendo interoperabilità e sicurezza.
+- **Sandboxing e Isolamento:** I moduli sperimentali sono integrati tramite sandbox Kubernetes dedicati, con isolamento tramite namespace e policy di rete L7.
+- **API Standardizzate:** L’interfacciamento avviene solo tramite RESTful API (OpenAPI 3.0) o gRPC, con autenticazione mutual TLS e gestione segreti tramite HashiCorp Vault.
+- **Pipeline di Orchestrazione:** L’integrazione finale avviene nella pipeline AETERNA orchestrata da Airflow su Kubernetes, con deployment progressivo (canary release) e monitoraggio continuo.
+- **Testing e Validazione:** Ogni modulo è sottoposto a test di carico, benchmarking (CPU, memoria, latenza), explainability (SHAP/LIME), e validazione di sicurezza prima del go-live.
+- **Gestione Sicurezza e Compliance:** Policy di segregazione dati, audit log centralizzato, NDA e licenze open source (MIT/Apache 2.0 per moduli non core), conformità Kyoto 2.0.
+- **Monitoraggio:** Stack Prometheus/Grafana per metriche e alerting automatico.
+
+**Variabili Introdotte:**
+- **Ruoli e Responsabilità:** Definizione formale tramite accordi quadro, con identificazione di referenti tecnici e livelli di accesso.
+- **Proprietà Intellettuale:** Co-ownership, licensing open source, NDA per componenti critici.
+- **Dataset:** Utilizzo di dataset sintetici o reali anonimizzati per test e validazione.
+- **Metriche Custom:** Auto-scaling, explainability, performance.
+- **Output di Processo:** Specifiche tecniche, report di performance, certificazione compliance, dashboard metriche.
+
+**Dipendenze Tecniche:**
+- **Strumenti di Containerizzazione e Orchestrazione:** Kubernetes, Docker, Apache Airflow.
+- **Sicurezza e Privacy:** HashiCorp Vault, Intel SGX, zk-SNARKs.
+- **Machine Learning:** TensorFlow Serving, explainability tools (SHAP/LIME).
+- **Blockchain:** Bit-Energy (Ethereum-like), smart contract custom, audit trail on/off-chain.
+- **Repository e Accesso:** GitHub Enterprise, SSO, audit trail.
+- **Monitoraggio:** Prometheus, Grafana.
+- **Testing:** Generatori di traffico, cluster di test dedicati.
+
+**Esempi Applicativi:**
+- **Modulo AI (LSTM multivariato):** Previsione carichi energetici, training federato, explainability, validazione A/B.
+- **Sistema Blockchain:** Notarizzazione dati energetici, smart contract, enclave SGX, privacy avanzata.
+
+**Impatto:**  
+Le scelte architetturali e le dipendenze tecniche abilitano innovazione rapida, mitigazione dei rischi, crescita di capitale umano, flessibilità e rafforzamento competitivo, ponendo le basi per la resilienza e la scalabilità del progetto AETERNA.

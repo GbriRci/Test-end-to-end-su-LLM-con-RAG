@@ -1,0 +1,31 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Progetto AETERNA, Gestione Rifiuti e Riciclo)**
+
+**Decisioni Architetturali:**
+- **Sistema integrato** per la gestione dei rifiuti elettronici, articolato in 5 fasi: identificazione/classificazione, raccolta/stoccaggio, tracciabilità/audit, recupero/riciclo, monitoraggio/reporting.
+- **Tracciabilità end-to-end** tramite combinazione di RFID (ISO/IEC 18000-3) e blockchain privata (Bit-Energy, consenso Proof-of-Authority), con hash SHA-256 per identificazione univoca.
+- **Registrazione eventi** e comunicazioni tra nodi (Edge, Fog, Cloud, consorzi) tramite API RESTful sicure (TLS 1.3, AES-256, MFA).
+- **Audit trail** accessibile via dashboard web/mobile, con segmentazione degli accessi (utente, community manager, auditor).
+- **Smart contract** (Kyoto 2.0-compliant) per selezione/certificazione consorzi partner e automazione processi di recupero.
+- **Data Lake centrale** per aggregazione dati, analisi BI/ML predittiva e generazione report PDF/UA.
+- **Procedure Operative Standard (SOP):** check-in/out RFID, checklist digitali/manuali, formazione tracciata su blockchain.
+- **Certificati digitali di riciclo** archiviati su blockchain, accessibili via API dedicate.
+
+**Variabili Introdotte:**
+- **Identificativo RFID** (per ogni dispositivo/componenti: H-Node, Fog Node, sensori, batterie).
+- **Hash blockchain SHA-256** (associato a ogni tag RFID).
+- **UUID anonimo** per eventi, in ottica privacy.
+- **Checklist digitali** per separazione materiali (PCB, batterie, metalli, plastiche).
+- **Report digitali** di recupero/riciclo (forniti dai consorzi).
+- **KPI ambientali**: tasso di riciclo, tasso di recupero metalli rari, tempo di smaltimento medio, % componenti rigenerati, tracciabilità completa, emissioni evitate (kg CO₂eq).
+
+**Dipendenze Tecniche:**
+- **RFID passivo** per identificazione automatica.
+- **Blockchain privata Bit-Energy** (Proof-of-Authority) per registrazione eventi e certificati.
+- **API RESTful** (TLS 1.3, AES-256, MFA) per comunicazione sicura tra sistemi e partner.
+- **Sensori di riconoscimento materiali** e sistemi di pesatura automatica nei punti di raccolta.
+- **Smart contract** per automazione e certificazione processi partner.
+- **Data Lake, BI e ML** per analisi dati e reporting.
+- **Dashboard web/mobile** per accesso audit trail e report.
+- **Conformità Kyoto 2.0** per standard operativi, privacy e selezione partner.
+
+Queste scelte abilitano tracciabilità, trasparenza, automazione e miglioramento continuo nella gestione dei rifiuti elettronici, in linea con gli obiettivi di sostenibilità e autarchia energetica urbana del progetto.

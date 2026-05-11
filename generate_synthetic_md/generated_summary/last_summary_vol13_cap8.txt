@@ -1,0 +1,33 @@
+**Riassunto Denso – Capitolo 7: Monitoraggio, Logging e Tracciabilità Internazionale (AETERNA)**
+
+**Decisioni Architetturali:**
+- **Architettura distribuita su tre livelli (Edge-Fog-Cloud):**
+  - *Edge (H-Node):* raccolta locale, buffering temporaneo, log di sistema/utente/eventi energetici.
+  - *Fog (Quartiere):* aggregazione, normalizzazione, pre-filtraggio, correlazione eventi.
+  - *Cloud:* centralizzazione, storage a lungo termine, analisi avanzata (AI), dashboard, alert globali.
+- **Pipeline di logging replicata cross-region, segregazione logica/fisica dei dati.**
+- **Trasmissione log cifrata (TLS 1.3+), autenticazione reciproca (mTLS).**
+- **Replica geografica e isolamento logico/fisico per compliance e resilienza.**
+- **RBAC granulare, accesso condizionale (geofencing, time-based), segregazione per tenant/regione/sensibilità.**
+- **Audit trail immutabile, sincronizzazione timestamp (NTP), riferimento incrociato a transazioni blockchain.**
+- **Dashboard multi-lingua, esportazione report firmati digitalmente.**
+
+**Variabili Introdotte:**
+- **Standard di logging:** Elastic Common Schema (ECS) esteso con campi custom (es. dominio energetico, tracciabilità blockchain).
+- **Campi log chiave:** `@timestamp`, `event.action`, `user.id`, `source.geo.country_iso_code`, `blockchain.tx_id`, `aeterna.node_type`, `region`.
+- **Retention configurabile:** 7 giorni (Edge), 30 giorni (Fog), 1-5 anni (Cloud), per area/evento.
+- **Anonimizzazione/pseudonimizzazione:** hashing, masking, tokenizzazione su campi sensibili (`user.id`, `source.ip`), attivabile per policy.
+- **Replica geografica:** policy di accesso/retention per area (`EU-West`, `APAC`, `NA-East`), chiavi HSM regionali.
+- **Audit trail:** identificatore univoco di sessione, tracciamento accessi/modifiche/cancellazioni.
+
+**Dipendenze Tecniche:**
+- **Agenti di log:** Filebeat, Fluentd (buffering, compressione, forwarding sicuro).
+- **Normalizzazione/enrichment:** processi automatici verso ECS.
+- **Correlazione/alerting:** query KQL/Lucene, integrazione con SIEM, email, webhook.
+- **Dashboarding:** Kibana, Grafana.
+- **Crittografia at-rest:** AES-256+, gestione chiavi tramite HSM.
+- **Compliance:** GDPR, LGPD, CCPA, Kyoto 2.0.
+- **Audit/reporting:** esportazione PDF/CSV/JSON, firma digitale.
+
+**In sintesi:**  
+AETERNA implementa un sistema di monitoraggio e logging distribuito, standardizzato (ECS), sicuro (TLS/mTLS, AES-256), resiliente (replica geografica), conforme (privacy, audit, segregazione), con pipeline automatizzate e strumenti avanzati di analisi, alerting e reporting, abilitando tracciabilità e auditabilità internazionale.

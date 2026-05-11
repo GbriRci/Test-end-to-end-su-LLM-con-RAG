@@ -1,0 +1,33 @@
+**Riassunto Denso – Sandbox di Esecuzione per Smart Contract (AETERNA)**
+
+**Decisioni Architetturali:**
+- Ogni smart contract viene eseguito in una sandbox containerizzata, basata su microVM lightweight e policy di isolamento a livello OS.
+- L’isolamento è multilivello: CPU, RAM, filesystem, networking, syscall, tempo (Pulse).
+- Il runtime di esecuzione è un microkernel dedicato (MicroVM Runtime).
+- Il Resource Manager assegna e monitora le risorse per ogni container.
+- Il Security Policy Enforcer applica restrizioni granulari su syscall, rete e API H-Node.
+- Audit & Logging Agent traccia tutte le operazioni, integrandosi con il Bit-Energy Ledger per notarizzazione.
+- Monitoraggio runtime continuo (integrity check, behavioral monitoring); in caso di anomalie, sandbox isolata (quarantena) e attivazione pipeline di recovery (Clean-Slate Recovery).
+- Rollback atomico delle azioni della sandbox su base Pulse (RPO = 1 Pulse).
+- Tutte le operazioni critiche sono notarizzate sul Bit-Energy Ledger, in conformità Kyoto 2.0.
+- Accesso alle API e risorse mediato da IAM con enforcement di ACL dinamiche e revoca automatica delle chiavi.
+
+**Variabili Introdotte:**
+- Quota CPU e RAM per sandbox, configurabile dinamicamente.
+- Directory temporanea isolata (tmpfs) per ogni container.
+- Whitelist di syscall consentite (seccomp).
+- Contesto temporale virtuale per ogni sandbox, sincronizzato con Pulse.
+- Policy di accesso alle API H-Node tramite IAM/ACL.
+- Eventi di logging/notarizzazione: deploy, execution, errori, quarantena.
+
+**Dipendenze Tecniche:**
+- MicroVM Runtime (microkernel-based).
+- cgroups, mount/namespace, net namespace, seccomp, time namespace per enforcement isolamento.
+- IAM Engine per gestione accessi e ACL.
+- Bit-Energy Ledger per notarizzazione eventi.
+- SAST Engine per analisi statica pre-deploy.
+- SOC multilivello per ricezione alert e gestione incidenti.
+- Pipeline di recovery automatica (Clean-Slate Recovery).
+- Compliance con standard Kyoto 2.0.
+
+**Nota:** Queste scelte architetturali e variabili sono fondamentali per la sicurezza, la resilienza e la compliance del framework AETERNA, e costituiscono la base tecnica per i capitoli successivi su gestione risorse, sicurezza runtime e auditabilità.

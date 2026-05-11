@@ -1,0 +1,27 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Governance multilivello e distribuita:** Separazione tra livelli strategico (CAR), operativo (NOT), tecnico (CRT) e locale (Node Operator), con segregazione dei compiti e tracciabilità delle azioni.
+- **Decentralizzazione e trasparenza:** Tutte le modifiche infrastrutturali e procedurali sono soggette a processi di validazione multilivello e audit trail immutabile.
+- **Integrazione nativa con blockchain Kyoto 2.0:** Utilizzo per notarizzazione di proposte, revisioni, delibere e implementazioni tramite smart contract, garantendo auditabilità e automazione delle policy (revoche, lockdown, aggiornamenti).
+- **Automazione delle policy di sicurezza:** Revoche e aggiornamenti propagati automaticamente tramite smart contract su tutti i livelli (Edge, Fog, Cloud).
+- **RBAC/ABAC rigoroso:** Policy di accesso granulari per ogni ruolo, con privilegi minimi necessari e segregazione dei log e delle funzioni critiche.
+- **Flusso decisionale standardizzato:** Proposte (NOT) → Revisione tecnica (CRT) → Delibera strategica (CAR) → Implementazione (Node Operator), con tracciamento e verifica a ogni passaggio.
+
+**Variabili Introdotte:**
+- **Audit_Reference:** Identificatore univoco per ogni proposta/intervento, associato a hash dei payload e tracciato su blockchain.
+- **RBAC/ABAC Levels:** Diversi livelli di accesso per CAR, NOT, CRT, Node Operator.
+- **Smart contract Kyoto 2.0:** Attivati per propagazione policy, revoche, aggiornamenti e notarizzazione degli esiti.
+- **Strumenti di audit e verifica:** SIEM/AI per NOT, piattaforme di code review integrate con blockchain per CRT, dashboard dedicate per CAR e Node Operator.
+- **H-KMS/F-KMS/KMS Centrale:** Sistemi di gestione delle chiavi per i Node Operator, differenziati per livello (Edge, Fog, Cloud).
+
+**Dipendenze Tecniche:**
+- **Blockchain Kyoto 2.0:** Fondamentale per audit trail, notarizzazione, automazione policy e compliance.
+- **API RESTful sicure:** Per comunicazione tra organi (es. reportistica, submission proposte, notifiche aggiornamenti).
+- **Sistemi SIEM/AI:** Per monitoraggio, rilevazione anomalie e supporto decisionale operativo.
+- **Tool di deployment automatizzato:** Per implementazione e rollback controllato degli aggiornamenti sui nodi.
+- **Piattaforme di code review integrate:** Necessarie per la revisione tecnica e la notarizzazione degli esiti CRT.
+- **Canali di comunicazione cifrati:** Per sessioni deliberative e notifiche di sicurezza.
+
+**Sintesi:**  
+Il modello di governance distribuita di AETERNA si basa su una stratificazione funzionale, processi di validazione multilivello, automazione delle policy tramite smart contract e tracciabilità su blockchain, con ruoli e privilegi segregati e strumenti tecnici integrati per garantire sicurezza, compliance, trasparenza e scalabilità.

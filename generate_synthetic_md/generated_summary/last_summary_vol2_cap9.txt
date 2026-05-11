@@ -1,0 +1,33 @@
+**Riassunto Denso – Virtualizzazione delle Risorse (V-Energy)**
+
+**Decisioni Architetturali:**
+- **Virtualizzazione Energetica tramite V-Energy Instance:** Ogni risorsa energetica virtuale (batteria, carico, generazione) è implementata come container isolato, identificato da UUID e gestito tramite metadati standardizzati.
+- **Containerizzazione con Docker-Grid:** Layer di orchestrazione container-native integrato in cluster Fog/Cloud, abilitante provisioning/deprovisioning automatizzato, isolamento processi, scalabilità orizzontale/verticale, fault-tolerance e gestione stato/persistenza tramite snapshot replicati.
+- **Orchestrazione AI-aware:** Scheduling delle istanze su nodi ottimali (Fog/Cloud) tramite scheduler AI, minimizzando latenza e bilanciando carico.
+- **Pipeline di provisioning:** Flusso automatizzato che include autenticazione (Kyoto 2.0 mutual TLS), autorizzazione (JWT Bit-Energy), validazione policy, scheduling, creazione container, iniezione configurazione, monitoraggio/logging, deprovisioning e audit log.
+- **Sicurezza e Compliance:** Tutte le comunicazioni e i nodi sono autenticati/cifrati (Kyoto 2.0), ogni istanza riceve token JWT per accesso/audit, policy enforce a livello orchestrator/container, audit log firmati e replicati.
+- **Interoperabilità:** API GraphQL (con fallback REST) per tutte le operazioni, compatibilità multi-cluster federata (migrazione live tra Fog/Cloud), schema metadati condiviso per integrazione con dashboard, automazione e trading P2P.
+
+**Variabili Introdotte:**
+- `instanceUUID`: identificatore univoco istanza
+- `type`: tipologia risorsa virtuale
+- `provisionedAt`: timestamp creazione
+- `state`: stato attuale (running, stopped, failed, terminated)
+- `policyRef`: riferimento policy Bit-Energy
+- `consistencyLevel`: livello consistenza (Edge, Fog, Cloud)
+- `resourceLimits`: limiti CPU/RAM/Storage
+- `auditLogRef`: riferimento audit log
+- `networkNamespace`: namespace di rete isolato
+- `snapshotRefs`: riferimenti snapshot di stato
+
+**Dipendenze Tecniche:**
+- **Docker-Grid**: orchestrazione containerizzata
+- **API GraphQL**: gestione provisioning, scaling, monitoring
+- **Kyoto 2.0 mutual TLS**: autenticazione/cifratura nodi e API
+- **JWT Bit-Energy**: identità e autorizzazione istanze
+- **Storage distribuito (Fog/Cloud)**: persistenza snapshot e audit log
+- **Scheduler AI-aware**: ottimizzazione allocazione risorse
+- **Ledger/AI Snapshot**: referenziazione stato energetico virtuale
+- **Cluster di osservabilità**: raccolta metriche/log
+
+Queste scelte abilitano provisioning rapido, resilienza, auditabilità, scalabilità e integrazione, costituendo la base per la gestione predittiva e sicura delle micro-reti AETERNA.

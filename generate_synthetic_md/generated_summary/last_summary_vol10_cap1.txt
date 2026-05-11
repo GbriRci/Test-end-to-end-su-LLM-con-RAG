@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello** (Edge, Fog, Cloud) con microservizi, blockchain (Bit-Energy) e AI integrati.
+- **Piano di Disaster Recovery (DR) multilivello**: include analisi di impatto (BIA), classificazione dei servizi per criticità, e definizione di RTO/RPO.
+- **Cluster ad alta disponibilità (HA)** per servizi critici (autenticazione federata, notarizzazione blockchain, database transazionale), con **replica geografica sincrona** e **bilanciamento del carico** tramite ingress controller/load balancer.
+- **Topologia active-active** per autenticazione federata su almeno tre data center, con failover automatico via heartbeat (WebSocket sicuro).
+- **Strategie di backup**: backup incrementali orari per dati volatili, snapshot giornalieri orchestrati da Kubernetes VolumeSnapshot, storage geo-distribuito (S3-compatible), replica multi-master per database.
+- **Automazione del ripristino**: provisioning infrastrutturale con Ansible/Terraform, operator Kubernetes custom per failover/restore, disaster recovery drill periodici con audit notarizzato su blockchain.
+- **Monitoraggio proattivo**: stack Prometheus/Grafana + AI anomaly detection, notifiche multi-livello (email, webhook, Collaboration Portal) ai ruoli operativi.
+- **Policy-as-code**: policy DR versionate su GitOps, validazione automatica, audit trail tracciato e simulato in staging prima del rilascio.
+
+**Variabili Introdotte:**
+- **Criticità del servizio** (Alta, Media, Bassa)
+- **RTO (Recovery Time Objective)** e **RPO (Recovery Point Objective)** per ogni servizio
+- **Matrice di impatto** per guidare priorità e soluzioni DR
+- **Audit_Reference** per tracciamento policy e operazioni
+- **Ruoli operativi**: Edge Maintainer, Fog Operator, Data Steward, Audit Committee
+
+**Dipendenze Tecniche:**
+- **Bit-Energy Blockchain** per notarizzazione eventi DR e audit trail
+- **Kubernetes** (operator custom, VolumeSnapshot, pod rescheduling)
+- **Ansible/Terraform** per provisioning e automazione infrastrutturale
+- **Prometheus, Grafana, AI anomaly detection** per monitoraggio e alerting
+- **S3-compatible object storage** per backup/snapshot geo-distribuiti
+- **HSM dedicati** per gestione chiavi di cifratura (AES-256)
+- **GitOps** per versionamento e validazione policy-as-code
+- **WebSocket sicuro** per heartbeat tra nodi autenticazione
+
+Queste scelte garantiscono resilienza, continuità operativa e compliance, costituendo la base tecnica per i capitoli successivi.

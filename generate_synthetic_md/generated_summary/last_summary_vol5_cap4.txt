@@ -1,0 +1,26 @@
+**Riassunto Denso – Gestione Errori e Resilienza in AETERNA**
+
+**Decisioni Architetturali:**
+- **Architettura multilivello**: gestione errori distribuita su Edge, Fog e Cloud.
+- **Comunicazioni sicure**: tutti i canali tra microservizi sono autenticati e cifrati tramite mTLS.
+- **Retry intelligente**: ogni chiamata sincrona (REST/gRPC) implementa retry con backoff esponenziale, parametrizzabile per servizio.
+- **Timeout e fallback**: timeout configurabili per categoria di servizio (`critical`, `standard`, `low-priority`), con fallback automatico su canali alternativi e handler di fallback per risposte degradate o cache-based.
+- **Circuit Breaker Pattern**: microservizi critici integrano circuit breaker (Hystrix/Resilience4j) con threshold dinamici, stati (`Closed`, `Open`, `Half-Open`) e notifica automatica al sistema di monitoraggio.
+- **Graceful degradation**: degradazione funzionale controllata per servizi non critici.
+- **Monitoraggio centralizzato**: Prometheus per metriche, ELK Stack per log strutturati, notarizzazione eventi critici su Bit-Energy Ledger, alerting automatico (PagerDuty, Opsgenie).
+- **Gestione code/messaggi**: RabbitMQ/Kafka con dead-letter queue (DLQ), retry policy parametrica, persistenza transazionale, supporto replay/idempotenza.
+- **Auditabilità**: tutti gli errori critici sono notarizzati su ledger per compliance e tracciabilità.
+
+**Variabili Introdotte:**
+- **Parametri retry**: `max_attempts` (3-5), `initial_delay` (500ms), `max_delay` (5s), `jitter` (±20%).
+- **Timeout per categoria**: `critical` (2s), `standard` (5s), `low-priority` (10s).
+- **Threshold circuit breaker**: `error_rate` (>50% su 10 richieste), `timeout_window` (30s), `half-open_test` (1 richiesta/10s).
+- **DLQ retention**: 48h (critical), 24h (standard), 12h (low-priority), con alert se >100 messaggi pendenti.
+- **Metadati logging**: `correlation_id`, `error_code`, `risk_level`, `energy_zone_id`, `degraded_mode`, `notarized`.
+
+**Dipendenze Tecniche:**
+- **Librerie/Framework**: Hystrix/Resilience4j (circuit breaker), Prometheus (monitoraggio), ELK Stack (logging), RabbitMQ/Kafka (message broker), Bit-Energy Ledger (notarizzazione), PagerDuty/Opsgenie (alerting).
+- **Protocolli**: mTLS per comunicazioni, REST/gRPC per sincrono, message broker per asincrono.
+- **Configurabilità**: policy di retry, timeout, threshold circuit breaker e retention DLQ sono parametrizzabili per servizio e categoria.
+
+Queste scelte garantiscono resilienza, auditabilità e continuità operativa, ponendo le basi tecniche per i capitoli successivi su orchestrazione, sicurezza e compliance.

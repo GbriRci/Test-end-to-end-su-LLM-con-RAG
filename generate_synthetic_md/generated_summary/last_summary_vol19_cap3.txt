@@ -1,0 +1,29 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Motore di policy automatizzate**: Utilizzo di Open Policy Agent (OPA) integrato come microservizio per la gestione delle responsabilità, con policy versionate, firmate digitalmente e distribuite tramite pipeline CI/CD.
+- **Logging certificato e immutabile**: Ogni operazione critica è loggata localmente (H-Node/Fog/Cloud), hashata (SHA-256), firmata digitalmente, sincronizzata su storage WORM e Bit-Energy Blockchain (ISO/IEC 27001), indicizzata via UUID v4 e correlata a identità digitale (OpenID Connect). Accesso tramite RBAC/ABAC, retention minima 10 anni (Kyoto 2.0).
+- **Integrazione assicurativa**: Esposizione e consumo di API RESTful sicure (TLS 1.3, mutual authentication) per interfacciamento con provider assicurativi esterni. Gestione automatica di verifica coperture, notifica sinistri (payload JSON firmato), e aggiornamento pratiche tramite webhook.
+- **Segregazione ruoli/accountability**: Enforcement tramite OPA e IAM federato; mapping e versionamento tra identità digitale, ruoli e responsabilità. Accessi e responsabilità granulari per owner H-Node, operatori Fog, provider Cloud, provider assicurativo.
+- **Simulazione incidenti**: Moduli di chaos engineering per validare la catena di responsabilità e la tempestività delle notifiche assicurative, con report archiviati e versionati per audit.
+
+**Variabili Introdotte:**
+- **Ruoli**: owner H-Node, operatore Fog, provider Cloud, provider assicurativo.
+- **Responsabilità**: configurazione locale, manutenzione/monitoraggio, orchestrazione AI, gestione sinistri.
+- **Tipologie di copertura**: RC danni a terzi, danni da AI, cyber risk, RC professionale, copertura sinistri micro-reti.
+- **Eventi critici**: modifica parametri AI, override manuale, attivazione/disattivazione nodi, trading P2P sopra soglia.
+- **Identificativi**: UUID v4 per log/eventi, timestamp UTC (NTP), hash SHA-256, firma digitale.
+
+**Dipendenze Tecniche:**
+- **OPA** per policy e segregazione ruoli.
+- **Pipeline CI/CD** per distribuzione policy.
+- **SHA-256, firma digitale** per integrità e autenticità log.
+- **Storage WORM, Bit-Energy Blockchain** per immutabilità e audit trail.
+- **OpenID Connect** per identità digitale.
+- **RBAC/ABAC** per controllo accessi.
+- **API RESTful (TLS 1.3, mutual auth)** per integrazione assicurativa.
+- **Webhook** per aggiornamento pratiche sinistri.
+- **Standard ISO/IEC 27001, Kyoto 2.0** per compliance e retention.
+- **Moduli chaos engineering** per validazione incidenti.
+
+Queste scelte abilitano tracciabilità, automazione delle responsabilità, gestione tempestiva dei sinistri e compliance normativa, costituendo la base tecnica per i capitoli successivi.

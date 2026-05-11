@@ -1,0 +1,26 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche**
+
+**Decisioni Architetturali:**
+- **Sette Pilastri**: L’architettura di AETERNA si fonda su accessibilità universale, trasparenza dei flussi, partecipazione attiva, resilienza infrastrutturale, sostenibilità ambientale, sicurezza dei dati, giustizia distributiva. Ogni pilastro è tradotto in componenti tecniche e policy enforceable tramite smart contract.
+- **Bit-Energy**: Nuova unità di misura digitale, multidimensionale e tokenizzata, che integra valore economico (kWh), impatto ambientale (Carbon Index), contributo sociale (metadati solidali). Ogni transazione è tracciata su blockchain privata.
+- **Onboarding e Interoperabilità**: Provisioning automatico degli H-Node tramite QR code crittografico, auto-configurazione P2P, wallet Bit-Energy, API per dispositivi legacy/IoT.
+- **Governance Distribuita**: Voting engine e smart contract per policy energetiche locali (Fog Layer), incentivazione tramite reward Bit-Energy.
+- **Resilienza e Sicurezza**: Dynamic Topology Management, disaster recovery, autenticazione hardware (Secure Element), cifratura E2E, anomaly detection AI.
+- **Audit e Compliance**: Ledger distribuiti, explorer pubblico, protocolli di audit (hash chaining, timestamping), compliance Kyoto 2.0.
+- **Redistribuzione e Bilanciamento**: Algoritmi predittivi AI per bilanciamento Bit-Energy, enforcement di quote minime, redistribuzione automatica in caso di deficit.
+
+**Variabili Introdotte:**
+- **Bit-Energy Token**: Attributi chiave: ID Token (UUID), valore energetico (kWh), impatto ambientale (float), contributo sociale (JSON), provenienza (ID H-Node), timestamp (ISO8601), storico transazioni (array hash).
+- **Indicatori di Compliance**: % utenti attivi, tempo onboarding, % transazioni tracciate, # proposte/voti, MTTR, % uptime, CO2 evitata, % energia rinnovabile, # incidenti, % dati cifrati, % utenti sotto soglia.
+- **Policy Parametriche**: Soglie minime Bit-Energy, priorità green, dynamic pricing Bit-Energy/kWh, reward/penalità.
+
+**Dipendenze Tecniche:**
+- **Blockchain Privata**: Per tracciabilità, auditabilità e non ripudiabilità delle transazioni energetiche.
+- **Smart Contract**: Per automazione di policy, redistribuzione, incentivazione, enforcement di regole di equità e sostenibilità.
+- **AI Predittiva**: Macro Forecasting per bilanciamento e ottimizzazione redistribuzione Bit-Energy.
+- **Secure Element**: Per gestione sicura delle chiavi crittografiche su H-Node.
+- **API e Interoperabilità**: Necessarie per integrazione con dispositivi eterogenei e legacy.
+- **Explorer Pubblico e Dashboard**: Per trasparenza e visualizzazione in tempo reale dei flussi energetici.
+- **Disaster Recovery e Topology Management**: Per resilienza e continuità operativa.
+
+Queste scelte strutturano la piattaforma AETERNA come modello di democrazia energetica digitale, abilitando governance distribuita, inclusione, sostenibilità e sicurezza by design.

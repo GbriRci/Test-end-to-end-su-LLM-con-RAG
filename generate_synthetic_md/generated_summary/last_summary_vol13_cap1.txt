@@ -1,0 +1,30 @@
+**Riassunto Denso – Decisioni Architetturali, Variabili e Dipendenze Tecniche (Progetto AETERNA, max 300 parole)**
+
+**Decisioni Architetturali:**
+- **Adozione sistematica di standard IEC/ISO** come fondamento architetturale per garantire interoperabilità, sicurezza, resilienza e scalabilità tra componenti eterogenei (Edge, Fog, Cloud).
+- **Sicurezza by design**: Implementazione di un ISMS conforme a ISO/IEC 27001, con controlli specifici (Annex A) e logging centralizzato secondo ISO/IEC 27002.
+- **Gestione federata delle identità**: SAML 2.0 per Single Sign-On e federazione tra domini AETERNA e provider esterni; OAuth 2.0 per delega sicura degli accessi API.
+- **PKI interna** conforme a ISO/IEC 9594-8 (X.509) per gestione certificati digitali, CRL e OCSP.
+- **RESTful API** documentate con OpenAPI 3.0; validazione automatica di schemi (JSON, XML/XSD) in pipeline CI/CD.
+- **Messaggistica MQTT** (v3.1.1/5.0, QoS 1-2) su TLS 1.3 per comunicazione tra H-Node e Fog.
+- **Audit trail immutabile**: Logging su storage S3 geo-ridondato, hash su blockchain Bit-Energy per integrità e non ripudiabilità.
+- **Testing automatizzato**: Suite per verifica conformità OpenAPI/XSD (Dredd, Postman), penetration test periodici secondo ISO/IEC 27035.
+
+**Variabili Introdotte:**
+- **Cifratura dati**: In transito (TLS 1.3, ECDHE, AES-256-GCM, forward secrecy); a riposo (AES-256, chiavi gestite via HSM, rotazione semestrale).
+- **Policy RBAC** granulari su tutti i livelli (Edge, Fog, Cloud).
+- **Token OAuth 2.0**: Scope limitati, refresh token short-lived.
+- **Schemi XSD** pubblicati/versionati per validazione dati.
+- **Assertion SAML** firmate, con scadenza temporale stretta.
+- **Analisi comportamentale AI-driven** (Isolation Forest) per rilevamento accessi anomali.
+
+**Dipendenze Tecniche:**
+- **TLS 1.3** per tutte le comunicazioni sicure.
+- **HSM** per gestione sicura delle chiavi di cifratura.
+- **S3 geo-ridondato** per storage log/audit.
+- **Blockchain Bit-Energy** per hash e integrità dei log.
+- **CI/CD** per validazione automatica degli schemi.
+- **PKI interna** per gestione certificati e validazione SAML.
+- **Strumenti di test** (Dredd, Postman) e framework di penetration testing.
+
+Queste scelte e variabili costituiscono la base tecnica e organizzativa per i successivi capitoli, abilitando sicurezza, interoperabilità e compliance nell’ecosistema AETERNA.
