@@ -30,8 +30,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import google.generativeai as genai
 import langchain
-
-# import logging
 import numpy as np
 from openai import OpenAI
 
@@ -41,8 +39,12 @@ langchain.debug = True
 load_dotenv(dotenv_path=Path(__file__).with_name(".env"))
 genai.configure(api_key=os.getenv("GENAI_API_KEY"))
 
+
 DATA_PATH = "synthetic_data/"
-CHROMA_PATH = "chatbot_Ollama/chroma_db/"
+CHROMA_PATH_ANTIMATERIA = "..generate_vector_DB/chroma_db_ANTIMATERIA/"
+CHROMA_PATH_AETERNA = "../generate_vector_DB/chroma_db_AETERNA/"
+
+
 PROPT_TEMPLATE = """
         Answer the question based only on the following context: {context}
        
@@ -60,19 +62,19 @@ SYSTEM_PROMPT = (
 )
 
 
-# LOAD DATAS
-def load_documents():
-    document_loader = PyPDFDirectoryLoader(DATA_PATH)
-    return document_loader.load()
+# # LOAD DATAS
+# def load_documents():
+#     document_loader = PyPDFDirectoryLoader(DATA_PATH)
+#     return document_loader.load()
 
 
-# SPLITTING => per creare i chunk
-def split_documents(documents: list[Document]):
-    text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-        chunk_size=250,
-        chunk_overlap=30,
-    )
-    return text_splitter.split_documents(documents)
+# # SPLITTING => per creare i chunk
+# def split_documents(documents: list[Document]):
+#     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+#         chunk_size=250,
+#         chunk_overlap=30,
+#     )
+#     return text_splitter.split_documents(documents)
 
 
 # EMBEDDING => ritorna una funzionalità di embedding (perchè la usi sia per creare il db che per rispondere)
@@ -84,7 +86,7 @@ def get_embeddings_function():
 # istanzioaione del db
 def create_chroma_db():
     return Chroma(
-        persist_directory=CHROMA_PATH,
+        persist_directory=CHROMA_PATH_AETERNA,
         embedding_function=get_embeddings_function(),
         collection_metadata={"hnsw:space": "cosine"},
     )
@@ -98,6 +100,14 @@ def get_model():
         num_predict=256,
         timeout=300,
     )
+    # return ChatOpenAI(
+    #     model="gpt-4.1",
+    #     api_key="any",
+    #     openai_api_base="http://100.120.12.105:14141/v1",
+    #     temperature=0,
+    #     max_retries=5,
+    #     timeout=300,
+    # )
 
 
 def get_evaluation_model():
@@ -116,13 +126,13 @@ def get_evaluation_model():
     #     timeout=60,
     #     model_kwargs={"response_format": {"type": "text"}},
     # )
-    return ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
-        api_key=os.getenv("GENAI_API_KEY"),
-        temperature=0,
-        max_retries=5,
-        timeout=300,
-    )
+    # return ChatGoogleGenerativeAI(
+    #     model="gemini-2.5-flash",
+    #     api_key=os.getenv("GENAI_API_KEY"),
+    #     temperature=0,
+    #     max_retries=5,
+    #     timeout=300,
+    # )
     # https://openrouter.ai
     # return ChatOpenAI(
     #     model_name="poolside/laguna-m.1:free",
@@ -132,53 +142,53 @@ def get_evaluation_model():
     #     max_retries=3,
     #     timeout=180,
     # )
-    # return ChatOpenAI(
-    #     model="gpt-4.1",
-    #     api_key="any",
-    #     openai_api_base="http://100.120.12.105:14141/v1",
-    #     temperature=0,
-    #     max_retries=5,
-    #     timeout=300,
-    # )
+    return ChatOpenAI(
+        model="gpt-4.1",
+        api_key="any",
+        openai_api_base="http://100.120.12.105:14141/v1",
+        temperature=0,
+        max_retries=5,
+        timeout=300,
+    )
 
 
 # ID UNIVOCO CHUNK => per la modifica del DB
-def calculate_chunk_ids(chunks):
-    last_page_id = None
-    current_chunk_index = 0
-    for chunk in chunks:
-        source = chunk.metadata.get("source")
-        page = chunk.metadata.get("page")
-        current_page_id = f"{source}:{page}"
-        if current_page_id == last_page_id:
-            current_chunk_index += 1
-        else:
-            current_chunk_index = 0
-        chunk_id = f"{current_page_id}:{current_chunk_index}"
-        last_page_id = current_page_id
-        chunk.metadata["id"] = chunk_id
-    return chunks
+# def calculate_chunk_ids(chunks):
+#     last_page_id = None
+#     current_chunk_index = 0
+#     for chunk in chunks:
+#         source = chunk.metadata.get("source")
+#         page = chunk.metadata.get("page")
+#         current_page_id = f"{source}:{page}"
+#         if current_page_id == last_page_id:
+#             current_chunk_index += 1
+#         else:
+#             current_chunk_index = 0
+#         chunk_id = f"{current_page_id}:{current_chunk_index}"
+#         last_page_id = current_page_id
+#         chunk.metadata["id"] = chunk_id
+#     return chunks
 
 
 # CREARE IL VECTOR DB (questa funzione permette anche la modifica)
-def add_to_chroma(chunks: list[Document]):
-    db = create_chroma_db()
-    # id sono sempre inclisi di defautl
-    existing_items = db.get(include=[])
-    existing_ids = set(existing_items["ids"])
-    print(f"Erano già presenti id: {len(existing_ids)}")
-    chunks_with_ids = calculate_chunk_ids(chunks)
-    new_chunks = []
-    for chunk in chunks_with_ids:
-        if chunk.metadata["id"] not in existing_ids:
-            new_chunks.append(chunk)
-    if len(new_chunks):
-        print(f"Aggiunta di {len(new_chunks)} nuovi chunk...")
-        new_chunks_ids = [chunk.metadata["id"] for chunk in new_chunks]
-        db.add_documents(new_chunks, ids=new_chunks_ids)
-    else:
-        print("Nessun nuovo documento da aggiungere.")
-    return db
+# def add_to_chroma(chunks: list[Document]):
+#     db = create_chroma_db()
+#     # id sono sempre inclisi di defautl
+#     existing_items = db.get(include=[])
+#     existing_ids = set(existing_items["ids"])
+#     print(f"Erano già presenti id: {len(existing_ids)}")
+#     chunks_with_ids = calculate_chunk_ids(chunks)
+#     new_chunks = []
+#     for chunk in chunks_with_ids:
+#         if chunk.metadata["id"] not in existing_ids:
+#             new_chunks.append(chunk)
+#     if len(new_chunks):
+#         print(f"Aggiunta di {len(new_chunks)} nuovi chunk...")
+#         new_chunks_ids = [chunk.metadata["id"] for chunk in new_chunks]
+#         db.add_documents(new_chunks, ids=new_chunks_ids)
+#     else:
+#         print("Nessun nuovo documento da aggiungere.")
+#     return db
 
 
 # RAG LOCALLY
@@ -251,13 +261,13 @@ def get_ragas_metrics():
     ollama_emb = get_embeddings_function()
     ragas_embeddings = LangchainEmbeddingsWrapper(ollama_emb)
     all_metrics = [
-        # Faithfulness(llm=ragas_llm),
-        # AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
-        # ContextPrecision(llm=ragas_llm),
+        Faithfulness(llm=ragas_llm),
+        AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
+        ContextPrecision(llm=ragas_llm),
         ContextRecall(llm=ragas_llm),
-        # NoiseSensitivity(llm=ragas_llm),
-        # SemanticSimilarity(embeddings=ragas_embeddings),
-        # AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
+        NoiseSensitivity(llm=ragas_llm),
+        SemanticSimilarity(embeddings=ragas_embeddings),
+        AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
     ]
     return all_metrics
 
@@ -291,33 +301,34 @@ def main():
     # chunks = split_documents(docs)
     # db = add_to_chroma(chunks)
 
-    expected_response = "La Melassa di Antimateria utilizzata in Fase A deve rispettare i seguenti parametri: 34.5% di Anti-Saccarosio"
-    question = "Quanto Anti-Saccarosio deve contenere la Melassa di Antimateria utilizzata in Fase A?"
-    # print(f"\n--- DOMANDA ---\n{question}")
+    # expected_response = "La Melassa di Antimateria utilizzata in Fase A deve rispettare i seguenti parametri: 34.5% di Anti-Saccarosio"
+    # question = "Quanto Anti-Saccarosio deve contenere la Melassa di Antimateria utilizzata in Fase A?"
+    question = "Qual è il periodo minimo di autonomia operativa richiesto per una micro-grid secondo lo standard Kyoto 2.0?"
+    print(f"\n--- DOMANDA ---\n{question}")
 
-    # response_stream, sources, retrieved_texts, scores = query_rag(question)
-    # full_response = ""
-    # print("\n--- RISPOSTA ---")
-    # for chunk in response_stream:
-    #     print(chunk.content, end="", flush=True)
-    #     full_response += chunk.content
-    # print("\n")
-    # print(f"\n--- FONTI UTILIZZATE ---\n{', '.join(sources)}\n")
-    # print(f"\n--- TESTO RECUPERATO ---\n{retrieved_texts}\n")
-    # print(f"\n--- PUNTEGGI ---\n{scores}\n")
+    response_stream, sources, retrieved_texts, scores = query_rag(question)
+    full_response = ""
+    print("\n--- RISPOSTA ---")
+    for chunk in response_stream:
+        print(chunk.content, end="", flush=True)
+        full_response += chunk.content
+    print("\n")
+    print(f"\n--- FONTI UTILIZZATE ---\n{', '.join(sources)}\n")
+    print(f"\n--- TESTO RECUPERATO ---\n{retrieved_texts}\n")
+    print(f"\n--- PUNTEGGI ---\n{scores}\n")
 
-    retrieved_texts = [
-        "Indice di Rifrazione Emotiva1.618 Adimensionale\n1.2 Comportamento Anomalo\nL'Etere Liquido presenta memoria di forma inversa: ricorda dove NON è stato. Questo fenomeno, noto come\nEffetto Amnesia Spaziale, si manifesta a temperature superiori a +200 Gradi Fluttuanti.\n2. Composizione della Melassa di Antimateria\nLa Melassa di Antimateria utilizzata in Fase A deve rispettare i seguenti parametri:\nComponente PercentualeTolleranza\nAnti-Saccarosio 34.5% ±0.8%\nParticelle di Vuoto Condensato 28.2% ±1.2%\nEstratto di Silenzio Liquefatto 19.7% ±0.5%\nStabilizzante E-999 (Polvere di Stelle Spente)12.1% ±0.3%",
-        "Logistiche e Gestione Materiali.md 2026-04-09\n2 / 4\nParametro Requisito\nRotazione stock FIFO rigoroso\nShelf life 90 giorni dalla produzione\n2.2 Melassa di Antimateria\nContenitore: Fusti schermati Classe Ω (Codice FUS-Ω-200)\nCapacità fusto: 200 kg netti\nTemperatura stoccaggio: ambiente (15-25°C terrestri)\nUmidità relativa massima: 35%\nImpilamento massimo: 2 fusti\nArea dedicata: Magazzino B, settore B-7 (superficie 85 m²)\n2.3 Sincro-Cristalli Finiti\nClasse QualitàContenitore Quantità per UnitàCodice Imballo\nPremium (P) Cofanetto antilevitazione AL-P112 cristalli PKG-PRM-12",
-        "Logistiche e Gestione Materiali.md 2026-04-09\n3 / 4\nMateriale Scorta MinimaPunto di Riordino Lotto EconomicoLead Time\nEtere Liquido 8 bombole 20 bombole 12 bombole 14 giorni\nMelassa Antimateria 4 fusti 10 fusti 8 fusti 21 giorni\nVortexCat 3000 2 kg 5 kg 4 kg 7 giorni\nTè Freddo pH 9.2 200 L 500 L 400 L 3 giorni\nGuarnizioni GRN-SUV-2278 pz 20 pz 24 pz 10 giorni\n4.2 Fornitori Qualificati\nMateriale Fornitore Codice Fornitore Rating\nEtere Liquido EtherCorp UniversaleSUP-001-EC A+\nMelassa AntimateriaAntiMatter Solutions Ltd SUP-002-AM A\nVortexCat 3000 Catalysis Infinita SpASUP-003-CI A\nTè Freddo Oolong Cosmico GmbHSUP-004-OC B+",
-    ]
-    full_response = "La melassa di antimateria utilizzata in fase A deve contenere 34.5% di anti-saccarosio, con una toleranza di ±0.8%."
+    # retrieved_texts = [
+    #     "Indice di Rifrazione Emotiva1.618 Adimensionale\n1.2 Comportamento Anomalo\nL'Etere Liquido presenta memoria di forma inversa: ricorda dove NON è stato. Questo fenomeno, noto come\nEffetto Amnesia Spaziale, si manifesta a temperature superiori a +200 Gradi Fluttuanti.\n2. Composizione della Melassa di Antimateria\nLa Melassa di Antimateria utilizzata in Fase A deve rispettare i seguenti parametri:\nComponente PercentualeTolleranza\nAnti-Saccarosio 34.5% ±0.8%\nParticelle di Vuoto Condensato 28.2% ±1.2%\nEstratto di Silenzio Liquefatto 19.7% ±0.5%\nStabilizzante E-999 (Polvere di Stelle Spente)12.1% ±0.3%",
+    #     "Logistiche e Gestione Materiali.md 2026-04-09\n2 / 4\nParametro Requisito\nRotazione stock FIFO rigoroso\nShelf life 90 giorni dalla produzione\n2.2 Melassa di Antimateria\nContenitore: Fusti schermati Classe Ω (Codice FUS-Ω-200)\nCapacità fusto: 200 kg netti\nTemperatura stoccaggio: ambiente (15-25°C terrestri)\nUmidità relativa massima: 35%\nImpilamento massimo: 2 fusti\nArea dedicata: Magazzino B, settore B-7 (superficie 85 m²)\n2.3 Sincro-Cristalli Finiti\nClasse QualitàContenitore Quantità per UnitàCodice Imballo\nPremium (P) Cofanetto antilevitazione AL-P112 cristalli PKG-PRM-12",
+    #     "Logistiche e Gestione Materiali.md 2026-04-09\n3 / 4\nMateriale Scorta MinimaPunto di Riordino Lotto EconomicoLead Time\nEtere Liquido 8 bombole 20 bombole 12 bombole 14 giorni\nMelassa Antimateria 4 fusti 10 fusti 8 fusti 21 giorni\nVortexCat 3000 2 kg 5 kg 4 kg 7 giorni\nTè Freddo pH 9.2 200 L 500 L 400 L 3 giorni\nGuarnizioni GRN-SUV-2278 pz 20 pz 24 pz 10 giorni\n4.2 Fornitori Qualificati\nMateriale Fornitore Codice Fornitore Rating\nEtere Liquido EtherCorp UniversaleSUP-001-EC A+\nMelassa AntimateriaAntiMatter Solutions Ltd SUP-002-AM A\nVortexCat 3000 Catalysis Infinita SpASUP-003-CI A\nTè Freddo Oolong Cosmico GmbHSUP-004-OC B+",
+    # ]
+    # full_response = "La melassa di antimateria utilizzata in fase A deve contenere 34.5% di anti-saccarosio, con una toleranza di ±0.8%."
 
-    # validate(question=question, expected_response=expected_response)
-    database = get_ragas_database(
-        question, retrieved_texts, expected_response, full_response
-    )
-    ragas_evaluation(database, get_ragas_metrics())
+    # # validate(question=question, expected_response=expected_response)
+    # database = get_ragas_database(
+    #     question, retrieved_texts, expected_response, full_response
+    # )
+    # ragas_evaluation(database, get_ragas_metrics())
 
 
 if __name__ == "__main__":
