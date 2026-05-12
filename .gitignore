@@ -3,5 +3,4 @@ __pycache__/
 chroma_db/
 *.bin
 *.sqlite3
-grafi/
 *.png
