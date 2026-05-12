@@ -237,7 +237,6 @@ L’implementazione del Manifesto della Democrazia Energetica all’interno di A
 
 Dal punto di vista infrastrutturale, la resilienza e la sicurezza sono assicurate da protocolli di riconfigurazione dinamica e auditing distribuito, mentre l’adozione di smart contract e AI predittiva permette una gestione ottimale e proattiva delle risorse. L’impatto complessivo si traduce in una **maggiore autonomia urbana**, una riduzione delle disuguaglianze energetiche e una significativa accelerazione verso gli obiettivi di sostenibilità e compliance Kyoto 2.0, ponendo AETERNA come modello di riferimento per la democrazia energetica digitale.
 
----
 
 ---
 
