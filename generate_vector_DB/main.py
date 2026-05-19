@@ -7,14 +7,13 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
-from torch import chunk
 
 
 CHROMA_PATH = "./chroma_db_AETERNA/"
 DATA_PATH = "../synthetic_data_AETERNA"
 
 
-def load_documents():
+def load_documents(DATA_PATH=DATA_PATH):
     # document_loader = PyPDFDirectoryLoader(DATA_PATH) # => PDF
     document_loader = DirectoryLoader(
         DATA_PATH, glob="**/*.md", loader_cls=UnstructuredMarkdownLoader  # => MD

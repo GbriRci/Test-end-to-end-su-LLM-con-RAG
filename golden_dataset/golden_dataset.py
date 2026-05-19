@@ -38,17 +38,15 @@ def benchmark_answer_and_evaluation():
 
 
 def benchmark_evaluation_only():
-    with open(
-        "./golden_dataset/risultati/risultati_eval_Ollama.csv", "r", encoding="utf-8"
-    ) as f:
+    with open("./chatbot_Ollama/results.csv", "r", encoding="utf-8") as f:
         file = pd.read_csv(f).to_dict(orient="records")
     results = []
-    for row in file[1:8]:
+    for row in file:
         print(f"Valutando: {row['question']}")
         try:
-            retrieved_chunks = ast.literal_eval(row["retrieved_chunks_text"])
+            retrieved_chunks = ast.literal_eval(row["retrieved_contexts"])
         except:
-            retrieved_chunks = [row["retrieved_chunks_text"]]
+            retrieved_chunks = [row["retrieved_contexts"]]
         dataset = get_ragas_database(
             row["question"],
             retrieved_chunks,
@@ -62,7 +60,7 @@ def benchmark_evaluation_only():
             "difficulty": [row["difficulty"]],
             "response": row["response"],
             "scores": row["scores"],
-            "sources": row["retrieved_chunks_text"],
+            "sources": row["retrieved_contexts"],
         }
         row.update(metrics)
         results.append(row)
@@ -73,7 +71,7 @@ if __name__ == "__main__":
     # raw_results = benchmark_answer_and_evaluation()
     raw_results = benchmark_evaluation_only()
     df = pd.DataFrame(raw_results)
-    filename = "./golden_dataset/risultati/nuovo.csv"
+    filename = "./golden_dataset/risultati/nuovi_risultati_eval.csv"
     df.to_csv(filename, index=False, encoding="utf-8-sig")
     print(f"\nDati salvati in: {filename}")
     print("\n--- MEDIE TOTALI ---")

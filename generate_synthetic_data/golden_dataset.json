@@ -88,7 +88,7 @@
         "chapter": "Livello Fog: Coordinamento di Quartiere",
         "difficulty": "facile",
         "question": "Quale componente del livello Fog gestisce la formazione, la dissoluzione e la riconfigurazione dei cluster di edifici sulla base di criteri energetici, topologici e di policy?",
-        "ground_truth": "Dynamic Fog Cluster Manager (DFCM)"
+        "ground_truth": "Il componente del livello Fog che gestisce la formazione, la dissoluzione e la riconfigurazione dei cluster di edifici sulla base di criteri energetici, topologici e di policy è il Dynamic Fog Cluster Manager (DFCM)."
     },
     {
         "volume": "Architettura di Sistema a Tre Livelli",
@@ -172,7 +172,7 @@
         "chapter": "Interfaccia Utente Oled e Feedback Tattile",
         "difficulty": "facile",
         "question": "Quale colore dei LED di stato indica un’anomalia critica o un fault hardware/software sull’H-Node?",
-        "ground_truth": "Rosso."
+        "ground_truth": "Il colore del LED di stato che indica un'anomalia critica o un fault hardware/software sull'H-Node è rosso."
     },
     {
         "volume": "Specifiche Hardware dell'H-Node",
@@ -186,7 +186,7 @@
         "chapter": "Modulo HSM (Hardware Security Module)",
         "difficulty": "difficile",
         "question": "Quali sono le fasi e i meccanismi coinvolti nella sequenza di autodistruzione dei dati sensibili all’interno del modulo HSM di AETERNA in caso di rilevamento di un evento tamper, e come viene garantita la propagazione e la tracciabilità dell’evento di sicurezza attraverso la rete?",
-        "ground_truth": "Le fasi e i meccanismi coinvolti nella sequenza di autodistruzione dei dati sensibili all’interno del modulo HSM di AETERNA in caso di rilevamento di un evento tamper sono:\n\n1. Rilevamento dell’evento tamper tramite sensori fisici (micro-interruttori, sensori di pressione, loop conduttivi, sensori ottici) che identificano apertura del case, manipolazione del PCB, variazioni anomale di temperatura, esposizione a luce intensa o interruzione improvvisa di alimentazione.\n2. Attivazione immediata del trigger di autodistruzione che comporta:\n   - Wipe della SRAM (memoria volatile) tramite impulso di scarica controllata, alimentata da micro-batteria tampone in caso di power loss.\n   - Disabilitazione hardware del bus dati.\n   - Reset hardware e lockdown del modulo.\n3. Invio di evento di sicurezza al sistema Aeterna-Core X1.\n4. Trasmissione del log di sicurezza (“Last Gasp”, se possibile) via MRRE (LoRaWAN prioritario, fallback Zigbee) verso i livelli Fog e Cloud.\n5. Ogni evento di autodistruzione genera un log firmato digitalmente, marcato con timestamp RTC Kyoto 2.0, che viene propagato per audit e attivazione di policy di quarantena del nodo compromesso.\n6. La procedura di wipe segue la policy NIST SP 800-88 (overwrite multiplo, reset hardware, verifica di zeroization), garantendo la cancellazione sicura dei dati.\n\nLa propagazione e la tracciabilità dell’evento di sicurezza sono garantite dalla trasmissione del log firmato e timestampato via MRRE ai livelli Fog e Cloud, abilitando audit forense e strategie di quarantena automatica secondo le policy Kyoto 2.0 e Bit-Energy."
+        "ground_truth": "Le fasi e i meccanismi coinvolti nella sequenza di autodistruzione dei dati sensibili all’interno del modulo HSM di AETERNA in caso di rilevamento di un evento tamper sono:\n\n1. Rilevamento dell’evento tamper tramite sensori fisici (micro-interruttori, sensori di pressione, loop conduttivi, sensori ottici) che identificano apertura del case, manipolazione del PCB, variazioni anomale di temperatura, esposizione a luce intensa o interruzione improvvisa di alimentazione.\n2. Attivazione immediata del trigger di autodistruzione che comporta:\n   - Wipe della SRAM (memoria volatile) tramite impulso di scarica controllata, alimentata da micro-batteria tampone in caso di power loss.\n   - Disabilitazione hardware del bus dati.\n   - Reset hardware e lockdown del modulo.\n3. Invio di evento di sicurezza al sistema Aeterna-Core X1.\n4. Trasmissione del log di sicurezza (“Last Gasp”, se possibile) via MRRE (LoRaWAN prioritario, fallback Zigbee) verso i livelli Fog e Cloud.\n5. Cancellazione Sicura: La procedura di wipe segue la policy NIST SP 800-88 (overwrite multiplo, reset hardware, verifica di zeroization).\nOgni evento di autodistruzione genera un log firmato digitalmente, marcato con timestamp RTC Kyoto 2.0, che viene propagato per audit e attivazione di policy di quarantena del nodo compromesso.\n6. La procedura di wipe segue la policy NIST SP 800-88 (overwrite multiplo, reset hardware, verifica di zeroization), garantendo la cancellazione sicura dei dati.\n\nLa propagazione e la tracciabilità dell’evento di sicurezza sono garantite dalla trasmissione del log firmato e timestampato via MRRE ai livelli Fog e Cloud, abilitando audit forense e strategie di quarantena automatica secondo le policy Kyoto 2.0 e Bit-Energy."
     },
     {
         "volume": "Specifiche Hardware dell'H-Node",

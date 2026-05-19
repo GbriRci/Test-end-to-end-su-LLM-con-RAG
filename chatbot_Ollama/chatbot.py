@@ -1,7 +1,8 @@
 import os
 import time
+import json
 from langchain_community.document_loaders import PyPDFDirectoryLoader
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, data
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain_chroma import Chroma
@@ -32,6 +33,9 @@ import google.generativeai as genai
 import langchain
 import numpy as np
 from openai import OpenAI
+import pandas as pd
+
+# from generate_vector_DB.main import load_documents
 
 # logging.basicConfig(level=logging.INFO)
 langchain.debug = True
@@ -41,8 +45,9 @@ genai.configure(api_key=os.getenv("GENAI_API_KEY"))
 
 
 DATA_PATH = "synthetic_data/"
-CHROMA_PATH_ANTIMATERIA = "..generate_vector_DB/chroma_db_ANTIMATERIA/"
+CHROMA_PATH_ANTIMATERIA = "../generate_vector_DB/chroma_db_ANTIMATERIA/"
 CHROMA_PATH_AETERNA = "../generate_vector_DB/chroma_db_AETERNA/"
+QUESTION_PATH = "../generate_synthetic_data/golden_dataset.json"
 
 
 PROPT_TEMPLATE = """
@@ -295,6 +300,45 @@ def ragas_evaluation(dataset, all_metrics):
     return final_scores
 
 
+def answer_question(data):
+    results = []
+    for row in data:
+        question = row.get("question")
+        print(f"\n--- DOMANDA ---\n{question}")
+        response_stream, sources, retrieved_texts, scores = query_rag(question)
+        response_text = "".join(
+            chunk.content for chunk in response_stream if hasattr(chunk, "content")
+        )
+        sources = clean_sources(sources)
+        final_row = {
+            "question": question,
+            "groundtruth": row["ground_truth"],
+            "difficulty": row["difficulty"],
+            "response": response_text,
+            "scores": scores,
+            "sources": sources,
+            "retrieved_contexts": retrieved_texts,
+        }
+        results.append(final_row)
+    return results
+
+
+def clean_sources(sources):
+    if not sources:
+        return []
+    prefix = "..\\synthetic_data_AETERNA\\"
+    cleaned = []
+    for s in sources:
+        try:
+            if isinstance(s, str) and s.startswith(prefix):
+                cleaned.append(s[len(prefix) :])
+            else:
+                cleaned.append(s)
+        except Exception:
+            cleaned.append(s)
+    return cleaned
+
+
 def main():
     # print("Verifica nuovi documenti...")
     # docs = load_documents()
@@ -303,19 +347,19 @@ def main():
 
     # expected_response = "La Melassa di Antimateria utilizzata in Fase A deve rispettare i seguenti parametri: 34.5% di Anti-Saccarosio"
     # question = "Quanto Anti-Saccarosio deve contenere la Melassa di Antimateria utilizzata in Fase A?"
-    question = "Qual è il periodo minimo di autonomia operativa richiesto per una micro-grid secondo lo standard Kyoto 2.0?"
-    print(f"\n--- DOMANDA ---\n{question}")
+    # question = "Qual è il periodo minimo di autonomia operativa richiesto per una micro-grid secondo lo standard Kyoto 2.0?"
+    # print(f"\n--- DOMANDA ---\n{question}")
 
-    response_stream, sources, retrieved_texts, scores = query_rag(question)
-    full_response = ""
-    print("\n--- RISPOSTA ---")
-    for chunk in response_stream:
-        print(chunk.content, end="", flush=True)
-        full_response += chunk.content
-    print("\n")
-    print(f"\n--- FONTI UTILIZZATE ---\n{', '.join(sources)}\n")
-    print(f"\n--- TESTO RECUPERATO ---\n{retrieved_texts}\n")
-    print(f"\n--- PUNTEGGI ---\n{scores}\n")
+    # response_stream, sources, retrieved_texts, scores = query_rag(question)
+    # full_response = ""
+    # print("\n--- RISPOSTA ---")
+    # for chunk in response_stream:
+    #     print(chunk.content, end="", flush=True)
+    #     full_response += chunk.content
+    # print("\n")
+    # print(f"\n--- FONTI UTILIZZATE ---\n{', '.join(sources)}\n")
+    # print(f"\n--- TESTO RECUPERATO ---\n{retrieved_texts}\n")
+    # print(f"\n--- PUNTEGGI ---\n{scores}\n")
 
     # retrieved_texts = [
     #     "Indice di Rifrazione Emotiva1.618 Adimensionale\n1.2 Comportamento Anomalo\nL'Etere Liquido presenta memoria di forma inversa: ricorda dove NON è stato. Questo fenomeno, noto come\nEffetto Amnesia Spaziale, si manifesta a temperature superiori a +200 Gradi Fluttuanti.\n2. Composizione della Melassa di Antimateria\nLa Melassa di Antimateria utilizzata in Fase A deve rispettare i seguenti parametri:\nComponente PercentualeTolleranza\nAnti-Saccarosio 34.5% ±0.8%\nParticelle di Vuoto Condensato 28.2% ±1.2%\nEstratto di Silenzio Liquefatto 19.7% ±0.5%\nStabilizzante E-999 (Polvere di Stelle Spente)12.1% ±0.3%",
@@ -329,6 +373,15 @@ def main():
     #     question, retrieved_texts, expected_response, full_response
     # )
     # ragas_evaluation(database, get_ragas_metrics())
+
+    with open(QUESTION_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    results = answer_question(data)
+
+    df = pd.DataFrame(results)
+    filename = "./results.csv"
+    df.to_csv(filename, index=False, encoding="utf-8-sig")
 
 
 if __name__ == "__main__":
