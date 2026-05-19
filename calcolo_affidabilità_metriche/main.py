@@ -96,13 +96,13 @@ def clear_csv(csv_path):
 
 def main():
     df_manuale = extract_values(DATA_PATH)
-    # print(df_manuale.head())
+    print(df_manuale.head(50))
     df_manuale.drop("Question", axis=1, inplace=True)
     df_manuale = df_manuale.add_suffix("_man")
     # print(df_manuale.head())
 
     df_gpt_eval = clear_csv(CSV_PATH)
-    # print(df_gpt_eval.head())
+    print(df_gpt_eval.head(50))
     df_gpt_eval.drop("Question", axis=1, inplace=True)
     df_gpt_eval = df_gpt_eval.add_suffix("_model")
     # print(df_gpt_eval.head())
