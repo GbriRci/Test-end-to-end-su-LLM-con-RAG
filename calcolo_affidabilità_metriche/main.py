@@ -2,11 +2,19 @@ import pdfplumber
 import pandas as pd
 import re
 import numpy as np
-from sklearn.metrics import mean_absolute_error, cohen_kappa_score
+from sklearn.metrics import (
+    mean_absolute_error,
+    cohen_kappa_score,
+    root_mean_squared_error,
+)
 from scipy.stats import spearmanr
 
 DATA_PATH = "./Data.pdf"
-CSV_PATH = "../risultati/AETERNA/risultati_eval_GPT4.1.csv"
+CSV_PATH_GPT4 = "../risultati/AETERNA/risultati_eval_GPT4.1.csv"
+# CSV_PATH = "../risultati/nuovi_risultati_eval.csv"
+# CSV_PATH_2 = "../risultati/nuovi_risultati_eval.csv"
+# CSV_PATH_2 = "../risultati/SemSim_nuovi_risultati_eval.csv"
+CSV_PATH_GPT5 = "../risultati/risultati_eval_5-mini.csv"
 METRICS = [
     "Faithfulness",
     "Answer_Relevancy",
@@ -96,33 +104,50 @@ def clear_csv(csv_path):
 
 def main():
     df_manuale = extract_values(DATA_PATH)
-    print(df_manuale.head(50))
+    # print(df_manuale.head(50))
     df_manuale.drop("Question", axis=1, inplace=True)
     df_manuale = df_manuale.add_suffix("_man")
     # print(df_manuale.head())
 
-    df_gpt_eval = clear_csv(CSV_PATH)
-    print(df_gpt_eval.head(50))
+    # df_2 = clear_csv(CSV_PATH_2)
+    # df_2.drop("Question", axis=1, inplace=True)
+    # df_2 = df_2.add_suffix("_model_2")
+
+    df_gpt_eval = clear_csv(CSV_PATH_GPT4)
+    # print(df_gpt_eval.head(50))
     df_gpt_eval.drop("Question", axis=1, inplace=True)
     df_gpt_eval = df_gpt_eval.add_suffix("_model")
     # print(df_gpt_eval.head())
 
     df = pd.merge(df_manuale, df_gpt_eval, left_on="ID_man", right_on="ID_model")
+    # df = pd.merge(df_2, df_gpt_eval, left_on="ID_model_2", right_on="ID_model")
     # print(df.head())
     # print(df.info())
 
     for col in METRICS:
         s1 = df[f"{col}_man"]
+        # s1 = df[f"{col}_model_2"]
         s2 = df[f"{col}_model"]
         mask = s1.notna() & s2.notna()
         s1_clean, s2_clean = s1[mask], s2[mask]
-        if len(s1_clean) > 1:
+        if len(s1_clean) > 2:
             mae = mean_absolute_error(s1_clean, s2_clean)
             spearman = spearmanr(s1_clean, s2_clean).correlation
-            cohen = cohen_kappa_score(
-                (s1_clean * 3).round().astype(int), (s2_clean * 3).round().astype(int)
+            rmse = root_mean_squared_error(s1_clean, s2_clean)
+            c1 = (s1_clean * 5).round().astype(int)
+            c2 = (s2_clean * 5).round().astype(int)
+            if c1.nunique() > 1 or c2.nunique() > 1 or (c1 != c2).any():
+                cohen = cohen_kappa_score(c1, c2, labels=list(set(c1).union(set(c2))))
+                cohen_str = f"{cohen:.4f}"
+            else:
+                cohen_str = "Incalcolabile => Varianza Zero"
+            print(
+                f"{col}: righe valutate = {len(s1_clean)}, MAE = {mae:.4f}, Spearman = {spearman:.4f}, Cohen = {cohen_str}, RMSE = {rmse:.4f}"
             )
-            print(f"{col}: MAE={mae:.4f}, Spearman={spearman:.4f}, Cohen={cohen:.4f}")
+        else:
+            print(
+                f"{col}: righe valutate = {len(s1_clean)} => Troppi pochi dati per la valutazione"
+            )
 
 
 if __name__ == "__main__":
