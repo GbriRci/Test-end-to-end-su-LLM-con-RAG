@@ -148,7 +148,7 @@ def get_evaluation_model():
     #     timeout=180,
     # )
     return ChatOpenAI(
-        model="gpt-4.1",
+        model="gpt-5-mini",
         api_key="any",
         openai_api_base="http://100.120.12.105:14141/v1",
         temperature=0,
@@ -243,20 +243,39 @@ def validate(question: str, expected_response: str):
 
 
 # RAGAS
-def get_ragas_database(question, retrieved_chunks, gound_truth, response):
+# def get_ragas_database(question, retrieved_chunks, gound_truth, response):    
     # il retrived context è sempre una lista di stringhe
-    if isinstance(retrieved_chunks, str):
-        retrieved_chunks = [retrieved_chunks]
-    data = [
-        {
-            "user_input": question,
-            "response": response,
+    # if isinstance(retrieved_chunks, str):
+    #     retrieved_chunks = [retrieved_chunks]
+    # data = [
+    #     {
+    #         "user_input": question,
+    #         "response": response,
+    #         "retrieved_contexts": retrieved_chunks,
+    #         "reference": gound_truth,
+    #     }
+    # ]
+    # dataset = EvaluationDataset.from_list(data)
+    # return dataset
+def get_ragas_database(rows_list):    
+    data = []
+    for row in rows_list:
+        try:
+            import ast
+            if isinstance(row["retrieved_contexts"], str):
+                retrieved_chunks = ast.literal_eval(row["retrieved_contexts"])
+            else:
+                retrieved_chunks = row["retrieved_contexts"]
+        except Exception:
+            retrieved_chunks = [row["retrieved_contexts"]]
+        data.append({
+            "user_input": row["question"],
+            "response": row["response"],
             "retrieved_contexts": retrieved_chunks,
-            "reference": gound_truth,
-        }
-    ]
-    dataset = EvaluationDataset.from_list(data)
-    return dataset
+            "reference": row["groundtruth"],
+        })
+    return EvaluationDataset.from_list(data)
+
 
 
 def get_ragas_metrics():
@@ -266,38 +285,52 @@ def get_ragas_metrics():
     ollama_emb = get_embeddings_function()
     ragas_embeddings = LangchainEmbeddingsWrapper(ollama_emb)
     all_metrics = [
+        AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
         Faithfulness(llm=ragas_llm),
-        AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
         ContextPrecision(llm=ragas_llm),
+        AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
         ContextRecall(llm=ragas_llm),
         NoiseSensitivity(llm=ragas_llm),
         SemanticSimilarity(embeddings=ragas_embeddings),
-        AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
     ]
     return all_metrics
 
 
 def ragas_evaluation(dataset, all_metrics):
-    final_scores = {}
+    # final_scores = {}
+    # run_config = RunConfig(
+    #     max_workers=1,
+    #     timeout=600,
+    #     max_retries=20,
+    #     max_wait=60,
+    # )
+    # for metric in all_metrics:
+    #     try:
+    #         print(f"METRICA: {metric.name}")
+    #         result = evaluate(dataset=dataset, metrics=[metric], run_config=run_config)
+    #         score_dict = result.scores[0]
+    #         print(f"--- RISULTATO {metric.name}: {score_dict} ---")
+    #         final_scores.update(score_dict)
+    #         time.sleep(30)
+    #     except Exception as e:
+    #         print(f"ERRORE CRITICO su {metric.name}:")
+    #         traceback.print_exc()
+    #         final_scores[metric.name] = float("nan")
+    # return final_scores
+    # Eseguiamo tutte le metriche sul dataset completo in un'unica sessione
     run_config = RunConfig(
         max_workers=1,
-        timeout=480,
-        max_retries=20,
-        max_wait=60,
+        timeout=600,
+        max_retries=5,
     )
-    for metric in all_metrics:
-        try:
-            print(f"METRICA: {metric.name}")
-            result = evaluate(dataset=dataset, metrics=[metric], run_config=run_config)
-            score_dict = result.scores[0]
-            print(f"--- RISULTATO {metric.name}: {score_dict} ---")
-            final_scores.update(score_dict)
-            time.sleep(30)
-        except Exception as e:
-            print(f"ERRORE CRITICO su {metric.name}:")
-            traceback.print_exc()
-            final_scores[metric.name] = float("nan")
-    return final_scores
+    try:
+        print(f"Avvio valutazione complessiva per {len(dataset)} righe...")
+        result = evaluate(dataset=dataset, metrics=all_metrics, run_config=run_config)
+        return result.to_pandas()
+    except Exception as e:
+        print("ERRORE CRITICO durante la valutazione complessiva:")
+        traceback.print_exc()
+        return None
 
 
 def answer_question(data):
