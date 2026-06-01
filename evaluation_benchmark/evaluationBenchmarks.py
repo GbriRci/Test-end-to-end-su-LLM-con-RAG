@@ -38,33 +38,6 @@ def benchmark_answer_and_evaluation():
 
 
 def benchmark_evaluation_only():
-    # with open("risultati/AETERNA/risultati_gen_Ollama.csv", "r", encoding="utf-8") as f:
-    #     file = pd.read_csv(f).to_dict(orient="records")
-    # results = []
-    # for row in file[0:50]:
-    #     print(f"Valutando: {row['question']}")
-    #     try:
-    #         retrieved_chunks = ast.literal_eval(row["retrieved_contexts"])
-    #     except:
-    #         retrieved_chunks = [row["retrieved_contexts"]]
-    #     dataset = get_ragas_database(
-    #         row["question"],
-    #         retrieved_chunks,
-    #         row["groundtruth"],
-    #         row["response"],
-    #     )
-    #     metrics = ragas_evaluation(dataset, get_ragas_metrics())
-    #     row = {
-    #         "question": row["question"],
-    #         "groundtruth": row["groundtruth"],
-    #         "difficulty": [row["difficulty"]],
-    #         "response": row["response"],
-    #         "scores": row["scores"],
-    #         "sources": row["retrieved_contexts"],
-    #     }
-    #     row.update(metrics)
-    #     results.append(row)
-    # return results
     with open("risultati/AETERNA/risultati_gen_Ollama.csv", "r", encoding="utf-8") as f:
         file_rows = pd.read_csv(f).to_dict(orient="records")
     target_rows = file_rows[0:50]

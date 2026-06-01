@@ -18,6 +18,7 @@ from ragas.metrics import (
     NoiseSensitivity,
     SemanticSimilarity,
     AnswerCorrectness,
+    LLMContextPrecisionWithReference,
 )
 from ragas.llms import LangchainLLMWrapper
 from ragas.embeddings import LangchainEmbeddingsWrapper
@@ -34,8 +35,9 @@ import langchain
 import numpy as np
 from openai import OpenAI
 import pandas as pd
-
-# from generate_vector_DB.main import load_documents
+import ast
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_nomic import NomicEmbeddings
 
 # logging.basicConfig(level=logging.INFO)
 langchain.debug = True
@@ -52,7 +54,7 @@ QUESTION_PATH = "../generate_synthetic_data/golden_dataset.json"
 
 PROPT_TEMPLATE = """
         Answer the question based only on the following context: {context}
-       
+
         ---
         Answer the question based on the above context: {question}
         """
@@ -62,33 +64,34 @@ TESTING_PROMT = """
         ---
         (Answere with 'true' or 'false') Does the actual response match the expected response?
         """
-SYSTEM_PROMPT = (
-    "You are a helpful assistant for answering questions based on the provided context."
+SYSTEM_PROMPT = """You are a helpful assistant for answering questions based on the provided context."""
+SYSTEM_DECOMPOSITION_PROMPT = """
+        Sei un ingegnere software esperto di sistemi RAG e architetture dati (telemetria, monitoraggio, pipeline di remediation).
+        Il tuo compito è prendere una macro-domanda complessa (Multi-hop) e scomporla in sotto-domande atomiche, semplici e INDIPENDENTI.
+
+        REGOLE TASSATIVE DI SCOMPOSIZIONE:
+            1. NO COPIA-INCOLLA: Ogni sotto-domanda deve essere breve (massimo 10-15 parole) e focalizzata su UN SOLO concetto specifico. Non riprodurre l'intera stringa della domanda originale in ogni sotto-domanda.
+            2. DIVISIONE DEL FLUSSO: Se la domanda richiede una pipeline o un flusso (es. raccolta, aggregazione, analisi, remediation), spacca il flusso in step cronologici o logici indipendenti (es. Ingestione dati, Storage/Analisi, Azioni di Remediation).
+            3. NON separare artificialmente 'fasi' e 'componenti' se riguardano lo stesso step tecnico (es. Invece di chiedere 'quali fasi' e 'quali componenti' per la raccolta, chiedi: 'Come e tramite quali componenti avviene la raccolta dei dati?').
+            4. MASSIMO 3-4 sotto-domande in totale.
+
+        Devi rispondere TASSATIVAMENTE in formato JSON con la chiave 'sub_questions' contenente una lista di stringhe.
+        Esempio di output: {{"sub_questions": ["Come avviene la raccolta e l'aggregazione delle metriche?", "Come funziona il flusso di alerting e remediation?", "In che modo il Ledger garantisce sicurezza e compliance?"]}}
+        """
+DECOMPOSITION_PROMPT = """Scomponi questa domanda: {question}"""
+SYSTEM_PROMPT_RAG = (
+    "Sei un assistente tecnico. Rispondi solo basandoti sul contesto fornito."
 )
+PROMPT_TEMPLATE = "Contesto:\n{context}\n\nDomanda: {question}"
 
 
-# # LOAD DATAS
-# def load_documents():
-#     document_loader = PyPDFDirectoryLoader(DATA_PATH)
-#     return document_loader.load()
-
-
-# # SPLITTING => per creare i chunk
-# def split_documents(documents: list[Document]):
-#     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-#         chunk_size=250,
-#         chunk_overlap=30,
-#     )
-#     return text_splitter.split_documents(documents)
-
-
-# EMBEDDING => ritorna una funzionalità di embedding (perchè la usi sia per creare il db che per rispondere)
-# DEVE ESSERE LA STESSA CHE USI PER CREARE IL DB, ALTRIMENTI NON FUNZIONA
 def get_embeddings_function():
-    return OllamaEmbeddings(model="nomic-embed-text-v2-moe")
+    # return OllamaEmbeddings(model="nomic-embed-text-v2-moe")
+    # return NomicEmbeddings(model="nomic-embed-text-v2")    
+    return OllamaEmbeddings(model="bge-m3")
 
 
-# istanzioaione del db
+
 def create_chroma_db():
     return Chroma(
         persist_directory=CHROMA_PATH_AETERNA,
@@ -97,12 +100,11 @@ def create_chroma_db():
     )
 
 
-# istazionae del modello
-def get_model():
+def get_model(temperature=0):
     return ChatOllama(
         model="qwen2.5:1.5b",
-        temperature=0,
-        num_predict=256,
+        temperature=temperature,
+        num_predict=512,
         timeout=300,
     )
     # return ChatOpenAI(
@@ -115,13 +117,15 @@ def get_model():
     # )
 
 
-def get_evaluation_model():
+def get_evaluation_model(temperature=0):
     # return ChatOllama(
     #     model="qwen2.5:7b",
-    #     temperature=0,
-    #     num_predict=256,
+    #     temperature=temperature,
+    #     format="json",
+    #     num_predict=512,
     #     timeout=300,
     #     verbose=True,
+    #     num_ctx=8192,
     # )
     # return ChatGroq(
     #     temperature=0,
@@ -148,52 +152,14 @@ def get_evaluation_model():
     #     timeout=180,
     # )
     return ChatOpenAI(
-        model="gpt-5-mini",
+        # model="gpt-5-mini",
+        model="gpt-4.1",
         api_key="any",
         openai_api_base="http://100.120.12.105:14141/v1",
-        temperature=0,
+        temperature=temperature,
         max_retries=5,
         timeout=300,
     )
-
-
-# ID UNIVOCO CHUNK => per la modifica del DB
-# def calculate_chunk_ids(chunks):
-#     last_page_id = None
-#     current_chunk_index = 0
-#     for chunk in chunks:
-#         source = chunk.metadata.get("source")
-#         page = chunk.metadata.get("page")
-#         current_page_id = f"{source}:{page}"
-#         if current_page_id == last_page_id:
-#             current_chunk_index += 1
-#         else:
-#             current_chunk_index = 0
-#         chunk_id = f"{current_page_id}:{current_chunk_index}"
-#         last_page_id = current_page_id
-#         chunk.metadata["id"] = chunk_id
-#     return chunks
-
-
-# CREARE IL VECTOR DB (questa funzione permette anche la modifica)
-# def add_to_chroma(chunks: list[Document]):
-#     db = create_chroma_db()
-#     # id sono sempre inclisi di defautl
-#     existing_items = db.get(include=[])
-#     existing_ids = set(existing_items["ids"])
-#     print(f"Erano già presenti id: {len(existing_ids)}")
-#     chunks_with_ids = calculate_chunk_ids(chunks)
-#     new_chunks = []
-#     for chunk in chunks_with_ids:
-#         if chunk.metadata["id"] not in existing_ids:
-#             new_chunks.append(chunk)
-#     if len(new_chunks):
-#         print(f"Aggiunta di {len(new_chunks)} nuovi chunk...")
-#         new_chunks_ids = [chunk.metadata["id"] for chunk in new_chunks]
-#         db.add_documents(new_chunks, ids=new_chunks_ids)
-#     else:
-#         print("Nessun nuovo documento da aggiungere.")
-#     return db
 
 
 # RAG LOCALLY
@@ -202,12 +168,8 @@ def query_rag(query_text: str):
     results = db.similarity_search_with_score(query_text, k=3)
     docs = [doc for doc, score in results]
     scores = [score for doc, score in results]
-    SYSTEM_PROMPT = (
-        "Sei un assistente tecnico. Rispondi solo basandoti sul contesto fornito."
-    )
-    PROMPT_TEMPLATE = "Contesto:\n{context}\n\nDomanda: {question}"
     prompt_template = ChatPromptTemplate.from_messages(
-        [("system", SYSTEM_PROMPT), ("human", PROMPT_TEMPLATE)]
+        [("system", SYSTEM_PROMPT_RAG), ("human", PROMPT_TEMPLATE)]
     )
     context_text = "\n\n---\n\n".join([doc.page_content for doc in docs])
     model = get_model()
@@ -242,45 +204,95 @@ def validate(question: str, expected_response: str):
     return evaluation_results.content
 
 
-# RAGAS
-# def get_ragas_database(question, retrieved_chunks, gound_truth, response):    
-    # il retrived context è sempre una lista di stringhe
-    # if isinstance(retrieved_chunks, str):
-    #     retrieved_chunks = [retrieved_chunks]
-    # data = [
-    #     {
-    #         "user_input": question,
-    #         "response": response,
-    #         "retrieved_contexts": retrieved_chunks,
-    #         "reference": gound_truth,
-    #     }
-    # ]
-    # dataset = EvaluationDataset.from_list(data)
-    # return dataset
-def get_ragas_database(rows_list):    
+def query_decomposition(query_text: str):
+    model = get_evaluation_model()
+    decomposition_prompt = ChatPromptTemplate.from_messages(
+        [("system", SYSTEM_DECOMPOSITION_PROMPT), ("human", DECOMPOSITION_PROMPT)]
+    )
+    decomposition_chain = decomposition_prompt | model | JsonOutputParser()
+    original_question = query_text
+    try:
+        response = decomposition_chain.invoke({"question": original_question})
+        sub_questions = response.get("sub_questions", [original_question])
+    except Exception as e:
+        print(f"Errore nella scomposizione, utilizzo la domanda originale: {e}")
+        sub_questions = [original_question]
+    print(f"\n--- SOTTO-DOMANDE GENERATE ---\n{sub_questions}\n")
+    return sub_questions
+
+
+def get_ragas_database(rows_list):
     data = []
     for row in rows_list:
-        try:
-            import ast
-            if isinstance(row["retrieved_contexts"], str):
-                retrieved_chunks = ast.literal_eval(row["retrieved_contexts"])
+        raw_context = row.get("retrieved_contexts", "")
+        retrieved_chunks = []
+        if isinstance(raw_context, str):
+            raw_context = raw_context.strip()
+            if raw_context.startswith("[") and raw_context.endswith("]"):
+                try:
+                    retrieved_chunks = ast.literal_eval(raw_context)
+                except Exception as e:
+                    print(f"[ERROR] Errore nel parsing letterale del contesto: {e}")
+                    retrieved_chunks = [raw_context]
             else:
-                retrieved_chunks = row["retrieved_contexts"]
-        except Exception:
-            retrieved_chunks = [row["retrieved_contexts"]]
-        data.append({
-            "user_input": row["question"],
-            "response": row["response"],
-            "retrieved_contexts": retrieved_chunks,
-            "reference": row["groundtruth"],
-        })
+                retrieved_chunks = [raw_context]
+        elif isinstance(raw_context, list):
+            retrieved_chunks = [str(i) for i in raw_context]
+        else:
+            retrieved_chunks = [str(raw_context)]
+        data.append(
+            {
+                "user_input": row["question"],
+                "response": row["response"],
+                "retrieved_contexts": retrieved_chunks,
+                "reference": row["groundtruth"],
+            }
+        )
     return EvaluationDataset.from_list(data)
 
+
+# def get_ragas_database(rows_list):
+#     data = []
+#     for row in rows_list:
+#         try:
+#             if isinstance(row["retrieved_contexts"], str):
+#                 retrieved_chunks = ast.literal_eval(row["retrieved_contexts"])
+#             else:
+#                 retrieved_chunks = row["retrieved_contexts"]
+#         except Exception:
+#             retrieved_chunks = [row["retrieved_contexts"]]
+#         original_question = row.get("question")
+#         difficulty = str(row.get("difficulty", "facile")).lower().strip()
+#         difficulty = difficulty.replace("[", "").replace("]", "").replace("'", "").replace('"', "").strip()
+#         print(f"Difficulty: {difficulty}")
+#         if difficulty in ["media", "difficile"]:
+#             sub_questions = query_decomposition(original_question)
+#             for sub_q in sub_questions:
+#                 data.append(
+#                     {
+#                         "user_input": sub_q,
+#                         "response": row["response"],
+#                         "retrieved_contexts": retrieved_chunks,
+#                         "reference": row["groundtruth"],
+#                         "original_question": original_question
+#                     }
+#                 )
+#         else:
+#             data.append(
+#                 {
+#                     "user_input": original_question,
+#                     "response": row["response"],
+#                     "retrieved_contexts": retrieved_chunks,
+#                     "reference": row["groundtruth"],
+#                     "original_question": original_question
+#                 }
+#             )
+#     return EvaluationDataset.from_list(data)
 
 
 def get_ragas_metrics():
     # ragas_llm_one = LangchainLLMWrapper(get_model())
-    eval_model = get_evaluation_model()
+    eval_model = get_evaluation_model(0)
     ragas_llm = LangchainLLMWrapper(eval_model)
     ollama_emb = get_embeddings_function()
     ragas_embeddings = LangchainEmbeddingsWrapper(ollama_emb)
@@ -297,38 +309,13 @@ def get_ragas_metrics():
 
 
 def ragas_evaluation(dataset, all_metrics):
-    # final_scores = {}
-    # run_config = RunConfig(
-    #     max_workers=1,
-    #     timeout=600,
-    #     max_retries=20,
-    #     max_wait=60,
-    # )
-    # for metric in all_metrics:
-    #     try:
-    #         print(f"METRICA: {metric.name}")
-    #         result = evaluate(dataset=dataset, metrics=[metric], run_config=run_config)
-    #         score_dict = result.scores[0]
-    #         print(f"--- RISULTATO {metric.name}: {score_dict} ---")
-    #         final_scores.update(score_dict)
-    #         time.sleep(30)
-    #     except Exception as e:
-    #         print(f"ERRORE CRITICO su {metric.name}:")
-    #         traceback.print_exc()
-    #         final_scores[metric.name] = float("nan")
-    # return final_scores
-    # Eseguiamo tutte le metriche sul dataset completo in un'unica sessione
-    run_config = RunConfig(
-        max_workers=1,
-        timeout=600,
-        max_retries=5,
-    )
+    run_config = RunConfig(max_workers=1, timeout=600, max_retries=5, max_wait=60)
     try:
         print(f"Avvio valutazione complessiva per {len(dataset)} righe...")
         result = evaluate(dataset=dataset, metrics=all_metrics, run_config=run_config)
         return result.to_pandas()
     except Exception as e:
-        print("ERRORE CRITICO durante la valutazione complessiva:")
+        print("Errore durante la valutazione")
         traceback.print_exc()
         return None
 
@@ -407,14 +394,17 @@ def main():
     # )
     # ragas_evaluation(database, get_ragas_metrics())
 
-    with open(QUESTION_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    # with open(QUESTION_PATH, "r", encoding="utf-8") as f:
+    #     data = json.load(f)
 
-    results = answer_question(data)
+    # results = answer_question(data)
 
-    df = pd.DataFrame(results)
-    filename = "./results.csv"
-    df.to_csv(filename, index=False, encoding="utf-8-sig")
+    # df = pd.DataFrame(results)
+    # filename = "./results.csv"
+    # df.to_csv(filename, index=False, encoding="utf-8-sig")
+
+    question = "Quali sono le principali fasi e componenti coinvolte nel flusso di raccolta, aggregazione, analisi e remediation automatica delle metriche di telemetria nella micro-rete energetica urbana decentralizzata del progetto AETERNA, e come queste garantiscono affidabilità, sicurezza e compliance secondo gli standard Kyoto 2.0 e Bit-Energy?"
+    query_decomposition(question)
 
 
 if __name__ == "__main__":
