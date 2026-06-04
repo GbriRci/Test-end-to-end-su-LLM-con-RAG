@@ -86,10 +86,9 @@ PROMPT_TEMPLATE = "Contesto:\n{context}\n\nDomanda: {question}"
 
 
 def get_embeddings_function():
-    # return OllamaEmbeddings(model="nomic-embed-text-v2-moe")
-    # return NomicEmbeddings(model="nomic-embed-text-v2")    
-    return OllamaEmbeddings(model="bge-m3")
-
+    return OllamaEmbeddings(model="nomic-embed-text-v2-moe")
+    # return NomicEmbeddings(model="nomic-embed-text-v2")
+    # return OllamaEmbeddings(model="bge-m3")
 
 
 def create_chroma_db():
@@ -101,20 +100,20 @@ def create_chroma_db():
 
 
 def get_model(temperature=0):
-    return ChatOllama(
-        model="qwen2.5:1.5b",
-        temperature=temperature,
-        num_predict=512,
-        timeout=300,
-    )
-    # return ChatOpenAI(
-    #     model="gpt-4.1",
-    #     api_key="any",
-    #     openai_api_base="http://100.120.12.105:14141/v1",
-    #     temperature=0,
-    #     max_retries=5,
+    # return ChatOllama(
+    #     model="qwen2.5:1.5b",
+    #     temperature=temperature,
+    #     num_predict=512,
     #     timeout=300,
     # )
+    return ChatOpenAI(
+        model="gpt-4.1",
+        api_key="any",
+        openai_api_base="http://100.120.12.105:14141/v1",
+        temperature=0,
+        max_retries=5,
+        timeout=300,
+    )
 
 
 def get_evaluation_model(temperature=0):
@@ -157,7 +156,7 @@ def get_evaluation_model(temperature=0):
         api_key="any",
         openai_api_base="http://100.120.12.105:14141/v1",
         temperature=temperature,
-        max_retries=5,
+        max_retries=3,
         timeout=300,
     )
 
@@ -298,18 +297,18 @@ def get_ragas_metrics():
     ragas_embeddings = LangchainEmbeddingsWrapper(ollama_emb)
     all_metrics = [
         AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
-        Faithfulness(llm=ragas_llm),
-        ContextPrecision(llm=ragas_llm),
-        AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
-        ContextRecall(llm=ragas_llm),
+        # Faithfulness(llm=ragas_llm),
+        # ContextPrecision(llm=ragas_llm),
+        # AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
+        # ContextRecall(llm=ragas_llm),
         NoiseSensitivity(llm=ragas_llm),
-        SemanticSimilarity(embeddings=ragas_embeddings),
+        # SemanticSimilarity(embeddings=ragas_embeddings),
     ]
     return all_metrics
 
 
 def ragas_evaluation(dataset, all_metrics):
-    run_config = RunConfig(max_workers=1, timeout=600, max_retries=5, max_wait=60)
+    run_config = RunConfig(max_workers=1, timeout=400, max_retries=32, max_wait=10)
     try:
         print(f"Avvio valutazione complessiva per {len(dataset)} righe...")
         result = evaluate(dataset=dataset, metrics=all_metrics, run_config=run_config)
@@ -394,17 +393,19 @@ def main():
     # )
     # ragas_evaluation(database, get_ragas_metrics())
 
-    # with open(QUESTION_PATH, "r", encoding="utf-8") as f:
-    #     data = json.load(f)
+    with open(
+        "../generate_synthetic_data/golden_dataset.json", "r", encoding="utf-8"
+    ) as f:
+        data = json.load(f)
 
-    # results = answer_question(data)
+    results = answer_question(data)
 
-    # df = pd.DataFrame(results)
-    # filename = "./results.csv"
-    # df.to_csv(filename, index=False, encoding="utf-8-sig")
+    df = pd.DataFrame(results)
+    filename = "./risultati_gen_GPT4.1.csv"
+    df.to_csv(filename, index=False, encoding="utf-8-sig")
 
-    question = "Quali sono le principali fasi e componenti coinvolte nel flusso di raccolta, aggregazione, analisi e remediation automatica delle metriche di telemetria nella micro-rete energetica urbana decentralizzata del progetto AETERNA, e come queste garantiscono affidabilità, sicurezza e compliance secondo gli standard Kyoto 2.0 e Bit-Energy?"
-    query_decomposition(question)
+    # question = "Quali sono le principali fasi e componenti coinvolte nel flusso di raccolta, aggregazione, analisi e remediation automatica delle metriche di telemetria nella micro-rete energetica urbana decentralizzata del progetto AETERNA, e come queste garantiscono affidabilità, sicurezza e compliance secondo gli standard Kyoto 2.0 e Bit-Energy?"
+    # query_decomposition(question)
 
 
 if __name__ == "__main__":

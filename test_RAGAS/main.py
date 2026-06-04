@@ -11,7 +11,7 @@ from chatbot_Ollama.chatbot import (
 )
 
 CSV_PATH = "./risultati/AETERNA/risultati_gen_Ollama.csv"
-OUTPUT_PATH = "./risultati_BGE_M3.csv"
+OUTPUT_PATH = "./risultati_prova.csv"
 
 
 def benchmark_evaluation_only(data):
@@ -34,11 +34,11 @@ def main():
         return
     else:
         df = pd.read_csv(CSV_PATH)
-        df = df.iloc[:20].copy()
+        df = df.iloc[:3].copy()
 
-    # phoenix_session = px.launch_app()
-    # tracer_provider = register(project_name="metriche_ragas")
-    # LangChainInstrumentor(tracer_provider=tracer_provider).instrument()
+    phoenix_session = px.launch_app()
+    tracer_provider = register(project_name="metriche_ragas")
+    LangChainInstrumentor(tracer_provider=tracer_provider).instrument()
 
     try:
         result = benchmark_evaluation_only(df)
@@ -53,7 +53,7 @@ def main():
     except Exception as e:
         print(f"\nERRORE: {e}")
     finally:
-        # px.close_app()
+        px.close_app()
         pass
 
 

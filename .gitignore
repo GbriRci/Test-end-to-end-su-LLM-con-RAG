@@ -1,6 +1,8 @@
 .env
 __pycache__/
-chroma_db/
+chroma_db_*/
+chroma_db_AETERNA/
+chroma_db_AETERNA_BGE_M3/
 *.bin
 *.sqlite3
 *.png

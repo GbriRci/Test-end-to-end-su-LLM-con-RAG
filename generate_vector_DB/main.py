@@ -8,8 +8,9 @@ from langchain_core.documents import Document
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 
-CHROMA_PATH = "./chroma_db_AETERNA_BGE_M3/"
-DATA_PATH = "../synthetic_data_AETERNA"
+CHROMA_PATH_BGE_M3 = "./chroma_db_AETERNA_BGE_M3/"
+CHROMA_PATH = "./chroma_db_AETERNA"
+DATA_PATH = "./synthetic_data_AETERNA"
 
 
 def load_documents(DATA_PATH=DATA_PATH):
@@ -29,8 +30,8 @@ def split_documents(documents: list[Document]):
 
 
 def get_embeddings_function():
-    # return OllamaEmbeddings(model="nomic-embed-text-v2-moe")
-    return OllamaEmbeddings(model="bge-m3")
+    return OllamaEmbeddings(model="nomic-embed-text-v2-moe")
+    # return OllamaEmbeddings(model="bge-m3")
 
 
 def calculate_chunk_ids(chunks):
