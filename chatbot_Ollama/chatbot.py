@@ -38,17 +38,19 @@ import pandas as pd
 import ast
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_nomic import NomicEmbeddings
+from pathlib import Path
 
 # logging.basicConfig(level=logging.INFO)
 langchain.debug = True
 
 load_dotenv(dotenv_path=Path(__file__).with_name(".env"))
 genai.configure(api_key=os.getenv("GENAI_API_KEY"))
-
+BASE_DIR = Path(__file__).resolve().parent
 
 DATA_PATH = "synthetic_data/"
 CHROMA_PATH_ANTIMATERIA = "../generate_vector_DB/chroma_db_ANTIMATERIA/"
-CHROMA_PATH_AETERNA = "../generate_vector_DB/chroma_db_AETERNA/"
+# CHROMA_PATH_AETERNA = "../generate_vector_DB/chroma_db_AETERNA/"
+CHROMA_PATH_AETERNA = str(BASE_DIR.parent / "generate_vector_DB" / "chroma_db_AETERNA")
 QUESTION_PATH = "../generate_synthetic_data/golden_dataset.json"
 
 
@@ -296,13 +298,13 @@ def get_ragas_metrics():
     ollama_emb = get_embeddings_function()
     ragas_embeddings = LangchainEmbeddingsWrapper(ollama_emb)
     all_metrics = [
-        AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
+        # AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
+        # SemanticSimilarity(embeddings=ragas_embeddings),
         # Faithfulness(llm=ragas_llm),
+        # ContextRecall(llm=ragas_llm),
         # ContextPrecision(llm=ragas_llm),
         # AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
-        # ContextRecall(llm=ragas_llm),
         NoiseSensitivity(llm=ragas_llm),
-        # SemanticSimilarity(embeddings=ragas_embeddings),
     ]
     return all_metrics
 

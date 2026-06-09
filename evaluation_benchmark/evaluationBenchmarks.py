@@ -28,6 +28,15 @@ TESTING_PROMT = """
         Scrivi SOLO il numero decimale del voto, senza preamboli o spiegazioni (es: 0.75).
         """
 TRASH_HOLD_VALUE = 0.5
+METRICS = [
+    # "semantic_similarity",
+    # "answer_correctness",
+    # "faithfulness",
+    # "context_recall",
+    # "answer_relevancy",
+    # "context_precision",
+    "noise_sensitivity(mode=relevant)",
+]
 
 
 def benchmark_answer_and_evaluation():
@@ -57,12 +66,11 @@ def benchmark_answer_and_evaluation():
     return results
 
 
-def benchmark_evaluation_only():
+def benchmark_evaluation_only_1row():
     with open("./risultati_gen_GPT4.1.csv", "r", encoding="utf-8") as f:
         file_rows = pd.read_csv(f).to_dict(orient="records")
     target_rows = file_rows[:20]
     all_metrics = get_ragas_metrics()
-    nomi_metriche = [m.name for m in all_metrics]
 
     for i, row in enumerate(target_rows):
         print(f"Valutazione in corso riga {i+1}/{len(target_rows)}...")
@@ -88,17 +96,68 @@ def benchmark_evaluation_only():
                 df_finale = pd.concat([df_originale, df_scores], axis=1)
                 yield df_finale.to_dict(orient="records")[0]
             else:
-                for metrica in nomi_metriche:
+                for metrica in METRICS:
                     row[metrica] = None
                 yield row
         else:
             print(f"Risposta insufficiente.")
-            for metrica in nomi_metriche:
+            for metrica in METRICS:
                 if metrica != "noise_sensitivity(mode=relevant)":
                     row[metrica] = 0.0
                 else:
                     row[metrica] = 1.0
             yield row
+
+
+def benchmark_evaluation_only(file_rows):
+    target_rows = file_rows[14:20]
+    all_metrics = get_ragas_metrics()
+    rows_per_ragas = []
+    risultati_finali_ordinati = {i: None for i in range(len(target_rows))}
+    for i, row in enumerate(target_rows):
+        # print(row["question"])
+        row_clean = dict(row)
+        if row_clean.get("judge_score", 0.0) >= TRASH_HOLD_VALUE:
+            row_clean["_temp_index"] = i
+            rows_per_ragas.append(row_clean)
+        else:
+            print(f"{row_clean.get('question', 'N/A')} => Risposta insufficiente")
+            for metrica in METRICS:
+                if metrica != "noise_sensitivity(mode=relevant)":
+                    row_clean[metrica] = 0.0
+                else:
+                    row_clean[metrica] = 1.0
+            row_clean["sources"] = row_clean.pop("retrieved_contexts", "")
+            risultati_finali_ordinati[i] = row_clean
+    if rows_per_ragas:
+        dataset_globale = get_ragas_database(rows_per_ragas)
+        df_scores_globale = ragas_evaluation(dataset_globale, all_metrics)
+
+        if df_scores_globale is not None:
+            scores_list = df_scores_globale.to_dict(orient="records")
+
+            for row_clean, scores in zip(rows_per_ragas, scores_list):
+                for col in [
+                    "user_input",
+                    "response",
+                    "retrieved_contexts",
+                    "reference",
+                ]:
+                    scores.pop(col, None)
+                row_clean.update(scores)
+                row_clean["sources"] = row_clean.pop("retrieved_contexts")
+                idx = row_clean.pop("_temp_index")
+                risultati_finali_ordinati[idx] = row_clean
+        else:
+            print("[ERRORE] Il calcolo globale di Ragas è fallito.")
+            for row_clean in rows_per_ragas:
+                for metrica in METRICS:
+                    row_clean[metrica] = None
+                idx = row_clean.pop("_temp_index")
+                row_clean["sources"] = row_clean.pop("retrieved_contexts")
+                risultati_finali_ordinati[idx] = row_clean
+    results = [risultati_finali_ordinati[i] for i in range(len(target_rows))]
+    return results
 
 
 def llm_as_judge(answer: str, expected_response: str):
@@ -119,14 +178,24 @@ def llm_as_judge(answer: str, expected_response: str):
 
 
 if __name__ == "__main__":
-    filename = "./ALTRI_risultati_eval_GPT-4.1.csv"
-    if os.path.exists(filename):
-        os.remove(filename)
+    with open("./risultati_gen_GPT4.1_con_judge.csv", "r", encoding="utf-8") as f:
+        file_rows = pd.read_csv(f).to_dict(orient="records")
 
-    # raw_results = benchmark_answer_and_evaluation()
+    # for i, row in enumerate(file_rows):
+    #     llm_as_judge_value = llm_as_judge(row["response"], row["groundtruth"])
+    #     file_rows[i]["judge_score"] = llm_as_judge_value
+
+    # df_judge = pd.DataFrame(file_rows)
+    # df_judge.to_csv(
+    #     "./risultati_gen_GPT4.1_con_judge.csv",
+    #     index=False,
+    #     encoding="utf-8-sig",
+    # )
+
     results = []
-    for i, riga_valutata in enumerate(benchmark_evaluation_only()):
+    for i, riga_valutata in enumerate(benchmark_evaluation_only(file_rows)):
         results.append(riga_valutata)
-        df_parziale = pd.DataFrame(results)
-        df_parziale.to_csv(filename, index=False, encoding="utf-8-sig")
-        print(f"{i+1} salvata")
+        df = pd.DataFrame(results)
+        df.to_csv(
+            "./SECONDI_risultati_eval_GPT4.1.csv", index=False, encoding="utf-8-sig"
+        )
