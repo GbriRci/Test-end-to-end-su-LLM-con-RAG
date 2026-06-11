@@ -69,7 +69,7 @@ def benchmark_answer_and_evaluation():
 def benchmark_evaluation_only_1row():
     with open("./risultati_gen_GPT4.1.csv", "r", encoding="utf-8") as f:
         file_rows = pd.read_csv(f).to_dict(orient="records")
-    target_rows = file_rows[:20]
+    target_rows = file_rows[1:5]
     all_metrics = get_ragas_metrics()
 
     for i, row in enumerate(target_rows):
@@ -110,7 +110,7 @@ def benchmark_evaluation_only_1row():
 
 
 def benchmark_evaluation_only(file_rows):
-    target_rows = file_rows[14:20]
+    target_rows = file_rows[5:6]
     all_metrics = get_ragas_metrics()
     rows_per_ragas = []
     risultati_finali_ordinati = {i: None for i in range(len(target_rows))}
@@ -123,10 +123,7 @@ def benchmark_evaluation_only(file_rows):
         else:
             print(f"{row_clean.get('question', 'N/A')} => Risposta insufficiente")
             for metrica in METRICS:
-                if metrica != "noise_sensitivity(mode=relevant)":
-                    row_clean[metrica] = 0.0
-                else:
-                    row_clean[metrica] = 1.0
+                row_clean[metrica] = -2.0
             row_clean["sources"] = row_clean.pop("retrieved_contexts", "")
             risultati_finali_ordinati[i] = row_clean
     if rows_per_ragas:
@@ -178,7 +175,7 @@ def llm_as_judge(answer: str, expected_response: str):
 
 
 if __name__ == "__main__":
-    with open("./risultati_gen_GPT4.1_con_judge.csv", "r", encoding="utf-8") as f:
+    with open("./risultati_gen_reranking_con_judge.csv", "r", encoding="utf-8") as f:
         file_rows = pd.read_csv(f).to_dict(orient="records")
 
     # for i, row in enumerate(file_rows):
@@ -187,7 +184,7 @@ if __name__ == "__main__":
 
     # df_judge = pd.DataFrame(file_rows)
     # df_judge.to_csv(
-    #     "./risultati_gen_GPT4.1_con_judge.csv",
+    #     "./risultati_gen_reranking_con_judge.csv",
     #     index=False,
     #     encoding="utf-8-sig",
     # )
@@ -197,5 +194,5 @@ if __name__ == "__main__":
         results.append(riga_valutata)
         df = pd.DataFrame(results)
         df.to_csv(
-            "./SECONDI_risultati_eval_GPT4.1.csv", index=False, encoding="utf-8-sig"
+            "./ALTRI_risultati_eval_reranking.csv", index=False, encoding="utf-8-sig"
         )

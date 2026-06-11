@@ -153,8 +153,8 @@ def get_evaluation_model(temperature=0):
     #     timeout=180,
     # )
     return ChatOpenAI(
-        # model="gpt-5-mini",
-        model="gpt-4.1",
+        model="gpt-5-mini",
+        # model="gpt-4.1",
         api_key="any",
         openai_api_base="http://100.120.12.105:14141/v1",
         temperature=temperature,
