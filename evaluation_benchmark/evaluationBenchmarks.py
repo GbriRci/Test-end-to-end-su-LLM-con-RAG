@@ -29,13 +29,13 @@ TESTING_PROMT = """
         """
 TRASH_HOLD_VALUE = 0.5
 METRICS = [
-    # "semantic_similarity",
-    # "answer_correctness",
-    # "faithfulness",
-    # "context_recall",
-    # "answer_relevancy",
-    # "context_precision",
-    # "noise_sensitivity(mode=relevant)",
+    "semantic_similarity",
+    "answer_correctness",
+    "faithfulness",
+    "context_recall",
+    "answer_relevancy",
+    "context_precision",
+    "noise_sensitivity(mode=relevant)",
 ]
 
 

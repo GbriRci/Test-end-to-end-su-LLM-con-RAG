@@ -1,7 +1,7 @@
 import json
 import logging
 from langchain_core.messages import HumanMessage, SystemMessage
-from generate_synthetic_md.generate_md import get_model
+from generate_md import get_model
 
 INPUT_FILE = "./json/final_instructions.json"
 

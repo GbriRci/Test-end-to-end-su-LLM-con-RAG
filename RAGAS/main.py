@@ -4,7 +4,7 @@ import pandas as pd
 import phoenix as px
 from phoenix.otel import register
 from openinference.instrumentation.langchain import LangChainInstrumentor
-from chatbot_Ollama.chatbot import (
+from chatbot.chatbot import (
     get_ragas_database,
     get_ragas_metrics,
     ragas_evaluation,

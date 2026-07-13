@@ -252,45 +252,6 @@ def get_ragas_database(rows_list):
     return EvaluationDataset.from_list(data)
 
 
-# def get_ragas_database(rows_list):
-#     data = []
-#     for row in rows_list:
-#         try:
-#             if isinstance(row["retrieved_contexts"], str):
-#                 retrieved_chunks = ast.literal_eval(row["retrieved_contexts"])
-#             else:
-#                 retrieved_chunks = row["retrieved_contexts"]
-#         except Exception:
-#             retrieved_chunks = [row["retrieved_contexts"]]
-#         original_question = row.get("question")
-#         difficulty = str(row.get("difficulty", "facile")).lower().strip()
-#         difficulty = difficulty.replace("[", "").replace("]", "").replace("'", "").replace('"', "").strip()
-#         print(f"Difficulty: {difficulty}")
-#         if difficulty in ["media", "difficile"]:
-#             sub_questions = query_decomposition(original_question)
-#             for sub_q in sub_questions:
-#                 data.append(
-#                     {
-#                         "user_input": sub_q,
-#                         "response": row["response"],
-#                         "retrieved_contexts": retrieved_chunks,
-#                         "reference": row["groundtruth"],
-#                         "original_question": original_question
-#                     }
-#                 )
-#         else:
-#             data.append(
-#                 {
-#                     "user_input": original_question,
-#                     "response": row["response"],
-#                     "retrieved_contexts": retrieved_chunks,
-#                     "reference": row["groundtruth"],
-#                     "original_question": original_question
-#                 }
-#             )
-#     return EvaluationDataset.from_list(data)
-
-
 def get_ragas_metrics():
     # ragas_llm_one = LangchainLLMWrapper(get_model())
     eval_model = get_evaluation_model(0)
@@ -298,19 +259,18 @@ def get_ragas_metrics():
     ollama_emb = get_embeddings_function()
     ragas_embeddings = LangchainEmbeddingsWrapper(ollama_emb)
     all_metrics = [
-        # AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
-        # SemanticSimilarity(embeddings=ragas_embeddings),
-        # Faithfulness(llm=ragas_llm),
-        # ContextRecall(llm=ragas_llm),
-        # ContextPrecision(llm=ragas_llm),
-        # AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
+        AnswerCorrectness(llm=ragas_llm, embeddings=ragas_embeddings),
+        SemanticSimilarity(embeddings=ragas_embeddings),
+        Faithfulness(llm=ragas_llm),
+        ContextRecall(llm=ragas_llm),
+        ContextPrecision(llm=ragas_llm),
+        AnswerRelevancy(llm=ragas_llm, embeddings=ragas_embeddings),
         NoiseSensitivity(llm=ragas_llm),
     ]
     return all_metrics
 
 
 def ragas_evaluation(dataset, all_metrics):
-    # run_config = RunConfig(max_workers=1, timeout=400, max_retries=32, max_wait=10)
     run_config = RunConfig(
         max_workers=1, 
         timeout=1000, 
