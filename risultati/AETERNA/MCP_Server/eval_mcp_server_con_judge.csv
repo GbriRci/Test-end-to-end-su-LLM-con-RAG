@@ -1,0 +1,978 @@
+question,groundtruth,difficulty,response,scores,total_hops,judge_score,answer_correctness,semantic_similarity,faithfulness,context_recall,context_precision,answer_relevancy,noise_sensitivity(mode=relevant)
+Qual è il periodo minimo di autonomia operativa richiesto per una micro-grid secondo lo standard Kyoto 2.0?,Ogni micro-grid deve essere in grado di operare in modalità isola per un periodo minimo di 72 ore.,facile,"Secondo lo standard Kyoto 2.0, il periodo minimo di autonomia operativa richiesto per una micro-grid è di 72 ore in modalità isola. Questo significa che ogni micro-grid deve essere tecnicamente capace di funzionare autonomamente, senza connessione alla rete principale, per almeno tre giorni consecutivi.","[1.0, 1.0, 0.6, 0.0, 0.0]",2,0.75,0.709635558780324,0.838542235121296,1.0,1.0,0.9999999999,0.9999999999999996,0.3333333333333333
+In che modo il protocollo Bit-Energy integra la componente di giustizia distributiva con la gestione delle transazioni energetiche e quali strumenti tecnici vengono utilizzati per garantire equità tra gli utenti?,"Il protocollo Bit-Energy integra la componente di giustizia distributiva attraverso algoritmi di bilanciamento predittivo che redistribuiscono automaticamente l’energia in surplus verso nodi a rischio di deficit, secondo policy di equità definite in smart contract. Viene inoltre garantita una quota minima di Bit-Energy per ogni utente, con redistribuzione dinamica in caso di emergenze. Gli strumenti tecnici utilizzati per garantire equità tra gli utenti includono smart contract per l’enforcement delle soglie minime, algoritmi di bilanciamento predittivo (Macro Forecasting AI), ledger distribuiti per la tracciabilità delle transazioni, e policy automatiche di priorità a favore di utenti vulnerabili. Tutte le transazioni sono validate, tracciate e storicizzate su blockchain privata, assicurando auditabilità e compliance con gli standard Kyoto 2.0.",media,"Il protocollo Bit-Energy integra la componente di giustizia distributiva nella gestione delle transazioni energetiche attraverso diverse strategie e strumenti tecnici che mirano a garantire equità tra gli utenti. Di seguito la sintesi dei meccanismi principali:
+
+1. Algoritmi di bilanciamento predittivo e redistribuzione automatica:
+- Vengono utilizzati algoritmi AI di bilanciamento predittivo che monitorano la produzione e il consumo energetico nei vari nodi (H-Node) e provvedono, in automatico, a redistribuire l’energia in surplus verso gli utenti o nodi a rischio di deficit. 
+- Questa redistribuzione segue policy di equità, codificate negli smart contract, che assicurano una gestione solidale e distribuita della risorsa energia.
+
+2. Quota minima garantita:
+- È garantita una soglia minima di Bit-Energy per ogni utente. In caso di emergenze o deficit energetico in una determinata area o per un determinato soggetto, scatta una redistribuzione dinamica per assicurare che nessuno scenda sotto tale soglia.
+
+3. Policy di priorità e strumenti di incentivazione:
+- Le transazioni sono regolate da smart contract che prevedono policy di priorità: si tende a favorire scambi a basso impatto ambientale e a garantire vantaggi agli utenti più vulnerabili.
+- Sono previste ricompense (reward) per chi adotta comportamenti virtuosi (es. autoconsumo, demand response) e penalità per sprechi o comportamenti non conformi.
+
+4. Distribuzione automatica e auditabilità:
+- I crediti energetici e i benefici economici vengono ripartiti secondo regole di proporzionalità rispetto al contributo energetico, principi di solidarietà e priorità a membri vulnerabili della comunità.
+- Tutte le transazioni sono tracciate tramite tecnologia blockchain, garantendo trasparenza, auditabilità, non ripudiabilità e compliance.
+
+5. Strumenti tecnici:
+- Smart contract: eseguono in modo automatico regole di equità, calcolano e distribuiscono le quote spettanti a ciascun membro in funzione dei dati raccolti in tempo reale.
+- Dashboard di audit: ogni membro può consultare la storia delle proprie transazioni, verificando trasparenza e correttezza del sistema.
+- Dynamic Pricing: tariffe adattive che regolano la conversione Bit-Energy/kWh, mitigando squilibri e rendendo più equo l’accesso all’energia.
+- Modelli di anomaly detection AI per segnalare comportamenti anomali o tentativi di abuso del sistema.
+
+In sintesi, la componente di giustizia distributiva nel protocollo Bit-Energy è garantita dall’integrazione di policy automatiche di redistribuzione, sistemi di controllo trasparenti e strumenti tecnici avanzati come smart contract, blockchain e modelli AI. Tutto ciò assicura un meccanismo equo, verificabile e resilienti alle disuguaglianze energetiche fra utenti.","[1.0, 1.0, 1.0, 0.9, 0.8]",2,0.75,0.7926604414140804,0.8906417656563215,0.8461538461538461,1.0,0.9999999999,0.9305065769451047,0.6
+Quali sono le fasi principali del processo di ottimizzazione quantistica nella rete AETERNA e come ciascuna di esse contribuisce alla riduzione dell’entropia energetica e all’aumento della resilienza e dell’efficienza operativa del sistema urbano?,"Le fasi principali del processo di ottimizzazione quantistica nella rete AETERNA sono:
+
+1. Raccolta dati consumo/produzione dagli H-Node.
+2. Clustering adattivo a livello Fog per segmentare la rete in micro-cluster energetici (Energy Cells) omogenei.
+3. Avvio dell’ottimizzazione evolutiva tramite algoritmi che modellano la rete come un grafo dinamico, identificando i percorsi ottimali per il trasferimento di Bit-Energy e simulando scenari multipli di domanda/offerta.
+4. Analisi macro e forecast AI a livello Cloud per supportare le decisioni operative.
+5. Applicazione delle policy Kyoto 2.0 e delle regole di compliance tramite smart contract.
+6. Ribilanciamento e auto-riparazione dei flussi energetici in caso di guasti o variazioni di carico.
+7. Audit e storicizzazione delle transazioni e delle ottimizzazioni nel ledger distribuito.
+
+Ciascuna fase contribuisce alla riduzione dell’entropia energetica e all’aumento della resilienza e dell’efficienza operativa del sistema urbano nel seguente modo:
+
+- La raccolta dati e il clustering adattivo permettono di localizzare i flussi energetici, riducendo la dispersione e facilitando l’auto-riparazione in caso di guasti.
+- Gli algoritmi evolutivi ottimizzano il routing e l’allocazione delle risorse, minimizzando le perdite di trasmissione e adattandosi dinamicamente ai carichi variabili.
+- L’analisi AI e l’applicazione delle policy assicurano che le strategie operative siano predittive, sostenibili e conformi agli standard ambientali.
+- Il ribilanciamento automatico e la storicizzazione delle operazioni garantiscono continuità, trasparenza e miglioramento continuo, aumentando la resilienza e l’efficienza complessiva della rete urbana.",difficile,"Le fasi principali del processo di ottimizzazione quantistica nella rete AETERNA sono:
+
+1. Raccolta dati consumo/produzione (H-Node)
+   - I sensori periferici (H-Node, livello Edge) raccolgono dati in tempo reale sui consumi e sulla produzione energetica. Questo permette una mappatura accurata dei flussi, punto di partenza per ridurre l’entropia energetica, monitorando dove si generano inefficienze e dispersioni.
+
+2. Clustering adattivo delle Energy Cells (Fog Node)
+   - Tramite tecniche di clustering adattivo, la rete suddivide dinamicamente i nodi energetici in gruppi ottimali, adattandosi alle variazioni di domanda/offerta. Questo processo contribuisce a ridurre il disordine (entropia sistemica) nella distribuzione, abilitando una gestione più reattiva e resiliente dei carichi.
+
+3. Avvio ottimizzazione evolutiva (Fog Node)
+   - Gli algoritmi evolutivi ricercano le migliori strategie di allocazione delle risorse. Agiscono minimizzando le perdite di trasmissione e identificando percorsi ottimali per il trasferimento di Bit-Energy, il che si traduce in maggiore efficienza e riduzione dello spreco energetico.
+
+4. Analisi macro e forecast AI (Cloud)
+   - Algoritmi AI su larga scala analizzano dati storici e previsionali, fornendo insight strategici per migliorare l’efficienza complessiva del sistema urbano. L’IA supporta una pianificazione predittiva, riducendo picchi e colli di bottiglia che generano entropia.
+
+5. Applicazione policy Kyoto 2.0 via smart contract (Fog Node)
+   - Le policy di sostenibilità (ad es. Kyoto 2.0), sono codificate in smart contract auto-eseguibili che gestiscono la conformità ai vincoli ambientali. Questo automatizza la riduzione delle emissioni e il rispetto dei target di efficientamento, aumentando la resilienza sistemica.
+
+6. Ribilanciamento e auto-riparazione (Fog Node)
+   - La rete implementa meccanismi di auto-riparazione e ribilanciamento energetico in caso di guasti/variazioni improvvise. Questa autoregolazione riduce il rischio di blackout e assicura che il sistema possa adattarsi rapidamente, mantenendo alta efficienza operativa.
+
+7. Audit e storicizzazione transazioni (Ledger)
+   - Tracciabilità di tutte le operazioni energetiche, garantendo trasparenza, auditabilità e miglioramenti continui basati sui dati raccolti.
+
+Come contribuiscono questi step:
+- Riduzione entropia energetica: Ogni fase mira a identificare e correggere inefficienze (attraverso clustering, ottimizzazione evolutiva, auto-riparazione) e a ottimizzare l’allocazione in tempo reale, abbattendo il grado di disordine dei flussi energetici.
+- Aumento resilienza: L’auto-adattività, la capacità predittiva e l’auto-riparazione consentono alla rete di resistere a guasti e variazioni improvvise, garantendo continuità operativa.
+- Aumento efficienza operativa: L’ottimizzazione multi-obiettivo massimizza l’energia utile per unità di input, riduce sprechi, costi operativi e impatti ambientali, anche tramite automazione della compliance ambientale (policy Kyoto 2.0).
+
+Questa architettura multilivello (Edge, Fog, Cloud) rende il sistema urbano energeticamente più intelligente, sostenibile e robusto.","[1.0, 0.7, 0.7, 0.7, 0.7]",2,1.0,0.936022660437601,0.9440906417504042,0.3333333333333333,1.0,0.9999999999,0.9232538842749296,0.3260869565217391
+Qual è il costo medio di implementazione di un H-Node domestico conforme agli standard Bit-Energy e Kyoto 2.0 nei distretti urbani pilota del Progetto AETERNA?,L'informazione non è disponibile nel testo,impossibile,L'informazione non è disponibile nel testo,"[0.6, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.2, 0.0, 0.0, 0.6, 0.6, 0.4, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0]",5,1.0,1.0,1.0,1.0,1.0,0.9999999999,0.0,0.0
+Qual è la quota minima di energia garantita a ciascun nodo secondo la policy Kyoto 2.0 durante una finestra di scarsità?,La quota minima di energia garantita a ciascun nodo secondo la policy Kyoto 2.0 durante una finestra di scarsità è il 15% del fabbisogno energetico stimato per ciascun nodo (0.15 Bit-Energy).,facile,"La quota minima di energia garantita a ciascun nodo secondo la policy Kyoto 2.0 durante una finestra di scarsità è pari al 15% del fabbisogno del nodo, espressa come ""15% Bit-Energy"" (MIN_QUOTA = 0,15). Questa percentuale rappresenta il valore di default della quota minima che viene garantita a ogni nodo, salvo specifiche personalizzazioni.
+
+Riassumendo:
+
+- Durante una finestra di scarsità, viene calcolata una quota minima garantita per ciascun nodo.
+- Secondo la policy Kyoto 2.0, questa quota minima è pari al 15% del fabbisogno energetico del nodo (MIN_QUOTA = 0,15).
+- L’allocazione effettiva tiene conto anche di criteri di vulnerabilità, essenzialità e contributo storico, ma la quota minima per ogni nodo non può scendere sotto questa soglia, garantendo inclusività e giustizia distributiva.
+
+Fonte: Documentazione AETERNA – Pipeline di scarsità, Policy Kyoto 2.0 e parametri MIN_QUOTA.","[1.0, 1.0, 0.9, 0.7, 0.7]",2,1.0,0.6012613976424854,0.9050455905699416,0.6666666666666666,1.0,0.9999999999,0.9999999999999996,0.3333333333333333
+In che modo il framework AETERNA garantisce la priorità energetica ai veicoli di emergenza durante la gestione della mobilità elettrica nella Smart City 2030?,"Il framework AETERNA garantisce la priorità energetica ai veicoli di emergenza attraverso un sistema multilivello che utilizza moduli come l’Energy Request Handler, che applica policy di priorità basate sul ruolo del nodo (ad esempio, veicolo di emergenza), e il Fog Leader Orchestrator, che coordina le allocazioni energetiche a livello di quartiere. Le flotte di emergenza sono integrate come nodi ad alta priorità, con allocazioni dinamiche e contestabili tramite smart contract. L’accesso alle funzioni di priorità è gestito tramite Role-Based Access Control (RBAC), che assicura priorità assoluta ai servizi di emergenza, e tutte le transazioni sono storicizzate su ledger distribuito per garantire trasparenza e auditabilità.",media,"Il framework AETERNA garantisce la priorità energetica ai veicoli di emergenza nella Smart City 2030 tramite una combinazione di architetture e policy specifiche, che integrano tecnologie avanzate e sistemi automatizzati. Ecco i meccanismi principali:
+
+1. Gestione automatica della priorità:
+- In casi di congestione energetica o situazioni di emergenza, viene attivato un sistema di priorità automatica.
+- I veicoli di emergenza sono classificati, a livello di policy, come ""nodi energetici ad alta priorità"", appena dopo il trasporto pubblico in servizio attivo, e ricevono allocazioni dinamiche privilegiate.
+
+2. Smart Contract Dispatcher:
+- AETERNA utilizza smart contract per tracciare e contestare le allocazioni energetiche critiche, garantendo che le richieste dei mezzi di soccorso vengano registrate, validate e soddisfatte con precedenza rispetto ai veicoli privati.
+
+3. Fleet Priority Management:
+- Le flotte di emergenza sono integrate come nodi prioritari nella rete e le loro allocazioni vengono adattate dinamicamente tramite smart contract.
+
+4. Energy Request Handler & Dynamic EV Allocation:
+- Tutte le richieste energetiche vengono normalizzate e processate in base al ruolo del veicolo; i veicoli di emergenza, grazie al loro ruolo, attivano policy di priorità automatica.
+- La distribuzione dell’energia viene negoziata in tempo reale, ottimizzando la ricarica in base al livello di urgenza e allo stato della rete.
+
+5. Role-Based Access Control (RBAC):
+- Ogni veicolo o sottosistema è autenticato, e i veicoli di emergenza hanno accesso a funzionalità privilegiate garantite dai profili di ruolo, tra cui la priorità assoluta di accesso e allocazione.
+
+6. Interoperabilità e notifica eventi:
+- In risposta a eventi urbani critici (come blackout o congestione), il sistema può rimodulare automaticamente le allocazioni energetiche, riservando energia ai mezzi di emergenza e notificando gli operatori tramite canali asincroni.
+
+Questi meccanismi consentono ad AETERNA di orchestrare, in modo trasparente e resiliente, la mobilità elettrica garantendo alle flotte di emergenza la disponibilità energetica necessaria per operare senza interruzioni, specialmente in scenari critici.","[1.0, 0.9, 0.9, 0.9, 0.9, 0.8, 0.7]",2,0.75,0.4701977892832176,0.8807911571328704,0.9130434782608696,1.0,0.9999999999,0.9736577898419976,0.7083333333333334
+"Quali sono i passaggi e i meccanismi tecnici che permettono a un cittadino di contestare una transazione energetica, dalla visualizzazione dei dati sulla dashboard fino all’attivazione di un audit da parte del Fog Leader, e come viene garantita la tracciabilità e la non-repudiation di ogni azione compiuta durante questo processo?","Il cittadino, dopo essersi autenticato tramite certificato digitale sulla dashboard pubblica, può visualizzare in tempo reale i dati delle transazioni energetiche (inclusi provenienza, destinazione, qualità, timestamp, certificati di sostenibilità e audit) grazie a query processate dal Public Audit Gateway che interroga il ledger distribuito. Se rileva una discrepanza o desidera contestare una transazione, può avviare una contestazione direttamente dalla dashboard; questa viene inviata come smart contract tramite il Public Audit Gateway, che notifica il Fog Leader per l’attivazione di un audit. Ogni azione – dalla visualizzazione alla contestazione – è registrata su un audit log separato, firmato digitalmente e consultabile pubblicamente, garantendo tracciabilità e non-repudiation tramite firme digitali, timestamp sincronizzati e storicizzazione immutabile su ledger distribuito.",difficile,"Ecco la sequenza dei passaggi e i meccanismi tecnici che permettono a un cittadino di contestare una transazione energetica, la gestione da parte del Fog Leader e la garanzia di tracciabilità e non-repudiation:
+
+### 1. Visualizzazione e Identificazione della Transazione sulla Dashboard
+- **Accesso**: Il cittadino si autentica sulla dashboard pubblica tramite certificato digitale (Role-Based Access Control).
+- **Query**: Tramite la dashboard, può effettuare ricerche granulari su transazioni specifiche (filtri per ID, periodo, fonte energetica, priorità, ecc.).
+- **Dati Visualizzati**: Vede in tempo reale dettagli della transazione, rotte energetiche, qualità, stato della contestazione e il certificato di sostenibilità (con risultati firmati e timestampati).
+
+### 2. Contestazione della Transazione
+- **Attivazione della Contestazione**: Sulla dashboard, il cittadino può attivare la procedura di contestazione. Viene creato uno ""Smart Contract di Contestazione"" che genera un hash univoco collegato all’evento contestato.
+- **Registrazione**: L’evento di contestazione viene registrato su un audit log separato e firmato digitalmente, garantendo non-repudiation e auditabilità pubblica.
+
+### 3. Gestione e Audit da Parte del Fog Leader
+- **Validazione**: Il modulo Fog Leader riceve l’hash della contestazione; ne valida la correttezza seguendo le policy definite (rifiuta override manuali non autorizzati e applica priorità).
+- **Audit Automatica (Audit Quantistico)**: Se la contestazione viene confermata, la transazione e la relativa allocazione vengono sottoposte ad audit automatizzato (quantistico), con verifica statica e randomizzata, non ripudiabile. Viene generata ulteriore evidence (evidence_hash) per la ricostruzione forense.
+- **Notifiche**: In caso di anomalie ricorrenti, viene attivata una notifica automatica ai responsabili e ai servizi sociali tramite canali sicuri (WebSocket/AMQP).
+
+### 4. Tracciabilità e Non-Repudiation
+- **Audit Trail**: Ogni azione (consultazione, contestazione, verifica, audit) è registrata su ledger distribuito (e.g. Bit-Energy blockchain) con hash, UUID ed eventuale firma digitale.
+- **Disponibilità Pubblica**: Tutti i log sono consultabili (ove consentito dai permessi) per garantire trasparenza e ricostruzione forense.
+- **Crittografia e Privacy**: Tutte le interazioni sono cifrate end-to-end (Secure Energy Channel, TLS 1.3+). Gli ID sono pseudonimizzati per garantire auditabilità rispettando la privacy.
+- **Non-Repudiation**: Qualsiasi azione è firmata e timestampata, e non può essere negata dall'autore (nemmeno dal cittadino stesso).
+
+### 5. Correlazione e Gestione delle Dispute
+- Ogni evento rilevante nel processo di contestazione viene automaticamente correlato nel sistema di audit e dispute (dispute_event, evidence_hash), consentendo una ricostruzione completa, tempestiva e opponibile in sede forense.
+
+---
+
+**In sintesi**, la contestazione avviene in modo trasparente, tracciato, non manipolabile e opponibile: dal click sulla dashboard fino all’attivazione dell’audit e tracciamento di tutte le azioni, la piattaforma AETERNA garantisce non-repudiation, privacy e ricostruibilità forense di ogni step dell’iter.","[1.0, 0.8, 0.7, 0.7, 0.7, 1.0, 0.9, 0.8, 0.8, 0.8]",3,0.75,0.5193689506327317,0.791761516816641,1.0,1.0,0.9999999999,0.8033033265269158,0.7142857142857143
+Qual è il costo medio di implementazione di un modulo AETERNA Local Resource Manager (ALRM) per ciascun H-Node in una micro-rete urbana?,L'informazione non è disponibile nel testo,impossibile,L'informazione non è disponibile nel testo,"[0.6, 0.6, 0.6, 0.3, 0.3, 0.7, 0.7, 0.6, 0.6, 0.6, 1.0, 0.8, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.7, 0.7, 0.6, 0.6, 0.6]",5,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0
+Quali sono i livelli di Purezza Verde che permettono l’accesso prioritario alla green-whitelist per la distribuzione energetica?,"Solo le fonti classificate ai livelli 8, 9 e 10 di Purezza Verde vengono inserite nella green-whitelist e rese disponibili per la distribuzione prioritaria.",facile,"I livelli di Purezza Verde che permettono l’accesso prioritario alla green-whitelist per la distribuzione energetica sono i livelli 8, 9 e 10.
+
+- Solo le fonti classificate a questi livelli vengono inserite nella green-whitelist e rese disponibili per la distribuzione prioritaria.
+- I livelli 8, 9 e 10 corrispondono a:
+  - Livello 10: Zero emissioni, tracciabilità totale, 100% rinnovabile
+  - Livello 9: Emissioni trascurabili, tracciabilità totale, ≥98% rinnovabile
+  - Livello 8: Emissioni molto basse, tracciabilità quasi totale
+
+Le fonti con livello inferiore (1÷7) non accedono alla green-whitelist prioritaria e sono destinate solo a funzioni secondarie come backup o peak shaving.","[1.0, 1.0, 0.8, 0.8, 0.7]",2,0.75,0.4611558583769407,0.8446234335077629,1.0,1.0,0.9999999999,0.979851040160454,0.5
+In che modo la Coscienza di Rete del Progetto AETERNA integra sia i dati raccolti dai sensori distribuiti sugli H-Node sia il feedback sociale degli utenti per anticipare e prevenire crisi nella micro-rete energetica?,"La Coscienza di Rete del Progetto AETERNA integra i dati raccolti dai sensori distribuiti sugli H-Node attraverso una sensor fusion multi-layer, in cui ogni H-Node raccoglie dati ambientali, energetici e sociali, li preprocessa localmente tramite modelli AI embedded e li invia ai Fog Cluster per l’aggregazione e l’analisi di coerenza e anomalie. Parallelamente, il sistema raccoglie feedback sociale dagli utenti tramite canali come mobile app e interfacce vocali; questi dati vengono anonimizzati e pesati tramite algoritmi di reputation scoring decentralizzati. Entrambi i flussi informativi vengono utilizzati nei processi di apprendimento distribuito (federated learning) e swarm intelligence, permettendo alla rete di apprendere pattern ricorrenti, anticipare bisogni energetici e identificare anomalie. In caso di rischio di crisi, algoritmi di early warning aggregano indici di vulnerabilità calcolati localmente e attivano protocolli di mitigazione. L’integrazione dei feedback sociali ed etici influenza le priorità distributive e le strategie di bilanciamento, assicurando che le decisioni automatiche siano orientate anche da parametri di equità e preferenze della comunità. In questo modo, la Coscienza di Rete anticipa e previene crisi nella micro-rete energetica attraverso una combinazione di percezione distribuita, apprendimento collettivo e adattamento etico-sociale.",media,"La Coscienza di Rete del Progetto AETERNA integra sia i dati raccolti dai sensori sugli H-Node sia il feedback sociale degli utenti attraverso un’architettura distribuita e intelligente, che può essere riassunta nei seguenti punti:
+
+1. Raccolta e fusione dati sensoriali:
+- Gli H-Node sono equipaggiati con sensori ad alta fedeltà (es. effetto Hall) che monitorano in tempo reale i flussi energetici a frequenze elevate (fino a 100 kHz).
+- Questi dati vengono acquisiti e processati localmente tramite tecniche di sensor fusion e intelligenza artificiale distribuita, abilitando un primo livello di rilevamento di anomalie, diagnostica predittiva e auto-riparazione proattiva.
+
+2. Aggregazione, analisi e swarm intelligence:
+- I dati raccolti vengono aggregati a più livelli (Edge, Fog, Cloud).
+- Attraverso cluster e protocolli di swarm intelligence, la rete apprende pattern ricorrenti e anomalie, e utilizza questi apprendimenti per attivare protocolli di early warning e manutenzione predittiva (predictive maintenance).
+
+3. Integrazione con feedback sociale:
+- Parallelamente alla raccolta sensoriale, la Coscienza di Rete integra feedback sociali ed etici provenienti dagli utenti.
+- Questo flusso migliorativo consente al sistema di anticipare i bisogni energetici, reagire a variazioni comportamentali della comunità, e adattare strategie e policy in modo etico e distribuito, anche tramite smart contract di meta-governance (MetaGov-SC) e revisione etica.
+
+4. Anticipazione e prevenzione crisi:
+- La sinergia tra sensoristica diffusa e feedback degli utenti permette la realizzazione di una intelligenza collettiva, resiliente e adattiva, capace di riconoscere autonomamente rischi emergenti o crisi (ad esempio consumi anomali, blackout imminenti, sovraccarichi legati a eventi sociali).
+- I dati vengono processati in real-time e utilizzati da algoritmi predittivi e collettivi per ottimizzare le risorse, prevenire guasti, e garantire l’auto-riparazione.
+
+5. Governance adattiva:
+- La rete si autoregola tramite policy adattive, federated learning, e blockchain permissioned, assicurando trasparenza, auditabilità e adattamento continuo, anche grazie all’integrazione del feedback umano.
+
+In sintesi, la Coscienza di Rete di AETERNA rappresenta un approccio olistico che combina: sensoristica avanzata, machine learning collettivo, feedback sociale e governance automatizzata per anticipare e prevenire crisi nella micro-rete energetica in modo adattivo ed etico.","[0.8, 0.8, 0.8, 0.8, 0.8, 0.9, 0.8, 0.8, 0.7, 0.7]",2,0.75,0.6939852171045946,0.9213954138729236,1.0,0.8333333333333334,0.9999999999,0.7387781952074626,0.4814814814814814
+"Quali sono le principali strategie e componenti tecnologiche che consentono al Progetto AETERNA di garantire interoperabilità, scalabilità, resilienza e sicurezza nelle micro-reti energetiche urbane, considerando l’integrazione di dispositivi legacy, la gestione dei dati, la continuità operativa e la governance distribuita?","Le principali strategie e componenti tecnologiche del Progetto AETERNA per garantire interoperabilità, scalabilità, resilienza e sicurezza nelle micro-reti energetiche urbane includono:
+
+- Uno stack multilivello Edge–Fog–Cloud che consente l’orchestrazione di dispositivi eterogenei, inclusi quelli legacy, grazie a bridge middleware e una matrice di compatibilità tra sistemi operativi (AETERNA-RTOS, Linux Embedded, FreeRTOS, Ubuntu Server, RHEL/CentOS, AETERNA-FogOS, AETERNA-CloudOS, Windows IoT, KNX/BACnet).
+- Middleware dedicati come ALRM (AETERNA Local Resource Manager) per la gestione delle risorse e la sensor fusion, Secure Enclave per la sicurezza hardware/software, Edge Swarm Agent per algoritmi swarm, e FL-AETERNA Client per l’apprendimento federato privacy-preserving.
+- Protocolli di comunicazione standardizzati (MQTT-SN, CoAP, gRPC, REST, AMQP, ZeroMQ, WebSocket, GraphQL API) per garantire interoperabilità tra dispositivi e livelli.
+- Integrazione di una blockchain permissioned (Bit-Energy) basata su Hyperledger Fabric custom, con canali segregati per la privacy, smart contract (MetaGov-SC) per policy e governance distribuita, e tokenizzazione per scambio energetico e incentivi.
+- Protocolli di federated learning (FL-AETERNA) con federated averaging, secure aggregation, differential privacy, model pruning, gradient compression e proof-of-participation per la validazione dei contributi.
+- Moduli di Explainable AI (XAI) per la trasparenza e la tracciabilità delle decisioni automatizzate, inclusi Ethical Impact Score e dashboard di visualizzazione.
+- Meccanismi di sicurezza come Secure Enclave, end-to-end encryption (TLS 1.3, curve elliptiche), audit trail immutabile su DLT e logging distribuito.
+- Continuità operativa assicurata da orchestratori a ogni livello (Fog Orchestrator, Macro Orchestrator), gestione cluster, aggregazione dati, coordinamento swarm e supervisione globale.
+- Governance distribuita tramite MetaGov-SC Engine e Supervisor, con esecuzione, monitoraggio e audit di smart contract, e coinvolgimento etico e sociale nel ciclo decisionale.
+
+Questi elementi permettono l’integrazione di dispositivi legacy, la gestione sicura e scalabile dei dati, la resilienza operativa e una governance trasparente e distribuita nelle micro-reti urbane.",difficile,"Ecco una sintesi delle principali strategie e componenti tecnologiche del Progetto AETERNA che garantiscono interoperabilità, scalabilità, resilienza e sicurezza nelle micro-reti energetiche urbane, con attenzione all’integrazione dei dispositivi legacy, gestione dei dati, continuità operativa e governance distribuita:
+
+---
+
+**1. Integrazione dispositivi legacy e interoperabilità**
+- AETERNA adotta uno stack tecnologico multilivello (Edge–Fog–Cloud), progettato per integrare sia dispositivi legacy che di nuova generazione, grazie a:
+  - Matrice di compatibilità tra sistemi operativi.
+  - Protocolli standardizzati come MQTT, CoAP, gRPC.
+  - Middleware custom come ALRM, FL-AETERNA e MetaGov-SC, per astrarre le funzionalità e garantire interoperabilità.
+  - Integrazione profonda di sistemi IoT per la raccolta, elaborazione e trasmissione in tempo reale di dati energetici da dispositivi eterogenei.
+
+**2. Scalabilità**
+- Architettura modulare e stratificata che consente:
+  - Scalabilità orizzontale e verticale (grazie a microservizi containerizzati e workflow automatizzati).
+  - Espansione incrementale della rete e facile replicabilità in nuove aree urbane.
+- Uso di architetture digitali avanzate per l’energy management distribuito, orchestrate tramite intelligenza artificiale.
+
+**3. Resilienza e continuità operativa**
+- Meccanismi di failover distribuito: i cluster Fog possono operare in modalità autonoma (Fog-Independence) in caso di disconnessione dal Cloud, garantendo funzioni essenziali.
+- Simulazione regolare di scenari catastrofici (disaster recovery) e drill automatizzati per il ripristino delle funzionalità critiche.
+- Ridondanza e disaster recovery a misura dell’architettura distribuita (Edge, Fog, Cloud), per mantenere gli SLA operativi anche durante guasti o attacchi.
+- Adattabilità e auto-riparazione grazie a protocolli resilienti e pianificazione preventiva.
+
+**4. Sicurezza e gestione dati**
+- Blockchain permissioned per la trasparenza, auditabilità e tracciabilità delle transazioni (Bit-Energy Ledger).
+- Crittografia, gestione sicura delle chiavi e monitoraggio continuo degli accessi e degli eventi.
+- Data governance articolata: ruoli, policy e processi rigorosi per garantire qualità, integrità, sicurezza e accountability dei dati.
+- Standard interni come Kyoto 2.0 per compliance normativa e gestione responsabile dei dati energetici.
+
+**5. Governance distribuita**
+- Modello multilivello che prevede decentralizzazione delle responsabilità (Edge, Fog, Cloud), definizione chiara di privilegi, delega e revisione.
+- Trasparenza dei processi grazie a dashboard, registrazione su blockchain, sistemi di tracciamento e strumenti per la collaborazione tra i diversi attori (operativi, sicurezza, gestione energetica).
+- Partecipazione e verifica aperta, abilitando una governance energetica partecipata a tutela di tutti gli stakeholder.
+
+---
+
+**In sintesi:**  
+AETERNA combina architetture stratificate, microservizi, blockchain, AI distribuita e protocolli standardizzati per orchestrare un ecosistema resiliente, interoperabile e scalabile. L’integrazione dei dispositivi legacy è facilitata da middleware e compatibilità software, mentre la governance dei dati e la resilienza sono affidate a pratiche di compliance avanzate, disaster recovery e una gestione multilivello e trasparente.
+
+Se desideri il dettaglio tecnico su un componente specifico (es. la blockchain usata o le pratiche di disaster recovery), chiedi pure.","[0.9, 0.9, 0.8, 0.8, 0.8, 1.0, 0.9, 0.8, 0.8, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.9, 0.8, 0.8]",3,0.75,0.6418185865835809,0.9151004332908458,1.0,0.9,0.9999999999,0.9568700112602104,0.6129032258064516
+Qual è il costo medio di produzione di un H-Node Edge dotato di micro-controller ARM Cortex-M33 e Secure Enclave?,L'informazione non è disponibile nel testo,impossibile,L'informazione non è disponibile nel testo,"[0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.6, 0.6, 0.6, 0.7, 0.6, 0.6, 0.6, 0.4, 0.7, 0.7, 0.7, 0.7, 0.6, 0.0, 0.0, 0.0]",5,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0
+"Quale componente del livello Fog gestisce la formazione, la dissoluzione e la riconfigurazione dei cluster di edifici sulla base di criteri energetici, topologici e di policy?","Il componente del livello Fog che gestisce la formazione, la dissoluzione e la riconfigurazione dei cluster di edifici sulla base di criteri energetici, topologici e di policy è il Dynamic Fog Cluster Manager (DFCM).",facile,"Il componente del livello Fog che gestisce la formazione, la dissoluzione e la riconfigurazione dei cluster di edifici sulla base di criteri energetici, topologici e di policy è il Dynamic Fog Cluster Manager (DFCM).
+
+Questo componente svolge le seguenti funzioni:
+- Gestisce dinamicamente la formazione dei cluster di edifici.
+- Coordina la dissoluzione o la riconfigurazione dei cluster secondo criteri energetici, topologici e di policy.
+- Utilizza algoritmi di clustering distribuiti per adattarsi in tempo reale alle necessità operative della rete (es. DBSCAN adattato, K-Means decentralizzato).
+- Si avvale di protocolli di membership (ad esempio, gossip-based come SWIM o HyParView) per la propagazione degli stati e la gestione dei guasti.
+
+In sintesi, il DFCM è la componente centrale responsabile per questi processi a livello Fog nel framework AETERNA.","[1.0, 1.0, 1.0, 0.9, 0.9]",2,1.0,0.3764687818228779,0.9058751272915118,0.8888888888888888,1.0,0.9999999999,0.9141098335481844,0.5555555555555556
+In che modo l’adozione di database vettoriali nel livello Cloud del framework AETERNA contribuisce sia all’analisi predittiva dei pattern di consumo energetico sia alla personalizzazione delle strategie di bilanciamento delle micro-reti?,"L’adozione di database vettoriali nel livello Cloud del framework AETERNA consente la memorizzazione efficiente di milioni di pattern storici e real-time di consumo energetico, rappresentati come vettori ad alta dimensionalità tramite embedding AI. Questi database permettono la ricerca semantica tra pattern, il rilevamento di anomalie e il clustering di utenti o prosumer con comportamenti affini, accelerando inferenze, raccomandazioni e simulazioni tramite nearest neighbor search. In questo modo, il sistema può identificare pattern ricorrenti, outlier e cluster di consumo con impatto strategico, abilitando analisi predittive accurate e la personalizzazione delle strategie di bilanciamento delle micro-reti in risposta a scenari dinamici e complessi. La ricerca semantica sui vettori permette inoltre di adattare dinamicamente le strategie di bilanciamento e pricing, massimizzando l’efficienza e la resilienza del sistema.",media,"L’adozione di database vettoriali nel livello Cloud del framework AETERNA contribuisce in modo determinante sia all’analisi predittiva dei pattern di consumo energetico, sia alla personalizzazione delle strategie di bilanciamento delle micro-reti, grazie a diversi meccanismi integrati:
+
+1. Analisi predittiva dei pattern di consumo energetico:
+- I database vettoriali permettono la memorizzazione efficiente di milioni di pattern storici e in tempo reale, rappresentati come vettori ad alta dimensionalità.
+- Consentono di effettuare ricerca semantica basata su similarità tra pattern, individuazione precoce di anomalie e clustering di utenti/prosumers con comportamenti affini.
+- Queste funzionalità accelerano le inferenze AI-driven, rendendo possibile anticipare tendenze di consumo, prevedere picchi della domanda ed eseguire simulazioni predittive (nearest neighbor search, embedding AI).
+- L’analisi su ampia scala abilitata nel Cloud consente di spostare la prospettiva dalla gestione locale a una visione macro, ottimizzando allocazione delle risorse e compliance normativa in modo proattivo e resiliente.
+
+2. Personalizzazione delle strategie di bilanciamento delle micro-reti:
+- Il Cloud, tramite l’analisi avanzata dei database vettoriali, individua pattern di consumo emergenti e permette l’adattamento dinamico e data-driven delle strategie di bilanciamento e pricing.
+- Le strategie di allocazione delle risorse vengono costantemente riviste sulla base degli insight estratti dai metadati energetici, ottimizzando la distribuzione su scala nazionale e regionale ma anche adattandosi localmente alle necessità delle singole micro-reti.
+- La ricerca semantica su dati vettoriali consente di definire politiche di load balancing altamente personalizzate, allineando le decisioni operative alle caratteristiche specifiche dei cluster di consumo rilevati in tempo reale, massimizzando efficienza, resilienza e sostenibilità del sistema.
+
+In sintesi, i database vettoriali sono il cuore dell’intelligenza analitica centralizzata del framework AETERNA: abilitano previsioni rapide e accurate e una personalizzazione scalabile delle strategie di controllo e bilanciamento delle micro-reti, con benefici tangibili su efficienza operativa e sostenibilità complessiva.","[1.0, 1.0, 0.9, 1.0, 0.8, 0.6]",3,0.75,0.6282001187491282,0.9278948146191546,0.84375,1.0,0.9999999999,0.99450805218257,0.1111111111111111
+"Quali sono le principali strategie multilivello adottate da AETERNA per garantire la continuità operativa e la resilienza del servizio energetico in presenza di latenze critiche, e come queste strategie si integrano con i meccanismi di monitoraggio real-time e l’enforcement degli SLA attraverso Kyoto 2.0 e Bit-Energy?","Le principali strategie multilivello adottate da AETERNA per garantire la continuità operativa e la resilienza del servizio energetico in presenza di latenze critiche includono la segmentazione architetturale su tre livelli (Edge, Fog, Cloud) con SLA di latenza rigorosi e differenziati, l’implementazione di strategie di mitigazione specifiche per ciascun livello (come edge caching, buffer circolari, failover locale, load balancing, micro-batching, circuit breaker, geo-redundancy, backpressure e throttling), e l’adozione di protocolli di comunicazione prioritari con fallback per la resilienza. Queste strategie si integrano con meccanismi di monitoraggio real-time tramite telemetry distribuita (Prometheus/OpenTelemetry), heartbeat, tracing end-to-end (Jaeger/OpenTracing), alerting predittivo basato su AI/ML per il rilevamento di anomalie di latenza, e un policy engine OPA che monitora il rispetto degli SLA e applica penalità o incentivi automatici attraverso Bit-Energy. L’enforcement degli SLA e la compliance agli standard sono garantiti anche tramite smart contract Kyoto 2.0, assicurando trasparenza, tracciabilità e auditabilità delle performance di rete.",difficile,"Ecco una sintesi delle principali strategie multilivello adottate da AETERNA per garantire la continuità operativa e la resilienza del servizio energetico in scenari di latenze critiche, e la loro integrazione con monitoraggio real-time e enforcement SLA attraverso Kyoto 2.0 e Bit-Energy:
+
+### 1. Strategie Multilivello per la Continuità e Resilienza
+
+- **Architettura Edge–Fog–Cloud:** 
+  - Livello Edge (H-Node): raccolta in tempo reale di metriche granulari su hardware e consumo, con buffering locale e trasmissione sicura.
+  - Livello Fog (quartiere): aggregazione, normalizzazione e primo livello di analisi/event management, gestione trend e soglie di allerta.
+  - Livello Cloud: supervisione macro, orchestrazione centralizzata delle policy, analisi predittiva su larga scala, dashboard unificate.
+
+- **Gestione degli Errori:**
+  - Retry intelligenti e circuit breaker adattivi.
+  - Fallback controllati per isolare i guasti e ridurre il rischio di outage.
+  - Meccanismi proattivi per isolare, sostituire o reindirizzare dipendenze esterne.
+  - Multi-vendor/multi-cloud e health-check proattivi con piani di fallback e contratti SLA con clausole di emergenza.
+
+- **Strategie per l’Energia:**
+  - Accumulo elettrochimico distribuito e compensazione reattiva.
+  - Demand response intelligente per ridurre rischi di blackout.
+  - Storage dati/eventi distribuito a tutti i livelli per garantire persistenza anche in condizioni di guasto.
+
+### 2. Monitoraggio Real-Time
+
+- **Monitoraggio Multilivello e Osservabilità:**
+  - Raccolta sistematica di telemetria e tracciamento eventi su ogni livello (Edge–Fog–Cloud).
+  - Integrazione di SIEM per sicurezza, audit log centralizzati, e dashboard in tempo reale.
+  - Strategie di alerting su più livelli: statici, dinamici (AI-driven) e compositi, con escalation automatizzate e remediation proattiva.
+  - Correlazione di eventi sul bus di eventi distribuito per risposte rapide a incidenti e latenze.
+
+### 3. Enforcement degli SLA tramite Kyoto 2.0 e Bit-Energy
+
+- **Kyoto 2.0:** 
+  - Standard proprietario per la certificazione delle performance ambientali e operative.
+  - Indicatori specifici su bilanciamento, riduzione emissioni e trading P2P, integrati nei processi di audit e reporting centralizzati su tutti i livelli.
+
+- **Bit-Energy Compliance Suite:** 
+  - Smart contract e policy digitali per la notarizzazione di eventi critici, la tracciabilità delle transazioni energetiche, la gestione di key performance e auditabilità blockchain.
+  - Audit multilivello derivati dagli standard ISO e Kyoto 2.0 su tutti gli strati (Edge, Fog, Cloud).
+  - Penali, responsabilità e procedure di revisione automatizzata integrate nelle logiche di enforcement.
+  - Tracciamento end-to-end (notarizzazione su blockchain) di tutte le violazioni agli SLA e delle azioni correttive.
+
+- **Integrazione operativa:**
+  - Quando si rilevano latenze critiche o violazioni SLA, la piattaforma attiva procedure di remediation (failover, routing alternativo, restart) e produce eventi notarizzati su Bit-Energy.
+  - Tutti i flussi, dalle metriche in tempo reale alle azioni correttive, sono auditabili in conformità Kyoto 2.0.
+
+---
+
+**In sintesi:** 
+AETERNA integra strategie multilivello architetturali e di automazione (Edge–Fog–Cloud, fallback, alerting proattivo) con sistemi di monitoraggio avanzato, garantendo resilienza e risposta tempestiva. Il rispetto e l’enforcement degli SLA, anche ambientali, sono rafforzati dalla notarizzazione blockchain (Bit-Energy) e dagli standard Kyoto 2.0, assicurando trasparenza, auditabilità e conformità normativa, anche in condizioni di latenze critiche.","[1.0, 1.0, 0.9, 0.9, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.9, 0.9]",3,0.75,0.5945995819510639,0.8783983278042553,1.0,0.6666666666666666,0.9999999999,0.9895711706997844,0.6153846153846154
+Qual è il costo medio di implementazione di un modulo Pulse Master su ciascun H-Node in una micro-rete energetica conforme alle policy Kyoto 2.0?,L'informazione non è disponibile nel testo,impossibile,"Dall’analisi dei documenti AETERNA, non sono riportati costi specifici e granulari riferiti esclusivamente al modulo Pulse Master su singolo H-Node. Tuttavia, si possono estrarre informazioni utili per una stima realistica basata sulle voci di costo di implementazione di un cluster di H-Node in una micro-rete conforme alle policy Kyoto 2.0.
+
+### Ripartizione costi medi (valori riferiti a un cluster tipo di 1000 H-Node)
+
+- **CAPEX Hardware H-Node (inclusivo di ricevitore GPS e Pulse Master):** 250.000 €/1000 H-Node → 250 €/H-Node 
+- **Licenze software (incluso orchestratori, moduli AI, compliance Kyoto 2.0):** 60.000 €/1000 H-Node → 60 €/H-Node
+- **Manutenzione e OPEX annuo (quota parte per H-Node, inclusi aggiornamenti a policy Kyoto 2.0, supporto, consumi):** 10.000 + 12.000 + 15.000 + 8.000 € ≈ 45 €/H-Node/anno
+
+### Stima costo medio implementazione modulo Pulse Master su ciascun H-Node
+- **Quota una tantum implementativa (hardware + software):** Circa **310 € per H-Node**
+- **Quota OPEX annua:** Circa **45–47 €/H-Node/anno**
+
+### Specificità Kyoto 2.0
+- La quota software comprende già moduli di compliance, audit metrico e tagging Kyoto 2.0, come richiesto dalle policy attuali.
+- Il Pulse Master risulta essere parte integrante dell’H-Node, incidendo sul costo hardware (ricevitore GPS integrato) e sulla licenza software (incluso sistema di validazione, anti-spoofing, replica temporale e API di sincronizzazione/audit).
+
+**Nota:** Questi valori sono basati su simulazioni e modelli generici di business plan consultabili nella documentazione AETERNA. Per personalizzazioni o funzioni avanzate (es. micro-rete con requisiti di resilienza o sicurezza superiori), i costi potrebbero subire variazioni.
+
+Se necessiti di dettaglio sulla sola quota “Pulse Master” rispetto all’H-Node completo, oppure breakdown per cluster di dimensione diversa, posso effettuare un calcolo di stima (bottom-up) sui soli componenti temporali. Fammi sapere!","[0.7, 0.6, 0.6, 0.6, 0.3, 0.7, 0.7, 0.7, 0.6, 0.6, 1.0, 0.7, 0.6, 0.3, 0.3]",4,0.5,0.1210538361025138,0.0556439158386268,1.0,1.0,0.0,0.7694691047275515,0.9285714285714286
+Qual è il ruolo del Fog Leader durante la modalità Fog-Independence?,"Durante la modalità Fog-Independence, il Fog Leader assume la responsabilità di coordinare il trading energetico P2P locale (Bit-Energy), gestire la sincronizzazione temporale tramite Pulse Aggregator, eseguire il bilanciamento predittivo tramite AI locale (modelli pre-addestrati, fallback su inferenza edge), e garantire la replica e la consistenza dei log delle transazioni e degli eventi tra i nodi Fog per assicurare la continuità operativa in assenza del coordinamento centrale fornito dal Cloud.",facile,"Durante la modalità Fog-Independence, il Fog Leader assume un ruolo centrale e operativo nei seguenti ambiti:
+
+- Assunzione del Controllo Operativo: coordina localmente il trading energetico P2P (Bit-Energy), gestisce la sincronizzazione temporale tramite Pulse Aggregator, ed esegue il bilanciamento predittivo usando modelli di AI locale.
+- Replica e Consistenza: garantisce la replica dei log delle transazioni e degli eventi tra i nodi Fog per assicurare consistenza e la ripartenza dopo un eventuale ripristino della connessione al Cloud.
+- Election automatiska: se il collegamento con il Cloud si interrompe, il sistema attiva automaticamente una nuova elezione del Fog Leader tramite algoritmo Fast Paxos, scegliendo il nodo più affidabile e disponibile.
+- Sincronizzazione Stato: usa snapshot locali e log di eventi per mantenere la coerenza e la continuità operativa, supplendo temporaneamente al Cloud.
+
+In sintesi, il Fog Leader garantisce l’autonomia del cluster Fog, coordinando tutte le funzioni critiche e mantenendo il corretto funzionamento locale fino al ripristino della connessione col Cloud.","[1.0, 1.0, 1.0, 1.0, 1.0]",2,0.75,0.7735008701722823,0.8940034806891288,0.5625,1.0,0.9999999999,0.9889564268603378,0.25
+In che modo la scelta di GraphQL come protocollo di esposizione delle API nel Progetto AETERNA contribuisce sia alla flessibilità delle query per gli sviluppatori sia all’efficienza nella gestione del traffico e del carico computazionale sui nodi Fog e Cloud?,"La scelta di GraphQL come protocollo di esposizione delle API nel Progetto AETERNA permette agli sviluppatori di specificare esattamente quali campi e sotto-campi desiderano nelle loro query, offrendo così una flessibilità elevata nella selezione e nella profondità dei dati energetici richiesti. Questo approccio riduce l’overfetching, cioè l’invio di dati non necessari, e consente di ottenere solo le informazioni strettamente utili, ottimizzando il traffico di rete. Di conseguenza, il carico computazionale sui nodi Fog e Cloud viene minimizzato, poiché viene gestito un payload più efficiente e mirato. Inoltre, la possibilità di estendere lo schema GraphQL senza breaking changes facilita l’evoluzione del framework e la personalizzazione delle applicazioni, mantenendo al contempo l’efficienza operativa e la scalabilità della piattaforma.",media,"La scelta di GraphQL come protocollo di esposizione delle API nel Progetto AETERNA offre vantaggi chiave sia per la flessibilità degli sviluppatori sia per l’efficienza operativa su nodi Fog e Cloud:
+
+1. Flessibilità delle Query:
+- Gli sviluppatori possono specificare esattamente quali dati (campi e sotto-campi) desiderano ottenere. Questo controllo puntuale sulla profondità e granularità delle informazioni evita che vengano trasferiti dati non necessari (""overfetching"" o ""underfetching"").
+- Permette la creazione di applicazioni data-driven, dashboard e soluzioni personalizzate e resilienti, in cui ogni client riceve solo ciò di cui ha realmente bisogno, in modo uniforme tra domini diversi (es. ordini, inventario, pagamenti).
+
+2. Efficienza nella Gestione del Traffico e del Carico Computazionale:
+- Riducendo la dimensione del payload trasmesso tra client e nodi (Fog/Cloud), GraphQL minimizza il traffico di rete.
+- Permette un’efficiente aggregazione dei dati tramite query complesse in un’unica chiamata, evitando richieste multiple e successive elaborazioni lato server.
+- Meccanismi di rate limiting e depth limiting sono implementati a livello di API Gateway per prevenire query troppo complesse o pesanti, garantendo la stabilità del sistema e una gestione bilanciata del carico computazionale sui nodi.
+- L’approccio facilita l’estendibilità dello schema API senza breaking changes, consentendo aggiornamenti evolutivi senza aumentare il traffico o appesantire i nodi.
+
+In sintesi: GraphQL in AETERNA consente agli sviluppatori flessibilità massima nella costruzione delle query e, allo stesso tempo, ottimizza traffico e computazione riducendo i costi e i carichi su Fog e Cloud.","[1.0, 0.9, 0.9, 0.8, 0.7]",2,0.75,0.5912972667203166,0.9106436123358114,0.6,1.0,0.9999999999,0.8861171486031524,0.2
+"Quali sono le principali fasi e i meccanismi di sicurezza coinvolti nel processo di provisioning, orchestrazione e deprovisioning di una V-Energy Instance nel contesto del Progetto AETERNA, e in che modo questi garantiscono resilienza, auditabilità e compliance rispetto agli standard Kyoto 2.0 e Bit-Energy?","Le principali fasi del processo di provisioning, orchestrazione e deprovisioning di una V-Energy Instance nel Progetto AETERNA sono: richiesta di provisioning tramite API GraphQL autenticata via Kyoto 2.0 mutual TLS e autorizzata tramite token JWT Bit-Energy; validazione delle policy di accesso e delle quote di risorse; scheduling AI-aware per selezionare il nodo ottimale (Fog/Cloud); creazione del container Docker-Grid con parametri runtime; iniezione di configurazione, dataset storici e policy di comportamento; monitoraggio, logging e raccolta di metriche; deprovisioning con raccolta di snapshot finale e aggiornamento dell’audit log.
+
+I meccanismi di sicurezza coinvolti includono: autenticazione e cifratura di ogni nodo e chiamata API tramite mutual TLS Kyoto 2.0; assegnazione di token JWT Bit-Energy a ogni istanza container per accesso e auditabilità; tracciamento, firma digitale e replica di ogni evento (provisioning, scaling, errore, terminazione) su storage locale e Cloud tramite audit log; enforcement delle policy di accesso e uso risorse a livello di orchestrator e container runtime; isolamento dei processi energetici tramite namespace di rete e storage dedicati.
+
+Questi meccanismi garantiscono resilienza attraverso l’isolamento rigoroso dei processi, il riavvio automatico dei container falliti e la gestione distribuita dello stato; assicurano auditabilità tramite la tracciabilità e la firma digitale di ogni operazione; e garantiscono compliance rispetto agli standard Kyoto 2.0 e Bit-Energy grazie all’adozione di mutual TLS, token JWT, policy enforcement e audit log replicati.",difficile,"Di seguito una panoramica delle fasi e dei meccanismi di sicurezza coinvolti nel provisioning, orchestrazione e deprovisioning di una V-Energy Instance nel contesto del Progetto AETERNA, con focus su come questi garantiscono resilienza, auditabilità e compliance agli standard Kyoto 2.0 e Bit-Energy.
+
+---
+### 1. Fasi principali del ciclo di vita (pipeline) di V-Energy Instance:
+
+**Provisioning**:
+- Richiesta tramite API GraphQL, autenticata con Kyoto 2.0 mutual TLS e autorizzata via token JWT Bit-Energy.
+- Validazione policy di accesso granulari e controllo sulle quote di risorse.
+- Scheduling su nodo ottimale (Fog/Cloud) via AI, per latenza minima e bilanciamento del carico.
+- Creazione del container isolato (limitazioni CPU/RAM, storage dedicato, reti virtuali).
+- Iniezione di parametri/configurazione policy e dati storici.
+- Attivazione di monitoraggio e logging continuo, con stream verso cluster di osservabilità (Kubernetes).
+
+**Orchestrazione**:
+- Gestione isolata e protetta (namespace di rete e storage dedicato, policy Bit-Energy enforced).
+- Scalabilità automatica su base predittiva (eventi AI, carichi simulazione), sia orizzontale che verticale.
+- Snapshot di stato energetico su storage distribuito e referenziamento tramite Ledger/AI Snapshot.
+- Riavvio automatico (self-healing) dei container falliti con raccolta audit log delle anomalie.
+
+**Deprovisioning**:
+- Validazione multilivello e automazione workflow (inclusione/rimozione orchestrata, non mero atto amministrativo).
+- Cancellazione dati, revoca credenziali e aggiornamento della tracciabilità su Blockchain.
+- Audit trail distribuito e segregato per garantire la compliance delle operazioni di offboarding.
+
+---
+### 2. Meccanismi di sicurezza chiave
+
+- **Crittografia e autenticazione**: mTLS (mutual TLS standard Kyoto 2.0), X.509, AES-256, RSA-4096, ECC, JWT Bit-Energy.
+- **Tokenizzazione dei permessi**: Token JWT Bit-Energy abilitati per l’accesso alle API.
+- **Blockchain privata (Bit-Energy)**: per la notarizzazione, la verifica dell’integrità e il tracciamento end-to-end di tutte le operazioni rilevanti (provisioning, mutamenti di stato, deprovisioning).
+- **Policy di sicurezza dinamiche**: enforcement delle policy Bit-Energy su isolamento di container e processi.
+- **Audit distributed logging**: tutte le operazioni sono tracciate tramite log runtime, audit log e chain-of-custody digitali.
+- **Validazione multinodo**: on-boarding/off-boarding e ogni operazione critiche sono soggette a validazione multilivello e (dove necessario) a consenso distribuito tra stakeholder.
+- **Protezione dati in transito**: canali cifrati per tutte le comunicazioni (mTLS, AES-256), mitigando rischi come MITM, spoofing, replay, intercettazione.
+
+---
+### 3. Resilienza, Auditabilità e Compliance
+
+- **Resilienza**: 
+  - Scheduler AI e orchestrazione containerizzata consentono self-healing e auto-scalabilità.
+  - Fault-tolerance, snapshot, clustering (Fog/Cloud) mantengono operatività in presenza di fault o attacchi informatici.
+- **Auditabilità**: 
+  - Logging centralizzato con notarizzazione blockchain; raccolta, verifica e audit ex-post sempre possibili da parti terze.
+  - Data lineage e firma digitale sulle transazioni energetiche, garantendo non ripudiabilità.
+- **Compliance (Kyoto 2.0 & Bit-Energy)**:
+  - Policy e workflow automatici in linea con Kyoto 2.0 per performance ambientali, riduzione emissioni, efficienza P2P.
+  - Tracciabilità delle transazioni e comportamenti tramite Bit-Energy; smart contract per enforcement di regole e crediti in linea con compliance suite.
+  - Audit interni multilivello programmati, aderenti a standard di settore ISO 14001, SA8000 e ai requisiti Kyoto 2.0/Bit-Energy.
+  - Gestione end-to-end crediti, settlings e pagamenti tramite token Bit-Energy.
+
+---
+**In sintesi**: la pipeline di AETERNA integra provisioning sicuro/auth, orchestrazione elastica/scalabile, e deprovisioning tracciato, usando tecnologie certificate, blockchain e audit trail per garantire resilienza, trasparenza e piena conformità a Kyoto 2.0 e Bit-Energy, quindi per implementare microgrid trasparenti, compliant e auditabili anche sotto stress normativo/tecnico.","[1.0, 0.8, 0.7, 0.7, 0.6, 0.9, 0.8, 0.8, 0.8, 0.7, 1.0, 1.0, 1.0, 1.0, 1.0]",3,0.75,0.7960502957918018,0.905720170508979,0.8235294117647058,1.0,0.9999999999,0.8636299017602306,0.6363636363636364
+"Qual è il costo medio di implementazione del protocollo Cross-Layer Resource Arbitration Protocol (CL-RAP) su una micro-rete AETERNA composta da 10 nodi Edge, 3 cluster Fog e un cluster Cloud?",L'informazione non è disponibile nel testo,impossibile,L'informazione non è disponibile nel testo,"[0.6, 0.6, 0.6, 0.5, 0.4, 0.7, 0.6, 0.3, 0.3, 0.2, 0.6, 0.6, 0.6, 0.4, 0.3, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.6]",5,1.0,1.0,1.0,1.0,1.0,0.9999999999,0.0,0.0
+Quali sono i tre moduli principali che compongono il telaio dell’H-Node v4?,"Modulo di potenza, modulo computazionale e modulo di interfaccia.",facile,"I tre moduli principali che compongono il telaio dell’H-Node v4 sono:
+
+1. Modulo di potenza
+2. Modulo computazionale
+3. Modulo di interfaccia
+
+Questi moduli sono fisicamente separabili tramite connettori a sgancio rapido, consentendo una gestione e manutenzione semplificata.","[1.0, 1.0, 1.0]",2,1.0,0.6938966840076592,0.5937685542124551,0.8571428571428571,1.0,0.9999999999,1.0,0.7142857142857143
+In che modo il chipset Aeterna-Core X1 garantisce sia la sicurezza delle transazioni energetiche sia la gestione predittiva delle risorse negli H-Node?,"Il chipset Aeterna-Core X1 garantisce la sicurezza delle transazioni energetiche attraverso core crittografici dedicati (ASIC, 3.2 GHz) che supportano nativamente algoritmi Bit-Energy, SHA3-512 e curve elliptiche post-quantum, un Secure Enclave per la gestione protetta delle chiavi crittografiche, un modulo di randomizzazione entropica (TRNG) conforme a Kyoto 2.0, il protocollo Bit-Energy per la firma e verifica delle transazioni, Kyoto 2.0 Secure Boot per l’avvio protetto e circuiti anti-manomissione. La gestione predittiva delle risorse negli H-Node è abilitata dai core AI-dedicati (3.6 GHz) e dal modulo AI Accelerator, che permettono l’esecuzione locale di modelli di machine learning per il bilanciamento energetico e la manutenzione autonoma, supportati da uno scheduler AI-aware e dall’Hypervisor AETERNA che allocano dinamicamente le risorse in base ai carichi previsti.",media,"Il chipset Aeterna-Core X1 garantisce sia la sicurezza delle transazioni energetiche sia la gestione predittiva delle risorse negli H-Node attraverso una combinazione di soluzioni hardware e software avanzate. Ecco un riepilogo dettagliato dei due aspetti:
+
+1. Sicurezza delle transazioni energetiche:
+- Ottimizzazione hardware per la crittografia: Il Core ASIC a 3.2 GHz è progettato per operazioni crittografiche complesse, garantendo la robustezza delle transazioni Bit-Energy secondo le policy di auditabilità e sicurezza (standard Kyoto 2.0, Bit-Energy Ledger).
+- Sandboxing avanzato per Smart Contract: Ogni smart contract eseguito sugli H-Node viene isolato in un container logico, separato dal kernel operativo. Questo impedisce che vulnerabilità nel codice utente possano compromettere il sistema host o altre istanze, preservando la resilienza operativa.
+- Monitoraggio continuo e notarizzazione: Pipeline di remediation automatica e la notarizzazione degli eventi assicurano la tracciabilità e la conformità, abilitando trading energetico P2P sicuro e resiliente.
+
+2. Gestione predittiva delle risorse:
+- Scheduler AI-aware e Hypervisor dedicato: Un algoritmo di bilanciamento dinamico, consapevole dei carichi AI, prevede i picchi di utilizzo (es. durante il trading energetico) e rialloca in tempo reale le risorse hardware.
+- Core AI ad alte prestazioni: I moduli AI (4 unità a 3.6 GHz) eseguono machine learning localmente per diagnosi predittiva, bilanciamento energetico e manutenzione preventiva, riducendo latenza e dipendenza dal cloud.
+- Funzionalità di Predictive Maintenance & Self-Healing: Ogni H-Node diagnostica preventivamente lo stato delle sue componenti (batterie, inverter, ecc.) e, in caso di rischio guasto, attiva procedure di isolamento/auto-riparazione e invia alert digitalmente firmati.
+
+In sintesi, Aeterna-Core X1 combina sicurezza end-to-end nelle transazioni con intelligenza predittiva locale, rendendo gli H-Node sicuri, autonomi e resilienti sia dal punto di vista della cybersecurity che della gestione delle risorse.","[1.0, 1.0, 1.0, 1.0, 0.9, 0.8]",2,0.75,0.6612523750818838,0.9081673950643774,0.9545454545454546,0.5,0.9999999999,0.9841104576812004,0.6363636363636364
+"Quali sono le fasi principali della pipeline di acquisizione e validazione dei dati di corrente negli H-Node del Progetto AETERNA e in che modo ciascuna di esse contribuisce a garantire accuratezza, sicurezza e tracciabilità dei dati secondo gli standard Kyoto 2.0 e Bit-Energy?","Le fasi principali della pipeline di acquisizione e validazione dei dati di corrente negli H-Node del Progetto AETERNA sono:
+
+1. Acquisizione: Il segnale analogico generato dal sensore Hall viene digitalizzato localmente tramite ADC dedicato, con buffer circolare a bassa latenza (DMA). Questa fase garantisce accuratezza grazie al campionamento ad alta frequenza (100 kHz) e alla conversione a 16 bit, riducendo il rumore e preservando la fedeltà del dato.
+
+2. Pre-elaborazione: Un microcontrollore AI-aware esegue in tempo reale la rimozione di outlier tramite filtri mediani adattivi, la compensazione termica, la correzione di offset e l’allineamento temporale dei campioni per la sincronizzazione multi-sensore. Queste operazioni migliorano la qualità e l’affidabilità dei dati, riducendo errori e distorsioni.
+
+3. Validazione: Ogni batch di dati viene sottoposto a verifica di integrità tramite checksum SHA3-512, con generazione di auditLogRef per la tracciabilità conforme a Kyoto 2.0. Questa fase assicura la sicurezza e la tracciabilità dei dati, rendendo possibile l’audit e la certificazione delle informazioni raccolte.
+
+4. Esposizione Dati: I dati validati sono resi disponibili alle API GraphQL autenticate e ai moduli AI/Trading tramite canale sicuro Bit-Energy. Questo garantisce che solo dati affidabili e sicuri vengano utilizzati per applicazioni critiche e trading energetico.
+
+Ciascuna fase contribuisce a garantire accuratezza (tramite campionamento ad alta fedeltà, filtri e compensazioni), sicurezza (tramite isolamento galvanico, validazione crittografica, protezione anti-manomissione e canali sicuri) e tracciabilità (tramite auditLogRef, time-stamp crittografati, snapshotRefs e logging di anomalie), in piena conformità agli standard Kyoto 2.0 e Bit-Energy.",difficile,"Le fasi principali della pipeline di acquisizione e validazione dei dati di corrente negli H-Node del Progetto AETERNA – e il contributo di ciascuna alla accuratezza, sicurezza e tracciabilità secondo gli standard Kyoto 2.0 e Bit-Energy – sono le seguenti:
+
+1. Acquisizione dati primaria
+- Gli H-Node sono equipaggiati con smart meter certificati e TPM 2.0 per la firma digitale del dato di corrente.
+- Viene raccolta la quantità energia prodotta/consumata con timestamp sincrono (NTP protetto).
+→ Accuratezza e integrità: l’uso di smart meter certificati e firma digitale garantiscono che i dati siano precisi e non alterati alla fonte.
+
+2. Sicurezza nella trasmissione
+- Dati trasmessi da H-Node a Fog utilizzando TLS 1.3 con autenticazione mutua (Mutual TLS, certificati PKI), MFA, e cifratura end-to-end.
+→ Sicurezza: Previene intercettazione/manomissione e spoofing delle comunicazioni.
+
+3. Validazione multilivello
+- I dati ricevuti sono sottoposti a filtri statistici, controllo tramite modelli AI (anomaly detection), verifica contro dati storici.
+→ Accuratezza e affidabilità: Filtra errori grossolani o tentativi di injection/spoofing, garantendo solo dati genuini.
+
+4. Timestamping e notarizzazione (Kyoto 2.0, Bit-Energy)
+- Eventi chiave vengono dotati di marca temporale (timestamp) tramite orologio certificato e vengono notarizzati sia su blockchain privata AETERNA sia sul Bit-Energy Ledger.
+→ Tracciabilità e non ripudiabilità: Ogni dato critico è inequivocabilmente associato a un momento nel tempo e può essere verificato a posteriori. Questo è fondamentale per compliance, audit e rendicontazione.
+
+5. Pipeline di anonimizzazione e compliance ESG
+- I dati, prima della condivisione o della reportistica, passano per processi di anonimizzazione (k-anonymity, differential privacy) ed entrano nella pipeline per la generazione automatica di report ESG.
+→ Conformità e privacy: Protegge i dati sensibili e rende trasparente la rendicontazione, conforme agli standard internazionali.
+
+6. Integrazione con sistemi di audit, trace e storage
+- Ogni fase (dall’acquisizione alla validazione) è loggata tramite audit trail e data lineage su blockchain privata.
+- Output separati per eventi real-time o per storage/reporting.
+→ Tracciabilità: Permette la ricostruzione completa di ogni ciclo di vita del dato di corrente, facilitando la trasparenza e la verifica di terzi.
+
+In sintesi, la pipeline AETERNA unisce tecnologie hardware (TPM, smart meter), protocolli sicuri (TLS, PKI), AI per la validazione, timestamping notarizzato e blockchain. Questo assicura accuratezza del dato nativo, sicurezza nella trasmissione e memoria crittograficamente verificabile e tracciabile, realizzando gli standard Kyoto 2.0 e Bit-Energy nei processi di acquisizione, validazione e storage dei dati di corrente.","[0.9, 0.9, 0.8, 0.8, 0.8]",2,0.75,0.4349820418911232,0.8715071149329139,0.8048780487804879,0.3333333333333333,0.9999999999,0.9880724379786002,0.6829268292682927
+Qual è il costo stimato per l’implementazione del Multi-Radio Routing Engine (MRRE) su ciascun H-Node in ambiente urbano?,L'informazione non è disponibile nel testo,impossibile,"Il costo stimato per l’implementazione del Multi-Radio Routing Engine (MRRE) su ciascun H-Node in ambiente urbano è ricavabile dai dati di costo delle componenti hardware e software del nodo, considerando:
+
+**1. Componenti Hardware Multi-Radio**
+- Ogni H-Node integra i seguenti transceiver e relative componenti:
+  - WiFi 7 (IEEE 802.11be)
+  - Zigbee 4.0
+  - LoRaWAN
+- Microcontrollore centrale (Aeterna-Core X1 o equivalente ARM Cortex-M4/M7) e bus SPI ad alta velocità.
+- Costi delle antenne e front-end RF dedicati.
+- Layer di sicurezza hardware/software (Secure Enclave, Kyoto 2.0).
+
+**2. Modulo Software MRRE**
+- Il MRRE è incluso come parte del software embedded di gestione, che consente la selezione dinamica ottimizzata delle radio e la logica di failover.
+- Il costo software comprende anche licenze per orchestratori, middleware e compliance security.
+
+**3. Costi Stimati**
+Da simulazioni di business model AETERNA:
+- Costo hardware H-Node (inclusi gateway, sensori e tutto l’equipaggiamento radio): **250 € per nodo** (su cluster di 1000 unità).
+- Licenze software (inclusi MRRE e altri moduli): **60 € per nodo** (su cluster di 1000 unità).
+- Il costo totale stimato (hardware + software, incl. MRRE): **310 € per nodo**.
+
+**Nota:** La stima è su scala urbana (cluster 1000 nodi). La sola quota software per MRRE isolata non è scorporata puntualmente nei documenti, ma risulta compresa nel pacchetto delle licenze embedded.
+
+**Riepilogo:**
+- **Costo stimato MRRE (hardware+software) per H-Node urbano:** circa **310 € per nodo**.
+- Di cui la componente software (inclusi orchestratori e policy MRRE): circa **60 € per nodo**.
+
+Questi costi comprendono tutte le funzionalità multi-radio avanzate richieste dall’ambiente urbano, la logica di routing dinamico, la sicurezza, e la predisposizione a scalabilità. Eventuali economie di scala o personalizzazioni di software possono incidere su queste cifre.
+
+Hai bisogno anche di una suddivisione più dettagliata tra i vari transceiver o costi per altri ambienti (es. rurale)?","[0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 1.0, 0.7, 0.7, 0.7, 0.7]",4,0.0,-2.0,-2.0,-2.0,-2.0,-2.0,-2.0,-2.0
+Quale colore dei LED di stato indica un’anomalia critica o un fault hardware/software sull’H-Node?,Il colore del LED di stato che indica un'anomalia critica o un fault hardware/software sull'H-Node è rosso.,facile,"Il colore dei LED di stato che indica un’anomalia critica o un fault hardware/software sull’H-Node è il ROSSO.
+
+- Rosso (statico o lampeggio rapido): segnala anomalia critica, fault hardware/software, rischio sicurezza, isolamento automatico del nodo.
+- Fonte: Standard AETERNA, Tabella Codici Colore LED di Stato per H-Node.","[1.0, 1.0, 0.7, 0.7, 0.6]",2,1.0,0.5976700505531682,0.8906802022126732,1.0,1.0,0.9999999999,0.9894600316830908,0.5714285714285714
+In che modo il sistema di backup basato su super-condensatori contribuisce sia alla riduzione della manutenzione che al rispetto delle policy di sicurezza e tracciabilità richieste dal progetto AETERNA e dagli standard Kyoto 2.0?,"Il sistema di backup basato su super-condensatori contribuisce alla riduzione della manutenzione grazie all’assenza di fenomeni di degrado chimico, che caratterizzano invece le batterie tradizionali, e alla loro elevata longevità ciclica, riducendo così la necessità di interventi manutentivi e rendendo la soluzione compatibile con i vincoli di affidabilità e scalabilità richiesti dal progetto AETERNA. Per quanto riguarda il rispetto delle policy di sicurezza e tracciabilità richieste dal progetto AETERNA e dagli standard Kyoto 2.0, il sistema garantisce la trasmissione sicura e tempestiva dei dati critici anche in caso di blackout totale tramite la funzione Last Gasp data upload, che prevede la cifratura end-to-end dei dati, la firma digitale locale, il timestamping conforme a Kyoto 2.0 e la propagazione degli eventi di sicurezza per audit trail. In questo modo, vengono assicurate la persistenza, la tracciabilità e la sicurezza informativa dei dati, in linea con le policy e gli standard richiesti.",media,"Il sistema di backup basato su super-condensatori apporta contributi fondamentali sia per la riduzione della manutenzione che per l’aderenza alle policy di sicurezza e tracciabilità del progetto AETERNA e agli standard Kyoto 2.0 nei seguenti modi:
+
+1. Riduzione della manutenzione:
+- I super-condensatori hanno un ciclo di vita estremamente lungo (>500.000 cicli) rispetto alle batterie tradizionali e non soffrono di degrado chimico, rendendo minima la necessità di sostituzione e riducendo gli interventi programmati.
+- L’assenza di materiali chimicamente instabili e la rapidità di carica/scarica agevolano una risposta pronta in situazioni critiche e riducono la frequenza di guasti connessi all’usura.
+- La modularità e la tracciabilità integrata tramite QR code e interfacce come la Kyoto 2.0 Service Port rendono più rapidi ed efficienti i processi di manutenzione, riciclo e gestione degli interventi tecnici sulle unità (H-Node).
+
+2. Sicurezza e tracciabilità (compliance AETERNA & Kyoto 2.0):
+- Durante eventi critici o blackout, i super-condensatori alimentano il cosiddetto “Last Gasp data upload”, garantendo la trasmissione tempestiva e sicura dei dati critici anche in assenza totale di alimentazione primaria.
+- Tutti i dati sono cifrati end-to-end con AES-256 e firmati digitalmente localmente, assicurando rispetto delle policy di sicurezza di AETERNA e prevenendo manipolazioni o perdite informative.
+- Ogni evento rilevante (manutenzione, anomalie, aperture chassis) è tracciato con timestamp di precisione e audit trail, rispettando i requisiti di ricostruibilità e trasparenza dei processi sanciti dallo standard Kyoto 2.0.
+- La continuità della catena degli eventi (tracciabilità ininterrotta) è garantita anche durante blackout, permettendo audit e ricostruzione dettagliata secondo policy Kyoto.
+
+In sintesi, il sistema di backup con super-condensatori supporta la resilienza, minimizza gli oneri di manutenzione e abilita una tracciabilità integrale e sicura, elementi imprescindibili per il progetto AETERNA e la compliance Kyoto 2.0.","[0.9, 0.9, 0.8, 0.8, 0.8]",2,0.75,0.6080711678748549,0.9003697778823982,0.7916666666666666,1.0,0.9999999999,0.9910886565707115,0.4838709677419355
+"Quali sono le fasi e i meccanismi coinvolti nella sequenza di autodistruzione dei dati sensibili all’interno del modulo HSM di AETERNA in caso di rilevamento di un evento tamper, e come viene garantita la propagazione e la tracciabilità dell’evento di sicurezza attraverso la rete?","Le fasi e i meccanismi coinvolti nella sequenza di autodistruzione dei dati sensibili all’interno del modulo HSM di AETERNA in caso di rilevamento di un evento tamper sono:
+
+1. Rilevamento dell’evento tamper tramite sensori fisici (micro-interruttori, sensori di pressione, loop conduttivi, sensori ottici) che identificano apertura del case, manipolazione del PCB, variazioni anomale di temperatura, esposizione a luce intensa o interruzione improvvisa di alimentazione.
+2. Attivazione immediata del trigger di autodistruzione che comporta:
+   - Wipe della SRAM (memoria volatile) tramite impulso di scarica controllata, alimentata da micro-batteria tampone in caso di power loss.
+   - Disabilitazione hardware del bus dati.
+   - Reset hardware e lockdown del modulo.
+3. Invio di evento di sicurezza al sistema Aeterna-Core X1.
+4. Trasmissione del log di sicurezza (“Last Gasp”, se possibile) via MRRE (LoRaWAN prioritario, fallback Zigbee) verso i livelli Fog e Cloud.
+5. Cancellazione Sicura: La procedura di wipe segue la policy NIST SP 800-88 (overwrite multiplo, reset hardware, verifica di zeroization).
+Ogni evento di autodistruzione genera un log firmato digitalmente, marcato con timestamp RTC Kyoto 2.0, che viene propagato per audit e attivazione di policy di quarantena del nodo compromesso.
+6. La procedura di wipe segue la policy NIST SP 800-88 (overwrite multiplo, reset hardware, verifica di zeroization), garantendo la cancellazione sicura dei dati.
+
+La propagazione e la tracciabilità dell’evento di sicurezza sono garantite dalla trasmissione del log firmato e timestampato via MRRE ai livelli Fog e Cloud, abilitando audit forense e strategie di quarantena automatica secondo le policy Kyoto 2.0 e Bit-Energy.",difficile,"Ecco una panoramica dettagliata delle fasi e dei meccanismi coinvolti nella sequenza di autodistruzione dei dati sensibili all’interno del modulo HSM di AETERNA in caso di evento tamper, e delle modalità di propagazione e tracciabilità dell’evento di sicurezza attraverso la rete:
+
+Fasi e Meccanismi della Sequenza di Autodistruzione
+
+1. Rilevamento Evento Tamper:
+- I sensori (meccanici, conduttivi, di pressione e ambientali) rilevano un’anomalia come apertura del case, manipolazione del PCB, tagli, perforazioni, o variazioni ambientali sospette.
+- Questi sensori sono connessi direttamente al modulo HSM in modo anti-manomissione.
+
+2. Attivazione Sequenza Autodistruzione:
+- I sensori inviano subito il segnale di evento tamper all’HSM.
+- L’HSM esegue le seguenti azioni in sequenza:
+ a. Trigger di Wipe della SRAM: cancellazione immediata della memoria volatile (SRAM) mediante impulso di scarica controllata.
+ b. Disabilitazione Bus Dati: il bus di comunicazione (SPI/I²C) viene immediatamente reso inattivo a livello hardware.
+ c. Cancellazione Sicura Dati Persistenti: 
+  - Sovrascrittura multipla delle memorie flash secondo standard DoD 5220.22-M.
+  - Distruzione logica delle chiavi HSM e rimozione di log locali e chiavi di sessione.
+ d. Reset Hardware e Lockdown: il modulo entra in uno stato di lockdown e reset hardware, che impedisce qualsiasi ulteriore accesso.
+- Se possibile, l’HSM invia un “log Last Gasp”, ossia l’ultima registrazione istantanea dello stato, verso sistemi esterni prima del completo spegnimento.
+
+3. Policy di Logging e Audit:
+- Ogni trigger di autodistruzione genera un log evento firmato digitalmente, utilizzando una chiave di sessione temporanea e timestampato tramite RTC Kyoto 2.0.
+- Questo log viene inviato in modo immediato ad Aeterna-Core X1 e, se disponibile la connessione, anche a MRRE (sistema di raccolta eventi remoti eventuale).
+
+Propagazione e Tracciabilità dell’Evento di Sicurezza
+
+1. Propagazione:
+- L’evento viene gestito e trasmesso dalla root of trust hardware (HSM) sino al livello Core (Aeterna-Core X1) e, attraverso la rete, verso i livelli Fog e Cloud. 
+- La notifica EoL (End of Life) è firmata digitalmente dall’HSM e timestampata, per essere inviata al Cloud dove vengono attivate procedure aggiuntive (es. riciclo asset).
+
+2. Tracciabilità:
+- Tutti gli eventi sono loggati con firme digitali e timestamp per garantire auditabilità e non ripudiabilità.
+- I log di sicurezza sono trasmessi e archiviati centralmente secondo gli standard ISO/IEC 27001 e ISO 50625 (“Data destruction”), assicurando la completa tracciabilità e riscontro formale di ogni incidente di sicurezza.
+- Vengono preservate le informazioni sulle cause e sulle tempistiche dell’evento anche in caso di perdita completa del nodo fisico.
+
+In sintesi: la sequenza di autodistruzione del modulo HSM in AETERNA prevede una reazione hardware automatica immediata, la distruzione delle chiavi e di ogni dato sensibile e la propagazione tempestiva e tracciata degli eventi di tamper attraverso la rete con garanzie forti di non manomissione e audit log.","[1.0, 0.9, 0.8, 0.7, 0.7]",2,0.75,0.6971764954793558,0.9063530407409522,0.9230769230769232,0.8333333333333334,0.9999999999,0.9535025869263652,0.4642857142857143
+Qual è il costo medio di implementazione per singolo Smart-Plug certificato AETERNA compatibile con il protocollo Auto-Aeterna Connect?,L'informazione non è disponibile nel testo.,impossibile,"Dalla documentazione AETERNA disponibile, non è stato rinvenuto un valore esplicito o una tabella dettagliata sul costo medio di implementazione per singolo Smart-Plug certificato AETERNA compatibile con il protocollo Auto-Aeterna Connect.
+
+Tuttavia, ecco i principali elementi rilevanti che influenzano il costo:
+
+- La piattaforma AETERNA prevede l’utilizzo di Smart-Plug certificati che operano con il protocollo Auto-Aeterna Connect, includendo funzioni di discovery sicuro, pairing crittografico, aggiornamenti firmware OTA, logging compliance Kyoto 2.0 e fallback di compatibilità tramite moduli bridge per dispositivi legacy.
+- I costi di implementazione sono ottimizzati grazie a standardizzazione, automazione dei flussi e aggiornamenti centralizzati, come dettagliato nei volumi sulla sostenibilità e il business model del progetto AETERNA.
+- Non sono comunque presenti, nei principali documenti tecnici, indicazioni puntuali sui costi per singolo dispositivo, ma si ribadisce come la standardizzazione (hardware e protocollo Auto-Aeterna Connect) e l’automazione consentano di contenere e prevedere i costi di rollout rispetto a soluzioni legacy.
+
+**In sintesi:** Il costo medio di implementazione di uno Smart-Plug certificato AETERNA dipende dal produttore hardware, dai volumi di acquisto, dalla necessità (o meno) di retrofit tramite bridge e dalla complessità di integrazione con l'infrastruttura locale. Le linee guida tecniche AETERNA puntano a mantenerlo competitivo e predicibile, ma per un valore quantitativo è necessario richiedere un preventivo diretto ai partner hardware certificati AETERNA, poiché nessun prezzo medio è pubblicato nella documentazione ufficiale.
+
+Desideri informazioni sui principali fornitori e sulle possibili fasce di prezzo di mercato? Oppure hai bisogno di dettagli su come si compone il costo di implementazione (hardware, licenze, installazione, gestione)?","[0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.6, 0.3, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0]",5,0.75,0.2435265519795919,0.0852173190294789,0.6363636363636364,1.0,0.0,0.0,0.625
+Qual è la funzione della Partition B nella memoria flash dell’H-Node durante la procedura di aggiornamento firmware OTA?,"Partition B nella memoria flash dell’H-Node viene utilizzata come area di staging per l’upload e la verifica della nuova release firmware durante la procedura di aggiornamento OTA; il firmware validato viene scritto interamente su Partition B, dove vengono effettuate le verifiche di firma digitale e checksum, e solo dopo il superamento di questi controlli Partition B può diventare la nuova partizione attiva al riavvio.",facile,"La funzione della Partition B nella memoria flash dell’H-Node durante la procedura di aggiornamento firmware OTA è quella di servire come partizione di staging. In dettaglio:
+
+- Quando viene ricevuto un nuovo firmware, questo, dopo la verifica della firma digitale tramite l’HSM, viene scritto interamente su Partition B.
+- Partition B permette di caricare e verificare la nuova release senza alterare quella attualmente in funzione (che rimane su Partition A, la partizione attiva).
+- Viene poi effettuata una verifica del checksum sull’immagine scritta in Partition B.
+- Solo se il checksum corrisponde e la firma digitale è valida, il bootloader imposta la Partition B come nuova partizione attiva al prossimo riavvio.
+- Dopo il reboot e il superamento di un test di integrità (sanity check), Partition B diventa effettivamente la nuova partizione attiva. Partition A viene a quel punto marcata come staging per eventuali aggiornamenti futuri.
+- In caso di errore o fallimento della verifica, viene eseguito il rollback automatico sulla Partition A.
+
+In sintesi: Partition B esiste per caricare, verificare e validare in modo sicuro il nuovo firmware, assicurando che nessun codice non autorizzato venga eseguito e garantendo una procedura di aggiornamento sicura e senza downtime.","[1.0, 1.0, 1.0, 1.0, 1.0]",2,1.0,0.6419822399070749,0.9012622929616328,0.8461538461538461,1.0,0.9999999999,1.0000000000000002,0.5384615384615384
+In che modo la tracciabilità dei materiali critici e la cancellazione sicura dei dati vengono integrate nel processo di fine vita dell’H-Node secondo le procedure del progetto AETERNA?,"La tracciabilità dei materiali critici nel processo di fine vita dell’H-Node è garantita dall’assegnazione di un identificativo univoco (UUID hardware) e dalla distinta base elettronica (BOM) digitalizzata, archiviata localmente e nel Cloud AETERNA. Ogni fase del disassemblaggio, separazione e recupero dei materiali è tracciata tramite barcode/NFC associati al UUID hardware e tutte le operazioni sono registrate in un registro immutabile (Bit-Energy Ledger), notarizzate sulla blockchain interna AETERNA per assicurare trasparenza e auditabilità end-to-end. La cancellazione sicura dei dati avviene secondo ISO/IEC 27001 e ISO 50625-2-3, tramite sovrascrittura multipla delle memorie flash, distruzione logica delle chiavi HSM e rimozione dei log locali e delle chiavi di sessione; la conferma di avvenuta cancellazione viene loggata, firmata e inclusa nei report di audit. Tutte queste procedure sono integrate e regolamentate dalle policy Kyoto 2.0 e dagli standard ISO di riferimento.",media,"Ecco come la tracciabilità dei materiali critici e la cancellazione sicura dei dati sono integrate nel processo di fine vita (End-of-Life, EoL) dell’H-Node, secondo le procedure definite dal progetto AETERNA:
+
+Tracciabilità dei materiali critici:
+- Ogni H-Node dispone di un identificativo univoco (UUID hardware) e di una distinta base elettronica (BOM) digitalizzata, archiviata sia localmente che nel cloud AETERNA. Questo consente di sapere esattamente quali materiali (es. metalli rari, PCB, batterie) sono presenti su ogni dispositivo.
+- La tracciabilità è assicurata da tecnologie come RFID e blockchain, che permettono la notarizzazione degli eventi chiave del ciclo di vita del nodo e dei suoi materiali. Ogni fase (installazione, manutenzione, fine vita, disassemblaggio) viene registrata e certificata.
+- Il recupero e la separazione dei materiali avvengono secondo procedure certificate ISO (es. ISO 14001, ISO 50625), in collaborazione con consorzi specializzati, per garantire il riciclaggio responsabile e la minimizzazione degli impatti ambientali.
+- Le notifiche di dismissione (EoL) sono firmate digitalmente, “timestampate” via modulo RTC Kyoto 2.0 e archiviate in cloud, innescando così il processo di riciclo secondo le policy definite.
+
+Cancellazione sicura dei dati:
+- Prima delle operazioni fisiche di smontaggio e riciclo, l’H-Node esegue una cancellazione sicura delle informazioni sensibili secondo gli standard ISO/IEC 27001 e ISO 50625-2-3.
+- La cancellazione sicura prevede:
+  • Sovrascrittura multipla delle memorie (metodo DoD 5220.22-M)
+  • Distruzione logica delle chiavi criptografiche ospitate nell’HSM
+  • Rimozione dei log e delle credenziali di sessione archiviate localmente
+- La corretta esecuzione della cancellazione viene registrata, firmata digitalmente e anch’essa notarizzata in cloud.
+- In caso di tentativi di accesso o smontaggio non autorizzato, è prevista una protezione automatica tramite sequenza di autodistruzione dei dati.
+
+Questo approccio garantisce piena compliance alle normative internazionali e ai requisiti di sostenibilità, protezione dati e responsabilità sociale di AETERNA, assicurando sia la trasparenza e il recupero dei materiali sia l’assoluta sicurezza nella gestione delle informazioni sensibili fino all’ultimo passaggio della vita del dispositivo.","[1.0, 1.0, 1.0, 0.9, 0.8, 1.0, 0.8, 0.8, 0.6, 0.6]",2,0.75,0.6585174671471093,0.9197841543027232,0.896551724137931,1.0,0.9999999999,0.9622788493385024,0.5151515151515151
+"Quali sono le principali misure implementate dal modello di minaccia AETERNA per garantire la resilienza delle micro-reti energetiche urbane contro attacchi come injection e spoofing dei sensori, DDoS ai nodi Fog e compromissione dei processi critici, e come queste misure si integrano per assicurare la continuità operativa e la compliance alle policy Kyoto 2.0?","Le principali misure implementate dal modello di minaccia AETERNA includono la micro-segmentazione dei processi critici tramite container o VM dedicate, l’uso di Trusted Execution Environment (TEE) per l’esecuzione sicura del codice sensibile, e il sandboxing sensoriale con validazione incrociata dei dati tramite modelli AI e quorum di sensori ridondanti. Tutte le comunicazioni tra H-Node, Fog e Cloud sono cifrate e autenticate tramite Mutual TLS con certificati X.509 gestiti dall’infrastruttura PKI AETERNA, mentre ogni H-Node presenta un attestato firmato dal proprio HSM e validato dal Fog. Gli eventi critici sono marcati temporalmente tramite RTC certificato e notarizzati su Bit-Energy Ledger secondo le policy Kyoto 2.0.
+
+Per contrastare injection e spoofing dei sensori, vengono applicati filtri statistici, modelli AI di anomaly detection, cross-check con dati storici, whitelist di sensori autenticati tramite UUID hardware e firmware signing validato da HSM. Contro attacchi DDoS ai nodi Fog, sono implementati rate limiting, circuit breaker, load shedding per sospendere servizi non critici e failover distribuito con replica dei servizi Fog sincronizzati tramite Bit-Energy Ledger.
+
+La continuità operativa è assicurata dall’isolamento automatico dei nodi compromessi tramite protocolli di quarantena, dalla revoca delle chiavi e dal trigger di procedure EoL se necessario. Logging immutabile e audit real-time su Bit-Energy Ledger garantiscono non ripudiabilità, auditabilità e risposta tempestiva agli incidenti. L’integrazione di queste misure, fondate su principi Zero-Trust e notarizzazione continua, assicura resilienza, continuità operativa e compliance alle policy Kyoto 2.0.",difficile,"Le principali misure implementate dal modello di minaccia AETERNA per garantire la resilienza delle micro-reti energetiche urbane contro attacchi come injection, spoofing dei sensori, DDoS ai nodi Fog e compromissione dei processi critici sono:
+
+**1. Difesa contro injection e spoofing sensori**
+- Validazione multilivello dei dati raccolti, impedendo che dati manipolati da sensori compromessi influenzino il sistema.
+- Notarizzazione continua degli eventi critici su Bit-Energy Ledger, che garantisce integrità delle informazioni e tracciabilità immutabile.
+- Adozione di protocolli crittografici avanzati e rigorosa gestione delle chiavi per autenticità e integrità dei dati tra dispositivi edge, fog e cloud.
+
+**2. Mitigazione DDoS e protezione processi critici nei nodi Fog**
+- IDS distribuiti e cooperativi residenti sui nodi Fog: agiscono come sentinelle attive, con detection adattiva tramite machine learning per pattern anomali e zero-day attack.
+- Meccanismi di comunicazione laterale e consenso distribuito tra i nodi Fog, che permettono una risposta coordinata e resiliente, limitando la propagazione dell’attacco.
+- Quarantena logica granulare e temporanea per isolare in tempo reale i componenti sospetti, preservando la continuità operativa.
+
+**3. Continuità operativa e compliance Kyoto 2.0**
+- Integrazione di auditing real-time e logging immutabile permette una risposta tempestiva agli incidenti e garantisce la non ripudiabilità delle azioni.
+- Policy engine distribuiti assicurano la compliance a normative e agli standard Kyoto 2.0, tramite la notarizzazione automatica delle azioni di governance.
+- Automazione di workflow di onboarding/offboarding, con rimozione auditata delle informazioni sensibili per eliminare rischi post-accesso.
+- Audit periodici, vulnerability management automatizzato e formazione continua del personale rafforzano la prevenzione e la rapidità di risposta.
+- Conformità nativa a normative rilevanti (GDPR, ISO/IEC 27001, NIS2, Kyoto 2.0).
+
+**Integrazione e Sinergia delle Misure**
+Queste misure, implementate a più livelli (Edge–Fog–Cloud), operano in modo coordinato. La segmentazione rigorosa dei processi critici limita la superficie d’attacco e assicura che la compromissione di un segmento non impatti il sistema intero. La trasparenza e tracciabilità offerte dalla DLT (Bit-Energy Ledger), la detection e risposta automatizzata, e l’audit continuo garantiscono robustezza operativa, riducono il rischio di downtime e facilitano la scalabilità in città complesse, assicurando sia resilienza che compliance normativa.
+
+In sintesi, la resilienza operativa di AETERNA è il risultato di un approccio proattivo, multilivello e fortemente integrato tra prevenzione, rilevazione, risposta e conformità, specificatamente adattato per i requisiti energetici e normativi di nuove smart city.","[1.0, 0.9, 0.8, 0.8, 0.8, 1.0, 1.0, 0.8, 1.0, 1.0, 1.0]",3,0.75,0.4510593065780621,0.8746597615235159,0.6785714285714286,0.5,0.9999999999,0.957461090302286,0.7058823529411765
+Qual è il costo medio di implementazione della soluzione HSM/TEE per la custodia delle chiavi private negli H-Node dell’architettura AETERNA?,L'informazione non è disponibile nel testo,impossibile,L'informazione non è disponibile nel testo,"[0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.3, 0.3, 0.3, 0.3, 0.2, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.3, 0.3, 0.0, 0.0]",5,1.0,1.0,1.0,1.0,1.0,0.9999999999,0.0,0.0
+Quale credenziale biometrica è richiesta per l’accesso amministrativo agli H-Node?,"L’accesso amministrativo agli H-Node richiede la registrazione di almeno una credenziale biometrica (impronta digitale, riconoscimento facciale o vocale), memorizzata localmente in enclave TEE/HSM e mai esportata.",facile,"Per l’accesso amministrativo agli H-Node è richiesta obbligatoriamente la registrazione di almeno una credenziale biometrica. Le tipologie di credenziali biometriche supportate sono:
+
+- impronta digitale
+- riconoscimento facciale
+- riconoscimento vocale
+
+La credenziale biometrica è memorizzata localmente in enclave sicure (TEE/HSM) sull’H-Node e non viene mai esportata. L’accesso amministrativo avviene sempre tramite autenticazione biometrica, eventualmente in combinazione con altri fattori (es. token hardware FIDO2 e PIN).","[1.0, 1.0, 1.0, 1.0, 0.8]",2,1.0,0.8257124482292995,0.9028497929171976,0.8333333333333334,1.0,0.9999999999,0.8149922806108704,0.0
+In che modo la concatenazione delle firme temporali e la notarizzazione periodica su Bit-Energy Ledger contribuiscono sia alla sicurezza contro attacchi di replay e jamming sia all’auditabilità delle operazioni IAM nelle micro-reti energetiche decentralizzate?,"La concatenazione delle firme temporali crea una catena crittografica in cui ogni Pulse contiene l’hash del Pulse precedente e viene firmato digitalmente, rendendo ogni evento di sincronizzazione verificabile e non ripudiabile. Questo meccanismo permette di rilevare immediatamente tentativi di replay, poiché un Pulse riutilizzato avrebbe un nonce e una sequenza hash non coerenti con lo stato attuale della catena, e protegge contro il jamming grazie alla propagazione multi-canale e alla possibilità di recupero tramite peer. La notarizzazione periodica degli hash di sintesi delle catene locali su Bit-Energy Ledger garantisce la tracciabilità e l’immutabilità delle sequenze temporali, fornendo una fonte di verità immutabile per l’auditabilità delle operazioni IAM e la validazione di eventi critici nelle micro-reti energetiche decentralizzate.",media,"La concatenazione delle firme temporali e la notarizzazione periodica su Bit-Energy Ledger svolgono ruoli fondamentali sia per la sicurezza che per l’auditabilità nelle operazioni IAM delle micro-reti energetiche decentralizzate:
+
+1. Sicurezza contro replay e jamming:
+- Ogni transazione, sincronizzazione o evento IAM viene associato a timestamp, nonce univoci e concatenazione crittografica delle firme. Questo significa che ogni record è strettamente collegato al precedente attraverso un hash, rendendo impossibile la riproduzione (replay) o la manomissione senza essere rilevati. Se un attaccante prova a riproporre un pacchetto già inviato (“replay attack”), il sistema rileva la duplicazione o la non corrispondenza temporale e lo scarta.
+- La presenza di nonce e challenge-response garantisce unicità e autenticità istantanea, impedendo anche che sequenze di pacchetti ritardati o interferiti nel canale (jamming) possano venire accettate come valide, poiché solo l’evento attuale e connesso crittograficamente viene riconosciuto.
+- Periodicamente, gli stati dei ledger vengono notarizzati. Se ci fossero delle oscillazioni, manipolazioni o interruzioni (jamming), queste diventerebbero subito evidenti confrontando la catena temporale e crittografica degli eventi.
+
+2. Auditabilità delle operazioni IAM:
+- Ogni autenticazione, cambio chiave, evento di accesso o anomalia IAM viene loggato e notarizzato in tempo reale, producendo registri immutabili (grazie al Merkle Tree e al Ledger).
+- Queste notarizzazioni garantiscono accountability e non ripudiabilità: nessun utente o processo può negare di aver eseguito una certa azione, poiché la catena crittografica e il timestamp la rendono inequivocabilmente attribuibile, tracciabile e resistente alla manipolazione o alla cancellazione.
+- L’auditabilità end-to-end è assicurata dal confronto e validazione periodica dei log notarizzati, che permette di rilevare anche accessi effettuati in condizioni critiche o sotto tentativi di attacco, rafforzando la compliance e la sicurezza regolatoria.
+
+In sintesi, la combinazione di queste tecniche assicura che ogni operazione IAM sia non solo resistente agli attacchi informatici (replay/jamming/manomissione), ma anche perfettamente tracciabile e verificabile ex post da terze parti o auditor, con valore probatorio.","[1.0, 1.0, 0.9, 0.8, 0.8]",2,0.75,0.6604400537845275,0.815673258616371,0.9130434782608696,1.0,0.9999999999,0.9096829141909556,0.4782608695652174
+"Quali sono le fasi principali e le relative tempistiche del processo di Clean-Slate Recovery in caso di compromissione di un nodo Edge nella rete AETERNA, e come viene garantita la continuità e l’auditabilità della fornitura energetica durante l’intero workflow di incident response e recovery orchestrato?","Le fasi principali del processo di Clean-Slate Recovery in caso di compromissione di un nodo Edge nella rete AETERNA sono:
+
+1. Isolamento logico del nodo compromesso dalla mesh di propagazione Pulse tramite update delle ACL nei peer Fog e Edge limitrofi (tempo stimato: 5 secondi).
+2. Revoca delle credenziali tramite integrazione con il sistema IAM per revocare certificati PKI e invalidare le chiavi post-quantum associate al nodo (incluso nella fase di isolamento).
+3. Individuazione dell’ultimo Pulse notarizzato su Bit-Energy Ledger da parte del cluster Fog.
+4. Wipe sicuro di memoria volatile e storage locale del nodo Edge, ricarica del firmware autenticato e ripristino della configurazione da snapshot (tempo stimato: 20 secondi).
+5. Rejoin del nodo tramite handshake multilivello, verifica della catena Pulse, aggiornamento delle chiavi PKI e ripresa della propagazione Pulse (tempo stimato: 25 secondi).
+6. Audit post-recovery da parte del SOC Fog/Cloud per verificare la coerenza della catena Pulse e la corretta reintegrazione del nodo (tempo stimato: 10 secondi).
+
+Le tempistiche complessive sono:
+- Recovery Time Objective (RTO): ≤ 60 secondi
+- Recovery Point Objective (RPO): massimo 1 Pulse notarizzato
+
+La continuità e l’auditabilità della fornitura energetica sono garantite tramite:
+- Assunzione temporanea della quota energetica del nodo isolato da parte dei peer Edge limitrofi secondo policy di load balancing predittivo AI-driven.
+- Mantenimento della continuità della catena Pulse tramite funzione di riconciliazione peer-to-peer.
+- Notarizzazione di ogni fase del processo su Bit-Energy Ledger, assicurando trasparenza, auditabilità e compliance agli standard interni AETERNA (Kyoto 2.0, Bit-Energy).",difficile,"Ecco una panoramica strutturata delle fasi principali, delle tempistiche e delle modalità con cui AETERNA garantisce continuità e auditabilità durante il Clean-Slate Recovery di un nodo Edge compromesso:
+
+---
+
+**Fasi Principali del Clean-Slate Recovery**
+
+1. **Snapshot notarizzato**: Il cluster Fog individua l’ultimo Pulse notarizzato sul Bit-Energy Ledger come punto di ripristino affidabile.
+2. **Wipe e bootstrap**: Il nodo Edge esegue un wipe sicuro di memoria volatile e storage locale, quindi ricarica il firmware autenticato e la configurazione ripristinata dallo snapshot validato.
+3. **Rejoin**: Il nodo effettua un handshake multilivello di sicurezza, verifica la catena Pulse, aggiorna chiavi PKI e riprende a propagare i Pulse energetici sulla mesh.
+4. **Audit post-recovery**: Il SOC (Security Operation Center) Fog/Cloud verifica la coerenza della catena Pulse e la corretta reintegrazione operativa del nodo.
+
+---
+
+**Tempistiche (SLA garantiti)**
+
+- **RTO - Recovery Time Objective**: ≤ 60 secondi (il nodo Edge viene ripristinato e reintegrato entro un minuto).
+- **RPO - Recovery Point Objective**: massimo di 1 Pulse notarizzato (perdita temporale trascurabile).
+
+---
+
+**Gestione della continuità della fornitura energetica**
+
+- Isolamento e failover automatizzati: Alla rilevazione della compromissione, il nodo Edge è isolato dalla mesh tramite update automatico delle ACL dei peer Fog/Edge vicini.
+- Ridondanza e fallback: I nodi vicini prendono in carico temporaneamente gli slot energetici e la propagazione dei Pulse, garantendo che la fornitura non venga interrotta.
+- Modalità “Fog-Independence”: In caso di fault estesi, i cluster Fog gestiscono autonomamente la resilienza locale, mantenendo le funzionalità essenziali senza interruzioni.
+- Orchestrazione multilivello: L'automazione della recovery, health-check e circuit breaker riducono l’impatto sulle forniture critiche, assicurando che il servizio elettrico rimanga disponibile.
+
+---
+
+**Auditabilità e trasparenza**
+
+- Tutte le operazioni di recovery, logging, isolamento e ripristino sono notarizzate su Bit-Energy Blockchain (chain of custody immutabile).
+- Audit trail e registri post-mortem consolidano la ricostruzione precisa degli eventi e la completa tracciabilità a fini forensi e compliance.
+- Dashboard multilingua e reportistica certificata abilitano la verifica trasparente e condivisa con utenti, autorità e stakeholder, in linea con standard Kyoto 2.0 e Bit-Energy.
+- L’integrazione con sistemi di SIEM, AI e log analytics abilitano audit e alert avanzati, garantendo la sostenibilità e la sicurezza del processo anche in caso di attacchi informatici o fault complessi.
+
+---
+
+**Riepilogo Operativo**
+
+La combinazione di orchestrazione automatizzata, tempistiche molto rapide (RTO ≤ 60”), backup notarizzati, switching intelligente e audit trail su blockchain assicura che, durante tutto il Clean-Slate Recovery:
+- La fornitura energetica non viene interrotta,
+- L’intero recovery è auditabile, trasparente e conforme alle normative,
+- Tutte le fasi e i fallback sono verificabili da autorità e stakeholder.
+
+Se vuoi un dettaglio tecnico su un particolare step (es. handshake di sicurezza, logistica dei backup o workflow dashboard di audit), chiedi pure!","[1.0, 0.9, 0.8, 0.7, 0.6, 1.0, 1.0, 0.9, 0.9, 0.9, 1.0, 1.0, 1.0, 0.9, 0.9]",4,0.75,0.7682215468619298,0.9166361874477192,0.78125,0.6428571428571429,0.9999999999,0.8290477473715852,0.275
+Qual è il costo medio annuale per la gestione delle vulnerabilità tramite la pipeline Clean-Slate Recovery nel framework AETERNA?,L'informazione non è disponibile nel testo,impossibile,"Dalla documentazione disponibile sul framework AETERNA, si evincono vari dettagli sulle strategie di gestione delle vulnerabilità, tra cui l’uso della pipeline Clean-Slate Recovery, che assicura un ripristino rapido e una riduzione drastica del tempo di esposizione alle vulnerabilità (RTO ≤ 60s, RPO = 1 Pulse). Tuttavia, non viene fornito un costo medio annuale specifico, né una cifra esplicita riferita esclusivamente alla gestione delle vulnerabilità tramite questa pipeline.
+
+Le fonti sottolineano che l’approccio Clean-Slate, integrato con Penetration Testing automatizzato, scanning continuo e workflow SOC multilivello, contribuisce a una significativa ottimizzazione dei costi operativi, ma i dati precisi sul valore economico annuo non sono presentati.
+
+Se ti servono stime, best practice settoriali, o breakdown dei costi previsti per implementare e gestire tale pipeline, posso aiutarti ad aggregare queste informazioni oppure indirizzarti su voci di costo tipiche (come licenze software, manpower per Red Team o costi cloud), ma non è riportata una cifra certa già calcolata nel framework AETERNA. Vuoi una stima ricavata dai parametri e buone pratiche di settore?","[0.6, 0.6, 0.4, 0.3, 0.3]",2,0.75,0.3577412525630878,0.0976316769190181,0.7692307692307693,1.0,0.9999999999,0.0,0.8461538461538461
+Quale componente della sandbox è responsabile del monitoraggio e della limitazione delle risorse assegnate a ciascun container?,Resource Manager,facile,"Il componente della sandbox responsabile del monitoraggio e della limitazione delle risorse (CPU, RAM, I/O, storage) assegnate a ciascun container è il Resource Manager.","[1.0, 0.8, 0.8, 0.7, 0.7]",2,1.0,0.7377483957546829,0.550993583018731,1.0,1.0,0.9999999999,0.9599024689116332,1.0
+In che modo il modulo Quarantine Orchestrator degli IDS distribuiti di AETERNA interagisce con altri componenti per garantire l’isolamento logico di segmenti di rete sospetti e la successiva tracciabilità degli eventi?,"Il modulo Quarantine Orchestrator degli IDS distribuiti di AETERNA interagisce con altri componenti orchestrando l’isolamento logico dei segmenti di rete sospetti tramite il Network Policy Engine, che applica ACL temporanee e de-autentica gli H-Node coinvolti. L’attivazione della quarantena avviene solo dopo che il Peer Communication Layer ha propagato l’alert agli altri nodi Fog e si è raggiunto un consenso distribuito sulla presenza di un’anomalia. Tutte le azioni di quarantena, inclusi detection, isolamento e recovery, vengono registrate dall’Audit Logger e notarizzate sul Bit-Energy Ledger, garantendo la tracciabilità completa degli eventi.",media,"Il Quarantine Orchestrator degli IDS distribuiti di AETERNA agisce come componente centrale nell’isolamento logico di segmenti di rete sospetti, garantendo anche la tracciabilità degli eventi attraverso una collaborazione con altri moduli e meccanismi di audit. Ecco come avviene questa interazione:
+
+1. Flusso di rilevazione e consenso:
+   - Un Nodo Fog rileva un’anomalia attraverso moduli di Machine Learning.
+   - Viene generato un alert locale che, tramite il Peer Communication Layer (canale sicuro autenticato), è propagato agli altri nodi Fog.
+   - Viene raggiunto un consenso distribuito tra i nodi su un pattern anomalo prima che il Quarantine Orchestrator entri in azione.
+
+2. Attivazione e isolamento:
+   - Il Quarantine Orchestrator, dopo il consenso, si interfaccia col Network Policy Engine e, se necessario, con il modulo IAM.
+   - Le principali azioni di isolamento includono: applicazione di policy ACL temporanee, blocco del routing, revoca credenziali di autenticazione, disconnessione logica/fisica degli H-Node coinvolti.
+   - L’isolamento può essere granulare (singolo H-Node, gruppo, VLAN, subnet) e ha durata temporanea, essendo revocato automaticamente in assenza di ulteriori anomalie.
+
+3. Tracciabilità e audit:
+   - Ogni evento di detection, attivazione della quarantena e recovery successivo è registrato dall’Audit Logger.
+   - La notarizzazione avviene in modo atomico sul Bit-Energy Ledger, garantendo integrità, accountability e compliance (es. Kyoto 2.0).
+   - Tutte le azioni sono quindi tracciate e recuperabili per analisi forensi future e audit di sicurezza.
+
+4. Recovery:
+   - La reintegrazione del segmento isolato avviene solo dopo clean-up forense e procedure di ripristino sicuro (Clean-Slate Recovery) e viene anch’essa tracciata dal sistema di audit.
+
+Componenti coinvolti, principali interfacce e funzioni:
+- Quarantine Orchestrator ↔ Network Policy Engine/IAM Engine (applicazione/revoca ACL, disconnessione H-Node)
+- Quarantine Orchestrator ↔ Audit Logger → Bit-Energy Ledger (tracciabilità)
+- Peer Communication Layer (coordinamento tra i nodi Fog)
+- Audit Logger ↔ SOC (Security Operation Center) per controllo e analisi
+
+In sintesi, il Quarantine Orchestrator agisce sulla rete applicando automaticamente le policy di isolamento, ma tutto è coordinato con altri componenti per garantire che ogni azione sia giustificata, temporanea, tracciata e reversibile con audit atomico e compliance normativa.","[1.0, 1.0, 1.0, 0.9, 0.9]",2,1.0,0.5861047704945828,0.9158476534069024,0.9285714285714286,1.0,0.9999999999,0.8994304548944685,0.5
+"Quali sono le fasi principali del processo di applicazione della Differential Privacy nel Progetto AETERNA, dalla raccolta dei dati fino alla notarizzazione, e come vengono gestiti i parametri di privacy e il budget durante questo flusso operativo?","Le fasi principali del processo di applicazione della Differential Privacy nel Progetto AETERNA sono:
+
+1. Raccolta dati grezzi a livello Edge (H-Node), dove vengono pre-aggregati e, se richiesto, sottoposti a local differential privacy (LDP).
+2. Trasmissione sicura dei dati pre-aggregati verso il nodo Fog.
+3. Aggregazione dei dati a livello Fog, con applicazione di central differential privacy (CDP) prima di inoltrare i dataset verso il Cloud o esporre risultati analitici.
+4. Trasmissione sicura dei dati anonimizzati verso il Cloud.
+5. Analisi macro a livello Cloud su dati già anonimizzati, garantendo doppia protezione end-to-end.
+6. Notarizzazione delle operazioni di aggregazione e inserimento del rumore sul Bit-Energy Ledger, includendo hash dei dati rumorosi, parametri di privacy (ε, δ), identificativo del batch e timestamp.
+
+I parametri di privacy (epsilon ε e, dove necessario, delta δ) sono controllati centralmente dal Policy Engine di AETERNA e vengono scelti in base al livello operativo (ad esempio, ε=0.3 a livello Edge, ε=0.5 a livello Fog, ε=0.1 a livello Cloud; δ=1e-6 per i livelli Fog e Cloud). Il budget di privacy è tracciato per ogni entità (H-Node, gruppo, quartiere) e decrementato a ogni query o aggregazione; il superamento del budget comporta la sospensione automatica delle analisi granulari fino al reset periodico (tipicamente ogni 24 ore). Le query composte vengono gestite tramite composizione sequenziale o parallela del budget, secondo i teoremi di composizione della DP. Tutte le API espongono metadati relativi ai parametri di privacy applicati e al residuo di budget disponibile.",difficile,"Ecco una panoramica dettagliata delle fasi principali del processo di applicazione della Differential Privacy (DP) nel Progetto AETERNA, dalla raccolta dati fino alla notarizzazione, e della gestione dei parametri di privacy e del privacy budget:
+
+---
+
+**1. Flusso Operativo: Fasi Principali**
+
+- **Raccolta Dati Grezzi (H-Node/Edge)**
+  - I dispositivi H-Node raccolgono dati energetici (es. consumi, produzione).
+
+- **Pre-Aggregazione Locale**
+  - I dati vengono validati, normalizzati e aggregati in modo contestuale nel nodo locale.
+
+- **Applicazione Local Differential Privacy (LDP)**
+  - Vengono applicati meccanismi di LDP (tipicamente aggiunta di rumore laplaciano) per anonimizzare i dati prima della trasmissione.
+  - Parametri chiave:
+    - ε (epsilon): tipicamente 0.3 sul livello Edge (valori regolabili tra 0.1 e 1.0)
+    - Tipo di rumore: Laplaciano
+    - Budget: 24h
+  - Viene calcolata anche la sensibilità dei dati.
+
+- **Trasmissione Sicura verso Fog**
+  - I dati anonimizzati sono inviati tramite canali sicuri al livello Fog.
+
+- **Aggregazione e Applicazione Central Differential Privacy (CDP) (Fog)**
+  - Nodi Fog aggregano dati dai vari H-Node e applicano ulteriore DP a livello centrale usando rumore di tipo Gaussiano.
+    - ε: 0.5 (esempio)
+    - δ: 1e-6 (solo per Gaussian Mechanism)
+    - Budget: 24h
+  - I risultati possono essere inviati anche alle API di quartiere.
+
+- **Trasmissione Sicura verso Cloud**
+  - I dataset anonimizzati transitano nuovamente in modo sicuro.
+
+- **Analisi Macro su Cloud**
+  - Il livello Cloud opera su dati già anonimizzati:
+    - ε: 0.1 (esempio, maggiore privacy)
+    - δ: 1e-6
+  - Ulteriore protezione, tipicamente su dati aggregati.
+
+- **Notarizzazione su Bit-Energy Ledger**
+  - Ogni operazione di anonimizzazione viene hashata e notarizzata sulla blockchain privata AETERNA per garantire tracciabilità, auditabilità e compliance (audit reference, privacy policy, data lineage).
+
+---
+
+**2. Gestione Parametri di Privacy e Budget**
+
+- **Epsilon (ε):** livello di privacy, gestito e regolato centralmente dal Policy Engine; valori più bassi implicano maggiore privacy ma minore accuratezza.
+- **Delta (δ):** probabilità di violazione della privacy, impostato per default a < 10^-6 per Gaussian Mechanism.
+- **Budget di Privacy:** ogni entità (utente, gruppo, dataset) ha un budget di ε sull'arco di 24h o per batch/sintesi; una volta esaurito, non sono possibili ulteriori query su dati “privati”.
+- **Notarizzazione/Audit:** ogni evento di anonimizzazione è tracciato con hash sulla blockchain (Bit-Energy Ledger), associando metadati come epsilon, delta, livello di aggregazione, tipo di rumore, audit_reference, e budget residuo.
+- **Reset Budget:** ogni 24 ore (o in batch, a seconda del livello) il budget di privacy viene ripristinato.
+
+---
+
+**Sintesi**
+- Il processo è sequenziale e stratificato: Raccolta → Preprocessing → LDP su Edge → Aggregazione → CDP su Fog/Cloud → Analisi/Notarizzazione.
+- ε e δ sono gestiti e tracciati rigorosamente.
+- Tutte le operazioni sono visibili/auditate tramite la blockchain interna.
+
+Se desideri maggiori dettagli su una fase specifica (es. tecniche di aggiunta del rumore, esempi di configurazione del budget, o metadati esposti dalle API), chiedi pure!","[1.0, 0.8, 0.7, 0.7, 0.6, 1.0, 0.8, 0.8, 0.8, 0.7]",3,1.0,0.6872803164619807,0.9091212658479232,1.0,0.9090909090909092,0.9999999999,0.9076856785821572,0.4166666666666667
+Qual è il costo medio per la notarizzazione di una Merkle Root sul Bit-Energy Ledger durante un audit post-incidente?,L'informazione non è disponibile nel testo,impossibile,"Nei documenti disponibili sul framework AETERNA, viene descritto in dettaglio il processo di notarizzazione delle Merkle Root sul Bit-Energy Ledger, soprattutto nel contesto di audit post-incidente. Tuttavia, non viene fornita un'indicazione esplicita o numerica del costo medio (ad esempio, in euro o token) per la notarizzazione di una Merkle Root. Ecco quanto emerge:
+
+- La notarizzazione delle Merkle Root avviene tramite l'invio della radice calcolata da ciascun batch temporale di log al modulo di notarizzazione, che la ancora sul Bit-Energy Ledger.
+- Viene garantita l’immutabilità e la non ripudiabilità degli eventi, a supporto sia della verifica forense durante audit post-incidente sia della certificazione legale.
+- Il processo è descritto come automatico e serializzato, su finestre temporali molto brevi (da 30 secondi a 5 minuti a seconda della topologia).
+- Non si riporta un costo variabile dovuto ad audit post-incidente: la notarizzazione fa parte del logging standard e i costi sembrano allineati a quelli di una transazione minima sulla blockchain Bit-Energy (Ethereum-like) tramite smart contract custom, con policy di batch estremamente ottimizzate.
+
+**In sintesi:**  
+La documentazione non specifica un costo medio, né in valuta fiat né in token, per la singola operazione di notarizzazione di una Merkle Root su Bit-Energy Ledger, neanche durante un audit post-incidente. Si può dedurre che il costo sia equiparabile a quello di una normale transazione di scrittura su una blockchain privata ottimizzata, tipicamente molto basso (nell’ordine di pochi centesimi di euro per batch notarizzato, salvo configurazioni particolari), ma il valore esatto dovrebbe essere confermato tramite la configurazione corrente della rete Bit-Energy.
+
+**Fonte:**  
+- Volume 04 - Sicurezza Informatica e Cyber-Resilienza (1.3 Ciclo di Vita dei Log, sezione Audit e Notarizzazione)
+- Volume 18 - Evoluzione Tecnologica e Roadmap di Ricerca (2.3.2 Sistema di Notarizzazione Blockchain)
+
+Se necessiti di un valore preciso (in token o EUR), occorre consultare la configurazione economica della Bit-Energy Ledger per i costi di una transazione smart contract per notarizzazione. Vuoi che recuperi come calcolare o dove trovare questi costi nella documentazione di Bit-Energy?","[0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.5, 0.6, 0.6, 0.3, 0.3, 0.0]",5,0.75,0.3151040951867698,0.149305269635968,0.7916666666666666,1.0,0.9999999999,0.0,0.5882352941176471
+Quale protocollo viene utilizzato in AETERNA principalmente per il controllo in tempo reale di attuatori come l’illuminazione pubblica e gli switch energetici?,CoAP (Constrained Application Protocol),facile,"In AETERNA, il protocollo principalmente utilizzato per il controllo in tempo reale di attuatori come l’illuminazione pubblica e gli switch energetici è il protocollo CoAP (Constrained Application Protocol). CoAP si basa su UDP, ha un overhead minimo e viene scelto specificamente per il controllo di attuatori e l’invio di comandi grazie alla sua natura RESTful, efficienza e supporto a opzioni di sicurezza come DTLS.
+
+Questa scelta è confermata dalla tabella comparativa dei protocolli IoT di AETERNA, dove CoAP risulta essere il protocollo principale per questo tipo di utilizzo.","[1.0, 0.6, 0.6, 0.5, 0.0]",2,1.0,0.3070356698662591,0.6281426794650362,0.375,1.0,0.9999999999,0.9930132826753304,0.0
+"In che modo la piattaforma AETERNA garantisce sia la sicurezza delle comunicazioni tra microservizi interni sia la tracciabilità delle operazioni critiche, collegando i meccanismi di autenticazione e i sistemi di audit descritti?","La piattaforma AETERNA garantisce la sicurezza delle comunicazioni tra microservizi interni tramite l’uso obbligatorio di mutual TLS (mTLS), dove ogni microservizio possiede un certificato X.509 emesso da una CA interna, e il service mesh (Istio) gestisce discovery, routing, controllo degli accessi (RBAC), cifratura end-to-end e rate limiting a livello di rete. La tracciabilità delle operazioni critiche è assicurata attraverso la notarizzazione e il logging di ogni chiamata tramite un modulo di audit conforme a Bit-Energy Ledger. I meccanismi di autenticazione (OAuth 2.0/JWT per le API pubbliche, mTLS per le API interne) sono strettamente collegati ai sistemi di audit, poiché ogni operazione autenticata viene tracciata, notarizzata e resa disponibile per audit, garantendo così sia la sicurezza degli accessi sia la trasparenza e la tracciabilità delle operazioni critiche.",media,"Ecco come la piattaforma AETERNA garantisce la sicurezza delle comunicazioni interne tra microservizi e la tracciabilità delle operazioni critiche, integrando i meccanismi di autenticazione e i sistemi di audit:
+
+### 1. Sicurezza delle Comunicazioni tra Microservizi Interni
+- **Mutual TLS (mTLS)**: Ogni microservizio possiede un certificato X.509 emesso da una CA interna. La mutua autenticazione TLS è obbligatoria su tutte le connessioni REST/gRPC interne. Ciò protegge dati in transito da intercettazioni, spoofing e garantisce autenticità e integrità.
+- **Service Mesh (Istio)**: Gestisce discovery, routing, controllo degli accessi (RBAC), cifratura end-to-end a livello di rete tra microservizi, e applica politiche di rate limiting.
+- **Policy di Access Control**: Definite tramite Istio AuthorizationPolicy, con granularità fine su namespace, servizi e API, rafforzando le regole di accesso.
+- **Cifratura End-to-End**: Adottata sui livelli Edge, Fog e Cloud; i dispositivi fisici usano HSM per la gestione sicura delle chiavi.
+- **Gestione degli Errori e delle Chiamate**: Meccanismi di retry con backoff esponenziale per la resilienza delle comunicazioni.
+
+### 2. Tracciabilità delle Operazioni Critiche e Sistemi di Audit
+- **Audit Log Centralizzati**: Ogni operazione sensibile (accesso, modifica, cancellazione, gestione policy/consensi, ecc.) è registrata secondo uno schema strutturato e versionato. I log vengono inviati dai nodi Edge/Fog mediante canali TLS 1.3 autenticati mutuale.
+- **Immutabilità e Compliance**: I log sono conservati in modo immutabile (su ELK Stack, S3 geo-ridondato, o referenziati in blockchain Bit-Energy), garantendo integrità, non ripudiabilità, verifica normativa e tracciabilità completa.
+- **Sistemi SIEM e Workflow di notifica**: Analisi continua, rilevamento di pattern e anomalie, generazione di alert in presenza di eventi critici e supporto a workflow automatici di risposta agli incidenti.
+- **Audit Trail tramite Blockchain**: Le operazioni vengono referenziate su blockchain per garantire la verifica e la non alterabilità delle registrazioni.
+- **Procedure e Output di Audit**: L’audit multilivello comprende: analisi statica/automatica del codice, audit esterni, raccolta di evidenze, gestione delle non conformità tramite smart contract.
+
+### 3. Collegamento tra Autenticazione e Sistemi di Audit
+- **Autenticazione Federata**: AETERNA supporta autenticazione federata (SAML 2.0, OpenID Connect, OAuth 2.0) con propagazione automatica delle policy RBAC e federazione delle identità su tutti i livelli (Edge, Fog, Cloud).
+- **Tracciabilità legata all’Identità**: Ogni accesso, modifica o operazione chiave è collegata all’identità autenticata dell’utente/sistema (comprese assertion temporizzate e firmate), permettendo la riconduzione ogni azione a un soggetto e facilitando la gestione di audit trail per accountability e reportistica.
+- **Auditabilita delle Operazioni di Autenticazione**: I tentativi di accesso, il rilascio/revoca delle credenziali, e le operazioni di identity management sono loggate e soggette ad alert e doppia conferma (double confirmation per azioni critiche), incrementando la trasparenza.
+
+### In Sintesi
+AETERNA integra sicurezza e audit a livello architetturale: le comunicazioni cifrate e autenticate tra microservizi sono sempre tracciate e collegate alle identità tramite policy RBAC e federazione; ogni evento/azione è raccolto nei log centralizzati, analizzato in tempo reale, e certificato tramite blockchain e SIEM, assicurando così sia protezione che piena verificabilità, in accordo con le normative e i requisiti di affidabilità operativa.","[1.0, 0.9, 0.8, 0.8, 0.7, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.8, 0.8, 0.8]",2,0.75,0.6794413367016119,0.8916783902847085,1.0,1.0,0.9999999999,0.9729157936898408,0.7777777777777778
+"Quali sono le principali componenti e meccanismi che, integrandosi tra autenticazione federata, autorizzazione centralizzata, logging distribuito e notarizzazione tramite Bit-Energy Ledger, permettono ad AETERNA di garantire sicurezza, tracciabilità e compliance normativa nelle sue architetture distribuite di micro-reti energetiche?","Le principali componenti e meccanismi integrati in AETERNA sono:
+
+- Autenticazione federata tramite JWT emessi da un Identity Provider conforme a OAuth 2.0/OpenID Connect, con validazione dei token da parte di gateway API e service mesh (Istio), e utilizzo di claims granulari come `sub`, `actor_id`, `scope`, `exp`, `aud`, `risk_level`, `energy_zone_id`.
+- Autenticazione mutua TLS (mTLS) per le API interne, gestita dal service mesh con certificati X.509 e rotazione automatica.
+- Autorizzazione centralizzata tramite RBAC, con policy versionate che associano ruoli a permessi granulari su risorse, endpoint e namespace, enforcement in tempo reale tramite middleware su gateway API e service mesh, e mapping dinamico degli scope OAuth su permessi applicativi.
+- Meccanismi di rate limiting e depth limiting per prevenire attacchi brute-force e denial-of-service, configurabili tramite policy centralizzate.
+- Logging distribuito basato su stack ELK (Elasticsearch, Logstash, Kibana), con tracciamento di ogni chiamata API tramite metadati obbligatori (timestamp, user_id/service_id, actor_id, endpoint, HTTP_method, status_code, resource_id, correlation_id, risk_level, error_code), anonimizzazione dei dati personali e retention stratificata per livello di rischio.
+- Notarizzazione delle operazioni critiche tramite Bit-Energy Ledger, che garantisce immutabilità, timestamping e tracciabilità end-to-end.
+- Accesso ai log protetto da RBAC e tracciato tramite audit trail.
+
+Questi meccanismi, integrandosi, permettono ad AETERNA di garantire sicurezza multilivello, tracciabilità completa delle operazioni e compliance normativa (inclusi GDPR, Kyoto 2.0 e Bit-Energy) nelle sue architetture distribuite di micro-reti energetiche.",difficile,"Le principali componenti e meccanismi che integrano autenticazione federata, autorizzazione centralizzata, logging distribuito e notarizzazione tramite Bit-Energy Ledger nel framework AETERNA, e che consentono di garantire sicurezza, tracciabilità e compliance normativa nelle architetture di micro-reti energetiche sono:
+
+### 1. Autenticazione Federata (IAM)
+- **Sistema IAM avanzato**: Utilizzo di credenziali biometriche, token hardware FIDO2 e protocolli standardizzati come OAuth2, SAML 2.0 e OpenID Connect.
+- **Federazione delle identità**: Permette la gestione delle identità e degli accessi tra domini eterogenei (Edge, Fog, Cloud), con bridge LDAP e assertion firmate/temporizzate.
+- **Cifratura end-to-end delle assertion** e integrazione con una PKI proprietaria (Public Key Infrastructure) conforme ai requisiti post-quantum.
+
+### 2. Autorizzazione Centralizzata
+- **Policy RBAC granulari (Role-Based Access Control)**: Permettono una segregazione dei privilegi, controllando in maniera fine e centralizzata l’assegnazione e la revoca dei permessi.
+- **Propagazione automatica delle policy**: Anche attraverso federazione, con supporto a scope limitati sulle API legacy.
+- **Bridge con directory centralizzate LDAP**: Per sincronizzazione e propagazione delle autorizzazioni.
+
+### 3. Logging Distribuito e Audit
+- **Logging strutturato e geo-ridondato**: Log distribuiti, archiviati su storage redundato (es. S3), per garantire sopravvivenza all’attacco o fault locale.
+- **Logging immutabile**: I log sono strutturati con Merkle Tree e sono referenziati (hashati) su blockchain Bit-Energy, assicurando integrità, immodificabilità e non ripudiabilità.
+- **Audit trail certificato**: Tracciabilità e auditing di ogni operazione critica, anche per compliance forense e accountability end-to-end.
+
+### 4. Notarizzazione con Bit-Energy Ledger
+- **Notarizzazione immutabile degli eventi**: Ogni operazione critica e ogni log vengono certificati su Bit-Energy Ledger.
+- **Gestione degli incidenti e audit forense**: La blockchain consente di ricostruire e certificare la sequenza degli eventi e integrità delle prove.
+- **Conformità normativa**: L’archiviazione e la notarizzazione sono aderenti alle policy Kyoto 2.0 e ISO 9001, garantendo valore legale alle evidenze digitali.
+
+### 5. Compliance e Standard Internazionali
+- **Aderenza a standard**: Tra cui ISO/IEC 29115, specifiche SAML, OpenID Connect, linee guida ETSI e Kyoto 2.0.
+- **Protezione post-quantum delle identità**: Per resilienza futura contro minacce avanzate.
+
+---
+
+#### Sintesi delle Garanzie conseguite:
+- **Sicurezza**: Cifrature, autenticazione robusta, segregazione dei privilegi.
+- **Tracciabilità**: Logging strutturato, audit distribuito, trail su blockchain.
+- **Compliance**: Allineamento alle normative (es. Kyoto 2.0), framework legale per accountability e non ripudiabilità.
+
+---
+
+**In conclusione:** È la forte integrazione di questi meccanismi (autenticazione federata con gestione dinamica dei diritti, autorizzazione centralizzata, logging distribuito e immutabile, notarizzazione blockchain) che consente ad AETERNA di operare micro-reti energetiche distribuite garantendo sicurezza sistemica, trasparenza delle operazioni, tracciabilità forense e piena compliance alle normative di settore.","[1.0, 0.9, 0.8, 0.7, 0.7, 0.7, 0.7, 1.0, 1.0, 0.9, 0.8, 0.8, 0.8, 0.8]",2,0.75,0.4613390904507004,0.8264884372744998,1.0,0.6666666666666666,0.9999999999,0.965411102593698,0.7586206896551724
+Qual è il costo medio di implementazione di un modulo circuit breaker basato su Hystrix/Resilience4j all’interno dell’architettura AETERNA?,L'informazione non è disponibile nel testo,impossibile,L'informazione non è disponibile nel testo,"[0.3, 0.3, 0.2, 0.0, 0.0, 1.0, 0.6, 0.6, 0.6, 0.3, 0.6, 0.4, 0.3, 0.3, 0.3, 0.9, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6]",5,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0
+Quale parametro deve essere impostato su un valore maggiore o uguale a 3 per garantire fault tolerance e high availability nei topic o nelle code?,Repliche topic/coda,facile,"Il parametro che deve essere impostato su un valore maggiore o uguale a 3 per garantire fault tolerance e high availability nei topic o nelle code è il numero di repliche (replica factor).* 
+
+Impostare il numero di repliche ≥ 3 assicura che, anche in caso di guasti su uno o due nodi, i messaggi rimangano disponibili e il sistema possa continuare a funzionare senza perdita di dati.
+
+Riepilogo riferimento:
+- ""Parametro: Repliche topic/coda, Valore raccomandato: ≥ 3, Note: Fault tolerance, high availability""
+
+Questa pratica si applica sia nei broker come Kafka (replica dei topic/partizioni) sia nei sistemi di messaggistica come RabbitMQ (mirrored queues).","[1.0, 1.0, 1.0]",2,1.0,0.4592336740102488,0.5036013627076619,0.5,1.0,0.9999999999,1.0,0.4444444444444444
+In che modo la gestione centralizzata delle chiavi tramite HSM contribuisce sia alla sicurezza delle comunicazioni tra i diversi livelli dell’architettura AETERNA sia alla notarizzazione delle transazioni energetiche su Bit-Energy Ledger?,"La gestione centralizzata delle chiavi tramite HSM garantisce la custodia sicura delle chiavi master, la generazione e rotazione automatica delle chiavi operative e la revoca immediata in caso di compromissione, assicurando così la riservatezza e l’integrità delle comunicazioni tra i diversi livelli dell’architettura AETERNA. Inoltre, l’HSM integra il logging dettagliato di tutte le operazioni di key management con Bit-Energy Ledger, fornendo auditabilità e non ripudiabilità delle transazioni energetiche, elementi fondamentali per la notarizzazione su Bit-Energy Ledger.",media,"La gestione centralizzata delle chiavi tramite HSM (Hardware Security Module) nell’architettura AETERNA contribuisce alla sicurezza e alla notarizzazione delle transazioni energetiche su Bit-Energy Ledger in due modi principali:
+
+1. Sicurezza delle comunicazioni tra i diversi livelli (Edge, Fog, Cloud):
+
+- Gli HSM custodiscono e generano le chiavi private in modo isolato e sicuro all’interno degli H-Node, riducendo drasticamente la superficie di attacco e prevenendo la compromissione delle chiavi (anche tramite autodistruzione in caso di accesso fisico non autorizzato).
+- I processi di autenticazione, cifratura e integrità (come TLS 1.3/mTLS, X.509, firma digitale) si basano sulle chiavi custodite negli HSM. Questo assicura che solo nodi autenticati possano instaurare comunicazioni protette, prevenendo spoofing e replay.
+- La rotazione e la revoca delle chiavi sono automatizzate dalla PKI centrale di AETERNA: ogni nuova chiave generata negli H-Node viene autenticata, propagata in modo sicuro su tutta la rete e, in caso di revoca, la CRL viene pubblicata/notarizzata su Bit-Energy Ledger.
+
+2. Notarizzazione delle transazioni energetiche su Bit-Energy Ledger:
+
+- Ogni transazione energetica o evento critico (rotazione chiavi, autenticazioni, modifiche di policy) è sottoscritto digitalmente tramite le chiavi custodite in HSM e registrato (hash, timestamp, dati chiave) in modo immutabile su Bit-Energy Ledger.
+- La generazione hardware-side di nonce univoci per ogni transazione, firmati dal modulo HSM, impedisce attacchi di replay e garantisce che ogni evento sia tracciabile e non ripudiabile.
+- Tutte le operazioni IAM e di sicurezza (registrazione, autenticazione, revoca, audit trail) vengono immediatamente notarizzate sul ledger, assicurando trasparenza, auditabilità e compliance end-to-end.
+
+In sintesi, la gestione centralizzata e hardware-based delle chiavi tramite HSM è il fondamento sia della sicurezza delle comunicazioni interne all’architettura AETERNA, sia della garanzia di integrità, non ripudiabilità e fiducia nelle transazioni energetiche notarizzate su Bit-Energy Ledger.","[1.0, 1.0, 1.0, 0.9, 0.8, 1.0, 0.9, 0.8, 0.8, 0.8]",3,1.0,0.4733141948804308,0.9136649427870294,0.7741935483870968,1.0,0.9999999999,0.9691319792443168,0.6129032258064516
+"Quali sono le principali fasi e componenti coinvolte nel flusso di raccolta, aggregazione, analisi e remediation automatica delle metriche di telemetria nella micro-rete energetica urbana decentralizzata del progetto AETERNA, e come queste garantiscono affidabilità, sicurezza e compliance secondo gli standard Kyoto 2.0 e Bit-Energy?","Le principali fasi e componenti coinvolte nel flusso di raccolta, aggregazione, analisi e remediation automatica delle metriche di telemetria nella micro-rete energetica urbana decentralizzata del progetto AETERNA sono:
+
+1. Raccolta delle metriche: Ogni microservizio a livello Fog e Cloud espone endpoint `/metrics` compatibili con Prometheus tramite exporter nativi o sidecar. Gli H-Node Edge utilizzano agenti lightweight che trasmettono le metriche in modalità push verso un gateway Fog, che aggrega e normalizza i dati prima dell’inoltro al backend centrale.
+
+2. Aggregazione e normalizzazione: Il Fog Gateway Aggregator riceve le metriche dagli Edge, le aggrega e le inoltra al Prometheus Scraper a livello Fog, che a sua volta le invia al Prometheus Cluster centrale in Cloud.
+
+3. Persistenza e retention: I dati di telemetria sono persistiti in un cluster Prometheus federato, con retention configurabile (90 giorni per metriche di dettaglio, 1 anno per aggregati). I dati critici sono duplicati e notarizzati tramite Bit-Energy Ledger per garantire auditabilità e immutabilità.
+
+4. Analisi e visualizzazione: Grafana è utilizzato per la costruzione di dashboard custom segmentate per dominio, energy_zone_id, ruolo dispositivo e tipologia di servizio. Le dashboard sono integrate con sistemi di Single Sign-On (SSO) e RBAC.
+
+5. Alerting: Il sistema di alerting si basa su Prometheus Alertmanager, con regole granulari per soglie statiche e dinamiche. Gli alert sono instradati verso canali dedicati e, in caso di alert critici, attivano playbook di auto-remediation.
+
+6. Remediation automatica: Alcuni alert critici attivano playbook di auto-remediation, come riavvio selettivo dei servizi, rotazione automatica dei certificati, failover verso nodi di backup. L’Orchestrator aggiorna lo stato e le metriche dopo la remediation.
+
+Queste componenti e fasi garantiscono affidabilità tramite visibilità in tempo reale e interventi proattivi, sicurezza attraverso la notarizzazione degli alert critici su Bit-Energy Ledger e compliance agli standard Kyoto 2.0 e Bit-Energy grazie all’auditabilità, alla segregazione dei ruoli e alla tracciabilità end-to-end delle operazioni.",difficile,"Ecco una sintesi delle principali fasi, componenti e meccanismi che caratterizzano il flusso di raccolta, aggregazione, analisi e remediation automatica delle metriche di telemetria nella micro-rete energetica urbana decentralizzata del progetto AETERNA, con focus su affidabilità, sicurezza e compliance (Kyoto 2.0, Bit-Energy):
+
+## Fasi del Flusso di Telemetria
+
+1. **Raccolta Dati (Edge)**
+   - H-Node Edge raccolgono metriche granulari su hardware, stato IoT, produzione/consumo energetico e sicurezza.
+   - Utilizzo di agenti lightweight e protocolli sicuri per garantire basso footprint e sicurezza locale.
+2. **Aggregazione e Normalizzazione (Fog)**
+   - Gateway di quartiere aggregano le telemetrie provenienti dai nodi Edge.
+   - Dati normalizzati e correlati per identificare pattern anomali.
+   - Gestione locale delle soglie di allerta e dei primi interventi/remediation automatizzati.
+3. **Analisi Avanzata (Cloud)**
+   - Macro-analisi predittiva, orchestrazione centralizzata delle risposte e processi di audit.
+   - Utilizzo di machine learning e motori di regole per ottimizzazione e identificazione anomalie su scala cittadina.
+   - Reporting e audit automatizzati.
+
+## Componenti Principali
+
+- **Bus di eventi distribuito**: per la federazione tra Edge, Fog e Cloud.
+- **Agenti di monitoraggio (Edge/Fog/Cloud)**: raccolta, push/pull di metriche, modularità per nuove fonti dati.
+- **Storage multi-livello e Data Lake**: raccolta, storicizzazione, normalizzazione, flessibilità per analisi regolatorie.
+- **Motori di regole/Orchestrazione (Kubernetes, Workflow Engines)**: per la gestione dinamica di carico, remediation/adattamento in caso di eventi anomali.
+- **Smart contract e Ledger (Bit-Energy)**: notarizzazione eventi, tracciabilità transazioni e compliance machine-driven.
+- **Sistemi di sicurezza multilivello**: cifratura end-to-end, gestione hardware delle chiavi, IDS distribuito, notarizzazione eventi.
+
+## Meccanismi di Affidabilità, Sicurezza e Compliance
+
+- **Fault Tolerance e resilienza**: isolamento/ripristino automatico dei nodi compromessi (<60s), minimizza impatto su erogazione.
+- **Audit e reporting**: verifica ciclica multilivello (Edge, Fog, Cloud), check-list derivate da standard ISO, Kyoto 2.0.
+- **Blockchain privata/Bit-Energy Ledger**: firma digitale, tracciabilità immutabile, data lineage, auditabilità trasparente.
+- **Sicurezza by-design**:
+  - Cifratura E2E e gestione HW chiavi.
+  - IDS per detection intrusione distribuita.
+  - Notarizzazione di ogni fase/processo.
+- **Adattamento normativo**: modularità dei contratti intelligenti consente reazione rapida a nuove normative, e facile integrazione con dispositivi/sistemi terzi tramite protocolli open e interoperabili.
+- **Sostenibilità e indicatori ambientali**:
+  - Indicatori di performance ambientale e bilanciamento (=Kyoto 2.0).
+  - Tokenizzazione e tracciamento di comportamenti virtuosi (=Bit-Energy).
+
+## Allineamento con Kyoto 2.0 e Bit-Energy
+
+- **Kyoto 2.0**: framework proprietario di performance ambientale, indicatori per riduzione emissioni, efficienza, audit periodico.
+- **Bit-Energy**: suite di smart contract e policy digitali, tracciabilità P2P, tokenizzazione energia, compliance by-code, notarizzazione ogni evento rilevante.
+
+### In sintesi
+L’architettura multilivello e modulare di AETERNA, insieme a data lake, orchestrazione automatica, blockchain privata e smart contract, garantisce affidabilità, sicurezza e un livello di compliance “by design” agli standard Kyoto 2.0 e Bit-Energy, facilitando la governance trasparente e l’auditabilità delle micro-reti urbane di nuova generazione.","[1.0, 0.8, 0.7, 0.7, 0.7, 0.7, 0.7, 1.0, 0.9, 0.8, 0.8, 0.8, 0.8, 0.8, 1.0, 1.0, 1.0, 0.9, 0.9]",3,0.75,0.6541049593794318,0.8588440799419698,1.0,0.75,0.9999999999,0.9446247858685128,0.9032258064516128
+Qual è il costo medio annuale per la notarizzazione delle OpenAPI Specification su Bit-Energy Ledger per ogni versione major delle API AETERNA?,L'informazione non è disponibile nel testo,impossibile,L'informazione non è disponibile nel testo,"[0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.6, 0.6, 0.6, 0.7, 0.6, 0.3, 0.3, 0.3, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.7, 0.7, 0.7, 0.7]",5,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0
+Quale annotazione viene utilizzata per limitare il numero di connessioni simultanee in una risorsa Ingress?,nginx.ingress.kubernetes.io/limit-connections,facile,"L’annotazione utilizzata per limitare il numero di connessioni simultanee in una risorsa Ingress è limit-connections. 
+
+Questa annotazione può essere configurata su risorse Ingress (o tramite specifici ingress controller che la supportano) per definire il limite massimo di connessioni concorrenti consentite verso un backend o un gruppo di backend.","[1.0, 0.3, 0.0, 0.0, 0.0]",2,0.75,0.1647001868309309,0.6588007473237238,0.4,1.0,0.9999999999,0.9762959786518104,0.0
+In che modo la pipeline CI/CD di AETERNA garantisce sia la validazione della sicurezza delle API sia la tracciabilità dei risultati rispetto agli standard Kyoto 2.0 e Bit-Energy?,"La pipeline CI/CD di AETERNA garantisce la validazione della sicurezza delle API tramite l’esecuzione automatizzata di test di sicurezza (scanner OWASP ZAP, fuzzing) che identificano e mitigano vulnerabilità, verificano l’enforcement delle security headers, la robustezza delle policy WAF, la gestione di sessioni e certificati, e l’audit tramite Bit-Energy Ledger. La tracciabilità dei risultati rispetto agli standard Kyoto 2.0 e Bit-Energy è assicurata dall’aggregazione e analisi dei report di test, dalla notarizzazione degli esiti critici nel Bit-Energy Ledger, dall’integrazione dei risultati nei dashboard centralizzati e dalla verifica della compliance tramite policy as code e audit trail.",media,"La pipeline CI/CD di AETERNA garantisce sia la validazione della sicurezza delle API sia la tracciabilità rispetto agli standard Kyoto 2.0 e Bit-Energy attraverso un insieme di tecniche integrate e metodologie automatizzate:
+
+1. Validazione sicurezza API:
+- Testing automatizzato: La pipeline CI/CD orchestra test di integrazione, carico e sicurezza sulle API esposte ai diversi livelli (Edge, Fog, Cloud) (Volume_05_protocolli_di_comunicazione_e_interfacce).
+- Security scan e fuzzing: Sono inclusi step specifici nelle pipeline per security scan, scanner di vulnerabilità di ultima generazione, automation di penetration test (Dredd, Postman, conformità OpenAPI, fuzzing) secondo standard ISO/IEC 27035 (Volume_13_interoperabilità, Volume_05 e Volume_17_testing).
+- Continuous validation: Ogni modifica al codice e alle interfacce viene testata in modo esaustivo prima della promozione in produzione, assicurando una postura di sicurezza proattiva e continua.
+
+2. Tracciabilità e compliance Kyoto 2.0/Bit-Energy:
+- Audit e blockchain: La pipeline CI/CD integra un sistema di audit e compliance tramite blockchain privata Bit-Energy e tecniche di data lineage che garantiscono trasparenza, immutabilità e verificabilità dei risultati (Volume_14_monitoraggio e Volume_17_testing).
+- Notarizzazione e tagging: Ogni evento rilevante (es. transazione, sessione di ricarica) è ledgerizzato e associato a tag Kyoto 2.0 e identificativi Bit-Energy, favorendo la tracciabilità e la compliance (Volume_12_mobilità_elettrica e Volume_11_integrazione_rinnovabili).
+- Logging e reporting automatizzati: Tutte le fasi rilevanti della pipeline (build, test, promotion, deploy) sono tracciate e loggate secondo policy Kyoto 2.0, facilitando successivi audit e garantendo trasparenza metodologica (Volume_18_evoluzione_tecnologica).
+
+In sintesi: la pipeline CI/CD di AETERNA unisce validazione automatizzata della sicurezza (con test e scanner dedicati) e tracciabilità certificata dei risultati tramite blockchain e audit trail, garantendo conformità e trasparenza sia agli standard Kyoto 2.0 che Bit-Energy.","[1.0, 1.0, 0.8, 0.8, 0.7, 1.0, 1.0, 1.0, 1.0, 1.0]",2,0.75,0.4816299309734158,0.8880581854321247,0.8125,0.5,0.9999999999,0.9828549252202016,0.5625

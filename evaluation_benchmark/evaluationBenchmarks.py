@@ -4,7 +4,7 @@ import json
 import os
 import pandas as pd
 import re
-from chatbot_Ollama.chatbot import (
+from chatbot.chatbot import (
     query_rag,
     get_ragas_database,
     get_ragas_metrics,
@@ -35,7 +35,7 @@ METRICS = [
     # "context_recall",
     # "answer_relevancy",
     # "context_precision",
-    "noise_sensitivity(mode=relevant)",
+    # "noise_sensitivity(mode=relevant)",
 ]
 
 
@@ -66,51 +66,9 @@ def benchmark_answer_and_evaluation():
     return results
 
 
-def benchmark_evaluation_only_1row():
-    with open("./risultati_gen_GPT4.1.csv", "r", encoding="utf-8") as f:
-        file_rows = pd.read_csv(f).to_dict(orient="records")
-    target_rows = file_rows[1:5]
-    all_metrics = get_ragas_metrics()
-
-    for i, row in enumerate(target_rows):
-        print(f"Valutazione in corso riga {i+1}/{len(target_rows)}...")
-
-        llm_as_judge_value = llm_as_judge(row["response"], row["groundtruth"])
-        print(f"Giudizio preliminare LLM-as-a-Judge: {llm_as_judge_value}")
-        row["judge_pre_score"] = llm_as_judge_value
-
-        if llm_as_judge_value >= TRASH_HOLD_VALUE:
-            dataset = get_ragas_database([row])
-            df_scores = ragas_evaluation(dataset, all_metrics)
-            if df_scores is not None:
-                df_originale = pd.DataFrame([row])
-                df_scores = df_scores.drop(
-                    columns=[
-                        "user_input",
-                        "response",
-                        "retrieved_contexts",
-                        "reference",
-                    ],
-                    errors="ignore",
-                )
-                df_finale = pd.concat([df_originale, df_scores], axis=1)
-                yield df_finale.to_dict(orient="records")[0]
-            else:
-                for metrica in METRICS:
-                    row[metrica] = None
-                yield row
-        else:
-            print(f"Risposta insufficiente.")
-            for metrica in METRICS:
-                if metrica != "noise_sensitivity(mode=relevant)":
-                    row[metrica] = 0.0
-                else:
-                    row[metrica] = 1.0
-            yield row
-
-
 def benchmark_evaluation_only(file_rows):
-    target_rows = file_rows[5:6]
+    target_rows = file_rows[47:50]
+    # target_rows = file_rows
     all_metrics = get_ragas_metrics()
     rows_per_ragas = []
     risultati_finali_ordinati = {i: None for i in range(len(target_rows))}
@@ -123,7 +81,8 @@ def benchmark_evaluation_only(file_rows):
         else:
             print(f"{row_clean.get('question', 'N/A')} => Risposta insufficiente")
             for metrica in METRICS:
-                row_clean[metrica] = -2.0
+                if metrica in row_clean:
+                    row_clean[metrica] = -2.0
             row_clean["sources"] = row_clean.pop("retrieved_contexts", "")
             risultati_finali_ordinati[i] = row_clean
     if rows_per_ragas:
@@ -149,7 +108,8 @@ def benchmark_evaluation_only(file_rows):
             print("[ERRORE] Il calcolo globale di Ragas è fallito.")
             for row_clean in rows_per_ragas:
                 for metrica in METRICS:
-                    row_clean[metrica] = None
+                    if metrica in row_clean:
+                        row_clean[metrica] = None
                 idx = row_clean.pop("_temp_index")
                 row_clean["sources"] = row_clean.pop("retrieved_contexts")
                 risultati_finali_ordinati[idx] = row_clean
@@ -157,14 +117,17 @@ def benchmark_evaluation_only(file_rows):
     return results
 
 
-def llm_as_judge(answer: str, expected_response: str):
+def llm_as_judge(row):
+    answer = row["response"]
+    expected_response = row["groundtruth"]
     prompt = TESTING_PROMT.format(expected_response=expected_response, answer=answer)
-    print("\n" + answer + "\n")
+    
     try:
         result = get_evaluation_model().invoke(prompt)
         text_result = result.content.strip()
         match = re.search(r"[-+]?\d*\.\d+|\d+", text_result)
         if match:
+            print(f"Voto {float(match.group())}")
             return float(match.group())
         else:
             print(f"Testo ricevuto: '{text_result}' => default 0.0")
@@ -175,16 +138,16 @@ def llm_as_judge(answer: str, expected_response: str):
 
 
 if __name__ == "__main__":
-    with open("./risultati_gen_reranking_con_judge.csv", "r", encoding="utf-8") as f:
+    with open("./gen_reranker_llm_con_judge.csv", "r", encoding="utf-8") as f:
         file_rows = pd.read_csv(f).to_dict(orient="records")
 
     # for i, row in enumerate(file_rows):
-    #     llm_as_judge_value = llm_as_judge(row["response"], row["groundtruth"])
+    #     llm_as_judge_value = llm_as_judge(row)
     #     file_rows[i]["judge_score"] = llm_as_judge_value
 
     # df_judge = pd.DataFrame(file_rows)
     # df_judge.to_csv(
-    #     "./risultati_gen_reranking_con_judge.csv",
+    #     "./NUOVO.csv",
     #     index=False,
     #     encoding="utf-8-sig",
     # )
@@ -194,5 +157,5 @@ if __name__ == "__main__":
         results.append(riga_valutata)
         df = pd.DataFrame(results)
         df.to_csv(
-            "./ALTRI_risultati_eval_reranking.csv", index=False, encoding="utf-8-sig"
+            "./NUOVO.csv", index=False, encoding="utf-8-sig"
         )

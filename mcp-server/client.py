@@ -2,6 +2,7 @@ import asyncio
 import json
 from openai import OpenAI
 from mcp import ClientSession, StdioServerParameters, stdio_client
+import pandas as pd
 
 SYSTEM_PROMPT = """Sei un assistente esperto del framework AETERNA. Usa il tool query_rag in modo iterativo se 
         la domanda richiede più passaggi, verifiche incrociate o dettagli approfonditi. 
@@ -20,8 +21,40 @@ def get_model():
     )
 
 
+def prepare_data(data):
+    results = []
+    for row in data[45:50]:
+        question = row.get("question")
+        print(f"\n--- DOMANDA ---\n{question}")
+        try:
+            result = asyncio.run(agent_rag(question))
+            final_row = {
+                "question": question,
+                "groundtruth": row["ground_truth"],
+                "difficulty": row["difficulty"],
+                "response": result["response"],
+                "scores": json.dumps(result["scores"]),
+                "retrieved_contexts": "\n\n===\n\n".join(result["contexts"]),
+                "total_hops": result["total_hops"]
+            }
+        except Exception as e:
+            print(f"Errore nell'elaborazione della domanda '{question}': {str(e)}")
+            final_row = {
+                "question": question,
+                "groundtruth": row["ground_truth"],
+                "difficulty": row["difficulty"],
+                "response": f"ERRORE DI ELABORAZIONE: {str(e)}",
+                "scores": json.dumps([]),
+                "retrieved_contexts": "",
+                "total_hops": 0
+            }
+        results.append(final_row)
+    return results
+
+
 async def agent_rag(query: str):
     contesti_accumulati = []
+    scores = []
     # Avvia il server MCP
     async with stdio_client(SERVER_PARAMS) as (read_stream, write_stream):
         async with ClientSession(read_stream, write_stream) as session:
@@ -40,7 +73,7 @@ async def agent_rag(query: str):
                 }
                 for tool in mcp_tools.tools
             ]
-            print(f"\nTool disponibili: {[tool['function']['name'] for tool in openai_tools]}\n")
+            # print(f"\nTool disponibili: {[tool['function']['name'] for tool in openai_tools]}\n")
             messages = [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": query}
@@ -84,8 +117,11 @@ async def agent_rag(query: str):
                                         "top_n": top_n
                                     }
                                 )
-                            testo_chunk = risultato_mcp.content[0].text
+                            dati_risposta = json.loads(risultato_mcp.content[0].text)
+                            testo_chunk = dati_risposta.get("context", "")
+                            scores_ricevuti = dati_risposta.get("scores", [])
                             contesti_accumulati.append(testo_chunk)
+                            scores.extend(scores_ricevuti)
                             messages.append({
                                 "role": "tool",
                                 "tool_call_id": tool_call.id,
@@ -93,25 +129,39 @@ async def agent_rag(query: str):
                                 "content": testo_chunk
                             })
                 else:
-                    print(f"\nRagionamento completato => {passaggio+1} passaggi.\n")
+                    print(f"\nRagionamento completato => {passaggio+1} passaggi\n")
                     return {
                         "query": query,
                         "response": response_message.content,
                         "contexts": contesti_accumulati,
-                        "total_hops": passaggio + 1
+                        "total_hops": passaggio + 1,
+                        "scores": scores
                     }
-            print("ERRORE: limite massimo di passaggi.")
+            print("ERRORE: limite massimo di passaggi")
             return {
                 "query": query,
-                "response": response_message.content,
+                "response": "L'informazione non è disponibile nel testo",
                 "contexts": contesti_accumulati,
-                "total_hops": MAX_PASSAGGI
+                "total_hops": MAX_PASSAGGI,
+                "scores": scores
             }
       
             
 if __name__ == "__main__":
-    test_query = "Quale protocollo viene utilizzato in AETERNA principalmente per il controllo in tempo reale di attuatori come l’illuminazione pubblica e gli switch energetici?"
-    risultato = asyncio.run(agent_rag(test_query))
-    print("\n--- RISPOSTA FINALE AGENTE ---")
-    print(risultato["response"])
-    print(f"\nHop Totali: {risultato['total_hops']}")
+    # test_query = "Quale protocollo viene utilizzato in AETERNA principalmente per il controllo in tempo reale di attuatori come l’illuminazione pubblica e gli switch energetici?"
+    # risultato = asyncio.run(agent_rag(test_query))
+    # print("\n--- RISPOSTA FINALE AGENTE ---")
+    # print(risultato["response"])
+    # print(f"\nHop Totali: {risultato['total_hops']}")
+
+    with open(
+        "../generate_synthetic_data/golden_dataset.json", 
+        "r",
+        encoding="utf-8"
+    ) as f:
+        data = json.load(f) 
+        
+    results = prepare_data(data)
+    df = pd.DataFrame(results)
+    filename = "../NUOVO.csv"
+    df.to_csv(filename, index=False, encoding="utf-8-sig")

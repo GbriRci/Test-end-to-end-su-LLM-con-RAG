@@ -5,6 +5,7 @@ from mcp.server.fastmcp import FastMCP
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 from pathlib import Path
+import json
 
 BASE_DIR = Path(__file__).resolve().parent
 CHROMA_PATH_AETERNA = str(BASE_DIR.parent / "generate_vector_DB" / "chroma_db_AETERNA")
@@ -79,23 +80,33 @@ async def score_doc(model, doc, question: str = ""):
 
 
 @MCP.tool()
-async def query_rag(query_text: str, k_initial: int = 20, top_n: int = 5) -> str:
+async def query_rag(query_text: str, k_initial: int = 20, top_n: int = 5):
     try:
         db = create_chroma_db()
         results = db.similarity_search_with_score(query_text, k=k_initial)
         pre_rer_docs = [doc for doc, score in results]
         if not pre_rer_docs:
-            return "Nessun documento trovato nella knowledge base."
+            return json.dumps({
+                "context": "Nessun documento trovato",
+                "scores": []
+            })
         reranked_docs = await reranker_function(query_text, pre_rer_docs, top_n=top_n)
+        scores = [doc.metadata.get("relevance_score", 0.0) for doc in reranked_docs]
         formatted_context = []
         for doc in reranked_docs:
             doc_id = doc.metadata.get("id", "N/A")
             score = doc.metadata.get("relevance_score", 0.0)
             block = f"[DOCUMENTO ID: {doc_id}] (Rerank Score: {score:.2f})\n{doc.page_content}"
             formatted_context.append(block) 
-        return "\n\n---\n\n".join(formatted_context)
+        return json.dumps({
+            "context": "\n\n---\n\n".join(formatted_context),
+            "scores": scores
+        })
     except Exception as e:
-        return f"Errore interno nel server MCP: {str(e)}"
+        return json.dumps({
+            "context": f"Errore nel server: {str(e)}",
+            "scores": []
+        })
 
 
 if __name__ == "__main__":
