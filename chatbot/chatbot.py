@@ -153,8 +153,8 @@ def get_evaluation_model(temperature=0):
     #     timeout=180,
     # )
     return ChatOpenAI(
-        model="gpt-5-mini",
-        # model="gpt-4.1",
+        # model="gpt-5-mini",
+        model="gpt-4.1",
         api_key="any",
         openai_api_base="http://100.120.12.105:14141/v1",
         temperature=temperature,
@@ -310,7 +310,13 @@ def get_ragas_metrics():
 
 
 def ragas_evaluation(dataset, all_metrics):
-    run_config = RunConfig(max_workers=1, timeout=400, max_retries=32, max_wait=10)
+    # run_config = RunConfig(max_workers=1, timeout=400, max_retries=32, max_wait=10)
+    run_config = RunConfig(
+        max_workers=1, 
+        timeout=1000, 
+        max_retries=10, 
+        max_wait=100
+    )
     try:
         print(f"Avvio valutazione complessiva per {len(dataset)} righe...")
         result = evaluate(dataset=dataset, metrics=all_metrics, run_config=run_config)
